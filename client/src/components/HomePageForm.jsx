@@ -368,7 +368,7 @@ const HomePageForm = ({ isOpen: externalIsOpen, onClose }) => {
                         {issueTypes.map((issue) => (
                           <button
                             key={issue}
-                            className="bg-muted hover:bg-secondary text-primary p-2 sm:p-3 rounded-lg text-xs sm:text-sm font-medium transition-colors text-left border border-border hover:border-primary"
+                            className="bg-muted hover:bg-secondary text-black p-2 sm:p-3 rounded-lg text-xs sm:text-sm font-medium transition-colors text-left border border-border hover:border-primary"
                             onClick={() => handleIssueSelect(issue)}
                           >
                             {issue}
