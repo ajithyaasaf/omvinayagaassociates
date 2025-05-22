@@ -2,7 +2,14 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { PRODUCT_CATEGORIES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { Loader2 } from "lucide-react";
+import {
+  Loader2,
+  Phone,
+  Search,
+  Star,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 // Real Building Doctor Products based on website data
 export const PRODUCTS = [
@@ -448,7 +455,7 @@ const ProductsPage = () => {
                     href="tel:+919342968038"
                     className="inline-flex items-center text-primary font-medium text-sm hover:underline"
                   >
-                    <i className="fas fa-phone-alt mr-2"></i> Contact our team
+                    <Phone className="mr-2" size={16} /> Contact our team
                   </a>
                 </div>
               </div>
@@ -521,7 +528,7 @@ const ProductsPage = () => {
 
                   {filteredProducts.length === 0 ? (
                     <div className="bg-white rounded-lg shadow p-8 text-center">
-                      <i className="fas fa-search text-gray-300 text-5xl mb-4"></i>
+                      <Search className="text-gray-300 w-16 h-16 mb-4 mx-auto" />
                       <h3 className="text-xl font-bold mb-2">
                         No products found
                       </h3>
@@ -574,7 +581,7 @@ const ProductsPage = () => {
                                   {product.name}
                                 </h3>
                                 <div className="flex items-center">
-                                  <i className="fas fa-star text-yellow-400 text-xs"></i>
+                                  <Star className="text-yellow-400" size={14} />
                                   <span className="text-sm ml-1">
                                     {product.rating?.toFixed(1) || "N/A"}
                                   </span>
@@ -608,7 +615,7 @@ const ProductsPage = () => {
                               disabled={currentPage === 1}
                               className="px-4 py-2 border rounded-md text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                              <i className="fas fa-chevron-left"></i>
+                              <ChevronLeft size={16} />
                             </button>
 
                             {[...Array(totalPages)].map((_, i) => {
@@ -654,7 +661,7 @@ const ProductsPage = () => {
                               disabled={currentPage === totalPages}
                               className="px-4 py-2 border rounded-md text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                              <i className="fas fa-chevron-right"></i>
+                              <ChevronRight size={16} />
                             </button>
                           </div>
                         </div>
