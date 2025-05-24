@@ -5,10 +5,10 @@ export const COMPANY_DESCRIPTION =
 
 export const CONTACT = {
   addresses: [
-    "NO.6, NORTH GATE, NEAR:BALAJI GAS, S.S COLONY MADURAI",
-    "DOOR NO 131, SHOP NO 12, KALLAZHAGAR COMPLEX, THALLAKULAM MAIN ROAD, MADURAI"
+    "No. 6, North Gate, Near Balaji Gas, S.S. Colony, Madurai",
+    "Door No. 131, Shop No. 12, Kallazhagar Complex, Thallakulam Main Road, Madurai",
   ],
-  address: "NO.6, NORTH GATE, NEAR:BALAJI GAS, S.S COLONY MADURAI", // Keeping for backward compatibility
+  address: "No. 6, North Gate, Near Balaji Gas, S.S. Colony, Madurai", // Keeping for backward compatibility
   phone: ["+91 81900 90059", "+91 78737 32323"],
   email: "omvinayagaassociates@gmail.com",
   director: "Er. Ramesh Jeyaraman",
