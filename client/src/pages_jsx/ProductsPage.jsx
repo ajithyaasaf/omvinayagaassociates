@@ -9,6 +9,7 @@ import {
   Star,
   ChevronLeft,
   ChevronRight,
+  X,
 } from "lucide-react";
 
 // Real Building Doctor Products based on website data
@@ -398,6 +399,48 @@ const ProductsPage = () => {
         </div>
       </section>
 
+      {/* Mobile-First Search Section */}
+      <section className="py-8 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <h2 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                Find the Perfect Product
+              </h2>
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                <input
+                  type="text"
+                  placeholder="Search products by name or description..."
+                  value={searchTerm}
+                  onChange={(e) => {
+                    setIsLoading(true);
+                    setSearchTerm(e.target.value);
+                  }}
+                  className="w-full pl-12 pr-12 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors text-lg"
+                />
+                {searchTerm && (
+                  <button
+                    onClick={() => {
+                      setIsLoading(true);
+                      setSearchTerm("");
+                    }}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    <X size={20} />
+                  </button>
+                )}
+              </div>
+              {searchTerm && (
+                <div className="mt-3 text-center text-sm text-gray-600">
+                  Found {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-8">
@@ -428,22 +471,7 @@ const ProductsPage = () => {
                   ))}
                 </div>
 
-                <div className="mt-8">
-                  <h2 className="font-bold text-xl mb-4">Search Products</h2>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      placeholder="Search by name..."
-                      value={searchTerm}
-                      onChange={(e) => {
-                        setIsLoading(true);
-                        setSearchTerm(e.target.value);
-                      }}
-                      className="w-full px-4 py-2 pl-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                    />
-                    <i className="fas fa-search absolute left-3 top-3 text-gray-400"></i>
-                  </div>
-                </div>
+
 
                 <div className="mt-8 p-4 bg-primary/10 rounded-lg">
                   <h3 className="font-bold text-primary mb-2">Need Help?</h3>
@@ -463,6 +491,8 @@ const ProductsPage = () => {
 
             {/* Products Grid */}
             <div className="w-full md:w-3/4">
+
+
               {isLoading ? (
                 <>
                   <div className="flex justify-between items-center mb-6">
