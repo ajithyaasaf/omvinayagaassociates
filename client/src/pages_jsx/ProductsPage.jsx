@@ -399,47 +399,7 @@ const ProductsPage = () => {
         </div>
       </section>
 
-      {/* Mobile-First Search Section */}
-      <section className="py-8 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto">
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4 text-center">
-                Find the Perfect Product
-              </h2>
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                <input
-                  type="text"
-                  placeholder="Search products by name or description..."
-                  value={searchTerm}
-                  onChange={(e) => {
-                    setIsLoading(true);
-                    setSearchTerm(e.target.value);
-                  }}
-                  className="w-full pl-12 pr-12 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors text-lg"
-                />
-                {searchTerm && (
-                  <button
-                    onClick={() => {
-                      setIsLoading(true);
-                      setSearchTerm("");
-                    }}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
-                  >
-                    <X size={20} />
-                  </button>
-                )}
-              </div>
-              {searchTerm && (
-                <div className="mt-3 text-center text-sm text-gray-600">
-                  Found {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       <section className="py-16">
         <div className="container mx-auto px-4">
@@ -540,19 +500,49 @@ const ProductsPage = () => {
                 </div>
               ) : (
                 <>
-                  <div className="flex justify-between items-center mb-6">
+                  <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 mb-6">
                     <h2 className="font-bold text-xl">
                       {filteredProducts.length}{" "}
                       {filteredProducts.length === 1 ? "Product" : "Products"}
                     </h2>
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm text-gray-500">Sort by:</span>
-                      <select className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                        <option>Popularity</option>
-                        <option>Price: Low to High</option>
-                        <option>Price: High to Low</option>
-                        <option>Rating</option>
-                      </select>
+                    
+                    <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+                      {/* Simple Search Bar */}
+                      <div className="relative">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+                        <input
+                          type="text"
+                          placeholder="Search products..."
+                          value={searchTerm}
+                          onChange={(e) => {
+                            setIsLoading(true);
+                            setSearchTerm(e.target.value);
+                          }}
+                          className="w-full sm:w-64 pl-10 pr-8 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-colors text-sm"
+                        />
+                        {searchTerm && (
+                          <button
+                            onClick={() => {
+                              setIsLoading(true);
+                              setSearchTerm("");
+                            }}
+                            className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                          >
+                            <X size={16} />
+                          </button>
+                        )}
+                      </div>
+                      
+                      {/* Sort Dropdown */}
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm text-gray-500">Sort by:</span>
+                        <select className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                          <option>Popularity</option>
+                          <option>Price: Low to High</option>
+                          <option>Price: High to Low</option>
+                          <option>Rating</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
 
