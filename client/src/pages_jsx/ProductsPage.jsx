@@ -451,19 +451,65 @@ const ProductsPage = () => {
 
             {/* Products Grid */}
             <div className="w-full md:w-3/4">
-
+              {/* Header with Search - Always Visible */}
+              <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 mb-6">
+                <h2 className="font-bold text-xl">
+                  {isLoading ? (
+                    <div className="h-6 w-32 bg-gray-200 animate-pulse rounded"></div>
+                  ) : (
+                    <>
+                      {filteredProducts.length}{" "}
+                      {filteredProducts.length === 1 ? "Product" : "Products"}
+                    </>
+                  )}
+                </h2>
+                
+                <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+                  {/* Simple Search Bar */}
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+                    <input
+                      type="text"
+                      placeholder="Search products..."
+                      value={searchTerm}
+                      onChange={(e) => {
+                        setIsLoading(true);
+                        setSearchTerm(e.target.value);
+                      }}
+                      className="w-full sm:w-64 pl-10 pr-8 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-colors text-sm"
+                    />
+                    {searchTerm && (
+                      <button
+                        onClick={() => {
+                          setIsLoading(true);
+                          setSearchTerm("");
+                        }}
+                        className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      >
+                        <X size={16} />
+                      </button>
+                    )}
+                  </div>
+                  
+                  {/* Sort Dropdown */}
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm text-gray-500">Sort by:</span>
+                    {isLoading ? (
+                      <div className="h-8 w-36 bg-gray-200 animate-pulse rounded"></div>
+                    ) : (
+                      <select className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <option>Popularity</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Rating</option>
+                      </select>
+                    )}
+                  </div>
+                </div>
+              </div>
 
               {isLoading ? (
                 <>
-                  <div className="flex justify-between items-center mb-6">
-                    <h2 className="font-bold text-xl">
-                      <div className="h-6 w-32 bg-gray-200 animate-pulse rounded"></div>
-                    </h2>
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm text-gray-500">Sort by:</span>
-                      <div className="h-8 w-36 bg-gray-200 animate-pulse rounded"></div>
-                    </div>
-                  </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[...Array(6)].map((_, index) => (
@@ -500,51 +546,6 @@ const ProductsPage = () => {
                 </div>
               ) : (
                 <>
-                  <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 mb-6">
-                    <h2 className="font-bold text-xl">
-                      {filteredProducts.length}{" "}
-                      {filteredProducts.length === 1 ? "Product" : "Products"}
-                    </h2>
-                    
-                    <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
-                      {/* Simple Search Bar */}
-                      <div className="relative">
-                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
-                        <input
-                          type="text"
-                          placeholder="Search products..."
-                          value={searchTerm}
-                          onChange={(e) => {
-                            setIsLoading(true);
-                            setSearchTerm(e.target.value);
-                          }}
-                          className="w-full sm:w-64 pl-10 pr-8 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-colors text-sm"
-                        />
-                        {searchTerm && (
-                          <button
-                            onClick={() => {
-                              setIsLoading(true);
-                              setSearchTerm("");
-                            }}
-                            className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                          >
-                            <X size={16} />
-                          </button>
-                        )}
-                      </div>
-                      
-                      {/* Sort Dropdown */}
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm text-gray-500">Sort by:</span>
-                        <select className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                          <option>Popularity</option>
-                          <option>Price: Low to High</option>
-                          <option>Price: High to Low</option>
-                          <option>Rating</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
 
                   {filteredProducts.length === 0 ? (
                     <div className="bg-white rounded-lg shadow p-8 text-center">
