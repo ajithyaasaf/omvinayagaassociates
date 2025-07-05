@@ -6,13 +6,16 @@ export const COMPANY_DESCRIPTION =
 
 // Contact Information
 export const CONTACT = {
+  addresses: [
+    "Door No. 131, Shop No. 12, Kallazhagar Complex, Thallakulam Main Road, Madurai",
+    "No. 6, North Gate, Near Balaji Gas, S.S. Colony, Madurai",
+  ],
+  address: "No. 6, North Gate, Near Balaji Gas, S.S. Colony, Madurai", // Keeping for backward compatibility
   director: "Er.Ramesh Jeyaraman B.E",
   title: "Director",
   phone: ["+91 81900 90059", "+91 78737 32323"],
-  email: "madurai@buildingdoctor.org",
-  address:
-    "OM Vinayaga Associates, No. 6, North Gate, Opposite Devaki Scan Center, S.S. Colony, Madurai - 625 016, Tamil Nadu",
-  workingHours: "Monday - Saturday: 9:30 AM - 7:30 PM",
+  email: "omvinayagaassociates@gmail.com",
+  workingHours: "Monday to Saturday from 09.30 am to 07.30 pm",
   website: "www.buildingdoctor.org",
   social: {
     facebook: "BuildingDoctor Madurai",
