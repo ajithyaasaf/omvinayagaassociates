@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { X, Send, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SERVICES, COMPANY_NAME } from "@/lib/constants";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 // Comprehensive responses for the chatbot (unchanged)
 const RESPONSES = {
@@ -203,7 +204,37 @@ const ChatBot = () => {
   const [showServiceOptions, setShowServiceOptions] = useState(false);
   const [currentQuickReplies, setCurrentQuickReplies] = useState(QUICK_REPLIES);
   const [isTyping, setIsTyping] = useState(false);
+  const [appointmentFlow, setAppointmentFlow] = useState({
+    isActive: false,
+    step: null, // 'phone' | 'time' | 'completed'
+    phoneNumber: null,
+    timeSlot: null,
+    service: null
+  });
   const messagesEndRef = useRef(null);
+  const queryClient = useQueryClient();
+
+  // Mutation for saving appointment to database
+  const saveAppointmentMutation = useMutation({
+    mutationFn: async (appointmentData) => {
+      const response = await fetch('/api/intents', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(appointmentData),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to save appointment');
+      }
+      
+      return response.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/intents'] });
+    },
+  });
 
   // Initialize chat with greeting
   useEffect(() => {
@@ -251,28 +282,26 @@ const ChatBot = () => {
       const conversationContext =
         lastBotMessage && !lastBotMessage.isUser ? lastBotMessage.text : null;
 
-      // Context-aware response system
-      // If the previous bot message was asking for phone number (appointment flow)
-      if (
-        conversationContext &&
-        conversationContext.includes(RESPONSES.appointment)
-      ) {
-        // User provided phone number (simple validation: contains numbers)
-        if (/\d/.test(input)) {
-          botResponse = RESPONSES.appointment_followup;
-          newQuickReplies = APPOINTMENT_QUICK_REPLIES;
-        } else {
-          botResponse =
-            "Could you please provide a valid phone number so we can contact you about your appointment?";
+      // Context-aware response system for appointment flow
+      if (appointmentFlow.isActive) {
+        if (appointmentFlow.step === 'phone') {
+          // Validate phone number input
+          const phoneRegex = /^[+]?[0-9\s\-\(\)]{10,15}$/;
+          if (phoneRegex.test(input.trim())) {
+            setAppointmentFlow(prev => ({
+              ...prev,
+              phoneNumber: input.trim(),
+              step: 'time'
+            }));
+            botResponse = RESPONSES.appointment_followup;
+            newQuickReplies = APPOINTMENT_QUICK_REPLIES;
+          } else {
+            botResponse = "Please provide a valid phone number (10-15 digits) so we can contact you about your appointment.";
+          }
+        } else if (appointmentFlow.step === 'time') {
+          // This will be handled in the quick reply selection
+          botResponse = "Please select a time slot from the options above.";
         }
-      }
-      // Handle time slot context (for appointment scheduling)
-      else if (
-        conversationContext &&
-        conversationContext.includes(RESPONSES.appointment_followup)
-      ) {
-        botResponse = RESPONSES.appointment_confirmed;
-        newQuickReplies = QUICK_REPLIES;
       }
       // Main conversation patterns
       else {
@@ -629,7 +658,14 @@ const ChatBot = () => {
           break;
         case "appointment":
           botResponse = RESPONSES.appointment;
-          quickReplies = APPOINTMENT_QUICK_REPLIES;
+          quickReplies = [];
+          setAppointmentFlow({
+            isActive: true,
+            step: 'phone',
+            phoneNumber: null,
+            timeSlot: null,
+            service: null
+          });
           break;
         case "contact":
           botResponse = RESPONSES.contact;
@@ -647,8 +683,35 @@ const ChatBot = () => {
         case "morning":
         case "afternoon":
         case "evening":
-          botResponse = RESPONSES.appointment_confirmed;
-          quickReplies = PROBLEM_QUICK_REPLIES;
+          if (appointmentFlow.isActive && appointmentFlow.step === 'time') {
+            const timeSlotText = option.text; // e.g., "Morning (9AM-12PM)"
+            
+            // Save appointment to database
+            const appointmentData = {
+              name: "Chatbot User", // Default name since not collected
+              phone: appointmentFlow.phoneNumber,
+              service: "Building Diagnosis",
+              message: `Appointment scheduled for ${timeSlotText}. Requested via chatbot.`,
+              consent: true
+            };
+            
+            saveAppointmentMutation.mutate(appointmentData);
+            
+            // Update appointment flow
+            setAppointmentFlow({
+              isActive: false,
+              step: 'completed',
+              phoneNumber: appointmentFlow.phoneNumber,
+              timeSlot: timeSlotText,
+              service: "Building Diagnosis"
+            });
+            
+            botResponse = RESPONSES.appointment_confirmed;
+            quickReplies = PROBLEM_QUICK_REPLIES;
+          } else {
+            botResponse = "Please start by selecting 'Schedule a Diagnosis' to book an appointment.";
+            quickReplies = QUICK_REPLIES;
+          }
           break;
 
         // Company information quick replies
