@@ -232,36 +232,7 @@ const AboutPage = () => {
                       </div>
                     </div>
                     
-                    <div className="mt-6 pt-4 border-t border-gray-100">
-                      <div className="flex items-center justify-between">
-                        <div className="text-xs text-gray-500">
-                          <i className="fas fa-phone mr-1"></i>
-                          {index === 0 ? director.phone : CONTACT.phone[0]}
-                        </div>
-                        <div className="flex space-x-2">
-                          <a
-                            href={`https://www.facebook.com/${CONTACT.social.facebook}`}
-                            className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary/20 transition"
-                          >
-                            <i className="fab fa-facebook-f text-xs"></i>
-                          </a>
-                          <a
-                            href={`https://twitter.com/${CONTACT.social.twitter}`}
-                            className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary/20 transition"
-                          >
-                            <i className="fab fa-twitter text-xs"></i>
-                          </a>
-                          <a
-                            href={`https://www.linkedin.com/in/${director.name
-                              .toLowerCase()
-                              .replace(/\s+/g, "-")}`}
-                            className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary/20 transition"
-                          >
-                            <i className="fab fa-linkedin-in text-xs"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
+
                   </div>
                 </div>
               ))}
