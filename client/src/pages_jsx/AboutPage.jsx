@@ -151,17 +151,16 @@ const AboutPage = () => {
           <div className="text-center mb-12">
             <div className="inline-block px-4 py-1 bg-primary bg-opacity-10 rounded-full mb-3">
               <p className="text-xs font-semibold text-secondary uppercase tracking-wider">
-                Our Team
+                Leadership
               </p>
             </div>
             <h2 className="font-montserrat font-bold text-3xl mb-6">
-              Meet The Experts
+              Meet Our Directors
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Our team consists of trained professionals with extensive
-              experience in building repair and maintenance. Led by our
-              experienced directors, we are committed to delivering exceptional
-              results.
+              Our company is led by experienced directors who bring diverse expertise
+              in business development, education, and technical engineering to deliver
+              exceptional building repair and maintenance solutions.
             </p>
           </div>
 
