@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
-import { CONTACT, STATS } from "@/lib/constants";
+import { CONTACT, STATS, DIRECTORS } from "@/lib/constants";
 import directorImage from "@/assets/jeyaram.jpg";
+import drKamaleeswariImage from "@/assets/dr_kamaleeswari.jpg";
 
 const AboutPage = () => {
   useEffect(() => {
@@ -158,140 +159,126 @@ const AboutPage = () => {
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Our team consists of trained professionals with extensive
-              experience in building repair and maintenance. Led by{" "}
-              {CONTACT.director}, we are committed to delivering exceptional
+              experience in building repair and maintenance. Led by our
+              experienced directors, we are committed to delivering exceptional
               results.
             </p>
           </div>
 
-          <div className="relative max-w-5xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="grid grid-cols-1 md:grid-cols-12">
-                <div className="col-span-1 md:col-span-5 bg-primary p-8 md:p-10 flex flex-col justify-center relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mt-20 -mr-20"></div>
-                  <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full -mb-20 -ml-20"></div>
-
-                  <div className="relative z-10">
-                    <div className="w-32 h-32 mb-8 rounded-full mx-auto md:mx-0 relative overflow-hidden border-4 border-white/30">
-                      <img
-                        src={directorImage}
-                        alt={CONTACT.director}
-                        className="w-full h-full object-cover object-center"
-                      />
+          <div className="relative max-w-6xl mx-auto">
+            {/* Directors Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {DIRECTORS.map((director, index) => (
+                <div key={director.id} className="bg-white rounded-2xl shadow-xl overflow-hidden">
+                  <div className="bg-primary p-6 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mt-16 -mr-16"></div>
+                    <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full -mb-16 -ml-16"></div>
+                    
+                    <div className="relative z-10 text-center">
+                      <div className="w-24 h-24 mb-4 rounded-full mx-auto relative overflow-hidden border-4 border-white/30">
+                        <img
+                          src={index === 0 ? drKamaleeswariImage : directorImage}
+                          alt={director.name}
+                          className="w-full h-full object-cover object-center"
+                        />
+                      </div>
+                      
+                      <h3 className="text-white font-montserrat font-bold text-xl mb-1">
+                        {director.name}
+                      </h3>
+                      <p className="text-white/80 font-medium text-sm mb-2">
+                        {director.title}
+                      </p>
+                      {director.credentials && (
+                        <p className="text-white/70 text-xs mb-4">
+                          {director.credentials}
+                        </p>
+                      )}
+                      
+                      <div className="w-16 h-1 bg-white/50 mx-auto"></div>
                     </div>
-
-                    <h3 className="text-white font-montserrat font-bold text-2xl mb-2 text-center md:text-left">
-                      {CONTACT.director}
-                    </h3>
-                    <p className="text-white/80 font-medium text-lg mb-4 text-center md:text-left">
-                      {CONTACT.title}
+                  </div>
+                  
+                  <div className="p-6">
+                    <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                      {director.description}
                     </p>
-
-                    <div className="w-20 h-1 bg-white/50 mb-6 mx-auto md:mx-0"></div>
-
-                    <p className="text-white/80 mb-8 text-center md:text-left leading-relaxed">
-                      Civil engineering expert with extensive experience in
-                      building repair and waterproofing solutions. Leader of OM
-                      Vinayaga Associates since its inception.
-                    </p>
-
-                    <div className="flex space-x-4 justify-center md:justify-start">
-                      <a
-                        href={`https://www.facebook.com/${CONTACT.social.facebook}`}
-                        className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition"
-                      >
-                        <i className="fab fa-facebook-f"></i>
-                      </a>
-                      <a
-                        href={`https://twitter.com/${CONTACT.social.twitter}`}
-                        className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition"
-                      >
-                        <i className="fab fa-twitter"></i>
-                      </a>
-                      <a
-                        href={`https://www.linkedin.com/in/${CONTACT.director
-                          .toLowerCase()
-                          .replace(/\s+/g, "-")}`}
-                        className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition"
-                      >
-                        <i className="fab fa-linkedin-in"></i>
-                      </a>
+                    
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="font-montserrat font-semibold text-gray-800 mb-2 text-sm">
+                          Specialties
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {director.specialties.map((specialty, i) => (
+                            <span key={i} className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs">
+                              {specialty}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <h4 className="font-montserrat font-semibold text-gray-800 mb-2 text-sm">
+                          Key Achievements
+                        </h4>
+                        <ul className="text-gray-600 text-xs space-y-1">
+                          {director.awards.slice(0, 3).map((award, i) => (
+                            <li key={i} className="flex items-start">
+                              <i className="fas fa-award text-primary mr-2 mt-1 text-xs"></i>
+                              {award}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-6 pt-4 border-t border-gray-100">
+                      <div className="flex items-center justify-between">
+                        <div className="text-xs text-gray-500">
+                          <i className="fas fa-phone mr-1"></i>
+                          {index === 0 ? director.phone : CONTACT.phone[0]}
+                        </div>
+                        <div className="flex space-x-2">
+                          <a
+                            href={`https://www.facebook.com/${CONTACT.social.facebook}`}
+                            className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary/20 transition"
+                          >
+                            <i className="fab fa-facebook-f text-xs"></i>
+                          </a>
+                          <a
+                            href={`https://twitter.com/${CONTACT.social.twitter}`}
+                            className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary/20 transition"
+                          >
+                            <i className="fab fa-twitter text-xs"></i>
+                          </a>
+                          <a
+                            href={`https://www.linkedin.com/in/${director.name
+                              .toLowerCase()
+                              .replace(/\s+/g, "-")}`}
+                            className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary/20 transition"
+                          >
+                            <i className="fab fa-linkedin-in text-xs"></i>
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-
-                <div className="col-span-1 md:col-span-7 p-8 md:p-10">
-                  <h3 className="font-montserrat font-bold text-xl text-primary mb-6">
-                    Leadership & Expertise
-                  </h3>
-
-                  <div className="space-y-8">
-                    <div className="flex">
-                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4 flex-shrink-0">
-                        <i className="fas fa-award"></i>
-                      </div>
-                      <div>
-                        <h4 className="font-montserrat font-semibold text-gray-800 mb-2">
-                          Professional Qualifications
-                        </h4>
-                        <p className="text-gray-600">
-                          Advanced degrees in Civil Engineering with
-                          specializations in structural design and waterproofing
-                          technologies. Certified Building Doctor franchise
-                          owner with continuous training in the latest industry
-                          innovations.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex">
-                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4 flex-shrink-0">
-                        <i className="fas fa-history"></i>
-                      </div>
-                      <div>
-                        <h4 className="font-montserrat font-semibold text-gray-800 mb-2">
-                          Industry Experience
-                        </h4>
-                        <p className="text-gray-600">
-                          Over 15 years of hands-on experience in the
-                          construction and building repair industry across
-                          various climatic conditions and building types.
-                          Successfully led over 1000+ projects throughout Tamil
-                          Nadu.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex">
-                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4 flex-shrink-0">
-                        <i className="fas fa-users"></i>
-                      </div>
-                      <div>
-                        <h4 className="font-montserrat font-semibold text-gray-800 mb-2">
-                          Team Leadership
-                        </h4>
-                        <p className="text-gray-600">
-                          Leads a team of 25+ skilled technicians, consultants,
-                          and customer service professionals dedicated to
-                          providing the highest quality building maintenance
-                          solutions with personalized service.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-8 pt-8 border-t border-gray-100">
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-colors"
-                    >
-                      <i className="fas fa-envelope mr-2"></i> Get in Touch
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
-
+            
+            {/* Call to Action */}
+            <div className="mt-12 text-center">
+              <Link
+                to="/contact"
+                className="inline-flex items-center bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-lg transition-colors"
+              >
+                <i className="fas fa-envelope mr-2"></i> Get in Touch with Our Team
+              </Link>
+            </div>
+            
+            {/* Team Specialties */}
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white p-6 rounded-xl shadow-lg">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
@@ -351,7 +338,7 @@ const AboutPage = () => {
             </p>
             <div className="aspect-video w-full mb-8 bg-gray-200 rounded-xl"></div>
             <Link
-              href="/contact"
+              to="/contact"
               className="inline-block bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-md font-medium transition"
             >
               Contact Us Today
