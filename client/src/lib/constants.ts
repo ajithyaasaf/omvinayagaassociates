@@ -42,21 +42,33 @@ export const DIRECTORS = [
     experience: [
       "Teaching field - Both India and Saudi Arabia (CBSE & ICSE) - 15+ Years",
       "President of MEWE (Madurai Empowered Women Entrepreneur) Forum",
-      "Motivational Speaker and Business Consultant"
+      "PTA President in SBOA School",
+      "Motivational Speaker and Business Consultant",
+      "Managing Director OM Vinayaga Associates (Building Doctor)",
+      "SUBI Exports - Flowers & Ornamental Jewellery",
+      "Insurance field - Max New York & Star Health Insurance Company"
     ],
     awards: [
       "The Best Emerging Women Entrepreneur",
-      "The Best Product Presentation Award",
+      "The Best Product Presentation Award", 
+      "The Best Women Entrepreneur",
       "The Best Business Posting Award",
+      "The Best Pioneer of the Year",
+      "The Best President Of MEWE",
+      "The Best Franchise Of the Year",
       "Excellence in Building Restoration Water Proofing - Madurai City Iconic Award"
     ],
     phone: "9629929700",
     email: "skkamaleswari@gmail.com",
     specialties: [
       "Business Development",
-      "Entrepreneurship",
+      "Entrepreneurship", 
       "Team Leadership",
-      "Strategic Planning"
+      "Strategic Planning",
+      "Productivity & Efficiency Gains",
+      "Revenue & Profit Growth",
+      "Process Redesign & Improvement",
+      "Coaching & Mentoring"
     ]
   },
   {
