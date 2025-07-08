@@ -26,7 +26,7 @@ const fetchVisitorStats = async (): Promise<VisitorStats> => {
 };
 
 const incrementVisitorCount = async (): Promise<VisitorStats> => {
-  const response = await fetch('/api/visitors/increment', {
+  const response = await fetch('/api/visitors', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

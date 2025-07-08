@@ -22,10 +22,21 @@ export const VisitorCounter = ({
 }: VisitorCounterProps) => {
   const { visitorStats, isLoading, error } = useVisitorCounter();
 
-  // Don't render if there's an error or no data
+  // Handle errors gracefully - show a fallback count instead of hiding
   if (error) {
     console.warn('Visitor counter error:', error);
-    return null;
+    return (
+      <div 
+        className={`flex items-center gap-2 ${className}`}
+        role="status"
+        aria-label="Visitor counter temporarily unavailable"
+      >
+        {showIcon && <Eye className="h-4 w-4 text-gray-500" />}
+        <span className="text-sm text-gray-500">
+          Visitors: --
+        </span>
+      </div>
+    );
   }
 
   // Loading state

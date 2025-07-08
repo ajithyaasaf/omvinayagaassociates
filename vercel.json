@@ -33,6 +33,18 @@
       "dest": "/api/firebase-data.js"
     },
     {
+      "src": "/api/visitors",
+      "dest": "/api/visitors.js"
+    },
+    {
+      "src": "/api/debug-firebase",
+      "dest": "/api/debug-firebase.js"
+    },
+    {
+      "src": "/api/test-visitors",
+      "dest": "/api/test-visitors.js"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "/api/server.js"
     },
