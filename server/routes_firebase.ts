@@ -801,6 +801,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         phone: parsedData.phone,
         service: parsedData.service || "Urgent Consultation",
         message: parsedData.message || "Building repair inquiry",
+        location: parsedData.location,
+        issueType: parsedData.issueType,
+        timePreference: parsedData.timePreference,
         consent: parsedData.consent
       };
       

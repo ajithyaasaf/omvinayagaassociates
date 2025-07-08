@@ -226,7 +226,7 @@ const ChatBot = () => {
   // Mutation for saving appointment to database
   const saveAppointmentMutation = useMutation({
     mutationFn: async (appointmentData) => {
-      const response = await fetch('/api/intents', {
+      const response = await fetch('/api/intent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
