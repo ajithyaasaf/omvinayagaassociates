@@ -25,11 +25,17 @@ const RESPONSES = {
   contact:
     "You can reach us by phone at +91 81900 90059 or +91 78737 32323, or email at omvinayagaassociates@gmail.com. Our office is open Monday to Saturday, 9:30 AM to 7:30 PM.",
   appointment:
-    "Great! To schedule a diagnosis, we'll need some information. What's a good phone number to reach you?",
-  appointment_followup:
-    "Perfect! What's the best time for our technician to visit? We're available Monday to Saturday, 9:30 AM to 7:30 PM.",
+    "Great! To schedule a diagnosis, I'll need a few details. First, what's your name?",
+  appointment_phone_request:
+    "Thank you! Now, what's your mobile number so we can contact you?",
+  appointment_location_request:
+    "Perfect! What's your location/address in Madurai so our technician can visit?",
+  appointment_issue_request:
+    "Got it! What specific building issue are you facing? (e.g., roof leakage, wall cracks, seepage, waterproofing, etc.)",
+  appointment_time_request:
+    "Thanks for the details! What's the best time for our technician to visit? We're available Monday to Saturday, 9:30 AM to 7:30 PM.",
   appointment_confirmed:
-    "Thank you! We've scheduled your diagnosis. Our team will call you shortly to confirm the details. Is there anything specific about your building issues we should know?",
+    "Perfect! Your diagnosis appointment has been scheduled. Here's a summary:\n\n📋 Your Details:\n• Name: [NAME]\n• Phone: [PHONE]\n• Location: [LOCATION]\n• Issue: [ISSUE]\n• Time: [TIME]\n\nOur technician will call you shortly to confirm the visit. Thank you for choosing OM Vinayaga Associates!",
   emergency:
     "For emergency services like severe leaks or structural concerns, please call our emergency line at +91 81900 90059. We offer prompt response for critical situations during working hours.",
   visit_timing:
@@ -206,8 +212,11 @@ const ChatBot = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [appointmentFlow, setAppointmentFlow] = useState({
     isActive: false,
-    step: null, // 'phone' | 'time' | 'completed'
+    step: null, // 'name' | 'phone' | 'location' | 'issue' | 'time' | 'completed'
+    name: null,
     phoneNumber: null,
+    location: null,
+    issueType: null,
     timeSlot: null,
     service: null
   });
@@ -284,19 +293,61 @@ const ChatBot = () => {
 
       // Context-aware response system for appointment flow
       if (appointmentFlow.isActive) {
-        if (appointmentFlow.step === 'phone') {
+        if (appointmentFlow.step === 'name') {
+          // Store name and move to phone
+          const name = input.trim();
+          if (name.length >= 2) {
+            setAppointmentFlow(prev => ({
+              ...prev,
+              name: name,
+              step: 'phone'
+            }));
+            botResponse = RESPONSES.appointment_phone_request;
+            newQuickReplies = [];
+          } else {
+            botResponse = "Please provide your full name so we can schedule your appointment properly.";
+          }
+        } else if (appointmentFlow.step === 'phone') {
           // Validate phone number input (Indian phone numbers)
           const phoneRegex = /^(\+91|91|0)?[6-9]\d{9}$/;
           if (phoneRegex.test(input.trim())) {
             setAppointmentFlow(prev => ({
               ...prev,
               phoneNumber: input.trim(),
-              step: 'time'
+              step: 'location'
             }));
-            botResponse = RESPONSES.appointment_followup;
-            newQuickReplies = APPOINTMENT_QUICK_REPLIES;
+            botResponse = RESPONSES.appointment_location_request;
+            newQuickReplies = [];
           } else {
             botResponse = "Please provide a valid Indian mobile number (10 digits starting with 6-9) so we can contact you about your appointment.";
+          }
+        } else if (appointmentFlow.step === 'location') {
+          // Store location and move to issue type
+          const location = input.trim();
+          if (location.length >= 5) {
+            setAppointmentFlow(prev => ({
+              ...prev,
+              location: location,
+              step: 'issue'
+            }));
+            botResponse = RESPONSES.appointment_issue_request;
+            newQuickReplies = [];
+          } else {
+            botResponse = "Please provide your address or location in Madurai so our technician can visit.";
+          }
+        } else if (appointmentFlow.step === 'issue') {
+          // Store issue type and move to time selection
+          const issue = input.trim();
+          if (issue.length >= 3) {
+            setAppointmentFlow(prev => ({
+              ...prev,
+              issueType: issue,
+              step: 'time'
+            }));
+            botResponse = RESPONSES.appointment_time_request;
+            newQuickReplies = APPOINTMENT_QUICK_REPLIES;
+          } else {
+            botResponse = "Please describe the building issue you're facing (e.g., roof leakage, wall cracks, etc.)";
           }
         } else if (appointmentFlow.step === 'time') {
           // This will be handled in the quick reply selection
@@ -661,8 +712,11 @@ const ChatBot = () => {
           quickReplies = [];
           setAppointmentFlow({
             isActive: true,
-            step: 'phone',
+            step: 'name',
+            name: null,
             phoneNumber: null,
+            location: null,
+            issueType: null,
             timeSlot: null,
             service: null
           });
@@ -688,10 +742,10 @@ const ChatBot = () => {
             
             // Save appointment to database
             const appointmentData = {
-              name: "Chatbot User", // Default name since not collected
+              name: appointmentFlow.name,
               phone: appointmentFlow.phoneNumber,
               service: "Building Diagnosis",
-              message: `Appointment scheduled for ${timeSlotText}. Requested via chatbot.`,
+              message: `Issue: ${appointmentFlow.issueType}. Location: ${appointmentFlow.location}. Time: ${timeSlotText}. Requested via chatbot.`,
               consent: true
             };
             
@@ -701,12 +755,21 @@ const ChatBot = () => {
             setAppointmentFlow({
               isActive: false,
               step: 'completed',
+              name: appointmentFlow.name,
               phoneNumber: appointmentFlow.phoneNumber,
+              location: appointmentFlow.location,
+              issueType: appointmentFlow.issueType,
               timeSlot: timeSlotText,
               service: "Building Diagnosis"
             });
             
-            botResponse = RESPONSES.appointment_confirmed;
+            // Create personalized confirmation message
+            botResponse = RESPONSES.appointment_confirmed
+              .replace('[NAME]', appointmentFlow.name)
+              .replace('[PHONE]', appointmentFlow.phoneNumber)
+              .replace('[LOCATION]', appointmentFlow.location)
+              .replace('[ISSUE]', appointmentFlow.issueType)
+              .replace('[TIME]', timeSlotText);
             quickReplies = PROBLEM_QUICK_REPLIES;
           } else {
             botResponse = "Please start by selecting 'Schedule a Diagnosis' to book an appointment.";
