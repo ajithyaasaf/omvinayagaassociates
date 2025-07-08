@@ -243,10 +243,10 @@ const Footer = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex flex-col md:flex-row items-center">
-              <p className="text-sm text-gray-400 md:mr-4">
+              <p className="text-base text-gray-400 md:mr-4">
                 © {currentYear} {COMPANY_NAME}. All Rights Reserved.
               </p>
-              <p className="text-xs text-gray-500 mt-1 md:mt-0">
+              <p className="text-sm text-gray-500 mt-1 md:mt-0">
                 Designed and developed by{" "}
                 <a
                   href="https://www.godivatech.com"
