@@ -857,6 +857,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Visitor tracking endpoints following Google engineering principles
+  app.get('/api/visitors', async (_req, res) => {
+    try {
+      const stats = await storage.getVisitorStats();
+      res.json(stats);
+    } catch (error) {
+      console.error('Error getting visitor stats:', error);
+      res.status(500).json({ error: 'Failed to get visitor stats' });
+    }
+  });
+
+  app.post('/api/visitors/increment', async (_req, res) => {
+    try {
+      const stats = await storage.incrementVisitorCount();
+      res.json(stats);
+    } catch (error) {
+      console.error('Error incrementing visitor count:', error);
+      res.status(500).json({ error: 'Failed to increment visitor count' });
+    }
+  });
+
   // Set up authentication if needed
   // setupAuth(app);
 

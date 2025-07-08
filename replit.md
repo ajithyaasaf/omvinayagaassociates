@@ -110,6 +110,8 @@ Required environment variables:
 
 ## Changelog
 
+- July 08, 2025. Successfully migrated from Replit Agent to Replit environment
+- July 08, 2025. Added robust visitor counter to footer following Google engineering principles
 - July 05, 2025. Initial setup
 
 ## User Preferences

@@ -16,6 +16,7 @@ import {
   SOCIAL_MEDIA,
 } from "../../data/company";
 import logo from "@/assets/Logo.png";
+import { VisitorCounter } from "../ui/visitor-counter";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -256,6 +257,9 @@ const Footer = () => {
                   Godiva Tech
                 </a>
               </p>
+            </div>
+            <div className="mt-2 md:mt-0">
+              <VisitorCounter />
             </div>
             {/*  <div className="mt-3 md:mt-0">
               <a

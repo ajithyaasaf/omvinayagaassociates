@@ -190,3 +190,16 @@ export interface Intent {
   createdAt: Date | null;
 }
 export type InsertIntent = z.infer<typeof intentSchema>;
+
+// Visitor tracking schema
+export const visitors = pgTable("visitors", {
+  id: serial("id").primaryKey(),
+  totalVisits: integer("total_visits").notNull().default(0),
+  lastUpdated: timestamp("last_updated").defaultNow()
+});
+
+export interface VisitorStats {
+  id: number;
+  totalVisits: number;
+  lastUpdated: Date | null;
+}

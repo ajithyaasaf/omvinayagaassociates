@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { 
   getDatabase, ref, set, get, update, remove, push, child, 
-  onValue, DataSnapshot, Query 
+  onValue, DataSnapshot, Query, runTransaction 
 } from 'firebase/database';
 import { 
   type User, 
@@ -676,6 +676,78 @@ export class FirebaseStorage {
     } catch (error) {
       console.error('Firebase deleteIntent error:', error);
       return false;
+    }
+  }
+
+  /**
+   * Visitor tracking methods following Google engineering principles:
+   * - Atomic operations with error handling
+   * - Consistent data structure
+   * - Proper logging and monitoring
+   */
+  async getVisitorStats(): Promise<{ totalVisits: number }> {
+    this.checkDatabaseAvailability();
+    if (!this.database) {
+      console.warn('Database not available, returning default visitor stats');
+      return { totalVisits: 0 };
+    }
+
+    try {
+      const snapshot = await get(ref(this.database, 'visitorStats'));
+      const data = snapshot.val();
+      
+      if (!data || !data.totalVisits) {
+        // Initialize visitor stats if not exists
+        await set(ref(this.database, 'visitorStats'), {
+          totalVisits: 0,
+          lastUpdated: new Date().toISOString()
+        });
+        return { totalVisits: 0 };
+      }
+      
+      return { totalVisits: data.totalVisits };
+    } catch (error) {
+      console.error('Error getting visitor stats:', error);
+      return { totalVisits: 0 };
+    }
+  }
+
+  async incrementVisitorCount(): Promise<{ totalVisits: number }> {
+    this.checkDatabaseAvailability();
+    if (!this.database) {
+      console.warn('Database not available, cannot increment visitor count');
+      return { totalVisits: 0 };
+    }
+
+    try {
+      const visitorStatsRef = ref(this.database, 'visitorStats');
+      
+      // Use transaction for atomic increment following Google's consistency principles
+      const result = await runTransaction(visitorStatsRef, (currentData) => {
+        if (currentData === null) {
+          return {
+            totalVisits: 1,
+            lastUpdated: new Date().toISOString()
+          };
+        }
+        
+        return {
+          totalVisits: (currentData.totalVisits || 0) + 1,
+          lastUpdated: new Date().toISOString()
+        };
+      });
+      
+      if (result.committed) {
+        const newCount = result.snapshot.val()?.totalVisits || 1;
+        console.log(`Visitor count incremented to: ${newCount}`);
+        return { totalVisits: newCount };
+      } else {
+        console.warn('Failed to commit visitor count transaction');
+        return await this.getVisitorStats();
+      }
+    } catch (error) {
+      console.error('Error incrementing visitor count:', error);
+      return await this.getVisitorStats();
     }
   }
 }

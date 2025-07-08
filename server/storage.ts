@@ -61,6 +61,10 @@ export interface IStorage {
   createIntent(intent: Omit<Intent, 'id' | 'createdAt'>): Promise<Intent>;
   deleteIntent(id: number): Promise<boolean>;
   
+  // Visitor tracking methods
+  getVisitorStats(): Promise<{ totalVisits: number }>;
+  incrementVisitorCount(): Promise<{ totalVisits: number }>;
+  
   // Session store for authentication
   sessionStore: any;
 }
@@ -114,6 +118,10 @@ export const storage: IStorage = {
   getIntents: () => firebaseStorage.getIntents(),
   createIntent: (intent) => firebaseStorage.createIntent(intent),
   deleteIntent: (id) => firebaseStorage.deleteIntent(id),
+  
+  // Visitor tracking methods
+  getVisitorStats: () => firebaseStorage.getVisitorStats(),
+  incrementVisitorCount: () => firebaseStorage.incrementVisitorCount(),
   
   // Session store
   sessionStore: sessionStore
