@@ -296,7 +296,9 @@ const ChatBot = () => {
         if (appointmentFlow.step === 'name') {
           // Store name and move to phone
           const name = input.trim();
-          if (name.length >= 2) {
+          // Validate name: at least 2 characters, only letters and spaces, no numbers
+          const nameRegex = /^[a-zA-Z\s]+$/;
+          if (name.length >= 2 && nameRegex.test(name)) {
             setAppointmentFlow(prev => ({
               ...prev,
               name: name,
@@ -305,7 +307,7 @@ const ChatBot = () => {
             botResponse = RESPONSES.appointment_phone_request;
             newQuickReplies = [];
           } else {
-            botResponse = "Please provide your full name so we can schedule your appointment properly.";
+            botResponse = "Please provide your full name (letters only, no numbers) so we can schedule your appointment properly.";
           }
         } else if (appointmentFlow.step === 'phone') {
           // Validate phone number input (Indian phone numbers)
@@ -324,7 +326,9 @@ const ChatBot = () => {
         } else if (appointmentFlow.step === 'location') {
           // Store location and move to issue type
           const location = input.trim();
-          if (location.length >= 5) {
+          // Validate location: at least 5 characters, contains letters
+          const locationRegex = /[a-zA-Z]/;
+          if (location.length >= 5 && locationRegex.test(location)) {
             setAppointmentFlow(prev => ({
               ...prev,
               location: location,
@@ -333,12 +337,14 @@ const ChatBot = () => {
             botResponse = RESPONSES.appointment_issue_request;
             newQuickReplies = [];
           } else {
-            botResponse = "Please provide your address or location in Madurai so our technician can visit.";
+            botResponse = "Please provide your complete address or location in Madurai (e.g., Anna Nagar, KK Nagar, etc.) so our technician can visit.";
           }
         } else if (appointmentFlow.step === 'issue') {
           // Store issue type and move to time selection
           const issue = input.trim();
-          if (issue.length >= 3) {
+          // Validate issue: at least 5 characters, contains letters
+          const issueRegex = /[a-zA-Z]/;
+          if (issue.length >= 5 && issueRegex.test(issue)) {
             setAppointmentFlow(prev => ({
               ...prev,
               issueType: issue,
@@ -347,7 +353,7 @@ const ChatBot = () => {
             botResponse = RESPONSES.appointment_time_request;
             newQuickReplies = APPOINTMENT_QUICK_REPLIES;
           } else {
-            botResponse = "Please describe the building issue you're facing (e.g., roof leakage, wall cracks, etc.)";
+            botResponse = "Please describe the building issue you're facing in detail (e.g., 'roof leakage during rain', 'wall cracks appearing', 'seepage in bathroom', etc.)";
           }
         } else if (appointmentFlow.step === 'time') {
           // This will be handled in the quick reply selection
