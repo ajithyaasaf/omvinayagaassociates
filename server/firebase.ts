@@ -690,7 +690,7 @@ export class FirebaseStorage {
    * - Atomic operations with error handling
    * - Graceful degradation when Firestore is unavailable
    */
-  private memoryVisitorCount = 1247; // Starting count for demo
+  private memoryVisitorCount = 0; // Start from authentic zero
   
   async getVisitorStats(): Promise<{ totalVisits: number }> {
     try {
