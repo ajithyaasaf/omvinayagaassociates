@@ -161,13 +161,16 @@ export const faqSchema = createInsertSchema(faqs).omit({
 export type Faq = typeof faqs.$inferSelect;
 export type InsertFaq = z.infer<typeof faqSchema>;
 
-// Intent form schema (for exit intent popup)
+// Intent form schema (for exit intent popup and appointment booking)
 export const intents = pgTable("intents", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   phone: text("phone").notNull(),
   service: text("service").notNull(),
   message: text("message").notNull(),
+  location: text("location"), // For appointment bookings
+  issueType: text("issue_type"), // For appointment bookings
+  timePreference: text("time_preference"), // For appointment bookings
   consent: boolean("consent").notNull(),
   createdAt: timestamp("created_at").defaultNow()
 });
@@ -177,6 +180,9 @@ export const intentSchema = z.object({
   phone: z.string().min(5, "Phone number is required"),
   service: z.string().default("Urgent Consultation"),
   message: z.string().default("Building repair inquiry"),
+  location: z.string().optional(), // For appointment bookings
+  issueType: z.string().optional(), // For appointment bookings
+  timePreference: z.string().optional(), // For appointment bookings
   consent: z.boolean().refine(val => val === true, "You must agree to the terms")
 });
 
@@ -186,6 +192,9 @@ export interface Intent {
   phone: string;
   service: string;
   message: string;
+  location?: string; // For appointment bookings
+  issueType?: string; // For appointment bookings
+  timePreference?: string; // For appointment bookings
   consent: boolean;
   createdAt: Date | null;
 }

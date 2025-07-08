@@ -746,12 +746,15 @@ const ChatBot = () => {
           if (appointmentFlow.isActive && appointmentFlow.step === 'time') {
             const timeSlotText = option.text; // e.g., "Morning (9AM-12PM)"
             
-            // Save appointment to database
+            // Save appointment to database with structured data
             const appointmentData = {
               name: appointmentFlow.name,
               phone: appointmentFlow.phoneNumber,
               service: "Building Diagnosis",
-              message: `Issue: ${appointmentFlow.issueType}. Location: ${appointmentFlow.location}. Time: ${timeSlotText}. Requested via chatbot.`,
+              message: `Appointment booked via chatbot for building diagnosis`,
+              location: appointmentFlow.location,
+              issueType: appointmentFlow.issueType,
+              timePreference: timeSlotText,
               consent: true
             };
             

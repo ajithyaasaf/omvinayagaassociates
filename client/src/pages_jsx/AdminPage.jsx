@@ -1233,7 +1233,7 @@ const AdminPage = () => {
               <TabsContent value="intents">
                 <div className="flex justify-between items-center mb-4">
                   <h2 className="text-xl font-semibold text-foreground">
-                    Exit Intent Form Submissions
+                    Appointments & Form Submissions
                   </h2>
 
                   {!isIntentsLoading &&
@@ -1249,6 +1249,9 @@ const AdminPage = () => {
                           Name: intent.name,
                           Phone: intent.phone,
                           Service: intent.service || "",
+                          "Issue Type": intent.issueType || "",
+                          Location: intent.location || "",
+                          "Time Preference": intent.timePreference || "",
                           Message: intent.message || "",
                           "Created At": intent.createdAt
                             ? formatDate(intent.createdAt)
@@ -1298,6 +1301,12 @@ const AdminPage = () => {
                             Service
                           </th>
                           <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
+                            Issue/Location
+                          </th>
+                          <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
+                            Time
+                          </th>
+                          <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
                             Date
                           </th>
                           <th className="border border-gray-200 px-4 py-2 text-center text-foreground">
@@ -1337,6 +1346,27 @@ const AdminPage = () => {
                               <span className="inline-block px-2 py-1 bg-muted text-muted-foreground text-xs rounded-full">
                                 {intent.service || "Urgent Consultation"}
                               </span>
+                            </td>
+                            <td className="border border-gray-200 px-4 py-2 text-sm">
+                              {intent.issueType || intent.location ? (
+                                <div className="space-y-1">
+                                  {intent.issueType && (
+                                    <div className="text-foreground">
+                                      <span className="font-medium">Issue:</span> {intent.issueType}
+                                    </div>
+                                  )}
+                                  {intent.location && (
+                                    <div className="text-muted-foreground">
+                                      <span className="font-medium">Location:</span> {intent.location}
+                                    </div>
+                                  )}
+                                </div>
+                              ) : (
+                                <span className="text-muted-foreground">-</span>
+                              )}
+                            </td>
+                            <td className="border border-gray-200 px-4 py-2 text-sm text-foreground">
+                              {intent.timePreference || "-"}
                             </td>
                             <td className="border border-gray-200 px-4 py-2 text-sm text-foreground">
                               {intent.createdAt
@@ -1424,7 +1454,7 @@ const AdminPage = () => {
                   >
                     <DialogContent className="max-w-3xl">
                       <DialogHeader>
-                        <DialogTitle>Exit Intent Form Details</DialogTitle>
+                        <DialogTitle>Appointment & Form Details</DialogTitle>
                       </DialogHeader>
 
                       {intentSubmissions.find(
@@ -1465,7 +1495,7 @@ const AdminPage = () => {
 
                           <div>
                             <h3 className="font-semibold mb-2 text-foreground">
-                              Form Details
+                              Service Details
                             </h3>
                             <div className="space-y-2">
                               <div className="flex items-center gap-2">
@@ -1478,6 +1508,20 @@ const AdminPage = () => {
                                   ).service || "Urgent Consultation"}
                                 </span>
                               </div>
+                              {intentSubmissions.find(
+                                (i) => `intent-${i.id}` === expandedItem
+                              ).timePreference && (
+                                <div className="flex items-center gap-2">
+                                  <span className="font-medium text-foreground">
+                                    Time:
+                                  </span>
+                                  <span>
+                                    {intentSubmissions.find(
+                                      (i) => `intent-${i.id}` === expandedItem
+                                    ).timePreference}
+                                  </span>
+                                </div>
+                              )}
                               <div className="flex items-center gap-2">
                                 <span className="font-medium text-foreground">
                                   Submitted:
@@ -1498,12 +1542,52 @@ const AdminPage = () => {
                             </div>
                           </div>
 
+                          {/* Appointment Details Section */}
+                          {(intentSubmissions.find(
+                            (i) => `intent-${i.id}` === expandedItem
+                          ).location || intentSubmissions.find(
+                            (i) => `intent-${i.id}` === expandedItem
+                          ).issueType) && (
+                            <div className="col-span-1 md:col-span-2">
+                              <h3 className="font-semibold mb-2 text-foreground">
+                                Appointment Details
+                              </h3>
+                              <div className="bg-muted/50 p-4 rounded-lg border border-gray-200 space-y-3">
+                                {intentSubmissions.find(
+                                  (i) => `intent-${i.id}` === expandedItem
+                                ).location && (
+                                  <div>
+                                    <span className="font-medium text-foreground">Location:</span>
+                                    <p className="text-muted-foreground mt-1">
+                                      {intentSubmissions.find(
+                                        (i) => `intent-${i.id}` === expandedItem
+                                      ).location}
+                                    </p>
+                                  </div>
+                                )}
+                                {intentSubmissions.find(
+                                  (i) => `intent-${i.id}` === expandedItem
+                                ).issueType && (
+                                  <div>
+                                    <span className="font-medium text-foreground">Issue Description:</span>
+                                    <p className="text-muted-foreground mt-1">
+                                      {intentSubmissions.find(
+                                        (i) => `intent-${i.id}` === expandedItem
+                                      ).issueType}
+                                    </p>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Message Section */}
                           {intentSubmissions.find(
                             (i) => `intent-${i.id}` === expandedItem
                           ).message && (
                             <div className="col-span-1 md:col-span-2">
                               <h3 className="font-semibold mb-2 text-foreground">
-                                Message
+                                Additional Message
                               </h3>
                               <div className="bg-muted/50 p-4 rounded-lg border border-gray-200">
                                 {
