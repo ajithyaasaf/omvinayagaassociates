@@ -8,6 +8,7 @@ import WhatsappButton from "./components/WhatsappButton";
 import HomePageForm from "./components/HomePageForm";
 import ExitIntentPopup from "./components/ExitIntentPopup";
 import ChatBot from "./components/chat/ChatBot";
+
 import { pageTransition } from "./utils/animations";
 
 // Lazy load pages to improve initial load performance
@@ -133,6 +134,7 @@ function App() {
       {showPopupForm && <HomePageForm />}
       <ExitIntentPopup />
       <ChatBot />
+
       <Toaster />
     </div>
   );
