@@ -246,15 +246,17 @@ const Footer = () => {
               <p className="text-base text-gray-400 md:mr-4">
                 © {currentYear} {COMPANY_NAME}. All Rights Reserved.
               </p>
-              <p className="text-sm text-gray-500 mt-1 md:mt-0">
+              <p className="text-sm text-gray-500 mt-1 md:mt-0 flex items-center gap-1">
                 Designed and developed by{" "}
                 <a
                   href="https://www.godivatech.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-secondary text-primary transition-colors"
+                  className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-gradient-to-r from-primary/10 to-secondary/10 hover:from-primary/20 hover:to-secondary/20 text-primary hover:text-white transition-all duration-300 font-medium border border-primary/20 hover:border-primary/40"
                 >
+                  <span>💻</span>
                   Godiva Tech
+                  <span className="text-xs">↗</span>
                 </a>
               </p>
             </div>
