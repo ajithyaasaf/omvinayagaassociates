@@ -17,21 +17,21 @@ const RESPONSES = {
   about:
     "OM Vinayaga Associates is the official Building Doctor franchise in Madurai, with over 10 years of experience in building repairs and waterproofing. We've helped more than 2,000 clients restore and protect their properties.",
   location:
-    "We are located in Madurai and serve all surrounding areas including Tirunelveli, Tuticorin, Dindigul, and Theni. We provide on-site services throughout the region.",
+    "We are located at Door No. 131, Shop No. 12, Kallazhagar Complex, Thallakulam Main Road, Madurai. We serve Madurai and surrounding areas including Tirunelveli, Tuticorin, Dindigul, and Theni.",
   experience:
     "Our team has over 10 years of specialized experience in building repair and diagnostics. We've successfully completed more than 2,000 projects ranging from residential buildings to commercial complexes.",
   expertise:
     "Our technical experts are certified professionals with extensive training in advanced building repair techniques and latest waterproofing technologies.",
   contact:
-    "You can reach us by phone at +91 9876543210 or email at info@buildingdoctor.in. Our office is open Monday to Saturday, 9 AM to 6 PM.",
+    "You can reach us by phone at +91 81900 90059 or +91 78737 32323, or email at omvinayagaassociates@gmail.com. Our office is open Monday to Saturday, 9:30 AM to 7:30 PM.",
   appointment:
     "Great! To schedule a diagnosis, we'll need some information. What's a good phone number to reach you?",
   appointment_followup:
-    "Perfect! What's the best time for our technician to visit? We're available Monday to Saturday, 9 AM to 6 PM.",
+    "Perfect! What's the best time for our technician to visit? We're available Monday to Saturday, 9:30 AM to 7:30 PM.",
   appointment_confirmed:
     "Thank you! We've scheduled your diagnosis. Our team will call you shortly to confirm the details. Is there anything specific about your building issues we should know?",
   emergency:
-    "For emergency services like severe leaks or structural concerns, please call our emergency line at +91 9876543211. We offer 24-hour emergency response for critical situations.",
+    "For emergency services like severe leaks or structural concerns, please call our emergency line at +91 81900 90059. We offer prompt response for critical situations during working hours.",
   visit_timing:
     "Our site visits typically take 30-60 minutes depending on the size of the property and complexity of issues. Our technician will thoroughly inspect the problem areas and explain the findings.",
   services:
@@ -113,7 +113,7 @@ const RESPONSES = {
   monsoon_prep:
     "Before monsoon season, we recommend checking roof drainage, sealing any visible cracks, ensuring window and door seals are intact, and inspecting previous repair work.",
   seasonal_care:
-    "Different seasons stress buildings differently. season brings water challenges. Our seasonal maintenance programs address each period's unique demands.",
+    "Different seasons stress buildings differently. The monsoon season brings water challenges, while summer can cause thermal expansion. Our seasonal maintenance programs address each period's unique demands.",
 };
 
 // Quick reply options (unchanged)
@@ -126,9 +126,9 @@ const QUICK_REPLIES = [
 ];
 
 const APPOINTMENT_QUICK_REPLIES = [
-  { id: "morning", text: "Morning (9AM-12PM)" },
-  { id: "afternoon", text: "Afternoon (12PM-3PM)" },
-  { id: "evening", text: "Evening (3PM-6PM)" },
+  { id: "morning", text: "Morning (9:30AM-1PM)" },
+  { id: "afternoon", text: "Afternoon (1PM-4PM)" },
+  { id: "evening", text: "Evening (4PM-7:30PM)" },
 ];
 
 const GENERAL_QUICK_REPLIES = [
@@ -285,8 +285,8 @@ const ChatBot = () => {
       // Context-aware response system for appointment flow
       if (appointmentFlow.isActive) {
         if (appointmentFlow.step === 'phone') {
-          // Validate phone number input
-          const phoneRegex = /^[+]?[0-9\s\-\(\)]{10,15}$/;
+          // Validate phone number input (Indian phone numbers)
+          const phoneRegex = /^(\+91|91|0)?[6-9]\d{9}$/;
           if (phoneRegex.test(input.trim())) {
             setAppointmentFlow(prev => ({
               ...prev,
@@ -296,7 +296,7 @@ const ChatBot = () => {
             botResponse = RESPONSES.appointment_followup;
             newQuickReplies = APPOINTMENT_QUICK_REPLIES;
           } else {
-            botResponse = "Please provide a valid phone number (10-15 digits) so we can contact you about your appointment.";
+            botResponse = "Please provide a valid Indian mobile number (10 digits starting with 6-9) so we can contact you about your appointment.";
           }
         } else if (appointmentFlow.step === 'time') {
           // This will be handled in the quick reply selection
