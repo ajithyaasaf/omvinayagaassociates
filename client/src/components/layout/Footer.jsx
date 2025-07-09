@@ -254,9 +254,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-gradient-to-r from-primary/10 to-secondary/10 hover:from-primary/20 hover:to-secondary/20 text-primary hover:text-white transition-all duration-300 font-medium border border-primary/20 hover:border-primary/40"
                 >
-                  <span>💻</span>
                   Godiva Tech
-                  <span className="text-xs">↗</span>
                 </a>
               </p>
             </div>
