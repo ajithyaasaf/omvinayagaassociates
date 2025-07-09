@@ -110,6 +110,8 @@ Required environment variables:
 
 ## Changelog
 
+- July 09, 2025. Completed migration from Replit Agent to Replit environment
+- July 09, 2025. Updated footer styling for Godiva Tech link (removed box design and icons)
 - July 08, 2025. Successfully migrated from Replit Agent to Replit environment
 - July 08, 2025. Added robust visitor counter to footer following Google engineering principles
 - July 08, 2025. Successfully implemented dynamic visitor counter with authentic Firestore storage
