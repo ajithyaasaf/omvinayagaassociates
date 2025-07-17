@@ -17,7 +17,7 @@ export const PRODUCTS = [
   // Crack Filling Category
   {
     id: 1,
-    name: "Crack Stop",
+    name: "BD Crackstop",
     description:
       "Standard crack filling compound for non-structural cracks in concrete and masonry surfaces.",
     price: 108,
@@ -29,7 +29,7 @@ export const PRODUCTS = [
   },
   {
     id: 2,
-    name: "Crack Stop X",
+    name: "BD Crackstop X",
     description:
       "Enhanced crack filling compound for wider and deeper cracks with improved bonding properties.",
     price: 350,
@@ -41,7 +41,7 @@ export const PRODUCTS = [
   },
   {
     id: 3,
-    name: "Crack Stop XP",
+    name: "BD Crackstop XP",
     description:
       "Premium crack filling solution with advanced polymer technology for structural cracks and movement joints.",
     price: 460,
