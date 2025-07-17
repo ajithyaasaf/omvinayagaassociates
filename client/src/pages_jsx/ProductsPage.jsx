@@ -54,7 +54,7 @@ export const PRODUCTS = [
   },
   {
     id: 4,
-    name: "Crack Stop Fibre",
+    name: "BD Crackstop Fibre",
     description:
       "Fiber-reinforced crack filling compound for improved tensile strength and crack resistance.",
     price: 110,
@@ -66,7 +66,7 @@ export const PRODUCTS = [
   },
   {
     id: 5,
-    name: "Crack Stop Mesh",
+    name: "BD Crackstop Mesh",
     description:
       "Specialized crack repair mesh system for large structural cracks, used with other crack stop products.",
     price: 480,
