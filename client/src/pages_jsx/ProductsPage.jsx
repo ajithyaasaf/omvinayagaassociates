@@ -161,7 +161,7 @@ export const PRODUCTS = [
   // Grouts & Anchors Category
   {
     id: 12,
-    name: "Nanguram Anchor Fix",
+    name: "BD Nanguram Anchor Fix",
     description:
       "Professional-grade chemical anchoring system for heavy-duty fixings in concrete and masonry. High load capacity and rapid setting.",
     price: 700,
