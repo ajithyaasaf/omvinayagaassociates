@@ -325,6 +325,181 @@ export const PRODUCTS = [
     isBestseller: false,
     category: "special-products",
   },
+
+  // Additional Waterproofing Products
+  {
+    id: 25,
+    name: "BD Wall Shield",
+    description:
+      "Protective waterproofing coating for exterior and interior walls against moisture penetration and weathering.",
+    price: 1580,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/-Zazf_NSk8-wall%20shield.png",
+    rating: 4.6,
+    isBestseller: false,
+    category: "waterproofing",
+  },
+  {
+    id: 26,
+    name: "BD Garden Guard",
+    description:
+      "Specialized waterproofing solution for garden areas, planters, and landscaped terraces with plant-safe formula.",
+    price: 1420,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/_m4NEI6aEf-bd%20garden%20guard.png",
+    rating: 4.5,
+    isBestseller: false,
+    category: "waterproofing",
+  },
+  {
+    id: 27,
+    name: "BD Aqua Seal Nano",
+    description:
+      "Nano-technology based waterproofing solution with superior penetration and long-lasting protection.",
+    price: 2150,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/qDFXlkVuE6-aqua%20seal%20nano.png",
+    rating: 4.8,
+    isBestseller: true,
+    category: "waterproofing",
+  },
+  {
+    id: 28,
+    name: "BD Aquaseal 2K",
+    description:
+      "Two-component waterproofing system for heavy-duty applications with excellent chemical resistance.",
+    price: 2840,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/l9ScEIv3GE-aqua%20seal%20sk.png",
+    rating: 4.9,
+    isBestseller: true,
+    category: "waterproofing",
+  },
+  {
+    id: 29,
+    name: "BD Aquaseal Crystalline",
+    description:
+      "Crystalline waterproofing technology that penetrates concrete to form permanent waterproof barrier.",
+    price: 3250,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/C2UWKBVdsN-aqua%20seal%20crystalline.png",
+    rating: 4.9,
+    isBestseller: false,
+    isNew: true,
+    category: "waterproofing",
+  },
+  {
+    id: 30,
+    name: "BD Leakshield White",
+    description:
+      "White elastomeric waterproof coating for terraces and roofs with excellent UV resistance and reflectivity.",
+    price: 2480,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/0yV7Lo60XQ-leaksheild.png",
+    rating: 4.7,
+    isBestseller: false,
+    category: "waterproofing",
+  },
+  {
+    id: 31,
+    name: "BD Building All Rounder",
+    description:
+      "Versatile waterproofing solution suitable for various building surfaces including concrete, masonry, and metal.",
+    price: 1890,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/w9jwxBL3Yr-building-doctor-all-rounder.png",
+    rating: 4.6,
+    isBestseller: false,
+    category: "waterproofing",
+  },
+  {
+    id: 32,
+    name: "BD Damp Stop",
+    description:
+      "Effective damp-proofing treatment for walls and foundations to prevent moisture-related damage.",
+    price: 1180,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/l0B1EiR4uD-Dampstop.png",
+    rating: 4.5,
+    isBestseller: false,
+    category: "waterproofing",
+  },
+  {
+    id: 33,
+    name: "BD Damp Stop X",
+    description:
+      "Enhanced damp-proofing solution with superior penetration and long-lasting moisture protection.",
+    price: 1650,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/X3gelosNH8-BD%20Damp%20stop%20x.png",
+    rating: 4.7,
+    isBestseller: false,
+    category: "waterproofing",
+  },
+
+  // Additional Corrosion Treatment Products
+  {
+    id: 34,
+    name: "BD Corroshield ZR",
+    description:
+      "Zinc-rich corrosion protection primer for steel reinforcement with cathodic protection properties.",
+    price: 1580,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/rJVJCKnNSg-corrosheild%20zr.png",
+    rating: 4.6,
+    isBestseller: false,
+    category: "corrosion-treatments",
+  },
+  {
+    id: 35,
+    name: "BD Corroshield RCR",
+    description:
+      "Rapid corrosion repair system for emergency treatment of corroded reinforcement steel.",
+    price: 2150,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/uMPLWkcBOE-corrosheild%20rcr.png",
+    rating: 4.8,
+    isBestseller: false,
+    category: "corrosion-treatments",
+  },
+
+  // Additional Waterproofing Products
+  {
+    id: 36,
+    name: "BD Protectcoat BW500",
+    description:
+      "Bituminous waterproofing coating for basements and below-grade structures with excellent adhesion.",
+    price: 1780,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/A5_B6m0qBY-bd%20protect%20coat%20bw500.png",
+    rating: 4.5,
+    isBestseller: false,
+    category: "waterproofing",
+  },
+  {
+    id: 37,
+    name: "BD Protectcoat CT600",
+    description:
+      "Cement-based waterproofing coating for positive and negative side applications on concrete structures.",
+    price: 1950,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/dAH-Ut6N3z-bd%20protect%20coat%20ct600.png",
+    rating: 4.6,
+    isBestseller: false,
+    category: "waterproofing",
+  },
+  {
+    id: 38,
+    name: "BD Aquaseal Magic PU",
+    description:
+      "Single-component polyurethane waterproofing membrane with self-leveling properties for terraces.",
+    price: 3150,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/37_Ng5HkjE-aqua%20seal%20magic%20pu.png",
+    rating: 4.9,
+    isBestseller: true,
+    category: "waterproofing",
+  },
 ];
 
 const ProductsPage = () => {
