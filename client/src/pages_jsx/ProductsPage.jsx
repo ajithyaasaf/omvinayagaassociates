@@ -135,7 +135,7 @@ export const PRODUCTS = [
   // Bonding Agents Category
   {
     id: 10,
-    name: "Concrete Bond",
+    name: "BD Concrete Bond",
     description:
       "High-performance bonding agent for connecting new concrete to existing surfaces. Improves adhesion and prevents delamination.",
     price: 1258,
