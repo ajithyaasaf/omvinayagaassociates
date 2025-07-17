@@ -106,7 +106,7 @@ export const PRODUCTS = [
   // Thermal Insulation Category
   {
     id: 8,
-    name: "Thermoshield Coat",
+    name: "BD Termoshield Coat",
     description:
       "Advanced thermal insulation coating that reduces indoor temperature by reflecting solar radiation. Energy-efficient solution for roofs and exterior walls.",
     price: 3340,
@@ -176,7 +176,7 @@ export const PRODUCTS = [
   // Tiling Aids Category
   {
     id: 13,
-    name: "Tile Joint Sealer Plus",
+    name: "BD Tilejoint Sealer Plus",
     description:
       "Premium grout sealer for tile joints with enhanced water repellency and stain resistance. Ideal for bathroom and kitchen applications.",
     price: 1386,
@@ -188,7 +188,7 @@ export const PRODUCTS = [
   },
   {
     id: 14,
-    name: "Tile Joint Sealer",
+    name: "BD Tilejoint Sealer",
     description:
       "Standard grout sealer providing protection against water and stains in tile joints.",
     price: 103,
