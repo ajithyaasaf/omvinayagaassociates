@@ -153,23 +153,32 @@ const ProductDetailPage = () => {
             </div>
 
             <div className="border-t border-b py-4 my-6">
-              <div className="flex items-start mb-4">
-                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
-                  <i className="fas fa-check text-primary text-sm"></i>
+              <h3 className="font-semibold text-lg mb-4 text-primary">⭐ Key Advantages</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex items-start">
+                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
+                    <i className="fas fa-check text-primary text-sm"></i>
+                  </div>
+                  <p className="text-gray-700">Effectively prevents water leakage</p>
                 </div>
-                <p className="text-gray-700">Premium quality waterproofing materials</p>
-              </div>
-              <div className="flex items-start mb-4">
-                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
-                  <i className="fas fa-check text-primary text-sm"></i>
+                <div className="flex items-start">
+                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
+                    <i className="fas fa-check text-primary text-sm"></i>
+                  </div>
+                  <p className="text-gray-700">Superior bonding and durability</p>
                 </div>
-                <p className="text-gray-700">Long-lasting performance with 5+ years warranty</p>
-              </div>
-              <div className="flex items-start">
-                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
-                  <i className="fas fa-check text-primary text-sm"></i>
+                <div className="flex items-start">
+                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
+                    <i className="fas fa-check text-primary text-sm"></i>
+                  </div>
+                  <p className="text-gray-700">Easy application with brush or roller</p>
                 </div>
-                <p className="text-gray-700">Technical support and application guidance available</p>
+                <div className="flex items-start">
+                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
+                    <i className="fas fa-check text-primary text-sm"></i>
+                  </div>
+                  <p className="text-gray-700">UV resistant and weatherproof</p>
+                </div>
               </div>
             </div>
 
@@ -214,26 +223,51 @@ const ProductDetailPage = () => {
           </div>
 
           <div className="prose max-w-none mb-12">
-            <h3>Product Description</h3>
-            <p>
-              {product.description} Our premium building repair products are designed to provide long-lasting protection
-              against water seepage, structural damage, and environmental wear and tear. The advanced formulation ensures
-              superior bonding, flexibility, and durability even in extreme weather conditions.
+            <h3 className="text-primary">📋 Application Areas</h3>
+            <p className="bg-blue-50 p-4 rounded-lg border-l-4 border-primary">
+              <strong>Suitable for:</strong> Terraces, water tanks, sunken slabs, balconies, swimming pools, podiums, 
+              concrete structures, natural stones, and all types of surfaces requiring waterproof protection.
             </p>
-            <h3>Key Benefits</h3>
-            <ul>
-              <li>Superior waterproofing capabilities</li>
-              <li>Excellent crack-bridging properties</li>
-              <li>UV and weather resistant</li>
-              <li>Easy application and maintenance</li>
-              <li>Eco-friendly and non-toxic formulation</li>
+            
+            <h3 className="text-primary mt-6">🔧 Application Method</h3>
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <ol className="list-decimal list-inside space-y-2">
+                <li><strong>Surface Preparation:</strong> Clean thoroughly using wire brush to remove dust, loose particles, moss, and cement droppings. Wash with water and let dry completely.</li>
+                <li><strong>Mixing:</strong> For two-component products, mix Base and Hardener in recommended ratio using mechanical mixer until smooth and homogeneous.</li>
+                <li><strong>Application:</strong> Apply first coat using brush or roller in circular motion. Apply second coat in cross direction after first coat is tacky but not fully dried.</li>
+                <li><strong>Protection:</strong> Cover with cement plaster or tiles after application to protect from direct sunlight and rain.</li>
+              </ol>
+            </div>
+
+            <h3 className="text-primary mt-6">📦 Coverage & Packaging</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-green-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-green-800">Coverage Area</h4>
+                <p>Approximately 150 sq.ft per 20kg kit (varies by surface porosity)</p>
+              </div>
+              <div className="bg-orange-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-orange-800">Shelf Life</h4>
+                <p>12 months from manufacturing date when stored properly</p>
+              </div>
+            </div>
+
+            <h3 className="text-primary mt-6">⚠️ Important Notes</h3>
+            <ul className="bg-yellow-50 p-4 rounded-lg space-y-1">
+              <li>• Allow minimum 12 hours drying time between coats</li>
+              <li>• Do not apply during rain or extreme weather conditions</li>
+              <li>• Store in cool, dry place away from direct sunlight</li>
+              <li>• Use protective equipment during application</li>
+              <li>• Suitable for both positive and negative water pressure applications</li>
             </ul>
-            <h3>Recommended Uses</h3>
-            <p>
-              Ideal for waterproofing roofs, terraces, bathrooms, and basements. Can also be used for structural repairs,
-              crack filling, and protecting surfaces against water damage. Suitable for both residential and commercial 
-              applications.
-            </p>
+
+            <div className="mt-8 p-6 bg-gradient-to-r from-primary/10 to-blue-50 rounded-lg border-l-4 border-primary">
+              <h4 className="font-semibold text-primary mb-2">🎥 Watch Application Video</h4>
+              <p className="text-gray-700 mb-3">See step-by-step application process and professional tips for best results.</p>
+              <a href="#" className="inline-flex items-center text-primary font-medium hover:underline">
+                <i className="fab fa-youtube mr-2"></i>
+                View Product Application Video
+              </a>
+            </div>
           </div>
         </div>
 
@@ -266,8 +300,7 @@ const ProductDetailPage = () => {
                       </div>
                     </div>
                     <p className="text-sm text-gray-600 mb-3">{relProduct.description.substring(0, 60)}...</p>
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium text-primary">₹{relProduct.price.toLocaleString('en-IN')}</span>
+                    <div className="flex justify-end items-center">
                       <Link href={`/products/${relProduct.id}`}>
                         <a className="bg-primary hover:bg-primary/90 text-white px-3 py-1 rounded text-sm transition">
                           View Details
