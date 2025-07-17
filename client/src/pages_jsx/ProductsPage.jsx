@@ -121,7 +121,7 @@ export const PRODUCTS = [
   // Tapes Category
   {
     id: 9,
-    name: "Seal Tape SA",
+    name: "BD Sealtape SA",
     description:
       "Self-adhesive sealing tape for joints, edges, and connections in waterproofing applications. High flexibility and durability.",
     price: 510,
