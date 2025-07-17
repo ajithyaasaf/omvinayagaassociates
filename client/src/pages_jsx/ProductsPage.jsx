@@ -504,8 +504,8 @@ export const PRODUCTS = [
     id: 39,
     name: "BD Leakshield Terracotta",
     description:
-      "Terracotta-colored elastomeric waterproof coating for terraces and roofs with excellent UV resistance and aesthetic appeal.",
-    price: 2480,
+      "Advanced leak protection waterproofing solution in terracotta color, providing innovative protection for lasting durability of structures.",
+    price: 3090,
     image:
       "https://api-catalog.owncart.shop/uploads/images/0yV7Lo60XQ-leaksheild.png",
     rating: 4.7,
