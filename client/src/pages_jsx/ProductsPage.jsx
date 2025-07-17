@@ -147,7 +147,7 @@ export const PRODUCTS = [
   },
   {
     id: 11,
-    name: "Plaster Bond SBR",
+    name: "BD Plaster Bond Booster",
     description:
       "Styrene Butadiene Rubber (SBR) based bonding agent for plaster and mortar applications. Increases bond strength and reduces cracking.",
     price: 435,
@@ -214,7 +214,7 @@ export const PRODUCTS = [
   // Special Products Category
   {
     id: 16,
-    name: "Paint Remover",
+    name: "Paint Remover 500",
     description:
       "Effective paint and coating remover that strips multiple layers quickly without damaging the underlying surface.",
     price: 251,
