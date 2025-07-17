@@ -110,7 +110,9 @@ Required environment variables:
 
 ## Changelog
 
-- July 17, 2025. Updated complete product catalog with official Building Doctor website images and added 14 missing products including BD Wall Shield, BD Aqua Seal Nano, BD Aquaseal 2K, and other waterproofing solutions
+- July 17, 2025. Updated complete product catalog with 39 products matching official Building Doctor website exactly
+- July 17, 2025. Fixed all product names to include proper "BD" prefix: BD Crackstop series, BD Instant Stop, BD Concrete Bond, BD Sealtape SA, BD Termoshield Coat, BD Tilejoint products
+- July 17, 2025. Added missing product: BD Leakshield Terracotta to complete the Leakshield series
 - July 09, 2025. Completed migration from Replit Agent to Replit environment
 - July 09, 2025. Updated footer styling for Godiva Tech link (removed box design and icons)
 - July 08, 2025. Successfully migrated from Replit Agent to Replit environment

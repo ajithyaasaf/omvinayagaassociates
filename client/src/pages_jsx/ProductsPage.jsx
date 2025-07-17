@@ -92,7 +92,7 @@ export const PRODUCTS = [
   },
   {
     id: 7,
-    name: "Instant Stop",
+    name: "BD Instant Stop",
     description:
       "Rapid-setting waterproof plug for active water leaks and seepages, hardening in minutes.",
     price: 165,
@@ -498,6 +498,18 @@ export const PRODUCTS = [
       "https://api-catalog.owncart.shop/uploads/images/37_Ng5HkjE-aqua%20seal%20magic%20pu.png",
     rating: 4.9,
     isBestseller: true,
+    category: "waterproofing",
+  },
+  {
+    id: 39,
+    name: "BD Leakshield Terracotta",
+    description:
+      "Terracotta-colored elastomeric waterproof coating for terraces and roofs with excellent UV resistance and aesthetic appeal.",
+    price: 2480,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/0yV7Lo60XQ-leaksheild.png",
+    rating: 4.7,
+    isBestseller: false,
     category: "waterproofing",
   },
 ];
