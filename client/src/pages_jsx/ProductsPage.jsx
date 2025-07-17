@@ -188,7 +188,7 @@ export const PRODUCTS = [
   },
   {
     id: 14,
-    name: "BD Tilejoint Sealer",
+    name: "BD Tile Joint Sealer",
     description:
       "Standard grout sealer providing protection against water and stains in tile joints.",
     price: 103,
