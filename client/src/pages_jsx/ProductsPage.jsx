@@ -80,7 +80,7 @@ export const PRODUCTS = [
   // Waterproofing Category
   {
     id: 6,
-    name: "Aquaseal Tank Guard",
+    name: "BD Aquaseal Tank Guard",
     description:
       "Specialized waterproofing solution for water tanks and storage units, food-grade safe with anti-bacterial properties.",
     price: 1320,
