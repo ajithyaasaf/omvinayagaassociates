@@ -801,10 +801,7 @@ const ProductsPage = () => {
                               <p className="text-sm text-gray-600 mb-3">
                                 {product.description}
                               </p>
-                              <div className="flex justify-between items-center">
-                                <span className="font-medium text-primary">
-                                  ₹{product.price?.toLocaleString("en-IN") || 0}
-                                </span>
+                              <div className="flex justify-end items-center">
                                 <Link
                                   href={`/products/${product.id}`}
                                   className="bg-primary hover:bg-primary/90 text-white px-3 py-1 rounded text-sm transition"

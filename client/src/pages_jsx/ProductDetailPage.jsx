@@ -148,8 +148,7 @@ const ProductDetailPage = () => {
                   <span className="ml-2 text-sm text-gray-600">{product.rating.toFixed(1)}</span>
                 </div>
               </div>
-              <h1 className="text-3xl md:text-4xl font-montserrat font-bold mb-2">{product.name}</h1>
-              <div className="text-2xl font-semibold text-primary mb-4">₹{product.price.toLocaleString('en-IN')}</div>
+              <h1 className="text-3xl md:text-4xl font-montserrat font-bold mb-4">{product.name}</h1>
               <p className="text-gray-600 mb-6">{product.description}</p>
             </div>
 
