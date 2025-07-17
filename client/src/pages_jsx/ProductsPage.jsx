@@ -176,7 +176,7 @@ export const PRODUCTS = [
   // Tiling Aids Category
   {
     id: 13,
-    name: "BD Tilejoint Sealer Plus",
+    name: "BD Tile Joint Sealer Plus",
     description:
       "Premium grout sealer for tile joints with enhanced water repellency and stain resistance. Ideal for bathroom and kitchen applications.",
     price: 1386,
@@ -188,7 +188,7 @@ export const PRODUCTS = [
   },
   {
     id: 14,
-    name: "BD Tile Joint Sealer",
+    name: "BD Tilejoint Sealer",
     description:
       "Standard grout sealer providing protection against water and stains in tile joints.",
     price: 103,
