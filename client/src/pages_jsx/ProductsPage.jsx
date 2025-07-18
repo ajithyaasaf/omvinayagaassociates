@@ -455,13 +455,34 @@ export const PRODUCTS = [
     id: 24,
     name: "BD Termite Stop X",
     description:
-      "Effective termite protection system for wooden structures and building foundations with long-lasting action.",
-    price: 890,
+      "TERMITE STOP X is a highly effective against Termites and Borers. It increases the life of the Structure.",
+    subtitle: "Organic formulation for effective against termites",
+    price: 490,
     image:
       "https://api-catalog.owncart.shop/uploads/images/PSPQNPLNVo-termite%20stop%20x.png",
     rating: 4.7,
     isBestseller: false,
     category: "special-products",
+    packageSizes: [
+      { size: "1 Lit", price: 490 },
+      { size: "5 Lit", price: 1990 }
+    ],
+    coverage: "Depending upon holes size",
+    features: [
+      "Protects and prevents from termite attack",
+      "Ready to use",
+      "Product Non Hazardous chemicals",
+      "No license required for storage",
+      "Mixes with oil based paints and Primers",
+      "Very suitable for new buildings"
+    ],
+    applications: [
+      "4 to 5 feet from the ground inside and outside the building or basement level",
+      "Mix 20 liters of water for 1 liter Termite stop",
+      "Termite and borer protection for wooden structures",
+      "Building foundation protection"
+    ],
+    fullDescription: "TERMITE STOP X is a highly effective against Termites and Borers. It increases the life of the Structure.",
   },
 
   // Additional Waterproofing Products

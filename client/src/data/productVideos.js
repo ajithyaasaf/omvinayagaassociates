@@ -79,6 +79,17 @@ export const PRODUCT_VIDEOS = {
     ]
   },
   
+  // BD Termite Stop X Video Configuration
+  "BD Termite Stop X": {
+    videoId: "_RKhbRl2Jcc", // YouTube shorts ID from the provided link
+    benefits: [
+      "Protects and prevents from termite attack effectively",
+      "Ready to use with no license required for storage",
+      "Non-hazardous chemicals for safe application",
+      "Mixes with oil based paints and primers for versatility"
+    ]
+  },
+  
   // Add more products as needed
   // "BD Product Name": {
   //   videoId: "YOUTUBE_VIDEO_ID",
