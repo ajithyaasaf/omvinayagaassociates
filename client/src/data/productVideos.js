@@ -57,6 +57,17 @@ export const PRODUCT_VIDEOS = {
     ]
   },
   
+  // BD Seal PU Video Configuration
+  "BD Seal PU": {
+    videoId: "_-YKBUJRE2w", // YouTube video ID from the provided link
+    benefits: [
+      "Ready to use single pack reduces mixing failures",
+      "Cures by moisture absorption without external curing",
+      "Excellent adhesion to concrete, brick, wood, glass and metals",
+      "Weather-durable with permanent tough rubber seal"
+    ]
+  },
+  
   // Add more products as needed
   // "BD Product Name": {
   //   videoId: "YOUTUBE_VIDEO_ID",

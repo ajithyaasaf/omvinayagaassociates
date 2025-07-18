@@ -331,13 +331,32 @@ export const PRODUCTS = [
     id: 17,
     name: "BD Seal PU",
     description:
-      "Polyurethane-based flexible sealant for structural joints and expansion areas with excellent weather resistance.",
-    price: 850,
+      "Seal PU Sealant is a one-part moisture curing Polyurethane Sealant composed of polyurethane polymer, pigments, fillers & additives. It is used for filling and sealing joints in buildings & structures. It is highly elastic & resilient, weather-durable, nonsagging, watertight with excellent adhesion to almost all building construction materials.",
+    subtitle: "Single components polyurethane sealants",
+    price: 787,
     image:
       "https://api-catalog.owncart.shop/uploads/images/ORuBOVRTxC-SEAL%20PU.png",
     rating: 4.7,
     isBestseller: false,
     category: "sealants",
+    packageSizes: [
+      { size: "600 ml", price: 787 }
+    ],
+    coverage: "40 rft/ 600 ml sausage ( Joint size width 5mm)",
+    features: [
+      "Ready to use - Single pack, it reduces the failure due to heterogeneity while imperfect mixing",
+      "Curing – Cures by absorption of moisture from air, (no external curing is required) at ambient temperature with humidity",
+      "Elasticity – Elastic & forms a permanent tough rubber seal",
+      "Adhesion - Excellent adhesion to concrete, brick work, painted wood, glass, glazed surfaces, aluminum, stainless steel & plastic like polyester & PVC",
+      "Staining – No staining of cementitious substrates",
+      "Weathering durability – Excellent, may slightly yellow on long exposure to UV light"
+    ],
+    applications: [
+      "Sealing of expansion and construction joints as well as joints between different construction materials in high-rise buildings, basements, floorings etc",
+      "Sealing joints in between precast concrete panels",
+      "Sealing Joints in between tiles, bricks, and marble etc"
+    ],
+    fullDescription: "Seal PU Sealant is a one-part moisture curing Polyurethane Sealant composed of polyurethane polymer, pigments, fillers & additives. It is used for filling and sealing joints in buildings & structures. It is highly elastic & resilient, weather-durable, nonsagging, watertight with excellent adhesion to almost all building construction materials.",
   },
   {
     id: 18,
