@@ -110,6 +110,9 @@ Required environment variables:
 
 ## Changelog
 
+- July 18, 2025. Updated BD AQUASEAL MAGIC PU with complete specifications: package size (5kg-no pricing), coverage (depends on porosity), 3 features, 5 application areas, full description, and video integration (HSbx5o8hw0Y)
+- July 18, 2025. Updated BD PROTECTCOAT CT600 with complete specifications: package size (10kg-no pricing), coverage (17-20 sq.ft/kg), 7 features, 4 application areas, full description, and video integration (AqL7gDpKQ4M)
+- July 18, 2025. Updated BD PROTECTCOAT BW500 with complete specifications: package sizes (5kg, 25kg-no pricing), coverage (30-40 sq.ft/kg), 8 features, 4 application areas, full description, and video integration (hikDmkwAvIs)
 - July 18, 2025. Updated BD CRACKSTOP with complete specifications: package size (1kg-₹108), coverage (40-45 rft/kg), 5 features, 2 application areas, full description, and video integration (uzufJvK2vlc)
 - July 18, 2025. Updated BD CRACKSTOP X with complete specifications: package sizes (1kg-₹350, 5kg-₹1400, 25kg-₹7000), coverage (15 Rft/kg), 4 features, 1 application area, full description, and video integration (uzufJvK2vlc)
 - July 18, 2025. Updated BD CRACKSTOP XP with complete specifications: package size (1kg-₹460), coverage (25-30 Rft/kg), 5 features, 1 application area, full description, and video integration (mRxpBTmPuTo)

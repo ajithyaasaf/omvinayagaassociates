@@ -925,39 +925,101 @@ export const PRODUCTS = [
   // Additional Waterproofing Products
   {
     id: 36,
-    name: "BD Protectcoat BW500",
+    name: "BD PROTECTCOAT BW500",
     description:
-      "Bituminous waterproofing coating for basements and below-grade structures with excellent adhesion.",
-    price: 1780,
+      "Bitumen Emulsion Coat",
+    subtitle: "Emulsified thixotropic bitumen protective coating",
+    price: null, // No pricing information available
     image:
       "https://api-catalog.owncart.shop/uploads/images/A5_B6m0qBY-bd%20protect%20coat%20bw500.png",
     rating: 4.5,
     isBestseller: false,
     category: "waterproofing",
+    packageSizes: [
+      { size: "5 kg", price: null },
+      { size: "25 kg", price: null }
+    ],
+    coverage: "30-40 sq.ft/per kg in single coats, depends upon the porosity of substrate surface",
+    features: [
+      "Resists the attack of salts like chlorides and sulphates that are present in the soil",
+      "Cold applied",
+      "Adheres to concrete",
+      "Can be applied in closed or confined spaces",
+      "Water-based",
+      "Non-flammable",
+      "Versatile",
+      "Economical"
+    ],
+    applications: [
+      "Seawater Tanks, Canals and Intakes",
+      "Sewage and sewage plants",
+      "Chemical processing areas",
+      "Building foundations"
+    ],
+    fullDescription: "BD PROTECTCOAT BW500 is an emulsified thixotropic bitumen protective coating. The coating dries to form a black flexible protective film. The finished film forms a tough barrier to vapor transmission.",
   },
   {
     id: 37,
-    name: "BD Protectcoat CT600",
+    name: "BD PROTECTCOAT CT600",
     description:
-      "Cement-based waterproofing coating for positive and negative side applications on concrete structures.",
-    price: 1950,
+      "Epoxy Based Bitumen Emulsion Coat",
+    subtitle: "Two component, solvent free, amine cured coal tar epoxy",
+    price: null, // No pricing information available
     image:
       "https://api-catalog.owncart.shop/uploads/images/dAH-Ut6N3z-bd%20protect%20coat%20ct600.png",
     rating: 4.6,
     isBestseller: false,
     category: "waterproofing",
+    packageSizes: [
+      { size: "10kg", price: null }
+    ],
+    coverage: "17 to 20 sq.ft/per kg in single coats, depends upon the porosity of substrate surface",
+    features: [
+      "Prevents soil erosion and water seepage on floors and walls of basements",
+      "Excellent adhesion to concrete and steel surfaces",
+      "Suitable for use with waterproof coating",
+      "High chemical resistance",
+      "Does not support bacterial growth",
+      "High abrasion resistance",
+      "Can be used on green concrete"
+    ],
+    applications: [
+      "Seawater Tanks, Canals and Intakes",
+      "Sewage and sewage plants",
+      "Chemical processing areas",
+      "Building foundations, Basements"
+    ],
+    fullDescription: "BUILDING DOCTOR PROTECTCOAT CT600 is a two component, solvent free, amine cured coal tar epoxy. The product has excellent water and chemical resistance properties which makes it particularly suitable for aggressive environments such as sewage treatment plants and sewage man holes. BUILDING DOCTOR PROTECTCOAT CT600 is suitable for use on concrete and steel surfaces",
   },
   {
     id: 38,
-    name: "BD Aquaseal Magic PU",
+    name: "BD AQUASEAL MAGIC PU",
     description:
-      "Single-component polyurethane waterproofing membrane with self-leveling properties for terraces.",
-    price: 3150,
+      "Polyurethane resin based injection on system",
+    subtitle: "Two-component, low viscosity moisture reactive polyurethane system",
+    price: null, // No pricing information available
     image:
       "https://api-catalog.owncart.shop/uploads/images/37_Ng5HkjE-aqua%20seal%20magic%20pu.png",
     rating: 4.9,
     isBestseller: true,
     category: "waterproofing",
+    packageSizes: [
+      { size: "5 kg", price: null }
+    ],
+    coverage: "Depending upon the concrete porosity",
+    features: [
+      "Rapid reaction with water; will stop water leakage problems",
+      "Outstanding resistance to hydrostatic pressure",
+      "Low-viscosity polyurethane system formulated to allow cracks Penetration"
+    ],
+    applications: [
+      "Roof",
+      "Water tanks",
+      "Ceiling",
+      "Beams and columns",
+      "Structural concrete elements"
+    ],
+    fullDescription: "BD AQUASEAL MAGIC PU is a two-component; low viscosity moisture reactive polyurethane system which when reacts with water and expands to form a closed-cell foam barrier. Bd Aquaseal magic PU is used in conjunction with Bd AQUASEAL MAGIC PU for permanent and effective sealing of live cracks.",
   },
   {
     id: 39,

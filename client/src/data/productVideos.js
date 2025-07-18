@@ -254,6 +254,39 @@ export const PRODUCT_VIDEOS = {
       "Single pack solution with excellent bonding to cementitious surfaces"
     ]
   },
+
+  // BD PROTECTCOAT BW500 Video Configuration
+  "BD PROTECTCOAT BW500": {
+    videoId: "hikDmkwAvIs", // YouTube shorts ID from the provided link
+    benefits: [
+      "Emulsified thixotropic bitumen protective coating",
+      "Cold applied, water-based and non-flammable",
+      "Forms tough barrier to vapor transmission",
+      "Resists attack of chlorides and sulphates from soil"
+    ]
+  },
+
+  // BD PROTECTCOAT CT600 Video Configuration
+  "BD PROTECTCOAT CT600": {
+    videoId: "AqL7gDpKQ4M", // YouTube shorts ID from the provided link
+    benefits: [
+      "Two component solvent free amine cured coal tar epoxy",
+      "Excellent water and chemical resistance properties",
+      "Suitable for aggressive environments like sewage treatment plants",
+      "High abrasion resistance and prevents bacterial growth"
+    ]
+  },
+
+  // BD AQUASEAL MAGIC PU Video Configuration
+  "BD AQUASEAL MAGIC PU": {
+    videoId: "HSbx5o8hw0Y", // YouTube shorts ID from the provided link
+    benefits: [
+      "Two-component low viscosity moisture reactive polyurethane",
+      "Rapid reaction with water to stop leakage problems",
+      "Outstanding resistance to hydrostatic pressure",
+      "Expands to form closed-cell foam barrier for permanent sealing"
+    ]
+  },
   
   // BD Termoshield Coat Video Configuration
   "BD Termoshield Coat": {
