@@ -123,13 +123,35 @@ export const PRODUCTS = [
     id: 9,
     name: "BD Sealtape SA",
     description:
-      "Self-adhesive sealing tape for joints, edges, and connections in waterproofing applications. High flexibility and durability.",
+      "BD SEAL TAPE SA tape is simple and highly effective solution for waterproofing, sealing and insulation. BD SEAL TAPE SA is a self-adhesive tape made of special polymer. Self protected by reinforced aluminum.",
+    subtitle: "Used for sealing water leakage surfaces by applying over crack/ gap",
     price: 510,
     image:
       "https://api-catalog.owncart.shop/uploads/images/JadX8gi2-a-SEAL%20TAPE%20SA.png",
     rating: 4.6,
     isBestseller: false,
     category: "tapes",
+    packageSizes: [
+      { size: "1.5 mtr", price: 510 },
+      { size: "10 mtr", price: 2700 }
+    ],
+    coverage: "3 Rft/mtr",
+    features: [
+      "No Messy Surface",
+      "Easy & Quick Application",
+      "Economical",
+      "Sticks to most HDPE, PP or any substance",
+      "Can be over painted Good UV Resistance",
+      "Good Weathering Properties",
+      "Self-Adhesive"
+    ],
+    applications: [
+      "All Type of Roofing Sheets (Asbestos Cement Sheets, GI Sheets)",
+      "Sealing water leakage surfaces",
+      "Waterproofing applications",
+      "Crack and gap sealing"
+    ],
+    fullDescription: "BD SEAL TAPE SA tape is simple and highly effective solution for waterproofing, sealing and insulation. BD SEAL TAPE SA is a self-adhesive tape made of special polymer. Self protected by reinforced aluminum.",
   },
 
   // Bonding Agents Category

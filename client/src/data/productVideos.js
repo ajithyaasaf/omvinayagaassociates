@@ -90,6 +90,17 @@ export const PRODUCT_VIDEOS = {
     ]
   },
   
+  // BD Sealtape SA Video Configuration
+  "BD Sealtape SA": {
+    videoId: "qh1cf9POk8Q", // YouTube video ID from the provided link
+    benefits: [
+      "No messy surface with easy and quick application",
+      "Economical solution for waterproofing and sealing",
+      "Sticks to most HDPE, PP or any substance effectively",
+      "Self-adhesive with good UV resistance and weathering properties"
+    ]
+  },
+  
   // Add more products as needed
   // "BD Product Name": {
   //   videoId: "YOUTUBE_VIDEO_ID",
