@@ -15,6 +15,7 @@ const ProductDetailPage = () => {
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [relatedProducts, setRelatedProducts] = useState([]);
+  const [activeTab, setActiveTab] = useState('description');
 
   useEffect(() => {
     document.title = product ? `${product.name} | OM Vinayaga Associates` : "Product Details | OM Vinayaga Associates";
@@ -114,7 +115,7 @@ const ProductDetailPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Product Image */}
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-            <div className="relative h-[300px] md:h-[500px] overflow-hidden">
+            <div className="relative h-64 overflow-hidden">
               <img 
                 src={product.image} 
                 alt={product.name}
@@ -259,82 +260,144 @@ const ProductDetailPage = () => {
         <div className="mt-16">
           <div className="border-b border-gray-200 mb-6">
             <div className="flex">
-              <button className="py-3 px-6 border-b-2 border-primary text-primary font-medium">
+              <button 
+                onClick={() => setActiveTab('description')}
+                className={`py-3 px-6 border-b-2 font-medium ${activeTab === 'description' ? 'border-primary text-primary' : 'border-transparent text-gray-600 hover:text-gray-800'}`}
+              >
                 Description
               </button>
-              <button className="py-3 px-6 border-b-2 border-transparent text-gray-600 hover:text-gray-800">
+              <button 
+                onClick={() => setActiveTab('specifications')}
+                className={`py-3 px-6 border-b-2 font-medium ${activeTab === 'specifications' ? 'border-primary text-primary' : 'border-transparent text-gray-600 hover:text-gray-800'}`}
+              >
                 Specifications
               </button>
-              <button className="py-3 px-6 border-b-2 border-transparent text-gray-600 hover:text-gray-800">
+              <button 
+                onClick={() => setActiveTab('application')}
+                className={`py-3 px-6 border-b-2 font-medium ${activeTab === 'application' ? 'border-primary text-primary' : 'border-transparent text-gray-600 hover:text-gray-800'}`}
+              >
                 Application Guide
               </button>
             </div>
           </div>
 
           <div className="prose max-w-none mb-12">
-            <h3 className="text-primary">📋 Product Description</h3>
-            <p className="bg-blue-50 p-4 rounded-lg border-l-4 border-primary">
-              <strong>Description:</strong> {product.fullDescription || product.description}
-            </p>
-            
-            {product.applications && (
+            {activeTab === 'description' && (
               <>
-                <h3 className="text-primary mt-6">🏗️ Application Areas</h3>
+                <h3 className="text-primary">📋 Product Description</h3>
                 <p className="bg-blue-50 p-4 rounded-lg border-l-4 border-primary">
-                  <strong>Suitable for:</strong> {product.applications.join(', ')}.
+                  <strong>Description:</strong> {product.fullDescription || product.description}
                 </p>
+                
+                {product.applications && (
+                  <>
+                    <h3 className="text-primary mt-6">🏗️ Application Areas</h3>
+                    <p className="bg-blue-50 p-4 rounded-lg border-l-4 border-primary">
+                      <strong>Suitable for:</strong> {product.applications.join(', ')}.
+                    </p>
+                  </>
+                )}
+                
+                {!product.applications && (
+                  <>
+                    <h3 className="text-primary mt-6">📋 Application Areas</h3>
+                    <p className="bg-blue-50 p-4 rounded-lg border-l-4 border-primary">
+                      <strong>Suitable for:</strong> Terraces, water tanks, sunken slabs, balconies, swimming pools, podiums, 
+                      concrete structures, natural stones, and all types of surfaces requiring waterproof protection.
+                    </p>
+                  </>
+                )}
               </>
             )}
-            
-            {!product.applications && (
+
+            {activeTab === 'specifications' && (
               <>
-                <h3 className="text-primary mt-6">📋 Application Areas</h3>
-                <p className="bg-blue-50 p-4 rounded-lg border-l-4 border-primary">
-                  <strong>Suitable for:</strong> Terraces, water tanks, sunken slabs, balconies, swimming pools, podiums, 
-                  concrete structures, natural stones, and all types of surfaces requiring waterproof protection.
-                </p>
+                <h3 className="text-primary">📦 Technical Specifications</h3>
+                {product.packageSizes && (
+                  <div className="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 className="font-semibold text-gray-800 mb-2">Package Sizes & Rates</h4>
+                    {product.packageSizes.map((pkg, index) => (
+                      <div key={index} className="flex justify-between items-center py-1">
+                        <span>{pkg.size}</span>
+                        <span className="font-bold">₹{pkg.price}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                
+                {product.coverage && (
+                  <div className="bg-green-50 p-4 rounded-lg mb-4">
+                    <h4 className="font-semibold text-green-800">Coverage Area</h4>
+                    <p>{product.coverage}</p>
+                  </div>
+                )}
+                
+                <div className="bg-orange-50 p-4 rounded-lg mb-4">
+                  <h4 className="font-semibold text-orange-800">Product Properties</h4>
+                  <ul className="space-y-1 mt-2">
+                    <li>• Type: {product.name.includes('Paint Remover') ? 'Solvent-based, Non-flammable' : 'Chemical resistant coating'}</li>
+                    <li>• Form: {product.name.includes('Paint Remover') ? 'Liquid' : 'Paste/Liquid'}</li>
+                    <li>• Application: {product.name.includes('Paint Remover') ? 'Brush or spray' : 'Brush, roller, or spray'}</li>
+                    <li>• Shelf Life: 12 months from manufacturing date</li>
+                  </ul>
+                </div>
               </>
             )}
-            
-            <h3 className="text-primary mt-6">🔧 Application Method</h3>
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <ol className="list-decimal list-inside space-y-2">
-                <li><strong>Surface Preparation:</strong> Clean thoroughly using wire brush to remove dust, loose particles, moss, and cement droppings. Wash with water and let dry completely.</li>
-                <li><strong>Mixing:</strong> For two-component products, mix Base and Hardener in recommended ratio using mechanical mixer until smooth and homogeneous.</li>
-                <li><strong>Application:</strong> Apply first coat using brush or roller in circular motion. Apply second coat in cross direction after first coat is tacky but not fully dried.</li>
-                <li><strong>Protection:</strong> Cover with cement plaster or tiles after application to protect from direct sunlight and rain.</li>
-              </ol>
-            </div>
 
-            <h3 className="text-primary mt-6">📦 Coverage & Packaging</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-green-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-green-800">Coverage Area</h4>
-                <p>Approximately 150 sq.ft per 20kg kit (varies by surface porosity)</p>
-              </div>
-              <div className="bg-orange-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-orange-800">Shelf Life</h4>
-                <p>12 months from manufacturing date when stored properly</p>
-              </div>
-            </div>
+            {activeTab === 'application' && (
+              <>
+                <h3 className="text-primary">🔧 Application Method</h3>
+                <div className="bg-gray-50 p-4 rounded-lg mb-4">
+                  <ol className="list-decimal list-inside space-y-2">
+                    {product.name.includes('Paint Remover') ? (
+                      <>
+                        <li><strong>Surface Preparation:</strong> Clean the surface to remove loose dirt and debris. Ensure adequate ventilation.</li>
+                        <li><strong>Application:</strong> Apply Paint Remover evenly using brush or spray. Allow penetration time as per coating thickness.</li>
+                        <li><strong>Removal:</strong> Scrape off softened paint using putty knife or scraper. For stubborn areas, reapply and wait.</li>
+                        <li><strong>Cleaning:</strong> Clean the surface with water or appropriate solvent to remove residue.</li>
+                      </>
+                    ) : (
+                      <>
+                        <li><strong>Surface Preparation:</strong> Clean thoroughly using wire brush to remove dust, loose particles, moss, and cement droppings. Wash with water and let dry completely.</li>
+                        <li><strong>Mixing:</strong> For two-component products, mix Base and Hardener in recommended ratio using mechanical mixer until smooth and homogeneous.</li>
+                        <li><strong>Application:</strong> Apply first coat using brush or roller in circular motion. Apply second coat in cross direction after first coat is tacky but not fully dried.</li>
+                        <li><strong>Protection:</strong> Cover with cement plaster or tiles after application to protect from direct sunlight and rain.</li>
+                      </>
+                    )}
+                  </ol>
+                </div>
 
-            <h3 className="text-primary mt-6">⚠️ Important Notes</h3>
-            <ul className="bg-yellow-50 p-4 rounded-lg space-y-1">
-              <li>• Allow minimum 12 hours drying time between coats</li>
-              <li>• Do not apply during rain or extreme weather conditions</li>
-              <li>• Store in cool, dry place away from direct sunlight</li>
-              <li>• Use protective equipment during application</li>
-              <li>• Suitable for both positive and negative water pressure applications</li>
-            </ul>
+                <h3 className="text-primary mt-6">⚠️ Important Notes</h3>
+                <ul className="bg-yellow-50 p-4 rounded-lg space-y-1">
+                  {product.name.includes('Paint Remover') ? (
+                    <>
+                      <li>• Use in well-ventilated area</li>
+                      <li>• Wear protective gloves and eyewear</li>
+                      <li>• Keep away from heat sources and open flames</li>
+                      <li>• Store in cool, dry place away from direct sunlight</li>
+                      <li>• Dispose of waste material according to local regulations</li>
+                    </>
+                  ) : (
+                    <>
+                      <li>• Allow minimum 12 hours drying time between coats</li>
+                      <li>• Do not apply during rain or extreme weather conditions</li>
+                      <li>• Store in cool, dry place away from direct sunlight</li>
+                      <li>• Use protective equipment during application</li>
+                      <li>• Suitable for both positive and negative water pressure applications</li>
+                    </>
+                  )}
+                </ul>
 
-            <div className="mt-8 p-6 bg-gradient-to-r from-primary/10 to-blue-50 rounded-lg border-l-4 border-primary">
-              <h4 className="font-semibold text-primary mb-2">🎥 Watch Application Video</h4>
-              <p className="text-gray-700 mb-3">See step-by-step application process and professional tips for best results.</p>
-              <a href="#" className="inline-flex items-center text-primary font-medium hover:underline">
-                <i className="fab fa-youtube mr-2"></i>
-                View Product Application Video
-              </a>
-            </div>
+                <div className="mt-8 p-6 bg-gradient-to-r from-primary/10 to-blue-50 rounded-lg border-l-4 border-primary">
+                  <h4 className="font-semibold text-primary mb-2">🎥 Watch Application Video</h4>
+                  <p className="text-gray-700 mb-3">See step-by-step application process and professional tips for best results.</p>
+                  <a href="#" className="inline-flex items-center text-primary font-medium hover:underline">
+                    <i className="fab fa-youtube mr-2"></i>
+                    View Product Application Video
+                  </a>
+                </div>
+              </>
+            )}
           </div>
         </div>
 
