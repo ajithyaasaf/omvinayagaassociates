@@ -46,6 +46,17 @@ export const PRODUCT_VIDEOS = {
     ]
   },
   
+  // BD Nanguram Anchor Fix Video Configuration
+  "BD Nanguram Anchor Fix": {
+    videoId: "D5qV43nogwU", // YouTube shorts ID from the provided link
+    benefits: [
+      "Exceptionally rapid strength development",
+      "Resistance to dynamic loading for structural integrity",
+      "Moisture resistant for long-lasting performance",
+      "Exceptional bond to concrete and steel surfaces"
+    ]
+  },
+  
   // Add more products as needed
   // "BD Product Name": {
   //   videoId: "YOUTUBE_VIDEO_ID",

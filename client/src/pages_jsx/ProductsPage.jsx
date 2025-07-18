@@ -198,7 +198,8 @@ export const PRODUCTS = [
     id: 12,
     name: "BD Nanguram Anchor Fix",
     description:
-      "Professional-grade chemical anchoring system for heavy-duty fixings in concrete and masonry. High load capacity and rapid setting.",
+      "NANGURAM ANCHORFIX is two components, high strength, fast cure, polyester resin anchoring grout.",
+    subtitle: "High strength polyester grout for anchoring and fixing",
     price: 700,
     image:
       "https://api-catalog.owncart.shop/uploads/images/Bq5FKgu299-NUNGURAM%20ANCHORFIX.png",
@@ -206,6 +207,24 @@ export const PRODUCTS = [
     isBestseller: false,
     isNew: true,
     category: "grouts-anchors",
+    packageSizes: [
+      { size: "1 kg", price: 700 }
+    ],
+    coverage: "Approx.18 nos of 8mm rod at 12mm dia, 70mm depth / 1kg",
+    features: [
+      "Exceptionally rapid strength development",
+      "Resistance to dynamic loading",
+      "Moisture resistant",
+      "Very dense",
+      "Exceptional bond to concrete and steel surfaces",
+      "Good chemical resistance"
+    ],
+    applications: [
+      "Column anchoring",
+      "Beam fixing", 
+      "Roof applications"
+    ],
+    fullDescription: "NANGURAM ANCHORFIX is two components, high strength, fast cure, polyester resin anchoring grout.",
   },
 
   // Tiling Aids Category
