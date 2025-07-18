@@ -35,6 +35,17 @@ export const PRODUCT_VIDEOS = {
     ]
   },
   
+  // BD Concrete Bond Video Configuration
+  "BD Concrete Bond": {
+    videoId: "pqB-SAB-8SM", // YouTube shorts ID from the provided link
+    benefits: [
+      "Improves the bond between new and old concrete",
+      "Prevents water leakage in concrete joints",
+      "Prevents explosions in structural applications",
+      "Two-part solvent-free bonding system for reliability"
+    ]
+  },
+  
   // Add more products as needed
   // "BD Product Name": {
   //   videoId: "YOUTUBE_VIDEO_ID",

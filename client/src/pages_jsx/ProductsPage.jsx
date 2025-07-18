@@ -137,13 +137,27 @@ export const PRODUCTS = [
     id: 10,
     name: "BD Concrete Bond",
     description:
-      "High-performance bonding agent for connecting new concrete to existing surfaces. Improves adhesion and prevents delamination.",
+      "CONCRETE BOND is a two part solvent free bonding agent composed of liquid epoxy resin and hardener. It is used for bonding of structural concrete new to old concrete.",
+    subtitle: "Epoxy bonding agent for concrete",
     price: 1258,
     image:
       "https://api-catalog.owncart.shop/uploads/images/DyQRa8nuqu-CONCRETE%20BOND.png",
     rating: 4.7,
     isBestseller: false,
     category: "bonding-agents",
+    packageSizes: [
+      { size: "1 kg", price: 1258 }
+    ],
+    coverage: "10- 15 Rft / Kg depends upon surface",
+    features: [
+      "Improves the bond between new and old concrete",
+      "Prevents water leakage",
+      "Prevents explosions"
+    ],
+    applications: [
+      "Old and new concrete joint areas"
+    ],
+    fullDescription: "CONCRETE BOND is a two part solvent free bonding agent composed of liquid epoxy resin and hardener. It is used for bonding of structural concrete new to old concrete.",
   },
   {
     id: 11,
