@@ -110,6 +110,9 @@ Required environment variables:
 
 ## Changelog
 
+- July 18, 2025. Updated BD CRACKSTOP with complete specifications: package size (1kg-₹108), coverage (40-45 rft/kg), 5 features, 2 application areas, full description, and video integration (uzufJvK2vlc)
+- July 18, 2025. Updated BD CRACKSTOP X with complete specifications: package sizes (1kg-₹350, 5kg-₹1400, 25kg-₹7000), coverage (15 Rft/kg), 4 features, 1 application area, full description, and video integration (uzufJvK2vlc)
+- July 18, 2025. Updated BD CRACKSTOP XP with complete specifications: package size (1kg-₹460), coverage (25-30 Rft/kg), 5 features, 1 application area, full description, and video integration (mRxpBTmPuTo)
 - July 18, 2025. Updated BD CRACKSTOP MESH with complete specifications: package sizes (4 inch-₹480, 6 inch-₹610), coverage (3 Rft/Mtr), 6 features, 4 application areas, full description, and video integration (nuSznkwfOgU)
 - July 18, 2025. Updated BD CRACKSTOP FIBRE with complete specifications: package sizes (6mm-₹110, 12mm-₹110), coverage (125gms per bag), 1 feature, 3 application areas, full description, and video integration (NpcpUP8KHi8)
 - July 18, 2025. Updated BD CORROSHIELD RCR with complete specifications: package sizes (300ml-₹250, 500ml-₹400), coverage (30-35 rft/500ml), 2 features, 4 application areas, full description, and video integration (YMxCTdh1XTI)

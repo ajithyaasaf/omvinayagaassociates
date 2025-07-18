@@ -17,33 +17,68 @@ export const PRODUCTS = [
   // Crack Filling Category
   {
     id: 1,
-    name: "BD Crackstop",
+    name: "BD CRACKSTOP",
     description:
-      "Standard crack filling compound for non-structural cracks in concrete and masonry surfaces.",
+      "Polymer Modified Crack Filler For Plastered Surface",
+    subtitle: "Cement based polymer modified powder material for filling cracks",
     price: 108,
     image:
       "https://api-catalog.owncart.shop/uploads/images/ULBA-0z0gR-crackstop.png",
     rating: 4.6,
     isBestseller: true,
     category: "crack-filling",
+    packageSizes: [
+      { size: "1 kg", price: 108 }
+    ],
+    coverage: "40-45 rft/kg to fill 5mm x 5mm 'V' shaped groove",
+    features: [
+      "Single component, easy to use",
+      "Non-sagging, can be used in horizontal, vertical and overhead applications",
+      "Good adhesion and effective bonding with the plastered substrate",
+      "High tensile strength, non-shrink and waterproof",
+      "Cost saver - As surface leveler before painting it reduces paint consumption and increases the life of the paint making it economical"
+    ],
+    applications: [
+      "To fill the static cracks of 3 to 5 mm sizes in horizontal or vertical areas of buildings & structures",
+      "To level the undulation of the unplastered or plastered ceilings and walls before painting"
+    ],
+    fullDescription: "BD CRACKSTOP is a cement based polymer modified powder material for filling cracks in plastered surface. It is composed of cement, properly selected aggregates, polymer & additives which requires on site addition of water only. It is ideal to fill 3 to 5 mm wider static cracks, for leveling up walls before tiling. A crack filled with CRACK STOP enhances the subsequent paintings quality and life.",
   },
   {
     id: 2,
-    name: "BD Crackstop X",
+    name: "BD CRACKSTOP X",
     description:
-      "Enhanced crack filling compound for wider and deeper cracks with improved bonding properties.",
+      "Two Component Cement based polymer modified Crack filler",
+    subtitle: "Designed to repair vertical or horizontal cracks with excellent adhesion",
     price: 350,
     image:
       "https://api-catalog.owncart.shop/uploads/images/TqkyRNGazA-crackstop%20x.png",
     rating: 4.8,
     isBestseller: true,
     category: "crack-filling",
+    packageSizes: [
+      { size: "1kg", price: 350 },
+      { size: "5 kg", price: 1400 },
+      { size: "25 kg", price: 7000 }
+    ],
+    coverage: "15 Rft/kg",
+    features: [
+      "Non-sagging, can be used in horizontal, vertical and overhead applications",
+      "Good adhesion and effective bonding with the plastered substrate",
+      "High tensile strength, non-shrink and waterproof",
+      "UV Resistance"
+    ],
+    applications: [
+      "To fill the static cracks of 5mm to 30 mm sizes in horizontal or vertical areas of buildings & structures"
+    ],
+    fullDescription: "BD CRACKSTOP X is a Two Component, Designed To Repair Vertical Or Horizontal Cracks. It Has Excellent Adhesion To Concrete and Masonry Surfaces",
   },
   {
     id: 3,
-    name: "BD Crackstop XP",
+    name: "BD CRACKSTOP XP",
     description:
-      "Premium crack filling solution with advanced polymer technology for structural cracks and movement joints.",
+      "Ready to use crack filler for Internal & External Surface Cracks In Plaster",
+    subtitle: "High quality weather durable acrylic emulsion polymer putty",
     price: 460,
     image:
       "https://api-catalog.owncart.shop/uploads/images/SQx0nBnkTn-crackstop%20xp.png",
@@ -51,6 +86,21 @@ export const PRODUCTS = [
     isBestseller: false,
     isNew: true,
     category: "crack-filling",
+    packageSizes: [
+      { size: "1 kg", price: 460 }
+    ],
+    coverage: "25-30 Rft/kg (for a depth of 5mm and width of 5mm)",
+    features: [
+      "Consistency - Paste form, without sagging",
+      "Flexibility - Flexible, therefore does not crack & accommodates minor movements in cracks",
+      "Paint ability - Over coat able by any type of polymer based paints, after 24 hours",
+      "Bonding - Excellent adhesion with cementitious surface",
+      "Durability – Excellent resistance to UV & atmospheric conditions"
+    ],
+    applications: [
+      "Internal & external Plastered brick masonry wall cracks of up to 5mm width"
+    ],
+    fullDescription: "BD CRACKSTOP XP is composed of high quality weather durable acrylic emulsion polymer, properly selected graded fillers, light fast pigment& additives. It is a single pack, ready to use flexible putty for filling the cracks in plastered surfaces because it has excellent bonding, ease of application, water resistance, aesthetic appearance & durability.",
   },
   {
     id: 4,

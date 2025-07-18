@@ -221,6 +221,39 @@ export const PRODUCT_VIDEOS = {
       "Increases lifespan and prevents formation of intrinsic cracks"
     ]
   },
+
+  // BD CRACKSTOP Video Configuration
+  "BD CRACKSTOP": {
+    videoId: "uzufJvK2vlc", // YouTube video ID from the provided link
+    benefits: [
+      "Single component cement based polymer modified crack filler",
+      "Non-sagging for horizontal, vertical and overhead applications",
+      "High tensile strength, non-shrink and waterproof properties",
+      "Cost effective surface leveler that reduces paint consumption"
+    ]
+  },
+
+  // BD CRACKSTOP X Video Configuration
+  "BD CRACKSTOP X": {
+    videoId: "uzufJvK2vlc", // YouTube video ID from the provided link
+    benefits: [
+      "Two component system for larger cracks 5mm to 30mm",
+      "Excellent adhesion to concrete and masonry surfaces",
+      "Non-sagging with UV resistance properties",
+      "High tensile strength, non-shrink and waterproof"
+    ]
+  },
+
+  // BD CRACKSTOP XP Video Configuration
+  "BD CRACKSTOP XP": {
+    videoId: "mRxpBTmPuTo", // YouTube shorts ID from the provided link
+    benefits: [
+      "Ready to use flexible putty for internal & external cracks",
+      "Weather durable acrylic emulsion polymer composition",
+      "Paint-able after 24 hours with excellent UV resistance",
+      "Single pack solution with excellent bonding to cementitious surfaces"
+    ]
+  },
   
   // BD Termoshield Coat Video Configuration
   "BD Termoshield Coat": {
