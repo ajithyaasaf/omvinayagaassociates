@@ -126,18 +126,18 @@ const ProductDetailPage = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Product Image */}
-          <div className="flex justify-center items-center">
-            <div className="relative w-full max-w-md">
+          <div className="flex justify-center items-start">
+            <div className="relative bg-white rounded-lg shadow-lg p-4 w-full max-w-sm">
               <img 
                 src={product.image} 
                 alt={product.name}
-                className="w-full h-auto object-contain rounded-lg shadow-lg"
+                className="w-full h-auto object-contain"
               />
               {product.isBestseller && (
-                <div className="absolute top-4 left-4 bg-primary text-white text-sm px-3 py-1 rounded z-10">BESTSELLER</div>
+                <div className="absolute top-2 left-2 bg-primary text-white text-xs px-2 py-1 rounded z-10">BESTSELLER</div>
               )}
               {product.isNew && (
-                <div className="absolute top-4 right-4 bg-green-600 text-white text-sm px-3 py-1 rounded z-10">NEW</div>
+                <div className="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded z-10">NEW</div>
               )}
             </div>
           </div>
@@ -478,7 +478,7 @@ const ProductDetailPage = () => {
                 <iframe
                   width="100%"
                   height="100%"
-                  src="https://www.youtube.com/embed/RUaBBkE69E0?autoplay=1"
+                  src="https://www.youtube.com/embed/LHJzA-gFEs8?autoplay=1"
                   title="BD Paint Remover 500 Application Video"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
