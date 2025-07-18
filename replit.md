@@ -110,6 +110,10 @@ Required environment variables:
 
 ## Changelog
 
+- July 18, 2025. Created reusable VideoModal component for all product videos with centralized video configuration
+- July 18, 2025. Added video modal functionality to BD Tile Clean Master product (was missing before)
+- July 18, 2025. Fixed video modal responsiveness issues for mobile devices
+- July 18, 2025. Created productVideos.js config file for easy video management across products
 - July 18, 2025. Updated BD Tile Clean Master product with complete details matching Building Doctor website exactly
 - July 18, 2025. Added package sizes (500ml - ₹205, 1L - ₹397), coverage area, features, and application areas for BD Tile Clean Master
 - July 18, 2025. Updated BD Paint Remover 500 product with complete details from original Building Doctor website
