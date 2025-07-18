@@ -16,9 +16,21 @@ const ProductDetailPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [activeTab, setActiveTab] = useState('description');
+  const [showVideoPopup, setShowVideoPopup] = useState(false);
 
   useEffect(() => {
     document.title = product ? `${product.name} | OM Vinayaga Associates` : "Product Details | OM Vinayaga Associates";
+  }, [product]);
+
+  // Show video popup after 3 seconds for Paint Remover 500
+  useEffect(() => {
+    if (product && product.name.includes('Paint Remover 500')) {
+      const timer = setTimeout(() => {
+        setShowVideoPopup(true);
+      }, 3000);
+      
+      return () => clearTimeout(timer);
+    }
   }, [product]);
 
   useEffect(() => {
@@ -114,12 +126,12 @@ const ProductDetailPage = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Product Image */}
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-            <div className="relative h-64 overflow-hidden">
+          <div className="flex justify-center items-center">
+            <div className="relative w-full max-w-md">
               <img 
                 src={product.image} 
                 alt={product.name}
-                className="w-full h-full object-cover"
+                className="w-full h-auto object-contain rounded-lg shadow-lg"
               />
               {product.isBestseller && (
                 <div className="absolute top-4 left-4 bg-primary text-white text-sm px-3 py-1 rounded z-10">BESTSELLER</div>
@@ -391,10 +403,13 @@ const ProductDetailPage = () => {
                 <div className="mt-8 p-6 bg-gradient-to-r from-primary/10 to-blue-50 rounded-lg border-l-4 border-primary">
                   <h4 className="font-semibold text-primary mb-2">🎥 Watch Application Video</h4>
                   <p className="text-gray-700 mb-3">See step-by-step application process and professional tips for best results.</p>
-                  <a href="#" className="inline-flex items-center text-primary font-medium hover:underline">
+                  <button 
+                    onClick={() => setShowVideoPopup(true)}
+                    className="inline-flex items-center text-primary font-medium hover:underline"
+                  >
                     <i className="fab fa-youtube mr-2"></i>
                     View Product Application Video
-                  </a>
+                  </button>
                 </div>
               </>
             )}
@@ -444,6 +459,48 @@ const ProductDetailPage = () => {
           </div>
         )}
       </div>
+
+      {/* Video Popup Modal */}
+      {showVideoPopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden">
+            <div className="flex justify-between items-center p-4 border-b">
+              <h3 className="text-xl font-bold">How BD Paint Remover 500 Works</h3>
+              <button
+                onClick={() => setShowVideoPopup(false)}
+                className="text-gray-500 hover:text-gray-700 text-2xl"
+              >
+                ×
+              </button>
+            </div>
+            <div className="p-4">
+              <div className="aspect-video">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/RUaBBkE69E0?autoplay=1"
+                  title="BD Paint Remover 500 Application Video"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="rounded-lg"
+                ></iframe>
+              </div>
+              <div className="mt-4 text-center">
+                <p className="text-gray-600 mb-4">
+                  Watch how BD Paint Remover 500 effectively removes paint coatings with its quick-action formula.
+                </p>
+                <button
+                  onClick={() => setShowVideoPopup(false)}
+                  className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg"
+                >
+                  Close Video
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
