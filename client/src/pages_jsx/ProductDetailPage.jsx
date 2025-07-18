@@ -500,20 +500,20 @@ const ProductDetailPage = () => {
 
       {/* Video Popup Modal */}
       {showVideoPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl max-w-5xl w-full max-h-[95vh] overflow-hidden shadow-2xl animate-in fade-in-0 zoom-in-95 duration-300">
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-2 sm:p-4 backdrop-blur-sm">
+          <div className="bg-white rounded-lg sm:rounded-2xl max-w-5xl w-full max-h-[98vh] sm:max-h-[95vh] overflow-y-auto shadow-2xl animate-in fade-in-0 zoom-in-95 duration-300">
             {/* Header */}
-            <div className="bg-gradient-to-r from-primary/10 to-blue-50 p-6 border-b">
-              <div className="flex justify-between items-center">
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-800">How BD Paint Remover 500 Works</h3>
-                  <p className="text-gray-600 mt-1">See the product in action - Professional demonstration</p>
+            <div className="bg-gradient-to-r from-primary/10 to-blue-50 p-3 sm:p-6 border-b">
+              <div className="flex justify-between items-start sm:items-center">
+                <div className="flex-1 pr-3">
+                  <h3 className="text-lg sm:text-2xl font-bold text-gray-800 leading-tight">How BD Paint Remover 500 Works</h3>
+                  <p className="text-sm sm:text-base text-gray-600 mt-1 hidden sm:block">See the product in action - Professional demonstration</p>
                 </div>
                 <button
                   onClick={() => setShowVideoPopup(false)}
-                  className="text-gray-400 hover:text-gray-600 hover:bg-white/50 rounded-full p-2 transition-all duration-200"
+                  className="text-gray-400 hover:text-gray-600 hover:bg-white/50 rounded-full p-1.5 sm:p-2 transition-all duration-200 flex-shrink-0"
                 >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
@@ -521,8 +521,8 @@ const ProductDetailPage = () => {
             </div>
             
             {/* Video Content */}
-            <div className="p-6">
-              <div className="aspect-video bg-gray-900 rounded-xl overflow-hidden shadow-lg">
+            <div className="p-3 sm:p-6">
+              <div className="aspect-video bg-gray-900 rounded-lg sm:rounded-xl overflow-hidden shadow-lg">
                 <iframe
                   width="100%"
                   height="100%"
@@ -536,33 +536,33 @@ const ProductDetailPage = () => {
               </div>
               
               {/* Video Description */}
-              <div className="mt-6 bg-gray-50 rounded-xl p-4">
-                <h4 className="font-semibold text-gray-800 mb-2">Key Benefits of BD Paint Remover 500</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+              <div className="mt-4 sm:mt-6 bg-gray-50 rounded-lg sm:rounded-xl p-3 sm:p-4">
+                <h4 className="font-semibold text-gray-800 mb-2 text-sm sm:text-base">Key Benefits of BD Paint Remover 500</h4>
+                <div className="grid grid-cols-1 gap-2 sm:gap-3 text-xs sm:text-sm">
                   <div className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-1.5 flex-shrink-0"></div>
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full mt-1.5 flex-shrink-0"></div>
                     <span className="text-gray-700">Effective paint removal without surface damage</span>
                   </div>
                   <div className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-1.5 flex-shrink-0"></div>
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full mt-1.5 flex-shrink-0"></div>
                     <span className="text-gray-700">Reduces labor and time in renovation projects</span>
                   </div>
                   <div className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-1.5 flex-shrink-0"></div>
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full mt-1.5 flex-shrink-0"></div>
                     <span className="text-gray-700">Easy application and user-friendly process</span>
                   </div>
                   <div className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-1.5 flex-shrink-0"></div>
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full mt-1.5 flex-shrink-0"></div>
                     <span className="text-gray-700">Compatible with various surfaces and paint types</span>
                   </div>
                 </div>
               </div>
               
               {/* Action Buttons */}
-              <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+              <div className="mt-4 sm:mt-6 flex flex-col gap-2 sm:gap-3">
                 <button
                   onClick={() => setShowVideoPopup(false)}
-                  className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center"
+                  className="w-full bg-primary hover:bg-primary/90 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center text-sm sm:text-base"
                 >
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -575,7 +575,7 @@ const ProductDetailPage = () => {
                     // Scroll to contact section or trigger contact form
                     document.querySelector('a[href="/contact"]')?.click();
                   }}
-                  className="bg-white border border-primary text-primary hover:bg-primary/5 px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center"
+                  className="w-full bg-white border border-primary text-primary hover:bg-primary/5 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center text-sm sm:text-base"
                 >
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
