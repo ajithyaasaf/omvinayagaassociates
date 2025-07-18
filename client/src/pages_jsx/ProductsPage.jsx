@@ -214,15 +214,39 @@ export const PRODUCTS = [
   // Special Products Category
   {
     id: 16,
-    name: "Paint Remover 500",
+    name: "BD Paint Remover 500",
     description:
-      "Effective paint and coating remover that strips multiple layers quickly without damaging the underlying surface.",
+      "BD PAINT REMOVER 500 a solvent-based, Non evaporative, instant paint remover.",
+    subtitle: "solvent-based, non flammable, instant paint remover",
     price: 251,
     image:
       "https://api-catalog.owncart.shop/uploads/images/woK3K_PsUn-paint%20remover.jpg",
     rating: 4.4,
     isBestseller: false,
     category: "special-products",
+    packageSizes: [
+      { size: "500 ml", price: 251 },
+      { size: "1 lit", price: 431 }
+    ],
+    coverage: "20 sq.m/litre (Varies depending on paint thickness)",
+    features: [
+      "Quick Action formula",
+      "Effortless results", 
+      "Penetrates deeply",
+      "Removing several layers at once",
+      "Reduced labour",
+      "Saves time"
+    ],
+    applications: [
+      "Construction sites",
+      "Wooden surfaces", 
+      "Metal surfaces",
+      "Automotive",
+      "Industrial", 
+      "Marine",
+      "DIY projects"
+    ],
+    fullDescription: "BD PAINT REMOVER 500 a solvent-based, Non evaporative, instant paint remover.",
   },
 
   // Sealants Category

@@ -149,38 +149,87 @@ const ProductDetailPage = () => {
                 </div>
               </div>
               <h1 className="text-3xl md:text-4xl font-montserrat font-bold mb-4">{product.name}</h1>
+              {product.subtitle && (
+                <p className="text-lg text-gray-800 font-medium mb-2">{product.subtitle}</p>
+              )}
               <p className="text-gray-600 mb-6">{product.description}</p>
             </div>
 
+            {/* Package Sizes */}
+            {product.packageSizes && (
+              <div className="border-t border-b py-4 my-6">
+                <h3 className="font-semibold text-lg mb-4 text-primary">📦 Available Package Sizes</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {product.packageSizes.map((pkg, index) => (
+                    <div key={index} className="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
+                      <span className="font-medium">{pkg.size}</span>
+                      <span className="text-primary font-bold">₹{pkg.price}</span>
+                    </div>
+                  ))}
+                </div>
+                {product.coverage && (
+                  <div className="mt-3 text-sm text-gray-600">
+                    <strong>Coverage Area:</strong> {product.coverage}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Key Features */}
             <div className="border-t border-b py-4 my-6">
-              <h3 className="font-semibold text-lg mb-4 text-primary">⭐ Key Advantages</h3>
+              <h3 className="font-semibold text-lg mb-4 text-primary">⭐ Key Features</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex items-start">
-                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
-                    <i className="fas fa-check text-primary text-sm"></i>
+                {product.features ? product.features.map((feature, index) => (
+                  <div key={index} className="flex items-start">
+                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
+                      <i className="fas fa-check text-primary text-sm"></i>
+                    </div>
+                    <p className="text-gray-700">{feature}</p>
                   </div>
-                  <p className="text-gray-700">Effectively prevents water leakage</p>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
-                    <i className="fas fa-check text-primary text-sm"></i>
-                  </div>
-                  <p className="text-gray-700">Superior bonding and durability</p>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
-                    <i className="fas fa-check text-primary text-sm"></i>
-                  </div>
-                  <p className="text-gray-700">Easy application with brush or roller</p>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
-                    <i className="fas fa-check text-primary text-sm"></i>
-                  </div>
-                  <p className="text-gray-700">UV resistant and weatherproof</p>
-                </div>
+                )) : (
+                  <>
+                    <div className="flex items-start">
+                      <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
+                        <i className="fas fa-check text-primary text-sm"></i>
+                      </div>
+                      <p className="text-gray-700">Effectively prevents water leakage</p>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
+                        <i className="fas fa-check text-primary text-sm"></i>
+                      </div>
+                      <p className="text-gray-700">Superior bonding and durability</p>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
+                        <i className="fas fa-check text-primary text-sm"></i>
+                      </div>
+                      <p className="text-gray-700">Easy application with brush or roller</p>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
+                        <i className="fas fa-check text-primary text-sm"></i>
+                      </div>
+                      <p className="text-gray-700">UV resistant and weatherproof</p>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
+
+            {/* Applications Area */}
+            {product.applications && (
+              <div className="border-t border-b py-4 my-6">
+                <h3 className="font-semibold text-lg mb-4 text-primary">🏗️ Area of Application</h3>
+                <div className="flex flex-wrap gap-2">
+                  {product.applications.map((app, index) => (
+                    <span key={index} className="px-3 py-1 bg-blue-50 text-blue-800 rounded-full text-sm font-medium">
+                      {app}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
@@ -223,11 +272,29 @@ const ProductDetailPage = () => {
           </div>
 
           <div className="prose max-w-none mb-12">
-            <h3 className="text-primary">📋 Application Areas</h3>
+            <h3 className="text-primary">📋 Product Description</h3>
             <p className="bg-blue-50 p-4 rounded-lg border-l-4 border-primary">
-              <strong>Suitable for:</strong> Terraces, water tanks, sunken slabs, balconies, swimming pools, podiums, 
-              concrete structures, natural stones, and all types of surfaces requiring waterproof protection.
+              <strong>Description:</strong> {product.fullDescription || product.description}
             </p>
+            
+            {product.applications && (
+              <>
+                <h3 className="text-primary mt-6">🏗️ Application Areas</h3>
+                <p className="bg-blue-50 p-4 rounded-lg border-l-4 border-primary">
+                  <strong>Suitable for:</strong> {product.applications.join(', ')}.
+                </p>
+              </>
+            )}
+            
+            {!product.applications && (
+              <>
+                <h3 className="text-primary mt-6">📋 Application Areas</h3>
+                <p className="bg-blue-50 p-4 rounded-lg border-l-4 border-primary">
+                  <strong>Suitable for:</strong> Terraces, water tanks, sunken slabs, balconies, swimming pools, podiums, 
+                  concrete structures, natural stones, and all types of surfaces requiring waterproof protection.
+                </p>
+              </>
+            )}
             
             <h3 className="text-primary mt-6">🔧 Application Method</h3>
             <div className="bg-gray-50 p-4 rounded-lg">
