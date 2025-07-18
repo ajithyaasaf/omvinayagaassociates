@@ -110,6 +110,9 @@ Required environment variables:
 
 ## Changelog
 
+- July 18, 2025. Updated BD INSTANT STOP with complete specifications: package size (1kg-₹165), coverage (depends on hole size), 1 feature, 3 application areas, full description, and video integration (f1dBlcX35Rs)
+- July 18, 2025. Updated BD WALL SHIELD with complete specifications: package sizes (5kg-₹2600, 20kg-₹9800), coverage (30-40 sq.ft/kg/coat), 4 features, 5 application areas, full description, and video integration (2gRqJT3j8k0)
+- July 18, 2025. Updated BD GARDEN GUARD with complete specifications: package sizes (5kg-₹3350, 25kg-₹11850), coverage (25-30 sq.ft/kg), 3 features, 4 application areas, full description, and video integration (zbvdpKuYZNw)
 - July 18, 2025. Updated BD AQUASEAL MAGIC PU with complete specifications: package size (5kg-no pricing), coverage (depends on porosity), 3 features, 5 application areas, full description, and video integration (HSbx5o8hw0Y)
 - July 18, 2025. Updated BD PROTECTCOAT CT600 with complete specifications: package size (10kg-no pricing), coverage (17-20 sq.ft/kg), 7 features, 4 application areas, full description, and video integration (AqL7gDpKQ4M)
 - July 18, 2025. Updated BD PROTECTCOAT BW500 with complete specifications: package sizes (5kg, 25kg-no pricing), coverage (30-40 sq.ft/kg), 8 features, 4 application areas, full description, and video integration (hikDmkwAvIs)

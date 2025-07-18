@@ -287,6 +287,39 @@ export const PRODUCT_VIDEOS = {
       "Expands to form closed-cell foam barrier for permanent sealing"
     ]
   },
+
+  // BD INSTANT STOP Video Configuration
+  "BD INSTANT STOP": {
+    videoId: "f1dBlcX35Rs", // YouTube shorts ID from the provided link
+    benefits: [
+      "Single part fast setting hydraulic compound",
+      "Instantly stops flowing water and seepage",
+      "Quick application for immediate water leakage prevention",
+      "Effective for water tanks, swimming pools and lower decks"
+    ]
+  },
+
+  // BD WALL SHIELD Video Configuration
+  "BD WALL SHIELD": {
+    videoId: "2gRqJT3j8k0", // YouTube video ID from the provided link
+    benefits: [
+      "Water-based high-performance acrylic protective coating",
+      "Excellent weathering and UV resistance properties",
+      "Non-toxic, non-flammable with anti-fungus protection",
+      "Suitable for retaining walls, bridges and multistory buildings"
+    ]
+  },
+
+  // BD GARDEN GUARD Video Configuration
+  "BD GARDEN GUARD": {
+    videoId: "zbvdpKuYZNw", // YouTube shorts ID from the provided link
+    benefits: [
+      "Specialized waterproofing coating for garden areas",
+      "UV resistance and plant roof resistance",
+      "Soil corrosion resistance properties",
+      "Available for both internal and external waterproofing"
+    ]
+  },
   
   // BD Termoshield Coat Video Configuration
   "BD Termoshield Coat": {

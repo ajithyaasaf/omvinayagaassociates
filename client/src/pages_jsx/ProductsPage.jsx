@@ -178,15 +178,29 @@ export const PRODUCTS = [
   },
   {
     id: 7,
-    name: "BD Instant Stop",
+    name: "BD INSTANT STOP",
     description:
-      "Rapid-setting waterproof plug for active water leaks and seepages, hardening in minutes.",
+      "Fast setting plugging compound",
+    subtitle: "Single part fast setting hydraulic compound that instantly stops flowing water",
     price: 165,
     image:
       "https://api-catalog.owncart.shop/uploads/images/H3GLOXLHnb-INSTANT%20STOP.png",
     rating: 4.7,
     isBestseller: false,
-    category: "waterproofing",
+    category: "grouts-anchors",
+    packageSizes: [
+      { size: "1 kg", price: 165 }
+    ],
+    coverage: "Depends upon hole size",
+    features: [
+      "Used to prevent immediate water leakage"
+    ],
+    applications: [
+      "Water tanks",
+      "Swimming pool",
+      "Lower decks"
+    ],
+    fullDescription: "BD INSTANT STOP is a single part fast setting hydraulic compound that instantly stops flowing water and seepage through concrete and masonry surfaces",
   },
 
   // Thermal Insulation Category
@@ -754,27 +768,65 @@ export const PRODUCTS = [
   // Additional Waterproofing Products
   {
     id: 25,
-    name: "BD Wall Shield",
+    name: "BD WALL SHIELD",
     description:
-      "Protective waterproofing coating for exterior and interior walls against moisture penetration and weathering.",
-    price: 1580,
+      "Water-based high-performance acrylic protective and decorative coating",
+    subtitle: "Ready-for-use, single-component, acrylic-based coating for external and internal applications",
+    price: 2600,
     image:
       "https://api-catalog.owncart.shop/uploads/images/-Zazf_NSk8-wall%20shield.png",
     rating: 4.6,
     isBestseller: false,
     category: "waterproofing",
+    packageSizes: [
+      { size: "5 kg", price: 2600 },
+      { size: "20 kg", price: 9800 }
+    ],
+    coverage: "30-40 sq.ft/kg/coat to give a DFT between 100-150 microns depending on the substrate texture",
+    features: [
+      "Protective barrier against chloride ions, carbon dioxide and water",
+      "Durable - highly resistant to UV rays and weathering",
+      "Non-toxic/non-flammable",
+      "Anti-fungus forms a flexible film"
+    ],
+    applications: [
+      "Retaining walls",
+      "Bridge abutments",
+      "External concrete of storage tanks",
+      "Multistory buildings and villas",
+      "Pre-cast elements and concrete cladding"
+    ],
+    fullDescription: "BD WALL SHIELD is a ready-for-use,single-component, acrylic-based coating for external and internal applications over a variety of concrete and masonry substrates. BD WALL SHIELD exhibits excellent long-term weathering and UV resistance",
   },
   {
     id: 26,
-    name: "BD Garden Guard",
+    name: "BD GARDEN GUARD",
     description:
-      "Specialized waterproofing solution for garden areas, planters, and landscaped terraces with plant-safe formula.",
-    price: 1420,
+      "Waterproofing Coating for Garden Area",
+    subtitle: "Available in two types for internal and external waterproofing applications",
+    price: 3350,
     image:
       "https://api-catalog.owncart.shop/uploads/images/_m4NEI6aEf-bd%20garden%20guard.png",
     rating: 4.5,
     isBestseller: false,
     category: "waterproofing",
+    packageSizes: [
+      { size: "5 kg", price: 3350 },
+      { size: "25 kg", price: 11850 }
+    ],
+    coverage: "25 to 30 sq.ft/per kg in single coats, depending upon the porosity of substrate surface",
+    features: [
+      "Waterproofing",
+      "Soil Corrosion Resistance",
+      "UV Resistance and plant roof Resistance"
+    ],
+    applications: [
+      "Balcony Garden waterproofing and protection",
+      "Terrace Garden waterproofing and protection",
+      "Plant Tank waterproofing and protection",
+      "Interior and Exterior waterproofing and protection"
+    ],
+    fullDescription: "BD GARDEN GUARD is available in two types of Waterproofing. One for Internal Waterproofing and another one for external waterproofing.",
   },
   {
     id: 27,
