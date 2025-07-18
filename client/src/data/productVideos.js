@@ -24,6 +24,17 @@ export const PRODUCT_VIDEOS = {
     ]
   },
   
+  // BD Plaster Bond Booster Video Configuration
+  "BD PLASTER BOND BOOSTER": {
+    videoId: "Lq2e5-gQ0ek", // YouTube video ID from the provided link
+    benefits: [
+      "Prevents water leakage effectively",
+      "Repairs damaged areas with strong bonding",
+      "Prevents old iron rods from rusting as compound",
+      "Ideal for laying ground floors and structural work"
+    ]
+  },
+  
   // Add more products as needed
   // "BD Product Name": {
   //   videoId: "YOUTUBE_VIDEO_ID",

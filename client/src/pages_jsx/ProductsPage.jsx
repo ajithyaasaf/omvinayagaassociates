@@ -147,15 +147,36 @@ export const PRODUCTS = [
   },
   {
     id: 11,
-    name: "BD Plaster Bond Booster",
+    name: "BD PLASTER BOND BOOSTER",
     description:
-      "Styrene Butadiene Rubber (SBR) based bonding agent for plaster and mortar applications. Increases bond strength and reduces cracking.",
+      "BD PLASTER BOND BOOSTER is a one-component styrene butadiene rubber latex bonding agent. BD PLASTER BOND BOOSTER is designed to improve the physical properties of cement mixes and slurries.",
+    subtitle: "Liquid polymer bonding agent for cement-containing mixes",
     price: 435,
     image:
       "https://api-catalog.owncart.shop/uploads/images/sQTYHG9VdB-PLASTERBOND%20SBR.png",
     rating: 4.6,
     isBestseller: false,
     category: "bonding-agents",
+    packageSizes: [
+      { size: "1 Lit", price: 435 },
+      { size: "5 Lit", price: 1925 },
+      { size: "20 Lit", price: 7200 }
+    ],
+    coverage: "30 to 35 sq. ft/ depending upon surface condition",
+    features: [
+      "Prevents water leakage",
+      "Repairs damaged area",
+      "As a compound, it is used to prevent old iron rods rust",
+      "Laying the ground floors"
+    ],
+    applications: [
+      "Roof applications",
+      "Sunshades", 
+      "Terrace waterproofing",
+      "Water tanks",
+      "Ceiling beam and columns"
+    ],
+    fullDescription: "BD PLASTER BOND BOOSTER is a one-component styrene butadiene rubber latex bonding agent. BD PLASTER BOND BOOSTER is designed to improve the physical properties of cement mixes and slurries.",
   },
 
   // Grouts & Anchors Category
