@@ -110,6 +110,12 @@ Required environment variables:
 
 ## Changelog
 
+- July 18, 2025. Updated BD LEAKSHIELD WHITE with complete specifications: package sizes (1kg-₹645, 5kg-₹2980, 25kg-₹10077), coverage (25-30 sq.ft/kg), 9 features, 3 application areas, full description, and video integration (UWlS2fC592U)
+- July 18, 2025. Updated BD LEAKSHIELD TERRACOTTA with complete specifications: package sizes (1kg-₹670, 5kg-₹3090, 25kg-₹10407), coverage (25-30 sq.ft/kg), 9 features, 3 application areas, full description, and video integration (UWlS2fC592U)
+- July 18, 2025. Updated BD BUILDING ALL ROUNDER with complete specifications: package sizes (1L-₹635, 5L-₹2875, 20L-₹9950), coverage (30 sq.ft/litre), 2 features, 1 application area, full description, and video integration (JFoKpCPLD3E)
+- July 18, 2025. Updated BD DAMP STOP with complete specifications: package sizes (1kg-₹950, 10kg-₹7400), coverage (20-25 sq.ft/kg), 5 features, 2 application areas, full description, and video integration (SwVgL6evUUg)
+- July 18, 2025. Updated BD DAMP STOP X with complete specifications: package sizes (5, 25-no pricing), coverage (depends on penetration), 3 features, 3 application areas, full description, and video integration (hWt48zyHOlQ)
+- July 18, 2025. Updated BD AQUASEAL TANK GUARD with complete specifications: package sizes (1kg-₹1320, 5kg-₹5750), coverage (30-35 sq.ft/kg), 5 features, 3 application areas, full description, and video integration (chTTp6RJt7E)
 - July 18, 2025. Updated BD AQUA SEAL NANO with complete specifications: package sizes (1L-₹563, 5L-₹2515, 20L-₹9660), coverage (30 sq.ft/litre), 3 features, 1 application area, full description, and video integration (UIUf3ZQ2fqM)
 - July 18, 2025. Updated BD AQUASEAL 2K with complete specifications: package size (20kg-no pricing), coverage (150 sq.ft/20kg kit), 6 features, 3 application areas, full description, and video integration (4X3NmXlRSWQ)
 - July 18, 2025. Updated BD AQUASEAL CRYSTALLINE with complete specifications: package size (25kg-no pricing), coverage (6-8 sq.ft/kg), 6 features, 3 application areas, full description, and video integration (mvU1rrtniLg)

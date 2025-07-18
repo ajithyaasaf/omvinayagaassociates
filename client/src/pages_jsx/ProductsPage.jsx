@@ -165,18 +165,6 @@ export const PRODUCTS = [
 
   // Waterproofing Category
   {
-    id: 6,
-    name: "BD Aquaseal Tank Guard",
-    description:
-      "Specialized waterproofing solution for water tanks and storage units, food-grade safe with anti-bacterial properties.",
-    price: 1320,
-    image:
-      "https://api-catalog.owncart.shop/uploads/images/BniyHnRtRw-aqua%20seal%20tank%20guard.png",
-    rating: 4.8,
-    isBestseller: true,
-    category: "waterproofing",
-  },
-  {
     id: 7,
     name: "BD INSTANT STOP",
     description:
@@ -919,54 +907,7 @@ export const PRODUCTS = [
     ],
     fullDescription: "BUIDLING DOCTOR AQUA SEAL CRYSTALLINE is a single components; polymer modified cementitious waterproof coating suitable for internal and external applications.",
   },
-  {
-    id: 30,
-    name: "BD Leakshield White",
-    description:
-      "White elastomeric waterproof coating for terraces and roofs with excellent UV resistance and reflectivity.",
-    price: 2480,
-    image:
-      "https://api-catalog.owncart.shop/uploads/images/0yV7Lo60XQ-leaksheild.png",
-    rating: 4.7,
-    isBestseller: false,
-    category: "waterproofing",
-  },
-  {
-    id: 31,
-    name: "BD Building All Rounder",
-    description:
-      "Versatile waterproofing solution suitable for various building surfaces including concrete, masonry, and metal.",
-    price: 1890,
-    image:
-      "https://api-catalog.owncart.shop/uploads/images/w9jwxBL3Yr-building-doctor-all-rounder.png",
-    rating: 4.6,
-    isBestseller: false,
-    category: "waterproofing",
-  },
-  {
-    id: 32,
-    name: "BD Damp Stop",
-    description:
-      "Effective damp-proofing treatment for walls and foundations to prevent moisture-related damage.",
-    price: 1180,
-    image:
-      "https://api-catalog.owncart.shop/uploads/images/l0B1EiR4uD-Dampstop.png",
-    rating: 4.5,
-    isBestseller: false,
-    category: "waterproofing",
-  },
-  {
-    id: 33,
-    name: "BD Damp Stop X",
-    description:
-      "Enhanced damp-proofing solution with superior penetration and long-lasting moisture protection.",
-    price: 1650,
-    image:
-      "https://api-catalog.owncart.shop/uploads/images/X3gelosNH8-BD%20Damp%20stop%20x.png",
-    rating: 4.7,
-    isBestseller: false,
-    category: "waterproofing",
-  },
+
 
   // Additional Corrosion Treatment Products
   {
@@ -1128,16 +1069,193 @@ export const PRODUCTS = [
     fullDescription: "BD AQUASEAL MAGIC PU is a two-component; low viscosity moisture reactive polyurethane system which when reacts with water and expands to form a closed-cell foam barrier. Bd Aquaseal magic PU is used in conjunction with Bd AQUASEAL MAGIC PU for permanent and effective sealing of live cracks.",
   },
   {
-    id: 39,
-    name: "BD Leakshield Terracotta",
+    id: 30,
+    name: "BD LEAKSHIELD WHITE",
     description:
-      "Advanced leak protection waterproofing solution in terracotta color, providing innovative protection for lasting durability of structures.",
-    price: 3090,
+      "Elastomeric modified acrylic waterproof coating",
+    subtitle: "Acrylic based elastomeric waterproof coating for roofs and walls",
+    price: 645,
     image:
       "https://api-catalog.owncart.shop/uploads/images/0yV7Lo60XQ-leaksheild.png",
     rating: 4.7,
     isBestseller: false,
     category: "waterproofing",
+    packageSizes: [
+      { size: "1 kg", price: 645 },
+      { size: "5 kg", price: 2980 },
+      { size: "25 kg", price: 10077 }
+    ],
+    coverage: "25 to 30 sq.ft/per kg in two coats, depends upon the porosity of substrate surface",
+    features: [
+      "Elastomeric with increased tensile strength",
+      "Improved adhesion",
+      "Single component, easy to apply",
+      "Non-toxic and nonflammable",
+      "Available in different colors",
+      "UV stable and resistant",
+      "Will not support fungus growth",
+      "Easy maintenance",
+      "Environment friendly"
+    ],
+    applications: [
+      "Concrete, Masonry, Plaster, Terrazzo Tiles",
+      "Asbestos Cement Sheets",
+      "Clay Tiles, Aac Blocks Etc"
+    ],
+    fullDescription: "BUILDING DOCTOR LEAKSHIELD is an acrylic based elastomeric, waterproof coating for roofs and walls",
+  },
+  {
+    id: 31,
+    name: "BD LEAKSHIELD TERRACOTTA",
+    description:
+      "Elastomeric modified acrylic waterproof coating",
+    subtitle: "Acrylic based elastomeric waterproof coating for roofs and walls in terracotta color",
+    price: 670,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/0yV7Lo60XQ-leaksheild.png",
+    rating: 4.7,
+    isBestseller: false,
+    category: "waterproofing",
+    packageSizes: [
+      { size: "1 kg", price: 670 },
+      { size: "5 kg", price: 3090 },
+      { size: "25 kg", price: 10407 }
+    ],
+    coverage: "25 to 30 sq.ft/per kg in two coats, depends upon the porosity of substrate surface",
+    features: [
+      "Elastomeric with increased tensile strength",
+      "Improved adhesion",
+      "Single component, easy to apply",
+      "Non-toxic and nonflammable",
+      "Available in different colors",
+      "UV stable and resistant",
+      "Will not support fungus growth",
+      "Easy maintenance",
+      "Environment friendly"
+    ],
+    applications: [
+      "Concrete, Masonry, Plaster, Terrazzo Tiles",
+      "Asbestos Cement Sheets",
+      "Clay Tiles, Aac Blocks Etc"
+    ],
+    fullDescription: "BUILDING DOCTOR LEAKSHIELD is an acrylic based elastomeric, waterproof coating for roofs and walls.",
+  },
+  {
+    id: 32,
+    name: "BD BUILDING ALL ROUNDER",
+    description:
+      "Water-based polymer compound in multi-purpose applications for bonding Plasters and cement/building materials for waterproofing works",
+    subtitle: "Multi-purpose water-based polymer compound for bonding and waterproofing applications",
+    price: 635,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/BniyHnRtRw-aqua%20seal%20tank%20guard.png",
+    rating: 4.6,
+    isBestseller: false,
+    category: "bonding-agents",
+    packageSizes: [
+      { size: "1 lit", price: 635 },
+      { size: "5 lit", price: 2875 },
+      { size: "20 lit", price: 9950 }
+    ],
+    coverage: "30 sq.ft/1 litre depends on the porosity of the substrate",
+    features: [
+      "It Prevents Water Leakage",
+      "Repairs The Damaged Area"
+    ],
+    applications: [
+      "All types of concrete areas and natural stones"
+    ],
+    fullDescription: "Water-based polymer compound in multi-purpose applications for bonding Plasters and cement/building materials for waterproofing works",
+  },
+  {
+    id: 33,
+    name: "BD DAMP STOP",
+    description:
+      "Epoxy Damp Proof coating",
+    subtitle: "Two component, high performance, water-based epoxy waterproof vapour barrier membrane",
+    price: 950,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/Y6BQj_tjwU-BD%20DAMPSTOP%20XW.png",
+    rating: 4.8,
+    isBestseller: false,
+    category: "waterproofing",
+    packageSizes: [
+      { size: "1 kg", price: 950 },
+      { size: "10 kg", price: 7400 }
+    ],
+    coverage: "20 to 25 sq.ft/per kg in single coats, depends upon the porosity of substrate surface",
+    features: [
+      "Application - It can be used on wet concrete and plaster surfaces and provides an excellent water resistant coating with a hard and tough film",
+      "Adhesion – Provides excellent adhesion to all cementitious substrates",
+      "Chemical resistance – Excellent resistance to water, salt water, mild acids and soap water",
+      "Environmentally friendly - non-hazardous and non-flammable",
+      "Economy – Dilutable water with high coverage is therefore economical. Paintable"
+    ],
+    applications: [
+      "For interior and exterior drywall treatments and ceilings",
+      "Toilet and kitchen walls"
+    ],
+    fullDescription: "BD DAMP STOP is two component, high performance, water-based epoxy waterproof vapour barrier membrane to prevent water seepage and permeation for floors, walls, water tanks, reservoirs and water retaining structures.",
+  },
+  {
+    id: 34,
+    name: "BD DAMP STOP X",
+    description:
+      "A Low viscosity, highly penetrating silane, silanol – siloxane solution",
+    subtitle: "Low-viscosity, highly penetrating solution for permanent rising damp prevention",
+    price: null, // No pricing information available
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/Y6BQj_tjwU-BD%20DAMPSTOP%20XW.png",
+    rating: 4.7,
+    isBestseller: false,
+    category: "waterproofing",
+    packageSizes: [
+      { size: "5", price: null },
+      { size: "25", price: null }
+    ],
+    coverage: "Depending upon penetration and porosity",
+    features: [
+      "Penetrates deeply into brick and other masonry substrates",
+      "Form a durable polysiloxane damp course via chemical bonding",
+      "Easy to use, non-corrosive and non-toxic formulation"
+    ],
+    applications: [
+      "BD DAMP STOP X is used to install a durable polymer damp course into brickwork or other masonry walls to permanently stop rising dampness",
+      "Rising damp is a major cause of decay in masonry materials such as stone, brick and mortar",
+      "When severe it is a potential health hazard to building occupants due to high humidity levels and the growth of molds"
+    ],
+    fullDescription: "BD DAMP STOP X is a low-viscosity, highly penetrating silane, silanol-siloxane solution, which has been specifically formulated to permeate into walls affected by rising dampness. Once impregnated into a course of brickwork, BD DAMP STOP X reacts with minerals present to form a durable polymer damp course, which permanently stops rising damp.",
+  },
+  {
+    id: 39,
+    name: "BD AQUASEAL TANK GUARD",
+    description:
+      "Water based epoxy resin floor and wall Food Grade coating",
+    subtitle: "High performance two component, water dispersible, epoxy resin coating for food grade applications",
+    price: 1320,
+    image:
+      "https://api-catalog.owncart.shop/uploads/images/BniyHnRtRw-aqua%20seal%20tank%20guard.png",
+    rating: 4.8,
+    isBestseller: true,
+    category: "waterproofing",
+    packageSizes: [
+      { size: "1 kg", price: 1320 },
+      { size: "5 kg", price: 5750 }
+    ],
+    coverage: "30 to 35 sq.ft/per kg in single coats, depends upon the porosity of substrate surface",
+    features: [
+      "Water-based; Moisture Tolerant",
+      "Solvent-free, stain-free",
+      "Dust free surfaces",
+      "Easy application",
+      "Resistant to fungal attack"
+    ],
+    applications: [
+      "Swimming pool",
+      "Pharmaceutical factory walls",
+      "Water tank and sump"
+    ],
+    fullDescription: "BUILDING DOCTOR AQUA SEAL TANK GUARD is a high performance two Component, water dispersible, epoxy resin coating, designed to provide a hard, Semi-matte seal to concrete floors, walls, ceiling and other substrates.",
   },
 ];
 

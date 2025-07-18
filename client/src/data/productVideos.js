@@ -353,6 +353,72 @@ export const PRODUCT_VIDEOS = {
       "Single component polymer modified cementitious coating"
     ]
   },
+
+  // BD LEAKSHIELD WHITE Video Configuration
+  "BD LEAKSHIELD WHITE": {
+    videoId: "UWlS2fC592U", // YouTube video ID from the provided link
+    benefits: [
+      "Elastomeric modified acrylic waterproof coating",
+      "UV stable and resistant with improved adhesion",
+      "Non-toxic, nonflammable and environment friendly",
+      "Single component, easy to apply on various surfaces"
+    ]
+  },
+
+  // BD LEAKSHIELD TERRACOTTA Video Configuration
+  "BD LEAKSHIELD TERRACOTTA": {
+    videoId: "UWlS2fC592U", // YouTube video ID from the provided link
+    benefits: [
+      "Elastomeric modified acrylic waterproof coating in terracotta",
+      "Available in different colors with UV stability",
+      "Will not support fungus growth with easy maintenance",
+      "Suitable for concrete, masonry, plaster and tiles"
+    ]
+  },
+
+  // BD BUILDING ALL ROUNDER Video Configuration
+  "BD BUILDING ALL ROUNDER": {
+    videoId: "JFoKpCPLD3E", // YouTube video ID from the provided link
+    benefits: [
+      "Multi-purpose water-based polymer compound",
+      "Prevents water leakage and repairs damaged areas",
+      "Suitable for bonding plasters and cement materials",
+      "Effective for all types of concrete areas and natural stones"
+    ]
+  },
+
+  // BD DAMP STOP Video Configuration
+  "BD DAMP STOP": {
+    videoId: "SwVgL6evUUg", // YouTube video ID from the provided link
+    benefits: [
+      "Two component high performance epoxy waterproof barrier",
+      "Excellent adhesion to all cementitious substrates",
+      "Chemical resistance to water, salt water and mild acids",
+      "Environmentally friendly, non-hazardous and economical"
+    ]
+  },
+
+  // BD DAMP STOP X Video Configuration
+  "BD DAMP STOP X": {
+    videoId: "hWt48zyHOlQ", // YouTube shorts ID from the provided link
+    benefits: [
+      "Low viscosity, highly penetrating silane solution",
+      "Forms durable polysiloxane damp course via chemical bonding",
+      "Permanently stops rising dampness in masonry walls",
+      "Easy to use, non-corrosive and non-toxic formulation"
+    ]
+  },
+
+  // BD AQUASEAL TANK GUARD Video Configuration
+  "BD AQUASEAL TANK GUARD": {
+    videoId: "chTTp6RJt7E", // YouTube video ID from the provided link
+    benefits: [
+      "Water based epoxy resin floor and wall food grade coating",
+      "High performance two component water dispersible coating",
+      "Solvent-free, stain-free with dust free surfaces",
+      "Resistant to fungal attack with easy application"
+    ]
+  },
   
   // BD Termoshield Coat Video Configuration
   "BD Termoshield Coat": {
