@@ -150,6 +150,8 @@ Required environment variables:
 - July 18, 2025. Updated BD Paint Remover 500 product with complete details from original Building Doctor website
 - July 18, 2025. Enhanced product detail page with package sizes, coverage area, features, and application areas
 - July 18, 2025. Added interactive tabs functionality for product specifications and application guides
+- July 18, 2025. Removed "Request Quote" and "Download Specifications" buttons from product detail page per user request
+- July 18, 2025. Fixed DOM nesting warnings by properly structuring Link components in product detail page
 - July 18, 2025. Completed migration from Replit Agent to Replit environment successfully
 - July 17, 2025. Updated complete product catalog with 39 products matching official Building Doctor website exactly
 - July 17, 2025. Fixed all product names to include proper "BD" prefix: BD Crackstop series, BD Instant Stop, BD Concrete Bond, BD Sealtape SA, BD Termoshield Coat, BD Tilejoint products

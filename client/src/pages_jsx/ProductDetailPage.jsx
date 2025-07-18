@@ -246,11 +246,7 @@ const ProductDetailPage = () => {
               </div>
             )}
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-6">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
-                <i className="fas fa-shopping-cart mr-2"></i> Request Quote
-              </Button>
-            </div>
+
 
             <div className="bg-gray-50 p-4 rounded-lg">
               <div className="flex items-center mb-2">
