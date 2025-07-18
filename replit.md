@@ -110,6 +110,9 @@ Required environment variables:
 
 ## Changelog
 
+- July 18, 2025. Updated BD AQUA SEAL NANO with complete specifications: package sizes (1L-₹563, 5L-₹2515, 20L-₹9660), coverage (30 sq.ft/litre), 3 features, 1 application area, full description, and video integration (UIUf3ZQ2fqM)
+- July 18, 2025. Updated BD AQUASEAL 2K with complete specifications: package size (20kg-no pricing), coverage (150 sq.ft/20kg kit), 6 features, 3 application areas, full description, and video integration (4X3NmXlRSWQ)
+- July 18, 2025. Updated BD AQUASEAL CRYSTALLINE with complete specifications: package size (25kg-no pricing), coverage (6-8 sq.ft/kg), 6 features, 3 application areas, full description, and video integration (mvU1rrtniLg)
 - July 18, 2025. Updated BD INSTANT STOP with complete specifications: package size (1kg-₹165), coverage (depends on hole size), 1 feature, 3 application areas, full description, and video integration (f1dBlcX35Rs)
 - July 18, 2025. Updated BD WALL SHIELD with complete specifications: package sizes (5kg-₹2600, 20kg-₹9800), coverage (30-40 sq.ft/kg/coat), 4 features, 5 application areas, full description, and video integration (2gRqJT3j8k0)
 - July 18, 2025. Updated BD GARDEN GUARD with complete specifications: package sizes (5kg-₹3350, 25kg-₹11850), coverage (25-30 sq.ft/kg), 3 features, 4 application areas, full description, and video integration (zbvdpKuYZNw)

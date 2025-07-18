@@ -830,40 +830,94 @@ export const PRODUCTS = [
   },
   {
     id: 27,
-    name: "BD Aqua Seal Nano",
+    name: "BD AQUA SEAL NANO",
     description:
-      "Nano-technology based waterproofing solution with superior penetration and long-lasting protection.",
-    price: 2150,
+      "Water based, ready for use, Single component, water repellent protective Penetration for concrete, Natural stone and cementitious products",
+    subtitle: "Water repellent protective penetration for concrete and natural stone",
+    price: 563,
     image:
       "https://api-catalog.owncart.shop/uploads/images/qDFXlkVuE6-aqua%20seal%20nano.png",
     rating: 4.8,
     isBestseller: true,
     category: "waterproofing",
+    packageSizes: [
+      { size: "1 lit", price: 563 },
+      { size: "5 lit", price: 2515 },
+      { size: "20 lit", price: 9660 }
+    ],
+    coverage: "30 sq.ft/1 litre depends on the porosity of the substrate",
+    features: [
+      "Prevents water Leakage",
+      "Highly penetrating",
+      "Colorless"
+    ],
+    applications: [
+      "All types of concrete areas and natural stones"
+    ],
+    fullDescription: "BUILDING DOCTOR AQUASEAL NANO is water based, ready for use, Single component, water repellent protective Penetration for concrete, Natural stone and cementitious products",
   },
   {
     id: 28,
-    name: "BD Aquaseal 2K",
+    name: "BD AQUASEAL 2K",
     description:
-      "Two-component waterproofing system for heavy-duty applications with excellent chemical resistance.",
-    price: 2840,
+      "Two component highly flexible cementitious waterproofing coating",
+    subtitle: "Polymer-modified, flexible cementitious waterproofing coating for concrete and masonry surfaces",
+    price: null, // No pricing information available
     image:
       "https://api-catalog.owncart.shop/uploads/images/l9ScEIv3GE-aqua%20seal%20sk.png",
     rating: 4.9,
     isBestseller: true,
     category: "waterproofing",
+    packageSizes: [
+      { size: "20 kg", price: null }
+    ],
+    coverage: "150 sq.ft/20 kg kit depends on the porosity of the substrate",
+    features: [
+      "Resistant – Cracking of bridges on concrete/surfaces",
+      "Apply easily with a brush/roller",
+      "Excellent adhesion to concrete and masonry substrates",
+      "Provides a waterproof surface and eliminates water seepage",
+      "Complies with small water contact parameters",
+      "Low VOC - for a healthy life"
+    ],
+    applications: [
+      "Wet areas such as bathrooms, showers, kitchen, etc",
+      "Water bodies like swimming pools, water tanks, fountains, etc",
+      "Concrete Roof, cement-based screeds, concrete, masonry surface"
+    ],
+    fullDescription: "BD AQUASEAL 2K is a two-component, polymer-modified, flexible Cementitious waterproofing coating specially formulated for Concrete and Masonry surfaces which are supplied in ready-mix kits (2 parts).",
   },
   {
     id: 29,
-    name: "BD Aquaseal Crystalline",
+    name: "BD AQUASEAL CRYSTALLINE",
     description:
-      "Crystalline waterproofing technology that penetrates concrete to form permanent waterproof barrier.",
-    price: 3250,
+      "One component acrylic cement modified waterproof coating",
+    subtitle: "Single component polymer modified cementitious waterproof coating suitable for internal and external applications",
+    price: null, // No pricing information available
     image:
       "https://api-catalog.owncart.shop/uploads/images/C2UWKBVdsN-aqua%20seal%20crystalline.png",
     rating: 4.9,
     isBestseller: false,
     isNew: true,
     category: "waterproofing",
+    packageSizes: [
+      { size: "25 kg", price: null }
+    ],
+    coverage: "6 to 8 sq.ft/per kg in single coats, depends upon the porosity of substrate and will vary from site",
+    features: [
+      "It works on the principle of crystallization process",
+      "High penetration into the pores of concrete",
+      "Resistant to water penetration and spills",
+      "Provides strong water barrier",
+      "Prevents water seepage from the positive and negative sides of the structure",
+      "Easy to use brush/Roller"
+    ],
+    applications: [
+      "Waterproof coating for concrete water tanks, sunken floors, bathrooms and toilets, foundations, etc",
+      "Lift walls, inspection pits, and underground structures",
+      "The negative side is great for waterproofing solution to moisture in the concrete"
+    ],
+    fullDescription: "BUIDLING DOCTOR AQUA SEAL CRYSTALLINE is a single components; polymer modified cementitious waterproof coating suitable for internal and external applications.",
   },
   {
     id: 30,

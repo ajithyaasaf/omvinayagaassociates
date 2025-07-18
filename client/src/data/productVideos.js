@@ -320,6 +320,39 @@ export const PRODUCT_VIDEOS = {
       "Available for both internal and external waterproofing"
     ]
   },
+
+  // BD AQUA SEAL NANO Video Configuration
+  "BD AQUA SEAL NANO": {
+    videoId: "UIUf3ZQ2fqM", // YouTube video ID from the provided link
+    benefits: [
+      "Water based, ready for use single component solution",
+      "Water repellent protective penetration for concrete",
+      "Highly penetrating and colorless application",
+      "Suitable for all types of concrete areas and natural stones"
+    ]
+  },
+
+  // BD AQUASEAL 2K Video Configuration
+  "BD AQUASEAL 2K": {
+    videoId: "4X3NmXlRSWQ", // YouTube video ID from the provided link
+    benefits: [
+      "Two component highly flexible cementitious waterproofing",
+      "Excellent adhesion to concrete and masonry substrates",
+      "Low VOC formulation for healthy living environments",
+      "Easy application with brush or roller"
+    ]
+  },
+
+  // BD AQUASEAL CRYSTALLINE Video Configuration
+  "BD AQUASEAL CRYSTALLINE": {
+    videoId: "mvU1rrtniLg", // YouTube video ID from the provided link
+    benefits: [
+      "Works on crystallization process for waterproofing",
+      "High penetration into concrete pores",
+      "Prevents water seepage from positive and negative sides",
+      "Single component polymer modified cementitious coating"
+    ]
+  },
   
   // BD Termoshield Coat Video Configuration
   "BD Termoshield Coat": {
