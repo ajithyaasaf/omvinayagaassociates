@@ -250,9 +250,6 @@ const ProductDetailPage = () => {
               <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
                 <i className="fas fa-shopping-cart mr-2"></i> Request Quote
               </Button>
-              <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-                <i className="fas fa-download mr-2"></i> Download Specifications
-              </Button>
             </div>
 
             <div className="bg-gray-50 p-4 rounded-lg">
@@ -261,10 +258,8 @@ const ProductDetailPage = () => {
                 <h4 className="font-semibold">Need technical assistance?</h4>
               </div>
               <p className="text-sm text-gray-600 mb-3">Our experts can help you select the right product and provide application guidance.</p>
-              <Link href="/contact">
-                <a className="text-primary font-medium text-sm hover:underline">
-                  Contact our technical team <i className="fas fa-arrow-right ml-1"></i>
-                </a>
+              <Link href="/contact" className="text-primary font-medium text-sm hover:underline">
+                Contact our technical team <i className="fas fa-arrow-right ml-1"></i>
               </Link>
             </div>
           </div>
@@ -488,10 +483,8 @@ const ProductDetailPage = () => {
                     </div>
                     <p className="text-sm text-gray-600 mb-3">{relProduct.description.substring(0, 60)}...</p>
                     <div className="flex justify-end items-center">
-                      <Link href={`/products/${relProduct.id}`}>
-                        <a className="bg-primary hover:bg-primary/90 text-white px-3 py-1 rounded text-sm transition">
-                          View Details
-                        </a>
+                      <Link href={`/products/${relProduct.id}`} className="bg-primary hover:bg-primary/90 text-white px-3 py-1 rounded text-sm transition">
+                        View Details
                       </Link>
                     </div>
                   </div>

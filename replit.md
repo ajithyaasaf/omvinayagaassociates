@@ -110,6 +110,8 @@ Required environment variables:
 
 ## Changelog
 
+- July 18, 2025. Removed "Download Specifications" button from product detail page and fixed DOM nesting warnings with Link components
+- July 18, 2025. Successfully completed migration from Replit Agent to Replit environment with all dependencies working
 - July 18, 2025. Updated BD LEAKSHIELD WHITE with complete specifications: package sizes (1kg-₹645, 5kg-₹2980, 25kg-₹10077), coverage (25-30 sq.ft/kg), 9 features, 3 application areas, full description, and video integration (UWlS2fC592U)
 - July 18, 2025. Updated BD LEAKSHIELD TERRACOTTA with complete specifications: package sizes (1kg-₹670, 5kg-₹3090, 25kg-₹10407), coverage (25-30 sq.ft/kg), 9 features, 3 application areas, full description, and video integration (UWlS2fC592U)
 - July 18, 2025. Updated BD BUILDING ALL ROUNDER with complete specifications: package sizes (1L-₹635, 5L-₹2875, 20L-₹9950), coverage (30 sq.ft/litre), 2 features, 1 application area, full description, and video integration (JFoKpCPLD3E)
