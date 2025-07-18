@@ -110,6 +110,9 @@ Required environment variables:
 
 ## Changelog
 
+- July 18, 2025. Updated BD CONCRETE POWER with complete specifications: package sizes (1L-₹207, 5L-₹838, 20L-₹2970), coverage (200-250ml per bag), 6 features, application areas, full description, and video integration (5V457Zj8-C4)
+- July 18, 2025. Updated Aqua seal P with complete specifications: package size (1kg-₹1320), coverage (50-60 sqft/kg), 2 features, 3 application areas, full description, and video integration (82ytb0VrCSY)
+- July 18, 2025. Updated BD DAMPSTOP XW with complete specifications: package sizes (1L-₹680, 5L-₹3100), coverage (depends on penetration), 6 features, 2 application areas, full description, and video integration (rUNM-IWmhxA)
 - July 18, 2025. Updated BD TILEJOINT SEALER with complete specifications from buildingdoctor.com: package size (1kg - ₹103), coverage (50-60 sqft/kg), 5 features, 8 application areas, full description, and video integration (l18RWmJOmHA)
 - July 18, 2025. Updated BD TILEJOINT SEALER PLUS with complete specifications from buildingdoctor.com: package size (1kg - ₹1386), coverage (30-35 sqft/kg), 5 features, 5 application areas, full description, and video integration (rW_r-vXpGoI) 
 - July 18, 2025. Created reusable VideoModal component for all product videos with centralized video configuration

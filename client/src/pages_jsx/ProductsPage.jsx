@@ -478,38 +478,91 @@ export const PRODUCTS = [
   // Waterproofing Category
   {
     id: 19,
-    name: "BD Dampstop XW",
+    name: "BD DAMPSTOP XW",
     description:
-      "Advanced damp-proofing solution for walls and foundations with excellent moisture barrier properties.",
-    price: 1450,
+      "A Rising Damp Proofing for Wet walls",
+    subtitle: "Ready for use, single component rising damp solution for wet walls",
+    price: 680,
     image:
       "https://api-catalog.owncart.shop/uploads/images/Y6BQj_tjwU-BD%20DAMPSTOP%20XW.png",
     rating: 4.7,
     isBestseller: false,
     category: "waterproofing",
+    packageSizes: [
+      { size: "1 Lit", price: 680 },
+      { size: "5 Lit", price: 3100 }
+    ],
+    coverage: "Depend upon the penetration and porosity",
+    features: [
+      "Low viscosity allowing for high penetration",
+      "Non staining",
+      "Reduces water and chloride intrusion",
+      "Increases freeze thaw resistance",
+      "Minimizes efflorescence",
+      "Penetrates deeply into wet brick masonry walls"
+    ],
+    applications: [
+      "Rising Damped brick work Area at Wet condition",
+      "Brick also"
+    ],
+    fullDescription: "BD DAMPSTOP XW is a ready for use, single component, which has been specifically formulated to penetrate into well walls, water repellent coating rising dampness wet walls which permanently stops rising damp.",
   },
   {
     id: 20,
-    name: "Aqua Seal P",
+    name: "Aqua seal P",
     description:
-      "Premium waterproofing coating for exterior walls and surfaces with superior weather resistance.",
-    price: 1680,
+      "A range of epoxy resin based primer for tile surface",
+    subtitle: "High performance primer for BUILDING DOCTOR epoxy range coatings",
+    price: 1320,
     image:
       "https://api-catalog.owncart.shop/uploads/images/FRdbGeLtr7-AQUA%20SEAL%20P%20(1).png",
     rating: 4.8,
     isBestseller: true,
     category: "waterproofing",
+    packageSizes: [
+      { size: "1 kg", price: 1320 }
+    ],
+    coverage: "50-60 sq.ft/Kg depend upon the porosity of substrate",
+    features: [
+      "Used over the tiles in the tank",
+      "This bd aqua seal p is used as a primer for applying the bd aqua seal tank guard"
+    ],
+    applications: [
+      "Water Tank",
+      "Sump",
+      "All type of closed water storage area"
+    ],
+    fullDescription: "BD AQUASEAL P is a clear high performance primer designed to improve Adhesion of various types of BUILDING DOCTOR epoxy range including Coatings, self-smoothing and trowel applied products. The products are Available, a solvent free primer \"BD AQUA SEAL P\"",
   },
   // Admixtures Category
   {
     id: 21,
-    name: "BD Concrete Power",
+    name: "BD CONCRETE POWER",
     description:
-      "High-performance concrete admixture that enhances strength, workability, and durability of concrete mixes.",
-    price: 890,
+      "Integral waterproofing admixture for concrete",
+    subtitle: "Liquid waterproofing admixture for concrete and mortar",
+    price: 207,
+    packageSizes: [
+      { size: "1 lit", price: 207 },
+      { size: "5 lit", price: 838 },
+      { size: "20 lit", price: 2970 }
+    ],
+    coverage: "Add to concrete during mixing at 200 – 250 ml per bag",
+    features: [
+      "Improves durability by minimizing penetration of moisture and water based chemicals",
+      "No additional water into dry or semi-dry mixes",
+      "Reduces efflorescence and pigment leaching from cement mortars",
+      "Chloride free",
+      "Improves plasticity cohesion",
+      "Better compaction and finishing"
+    ],
+    applications: [
+      "CONCRETE POWER is a waterproofing admixture for use in all cement based screeds and concrete"
+    ],
+    fullDescription: "CONCRETE POWER is Liquid waterproofing admixture for concrete and mortar formulated from selected polymers specially designed to reduce water permeability by reducing capillary voids, which will last for the life of the concrete and mortar.",
     image:
       "https://api-catalog.owncart.shop/uploads/images/-yl6fsrrqj-concrete%20power.png",
-    rating: 4.7,
+    rating: 4.6,
     isBestseller: false,
     category: "admixtures",
   },

@@ -122,6 +122,39 @@ export const PRODUCT_VIDEOS = {
       "Low VOC formula for healthy living environment"
     ]
   },
+
+  // BD DAMPSTOP XW Video Configuration
+  "BD DAMPSTOP XW": {
+    videoId: "rUNM-IWmhxA", // YouTube video ID from the provided link
+    benefits: [
+      "Low viscosity allowing for high penetration into wet walls",
+      "Non-staining formula that permanently stops rising damp",
+      "Reduces water and chloride intrusion effectively",
+      "Penetrates deeply into wet brick masonry walls for lasting protection"
+    ]
+  },
+
+  // Aqua seal P Video Configuration
+  "Aqua seal P": {
+    videoId: "82ytb0VrCSY", // YouTube video ID from the provided link
+    benefits: [
+      "High performance primer for BUILDING DOCTOR epoxy range coatings",
+      "Clear, solvent-free primer designed to improve adhesion",
+      "Used over tiles in tanks for optimal coating performance",
+      "Essential primer for applying BD Aqua Seal Tank Guard"
+    ]
+  },
+
+  // BD CONCRETE POWER Video Configuration
+  "BD CONCRETE POWER": {
+    videoId: "5V457Zj8-C4", // YouTube video ID from the provided link
+    benefits: [
+      "Improves durability by minimizing moisture and chemical penetration",
+      "Chloride-free formula with no additional water needed",
+      "Reduces efflorescence and improves plasticity cohesion",
+      "Better compaction and finishing for concrete and mortar"
+    ]
+  },
   
   // BD Termoshield Coat Video Configuration
   "BD Termoshield Coat": {
