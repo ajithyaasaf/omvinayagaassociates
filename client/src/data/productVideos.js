@@ -100,6 +100,17 @@ export const PRODUCT_VIDEOS = {
       "Self-adhesive with good UV resistance and weathering properties"
     ]
   },
+
+  // BD TILEJOINT SEALER PLUS Video Configuration
+  "BD TILEJOINT SEALER PLUS": {
+    videoId: "rW_r-vXpGoI", // YouTube video ID from the provided link
+    benefits: [
+      "Three-component waterproof epoxy system for superior protection",
+      "Very good strength properties with fast setting characteristics",
+      "Non-shrinkage formula ensures permanent joint sealing",
+      "Stain and solvent free for clean, professional finish"
+    ]
+  },
   
   // BD Termoshield Coat Video Configuration
   "BD Termoshield Coat": {

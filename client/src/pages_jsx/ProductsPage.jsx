@@ -274,15 +274,35 @@ export const PRODUCTS = [
   // Tiling Aids Category
   {
     id: 13,
-    name: "BD Tile Joint Sealer Plus",
+    name: "BD TILEJOINT SEALER PLUS",
     description:
-      "Premium grout sealer for tile joints with enhanced water repellency and stain resistance. Ideal for bathroom and kitchen applications.",
+      "Three component, waterproof epoxy tile joint filler",
+    subtitle: "Waterproof epoxy tile joint filler for professional applications",
     price: 1386,
     image:
       "https://api-catalog.owncart.shop/uploads/images/7NG3j6WZ6x-tile%20joint%20Sealer%20PLUS.png",
     rating: 4.7,
     isBestseller: true,
     category: "tiling-aids",
+    packageSizes: [
+      { size: "1 Kg", price: 1386 }
+    ],
+    coverage: "30-35 sqft/kg (joint size 2mm)",
+    features: [
+      "Very good strength properties",
+      "Fast setting",
+      "Non-shrinkage",
+      "Stain and Solvent free",
+      "Ease of installation"
+    ],
+    applications: [
+      "Shopping malls & Showrooms",
+      "Hotels",
+      "Kitchens & Bathrooms",
+      "Swimming pools",
+      "Residential and commercial buildings"
+    ],
+    fullDescription: "Tile joint sealer plus is a three-component system base made with specially formulated epoxy resins and hardeners. It is especially used for ceramic tiles, vetrified tiles and stone applications.",
   },
   {
     id: 14,
