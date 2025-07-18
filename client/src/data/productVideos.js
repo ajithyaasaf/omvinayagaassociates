@@ -68,6 +68,17 @@ export const PRODUCT_VIDEOS = {
     ]
   },
   
+  // BD Seal AC Video Configuration
+  "BD Seal AC": {
+    videoId: "_-YKBUJRE2w", // YouTube video ID from the provided link
+    benefits: [
+      "Single component ready for use application",
+      "10% movement accommodation factor for flexibility",
+      "Excellent adhesion to most building substrates",
+      "UV resistant for long-lasting exterior performance"
+    ]
+  },
+  
   // Add more products as needed
   // "BD Product Name": {
   //   videoId: "YOUTUBE_VIDEO_ID",

@@ -362,13 +362,31 @@ export const PRODUCTS = [
     id: 18,
     name: "BD Seal AC",
     description:
-      "Acrylic-based sealant for interior applications with excellent adhesion to various building materials.",
-    price: 720,
+      "SEAL AC is a one-part, general purpose acrylic sealant which can be used internally or externally. It cures on exposure to the atmosphere to form a flexible sealant. SEAL AC does not need primer when applied to ducts, concrete stone, marble and aluminum surfaces.",
+    subtitle: "General purpose acrylic sealant",
+    price: 235,
     image:
       "https://api-catalog.owncart.shop/uploads/images/Vk4Ozj-5er-SEAL%20AC.png",
     rating: 4.6,
     isBestseller: false,
     category: "sealants",
+    packageSizes: [
+      { size: "1 kg", price: 235 }
+    ],
+    coverage: "40 to 45 Rft / 600ml",
+    features: [
+      "Single component ready for use",
+      "10% movement accommodation factor",
+      "Excellent adhesion to most building substrates",
+      "UV resistant"
+    ],
+    applications: [
+      "Sealing joints in concrete, wood, anodized aluminum",
+      "Blockwork, marble and natural stone applications",
+      "Around windows and door frames",
+      "General building industry sealing applications"
+    ],
+    fullDescription: "SEAL AC is a one-part, general purpose acrylic sealant which can be used internally or externally. It cures on exposure to the atmosphere to form a flexible sealant. SEAL AC does not need primer when applied to ducts, concrete stone, marble and aluminum surfaces.",
   },
   // Waterproofing Category
   {
