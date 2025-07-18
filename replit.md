@@ -110,6 +110,9 @@ Required environment variables:
 
 ## Changelog
 
+- July 18, 2025. Updated BD CRACKSTOP MESH with complete specifications: package sizes (4 inch-₹480, 6 inch-₹610), coverage (3 Rft/Mtr), 6 features, 4 application areas, full description, and video integration (nuSznkwfOgU)
+- July 18, 2025. Updated BD CRACKSTOP FIBRE with complete specifications: package sizes (6mm-₹110, 12mm-₹110), coverage (125gms per bag), 1 feature, 3 application areas, full description, and video integration (NpcpUP8KHi8)
+- July 18, 2025. Updated BD CORROSHIELD RCR with complete specifications: package sizes (300ml-₹250, 500ml-₹400), coverage (30-35 rft/500ml), 2 features, 4 application areas, full description, and video integration (YMxCTdh1XTI)
 - July 18, 2025. Updated BD CORROSHIELD ZR with complete specifications: package size (1kg-₹1294), coverage (40-60 rft/kg), 3 features, 4 application areas, full description, and video integration (RBv56A8DoBQ)
 - July 18, 2025. Updated BD CORROSHIELD CR with complete specifications: package sizes (1L-₹230, 5L-₹878, 20L-₹3400), coverage (200-250ml), 5 features, 4 application areas, full description, and video integration (iGJVecSNoaw)
 - July 18, 2025. Updated BD PLASTER POWER with complete specifications: package sizes (1L-₹215, 5L-₹868, 20L-₹3010), coverage (200-250ml per bag), 6 features, application areas, full description, and video integration (UPmnCIr80Rs)

@@ -54,27 +54,63 @@ export const PRODUCTS = [
   },
   {
     id: 4,
-    name: "BD Crackstop Fibre",
+    name: "BD CRACKSTOP FIBRE",
     description:
-      "Fiber-reinforced crack filling compound for improved tensile strength and crack resistance.",
+      "Fibre Reinforcement for Concrete and Mortar",
+    subtitle: "High performance micro polypropylene fibre for crack controlling",
     price: 110,
     image:
       "https://api-catalog.owncart.shop/uploads/images/3fgFCzVgWX-crackstop%20fibre.png",
     rating: 4.5,
     isBestseller: false,
     category: "crack-filling",
+    packageSizes: [
+      { size: "6 mm", price: 110 },
+      { size: "12 mm", price: 110 }
+    ],
+    coverage: "Add to concrete/mortar during mixing at 125gms per bag of cement",
+    features: [
+      "Used to prevent hairline cracking"
+    ],
+    applications: [
+      "Can be used in plastering",
+      "Concrete", 
+      "Chips Screeding compound etc."
+    ],
+    fullDescription: "BD CRACKSTOP FIBRE is a high performance micro polypropylene fibre developed as a crack controlling additive for cementitious materials. It is available as monofilament 6mm in length for plaster and mortar",
   },
   {
     id: 5,
-    name: "BD Crackstop Mesh",
+    name: "BD CRACKSTOP MESH",
     description:
-      "Specialized crack repair mesh system for large structural cracks, used with other crack stop products.",
+      "Glass fibre mesh for construction joints",
+    subtitle: "Made of glass fiber for high mechanical strength to strengthen gypsum plaster",
     price: 480,
     image:
       "https://api-catalog.owncart.shop/uploads/images/GHTsw1d7l1-crackstop%20mesh.png",
     rating: 4.7,
     isBestseller: false,
     category: "crack-filling",
+    packageSizes: [
+      { size: "4 inch", price: 480 },
+      { size: "6 inch", price: 610 }
+    ],
+    coverage: "3 Rft/Mtr",
+    features: [
+      "Reduces plastic shrinkage cracking",
+      "Improves impact, deformation and abrasion resistance",
+      "Increases lifespan",
+      "Promotes regular bleeding and reduces bleeding water",
+      "Prevents and controls the formation of intrinsic cracks",
+      "In concrete Increases unity and reduces separation"
+    ],
+    applications: [
+      "Construction joints",
+      "Different surface joints",
+      "Minor cracks",
+      "Alternate for chicken mesh"
+    ],
+    fullDescription: "BD CRACKSTOP MESH is made of glass fiber for high mechanical strength Order to strengthen gypsum plaster.",
   },
 
   // Waterproofing Category
@@ -808,15 +844,32 @@ export const PRODUCTS = [
   },
   {
     id: 35,
-    name: "BD Corroshield RCR",
+    name: "BD CORROSHIELD RCR",
     description:
-      "Rapid corrosion repair system for emergency treatment of corroded reinforcement steel.",
-    price: 2150,
+      "Single Component Pre-Packed Rust Convertor/Remover",
+    subtitle: "Triple action chemical for degreasing, destroying rust and phosphate coating",
+    price: 250,
     image:
       "https://api-catalog.owncart.shop/uploads/images/uMPLWkcBOE-corrosheild%20rcr.png",
     rating: 4.8,
     isBestseller: false,
     category: "corrosion-treatments",
+    packageSizes: [
+      { size: "300 ml", price: 250 },
+      { size: "500 ml", price: 400 }
+    ],
+    coverage: "30 - 35 rft/500 ml in single coats, depends upon the rods dia.",
+    features: [
+      "Converts rust in rod to iron",
+      "Suitable for damaged concrete areas"
+    ],
+    applications: [
+      "Column",
+      "Roof", 
+      "Beam",
+      "All types of steel Surfaces"
+    ],
+    fullDescription: "CORROSHIELD RCR is a triple action chemical degreasing nature, Destroys and forms a light phosphate coating on the surface of the metal. This liquid can be applied to corroded reinforcing steel and other steel surfaces",
   },
 
   // Additional Waterproofing Products

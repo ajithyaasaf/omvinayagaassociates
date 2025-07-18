@@ -188,6 +188,39 @@ export const PRODUCT_VIDEOS = {
       "Suitable for columns, roofs, beams and all steel surfaces"
     ]
   },
+
+  // BD CORROSHIELD RCR Video Configuration
+  "BD CORROSHIELD RCR": {
+    videoId: "YMxCTdh1XTI", // YouTube video ID from the provided link
+    benefits: [
+      "Triple action chemical for degreasing and rust conversion",
+      "Converts rust in rods to iron effectively",
+      "Forms light phosphate coating on metal surface",
+      "Suitable for damaged concrete areas and all steel surfaces"
+    ]
+  },
+
+  // BD CRACKSTOP FIBRE Video Configuration
+  "BD CRACKSTOP FIBRE": {
+    videoId: "NpcpUP8KHi8", // YouTube video ID from the provided link
+    benefits: [
+      "High performance micro polypropylene fibre for crack control",
+      "Prevents hairline cracking in concrete and mortar",
+      "Available as monofilament 6mm length for plaster applications",
+      "Can be used in plastering, concrete, and screeding compounds"
+    ]
+  },
+
+  // BD CRACKSTOP MESH Video Configuration
+  "BD CRACKSTOP MESH": {
+    videoId: "nuSznkwfOgU", // YouTube shorts ID from the provided link
+    benefits: [
+      "Glass fiber mesh for high mechanical strength applications",
+      "Reduces plastic shrinkage cracking effectively",
+      "Improves impact, deformation and abrasion resistance",
+      "Increases lifespan and prevents formation of intrinsic cracks"
+    ]
+  },
   
   // BD Termoshield Coat Video Configuration
   "BD Termoshield Coat": {
