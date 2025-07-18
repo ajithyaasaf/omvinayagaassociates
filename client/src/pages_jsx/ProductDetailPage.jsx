@@ -301,6 +301,44 @@ const ProductDetailPage = () => {
                   <strong>Description:</strong> {product.fullDescription || product.description}
                 </p>
                 
+                {product.name.includes('Paint Remover') && (
+                  <>
+                    <h3 className="text-primary mt-6">🏗️ Key Benefits in Renovation Projects</h3>
+                    <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <div className="flex items-start space-x-2">
+                            <div className="w-2 h-2 bg-green-600 rounded-full mt-1.5 flex-shrink-0"></div>
+                            <span className="text-sm text-green-800"><strong>Effective Paint Removal:</strong> Efficiently strips paint from various surfaces, simplifying renovation and reducing labor time.</span>
+                          </div>
+                          <div className="flex items-start space-x-2">
+                            <div className="w-2 h-2 bg-green-600 rounded-full mt-1.5 flex-shrink-0"></div>
+                            <span className="text-sm text-green-800"><strong>Surface Preservation:</strong> Removes paint without damaging the underlying surface, maintaining material integrity.</span>
+                          </div>
+                          <div className="flex items-start space-x-2">
+                            <div className="w-2 h-2 bg-green-600 rounded-full mt-1.5 flex-shrink-0"></div>
+                            <span className="text-sm text-green-800"><strong>Ease of Application:</strong> User-friendly application process that saves time and effort during renovation.</span>
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          <div className="flex items-start space-x-2">
+                            <div className="w-2 h-2 bg-green-600 rounded-full mt-1.5 flex-shrink-0"></div>
+                            <span className="text-sm text-green-800"><strong>Compatibility:</strong> Suitable for different surfaces and paint types, making it versatile for various renovation needs.</span>
+                          </div>
+                          <div className="flex items-start space-x-2">
+                            <div className="w-2 h-2 bg-green-600 rounded-full mt-1.5 flex-shrink-0"></div>
+                            <span className="text-sm text-green-800"><strong>Clean Process:</strong> Leads to cleaner work environments with less mess and fewer hazardous chemicals.</span>
+                          </div>
+                          <div className="flex items-start space-x-2">
+                            <div className="w-2 h-2 bg-green-600 rounded-full mt-1.5 flex-shrink-0"></div>
+                            <span className="text-sm text-green-800"><strong>Surface Preparation:</strong> Prepares surfaces effectively for repainting, ensuring better adhesion and appearance.</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
+                
                 {product.applications && (
                   <>
                     <h3 className="text-primary mt-6">🏗️ Application Areas</h3>
@@ -310,7 +348,7 @@ const ProductDetailPage = () => {
                   </>
                 )}
                 
-                {!product.applications && (
+                {!product.applications && !product.name.includes('Paint Remover') && (
                   <>
                     <h3 className="text-primary mt-6">📋 Application Areas</h3>
                     <p className="bg-blue-50 p-4 rounded-lg border-l-4 border-primary">
@@ -462,39 +500,87 @@ const ProductDetailPage = () => {
 
       {/* Video Popup Modal */}
       {showVideoPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden">
-            <div className="flex justify-between items-center p-4 border-b">
-              <h3 className="text-xl font-bold">How BD Paint Remover 500 Works</h3>
-              <button
-                onClick={() => setShowVideoPopup(false)}
-                className="text-gray-500 hover:text-gray-700 text-2xl"
-              >
-                ×
-              </button>
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl max-w-5xl w-full max-h-[95vh] overflow-hidden shadow-2xl animate-in fade-in-0 zoom-in-95 duration-300">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-primary/10 to-blue-50 p-6 border-b">
+              <div className="flex justify-between items-center">
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-800">How BD Paint Remover 500 Works</h3>
+                  <p className="text-gray-600 mt-1">See the product in action - Professional demonstration</p>
+                </div>
+                <button
+                  onClick={() => setShowVideoPopup(false)}
+                  className="text-gray-400 hover:text-gray-600 hover:bg-white/50 rounded-full p-2 transition-all duration-200"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
             </div>
-            <div className="p-4">
-              <div className="aspect-video">
+            
+            {/* Video Content */}
+            <div className="p-6">
+              <div className="aspect-video bg-gray-900 rounded-xl overflow-hidden shadow-lg">
                 <iframe
                   width="100%"
                   height="100%"
-                  src="https://www.youtube.com/embed/LHJzA-gFEs8?autoplay=1"
+                  src="https://www.youtube.com/embed/LHJzA-gFEs8?autoplay=1&rel=0&modestbranding=1"
                   title="BD Paint Remover 500 Application Video"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                  className="rounded-lg"
+                  className="w-full h-full"
                 ></iframe>
               </div>
-              <div className="mt-4 text-center">
-                <p className="text-gray-600 mb-4">
-                  Watch how BD Paint Remover 500 effectively removes paint coatings with its quick-action formula.
-                </p>
+              
+              {/* Video Description */}
+              <div className="mt-6 bg-gray-50 rounded-xl p-4">
+                <h4 className="font-semibold text-gray-800 mb-2">Key Benefits of BD Paint Remover 500</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                  <div className="flex items-start space-x-2">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-1.5 flex-shrink-0"></div>
+                    <span className="text-gray-700">Effective paint removal without surface damage</span>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-1.5 flex-shrink-0"></div>
+                    <span className="text-gray-700">Reduces labor and time in renovation projects</span>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-1.5 flex-shrink-0"></div>
+                    <span className="text-gray-700">Easy application and user-friendly process</span>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-1.5 flex-shrink-0"></div>
+                    <span className="text-gray-700">Compatible with various surfaces and paint types</span>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Action Buttons */}
+              <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
                 <button
                   onClick={() => setShowVideoPopup(false)}
-                  className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg"
+                  className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center"
                 >
-                  Close Video
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Got it, Close Video
+                </button>
+                <button
+                  onClick={() => {
+                    setShowVideoPopup(false);
+                    // Scroll to contact section or trigger contact form
+                    document.querySelector('a[href="/contact"]')?.click();
+                  }}
+                  className="bg-white border border-primary text-primary hover:bg-primary/5 px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  Get Quote Now
                 </button>
               </div>
             </div>

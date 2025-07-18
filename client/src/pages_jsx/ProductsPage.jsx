@@ -235,7 +235,9 @@ export const PRODUCTS = [
       "Penetrates deeply",
       "Removing several layers at once",
       "Reduced labour",
-      "Saves time"
+      "Saves time",
+      "Surface preservation without damage",
+      "Clean and safe process"
     ],
     applications: [
       "Construction sites",
