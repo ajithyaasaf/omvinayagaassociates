@@ -110,6 +110,8 @@ Required environment variables:
 
 ## Changelog
 
+- July 18, 2025. Updated BD TILEJOINT SEALER with complete specifications from buildingdoctor.com: package size (1kg - ₹103), coverage (50-60 sqft/kg), 5 features, 8 application areas, full description, and video integration (l18RWmJOmHA)
+- July 18, 2025. Updated BD TILEJOINT SEALER PLUS with complete specifications from buildingdoctor.com: package size (1kg - ₹1386), coverage (30-35 sqft/kg), 5 features, 5 application areas, full description, and video integration (rW_r-vXpGoI) 
 - July 18, 2025. Created reusable VideoModal component for all product videos with centralized video configuration
 - July 18, 2025. Added video modal functionality to BD Tile Clean Master product (was missing before)
 - July 18, 2025. Fixed video modal responsiveness issues for mobile devices

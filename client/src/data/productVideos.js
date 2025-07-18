@@ -111,6 +111,17 @@ export const PRODUCT_VIDEOS = {
       "Stain and solvent free for clean, professional finish"
     ]
   },
+
+  // BD TILEJOINT SEALER Video Configuration
+  "BD TILEJOINT SEALER": {
+    videoId: "l18RWmJOmHA", // YouTube video ID from the provided link
+    benefits: [
+      "Easy to use and clean - just mix with water, ready to use",
+      "Polymer modified for crack-free, minimum shrinkage & water resistance",
+      "Suitable for all ceramic, vitrified tiles, granites and natural stones",
+      "Low VOC formula for healthy living environment"
+    ]
+  },
   
   // BD Termoshield Coat Video Configuration
   "BD Termoshield Coat": {

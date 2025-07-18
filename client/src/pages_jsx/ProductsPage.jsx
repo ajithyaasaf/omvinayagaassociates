@@ -306,15 +306,38 @@ export const PRODUCTS = [
   },
   {
     id: 14,
-    name: "BD Tilejoint Sealer",
+    name: "BD TILEJOINT SEALER",
     description:
-      "Standard grout sealer providing protection against water and stains in tile joints.",
+      "Durable, cement-based tile joint filler",
+    subtitle: "Polymer modified, cement-based tile joint filler for all types of tiles",
     price: 103,
     image:
       "https://api-catalog.owncart.shop/uploads/images/TbsyvK-SGw-tile%20joint%20Sealer.png",
     rating: 4.5,
     isBestseller: false,
     category: "tiling-aids",
+    packageSizes: [
+      { size: "1 kg", price: 103 }
+    ],
+    coverage: "50 to 60 sqft/kg (joint size 2mm)",
+    features: [
+      "Easy to use & Clean - just mix with water, ready to use",
+      "Polymer modified - Crack free, minimum shrinkage & water resistance",
+      "Suitable for varied tile and stones – All Ceramic, vitrified tiles, granites etc",
+      "Available in range of attractive colors - Available in more colors",
+      "Low VOC - For healthy living"
+    ],
+    applications: [
+      "Floor and walls, internal & external area",
+      "Domestic applications",
+      "Commercial applications",
+      "Wider tile joints",
+      "All types of ceramic tile, glazed tiles, porcelain tiles",
+      "Vitrified & fully vitrified tiles",
+      "Natural stones",
+      "Glass mosaic tiles"
+    ],
+    fullDescription: "Tile joint sealer is a polymer modified, cement-based tile joint filler used for filling the joints/gap between the tiles. It effectively fills the gaps and gives water resistant, non-dusting tile joints. It is designed for grouting glazed, ceramic, porcelain, vetrified & fully vetrified tiles & natural stones.",
   },
   {
     id: 15,
