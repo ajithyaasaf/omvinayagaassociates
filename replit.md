@@ -110,6 +110,8 @@ Required environment variables:
 
 ## Changelog
 
+- July 18, 2025. Updated BD Tile Clean Master product with complete details matching Building Doctor website exactly
+- July 18, 2025. Added package sizes (500ml - ₹205, 1L - ₹397), coverage area, features, and application areas for BD Tile Clean Master
 - July 18, 2025. Updated BD Paint Remover 500 product with complete details from original Building Doctor website
 - July 18, 2025. Enhanced product detail page with package sizes, coverage area, features, and application areas
 - July 18, 2025. Added interactive tabs functionality for product specifications and application guides

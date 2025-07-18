@@ -202,13 +202,34 @@ export const PRODUCTS = [
     id: 15,
     name: "BD Tile Clean Master",
     description:
-      "Powerful tile and grout cleaner that removes dirt, stains, and mold from tile surfaces. Restores original appearance.",
+      "A powerful, heavy duty, acid - based cleaner for ceramic tiled floors and walls. BD TILE CLEAN MASTER is designed for removal of cement film residues, efflorescence and most oxide stains.",
+    subtitle: "Heavy Duty Tile Cleaner",
     price: 397,
     image:
       "https://api-catalog.owncart.shop/uploads/images/kcNccGXKvG-CLEANER.jpg",
     rating: 4.6,
     isBestseller: false,
     category: "tiling-aids",
+    packageSizes: [
+      { size: "500 ml", price: 205 },
+      { size: "1 lit", price: 397 }
+    ],
+    coverage: "30-35 sqft in 500ml, depending upon the surface conditions",
+    features: [
+      "Remove Tough & difficult Stains",
+      "Doesn't affect color & shine of tile",
+      "Gives the appearance of a brand new floor",
+      "No damage to tiles & Grouts"
+    ],
+    applications: [
+      "Interior tiled floors",
+      "Exterior tiled floors", 
+      "Ceramic tiled walls",
+      "Cement film residue removal",
+      "Efflorescence treatment",
+      "Oxide stain removal"
+    ],
+    fullDescription: "A powerful, heavy duty, acid - based cleaner for ceramic tiled floors and walls. BD TILE CLEAN MASTER is designed for removal of cement film residues, efflorescence and most oxide stains. It may also be used as general purpose cleaner on other acid resistant surface.",
   },
 
   // Special Products Category
