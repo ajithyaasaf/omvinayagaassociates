@@ -101,6 +101,17 @@ export const PRODUCT_VIDEOS = {
     ]
   },
   
+  // BD Termoshield Coat Video Configuration
+  "BD Termoshield Coat": {
+    videoId: "Jg_RWndFmeM", // YouTube shorts ID from the provided link
+    benefits: [
+      "Excellent weathering properties with UV resistance",
+      "Forms flexible film with excellent bond strength",
+      "Reduces surface temperature by 15-20% of ambient air temperature",
+      "Effective waterproofing with thermal insulation properties"
+    ]
+  },
+  
   // Add more products as needed
   // "BD Product Name": {
   //   videoId: "YOUTUBE_VIDEO_ID",

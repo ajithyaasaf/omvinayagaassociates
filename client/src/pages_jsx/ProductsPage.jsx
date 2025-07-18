@@ -108,7 +108,8 @@ export const PRODUCTS = [
     id: 8,
     name: "BD Termoshield Coat",
     description:
-      "Advanced thermal insulation coating that reduces indoor temperature by reflecting solar radiation. Energy-efficient solution for roofs and exterior walls.",
+      "Thermo Shield Coatis a ready to use, single component water based consist Of special polymer coating with extended polymeric chain to act as a thermal Insulation and waterproofing.",
+    subtitle: "Flexible thermal insulation and waterproof coating for roofs and walls",
     price: 3340,
     image:
       "https://api-catalog.owncart.shop/uploads/images/xUUJUUuOEr-Thermo%20Sheild%20Coat.png",
@@ -116,6 +117,27 @@ export const PRODUCTS = [
     isBestseller: false,
     isNew: true,
     category: "thermal-insulation",
+    packageSizes: [
+      { size: "5 Lit", price: 3340 }
+    ],
+    coverage: "25 to 28sq.ft / per kg in two coats, depends upon the porosity of substrates",
+    features: [
+      "Excellent weathering properties",
+      "Excellent bond",
+      "Resistance to UV rays",
+      "Forms flexible film",
+      "Nonflammable",
+      "Abrasion resistant to light foot traffic",
+      "Effective waterproofing properties",
+      "Reduce surfaces temperature in the range of 15 - 20% of ambient air Temperature"
+    ],
+    applications: [
+      "Sloped roofs and vertical walls",
+      "All types of concrete and masonry surfaces",
+      "Thermal insulation applications",
+      "Waterproof coating applications"
+    ],
+    fullDescription: "Thermo Shield Coatis a ready to use, single component water based consist Of special polymer coating with extended polymeric chain to act as a thermal Insulation and waterproofing.",
   },
 
   // Tapes Category
