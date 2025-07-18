@@ -15,7 +15,7 @@ export const PRODUCT_VIDEOS = {
   
   // Tile Clean Master Video Configuration
   "BD Tile Clean Master": {
-    videoId: "dQw4w9WgXcQ", // Replace with actual video ID
+    videoId: "uXBlYJAL9xo", // YouTube shorts ID from the provided link
     benefits: [
       "Removes tough stains and cement residue effectively",
       "Preserves tile color and shine during cleaning",
