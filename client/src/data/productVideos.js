@@ -155,6 +155,39 @@ export const PRODUCT_VIDEOS = {
       "Better compaction and finishing for concrete and mortar"
     ]
   },
+
+  // BD PLASTER POWER Video Configuration
+  "BD PLASTER POWER": {
+    videoId: "UPmnCIr80Rs", // YouTube video ID from the provided link
+    benefits: [
+      "Greatly improves cohesion, reduces segregation and bleeding",
+      "Improves workability and plasticity of cement mortar",
+      "Exceptionally effective with aggregates with high fine content",
+      "Can be used for waterproofing, M-Sand and Fly ash applications"
+    ]
+  },
+
+  // BD CORROSHIELD CR Video Configuration
+  "BD CORROSHIELD CR": {
+    videoId: "iGJVecSNoaw", // YouTube video ID from the provided link
+    benefits: [
+      "Gives 6 times better durability compared to normal cement mortar",
+      "Protects against harmful effects of carbonation and chloride corrosion",
+      "Does not change physical properties of concrete mix",
+      "Safe to handle and cost effective protection solution"
+    ]
+  },
+
+  // BD CORROSHIELD ZR Video Configuration
+  "BD CORROSHIELD ZR": {
+    videoId: "RBv56A8DoBQ", // YouTube video ID from the provided link
+    benefits: [
+      "Two-component epoxy-based active anti-corrosion coating",
+      "Protects iron rods from rust without affecting concrete bond",
+      "Essential protection for coastal and marine constructions",
+      "Suitable for columns, roofs, beams and all steel surfaces"
+    ]
+  },
   
   // BD Termoshield Coat Video Configuration
   "BD Termoshield Coat": {

@@ -568,28 +568,68 @@ export const PRODUCTS = [
   },
   {
     id: 22,
-    name: "BD Plaster Power",
+    name: "BD PLASTER POWER",
     description:
-      "Advanced plastering admixture that improves workability, bond strength, and crack resistance in plaster applications.",
-    price: 720,
+      "Air Entraining Plasticizer for Cement Mortar",
+    subtitle: "Liquid air entraining admixture with plasticizing properties",
+    price: 215,
     image:
       "https://api-catalog.owncart.shop/uploads/images/sAsplyu-l7-plaster%20power.png",
     rating: 4.6,
     isBestseller: false,
     category: "admixtures",
+    packageSizes: [
+      { size: "1 Lit", price: 215 },
+      { size: "5 Lit", price: 868 },
+      { size: "20 Lit", price: 3010 }
+    ],
+    coverage: "Add to mortar during mixing at 200 – 250 ml per bag of cement",
+    features: [
+      "Greatly improves cohesion, reduces segregation and bleeding",
+      "Improves workability and plasticity",
+      "Exceptionally effective with aggregates with high fine content",
+      "Suitable for mixes containing PFA, GGBFS and micro silica, Chloride free",
+      "Can also be used for waterproofing Purpose",
+      "Can also be used for M-Sand and Fly ash"
+    ],
+    applications: [
+      "PLASTER POWER is a waterproofing admixture for use in all cement based mortars"
+    ],
+    fullDescription: "PLASTER POWER is a liquid air entraining admixture with plasticizing properties specially designed to create microscopic air bubbles that are uniformly distributed in the cement mortar mix. It also permits reductions in the free water content to be made. PLASTER POWER is formulated from selected water reducer polymers and synthetic surfactants.",
   },
   // Corrosion Treatments Category
   {
     id: 23,
-    name: "BD Corroshield CR",
+    name: "BD CORROSHIELD CR",
     description:
-      "Advanced corrosion protection system for steel reinforcement in concrete structures exposed to chloride attack.",
-    price: 1350,
+      "Corrosion inhibitor admixture for concrete & plaster",
+    subtitle: "Liquid concrete admixture for corrosion protection",
+    price: 230,
     image:
       "https://api-catalog.owncart.shop/uploads/images/PyK8cch1iE-corrosheild%20cr.png",
     rating: 4.8,
     isBestseller: false,
     category: "corrosion-treatments",
+    packageSizes: [
+      { size: "1 lit", price: 230 },
+      { size: "5 lit", price: 878 },
+      { size: "20 lit", price: 3400 }
+    ],
+    coverage: "Add to (concrete/mortar) during mixing at 200 – 250 ml",
+    features: [
+      "BD CORROSHIELD CR gives 6 times better durability of concrete compared to normal cement mortar",
+      "Protects against the harmful effects of corrosion",
+      "Does not change physical properties of concrete mix (air entrainment, set time and strength)",
+      "Safe to handle",
+      "Cost effective"
+    ],
+    applications: [
+      "All Commercial And Domestic Reinforced Concrete Structures",
+      "Reinforced Marine Concrete Structures And Concrete Piers",
+      "Pillars",
+      "Pipe And Utility Poles"
+    ],
+    fullDescription: "CORROSHIELD CR is a liquid concrete admixture; Corrosion induced by carbonation, chloride and atmospheric attack can be prevented using CORROSHIELD CR. When incorporated into the concrete mix, CORROSHIELD CR instantly forms a thin and stable protective layer on the metal.",
   },
   {
     id: 24,
@@ -739,15 +779,32 @@ export const PRODUCTS = [
   // Additional Corrosion Treatment Products
   {
     id: 34,
-    name: "BD Corroshield ZR",
+    name: "BD CORROSHIELD ZR",
     description:
-      "Zinc-rich corrosion protection primer for steel reinforcement with cathodic protection properties.",
-    price: 1580,
+      "Two component epoxy based Anti-corrosive coating for steel",
+    subtitle: "Epoxy solvent-based, zinc-rich coating for active anti-corrosion protection",
+    price: 1294,
     image:
       "https://api-catalog.owncart.shop/uploads/images/rJVJCKnNSg-corrosheild%20zr.png",
     rating: 4.6,
     isBestseller: false,
     category: "corrosion-treatments",
+    packageSizes: [
+      { size: "1 kg", price: 1294 }
+    ],
+    coverage: "40 - 60 rft/kg in single coats, depends upon the rods dia.",
+    features: [
+      "Protects iron rod from rust",
+      "It does not affect concrete mix and iron rod bond",
+      "Necessary for coastal constructions"
+    ],
+    applications: [
+      "Column",
+      "Roof",
+      "Beam",
+      "All types of steel surface"
+    ],
+    fullDescription: "Corroshield ZR is a two-component, epoxy solvent-based, zinc-rich coating, Designed to provide an active anti-corrosion coating to steel reinforcement, Steel structure, tanks, pipes, plant components etc.",
   },
   {
     id: 35,
