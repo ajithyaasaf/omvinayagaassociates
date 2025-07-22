@@ -35,7 +35,7 @@ const Cta = () => {
           </div>
           <div className="mt-8">
             <a
-              href={CONTACT.social.whatsapp}
+              href={CONTACT.whatsapp}
               className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md font-medium transition"
               target="_blank"
               rel="noopener noreferrer"
