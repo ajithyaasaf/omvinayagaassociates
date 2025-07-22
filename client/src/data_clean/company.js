@@ -8,7 +8,7 @@ export const CONTACT = {
   email: "omvinayagaassociates@gmail.com",
   director: "Er. Ramesh Jeyaraman",
   workingHours: "Monday to Saturday from 09.30 am to 07.30 pm",
-  whatsapp: "https://wa.link/iu1g4q"
+  whatsapp: "https://wa.me/917873732323"
 };
 
 export const SOCIAL_MEDIA = {

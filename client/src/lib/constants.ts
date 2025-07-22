@@ -32,23 +32,24 @@ export const DIRECTORS = [
     name: "Dr. S.K. Kamaleeswari",
     title: "Director",
     credentials: "M.Sc, M.Phil.",
-    description: "Passionate entrepreneur with extensive experience in developing and launching new business ventures. An accomplished educationist and motivational speaker with over 15 years of teaching experience across India and Saudi Arabia.",
+    description:
+      "Passionate entrepreneur with extensive experience in developing and launching new business ventures. An accomplished educationist and motivational speaker with over 15 years of teaching experience across India and Saudi Arabia.",
     image: "dr_kamaleeswari.jpg",
     education: [
       "AVC College Mayiladuthurai (Gold Medalist) - UG",
       "J.J College - Micro Biology - PG",
-      "Bharathidasan University - Trichy - M.Phil - Bio-technology"
+      "Bharathidasan University - Trichy - M.Phil - Bio-technology",
     ],
     experience: [
       "Teaching field - Both India and Saudi Arabia (CBSE & ICSE) - 15+ Years",
       "President of MEWE (Madurai Empowered Women Entrepreneur) Forum",
-      "Motivational Speaker and Business Consultant"
+      "Motivational Speaker and Business Consultant",
     ],
     awards: [
       "The Best Emerging Women Entrepreneur",
       "The Best Product Presentation Award",
       "The Best Business Posting Award",
-      "Excellence in Building Restoration Water Proofing - Madurai City Iconic Award"
+      "Excellence in Building Restoration Water Proofing - Madurai City Iconic Award",
     ],
     phone: "9629929700",
     email: "skkamaleswari@gmail.com",
@@ -56,38 +57,39 @@ export const DIRECTORS = [
       "Business Development",
       "Entrepreneurship",
       "Team Leadership",
-      "Strategic Planning"
-    ]
+      "Strategic Planning",
+    ],
   },
   {
     id: 2,
     name: "Er. Ramesh Jeyaraman B.E",
     title: "Director",
     credentials: "B.E (Civil Engineering)",
-    description: "Civil engineering expert with extensive experience in building repair and waterproofing solutions. Leader of OM Vinayaga Associates since its inception with over 15 years of hands-on experience in the construction industry.",
+    description:
+      "Civil engineering expert with extensive experience in building repair and waterproofing solutions. Leader of OM Vinayaga Associates since its inception with over 15 years of hands-on experience in the construction industry.",
     image: "jeyaram.jpg",
     education: [
       "Bachelor of Engineering in Civil Engineering",
       "Certified Building Doctor Franchise Owner",
-      "Continuous training in latest industry innovations"
+      "Continuous training in latest industry innovations",
     ],
     experience: [
       "15+ years in construction and building repair industry",
       "Successfully led over 1000+ projects throughout Tamil Nadu",
-      "Authorized Building Doctor Franchise Owner"
+      "Authorized Building Doctor Franchise Owner",
     ],
     awards: [
       "Excellence in Building Repair Solutions",
       "Outstanding Customer Service Award",
-      "Best Franchise Performance Award"
+      "Best Franchise Performance Award",
     ],
     specialties: [
       "Waterproofing Solutions",
       "Structural Repairs",
       "Building Diagnostics",
-      "Project Management"
-    ]
-  }
+      "Project Management",
+    ],
+  },
 ];
 
 // Service Categories

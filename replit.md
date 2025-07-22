@@ -110,6 +110,7 @@ Required environment variables:
 
 ## Changelog
 
+- July 22, 2025. Successfully completed migration from Replit Agent to Replit environment with all dependencies working and updated WhatsApp contact number to 7873732323 for both CTA section and floating WhatsApp button
 - July 18, 2025. Removed "Download Specifications" button from product detail page and fixed DOM nesting warnings with Link components
 - July 18, 2025. Successfully completed migration from Replit Agent to Replit environment with all dependencies working
 - July 18, 2025. Updated BD LEAKSHIELD WHITE with complete specifications: package sizes (1kg-₹645, 5kg-₹2980, 25kg-₹10077), coverage (25-30 sq.ft/kg), 9 features, 3 application areas, full description, and video integration (UWlS2fC592U)
