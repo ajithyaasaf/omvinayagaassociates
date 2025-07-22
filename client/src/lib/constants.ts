@@ -21,7 +21,7 @@ export const CONTACT = {
     facebook: "BuildingDoctor Madurai",
     twitter: "@BuildingDoctor3",
     instagram: "building__doctor",
-    whatsapp: "https://wa.link/iu1g4q",
+    whatsapp: "https://wa.me/917873732323",
   },
 };
 
