@@ -292,6 +292,51 @@ export const TESTIMONIALS = [
       "We engaged OM Vinayaga Associates for structural repairs and waterproofing work at our school building. The team was extremely professional, completed the project on time, and provided excellent after-service support. The results have been long-lasting.",
     hasVideo: true,
   },
+  {
+    id: 4,
+    name: "Kiran",
+    location: "Homeowner, Madambakkam",
+    rating: 5,
+    content:
+      "Building Doctor resolved our longstanding leakage issues quickly and efficiently. Their team was professional and provided excellent service from start to finish. The quality of workmanship exceeded our expectations.",
+    hasVideo: true,
+  },
+  {
+    id: 5,
+    name: "Paari",
+    location: "Property Owner, Tambaram-Mudichur",
+    rating: 4.8,
+    content:
+      "I was impressed with Building Doctor's innovative solutions for my old property. Their expertise in waterproofing helped save my building from further deterioration. Highly recommend their services!",
+    hasVideo: true,
+  },
+  {
+    id: 6,
+    name: "Krishnamoorthy",
+    location: "Resident, KK Nagar",
+    rating: 5,
+    content:
+      "The quality of materials and technical knowledge of the Building Doctor team is exceptional. They resolved our complex structural issues with minimal disruption to our daily routine.",
+    hasVideo: true,
+  },
+  {
+    id: 7,
+    name: "Priya Sharma",
+    location: "Villa Owner, Thiruparankundram",
+    rating: 4.7,
+    content:
+      "Excellent waterproofing service for our villa's basement. The team completed the work within the promised timeline and the results have been outstanding. No water seepage issues since then.",
+    hasVideo: false,
+  },
+  {
+    id: 8,
+    name: "Murugan Industries",
+    location: "Factory Owner, Sivaganga Road",
+    rating: 5,
+    content:
+      "OM Vinayaga Associates provided comprehensive waterproofing solutions for our industrial facility. Their professional approach and quality materials ensured long-lasting protection for our warehouse.",
+    hasVideo: true,
+  },
 ];
 
 // FAQ Questions
