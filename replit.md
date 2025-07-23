@@ -110,6 +110,7 @@ Required environment variables:
 
 ## Changelog
 
+- July 23, 2025. Fixed application startup issue caused by restricted file permissions on Logo.png asset, resolved import errors that prevented the development server from starting
 - July 22, 2025. Successfully completed migration from Replit Agent to Replit environment with all dependencies working and updated WhatsApp contact number to 7873732323 for both CTA section and floating WhatsApp button
 - July 22, 2025. Updated WhatsApp contact number to 7873732323 across all components including floating WhatsApp button and CTA section
 - July 18, 2025. Removed "Download Specifications" button from product detail page and fixed DOM nesting warnings with Link components
