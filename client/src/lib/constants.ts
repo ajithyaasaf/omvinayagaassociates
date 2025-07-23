@@ -267,75 +267,53 @@ export const FEATURED_PRODUCTS = [
 export const TESTIMONIALS = [
   {
     id: 1,
-    name: "Rajesh Kumar",
-    location: "Homeowner, SS Colony",
+    name: "Mr. Kiran",
+    location: "Professor, Madambakkam",
     rating: 5,
     content:
-      "I had persistent leakage issues in my terrace for years. The team at OM Vinayaga Associates provided a comprehensive waterproofing solution that completely solved the problem. Highly professional service and excellent results!",
+      "My 25-year-old house had multiple structural issues - water seepage through the roof, dampness in the walls, and cracks falling from the ceiling. Building Doctor's comprehensive solutions completely transformed my home. Their expert team identified the root causes and provided lasting repairs that have eliminated all these problems.",
     hasVideo: true,
+    videoUrl: "https://youtu.be/0UHX04UvguE?si=Yi6LhNQP4-tG6AwW",
   },
   {
     id: 2,
-    name: "Meenakshi Sundaram",
-    location: "Apartment Association, Anna Nagar",
+    name: "Mr. Krishna Moorthy",
+    location: "Senior Executive, Indian Overseas Bank, KK Nagar",
     rating: 5,
     content:
-      "We hired OM Vinayaga Associates for waterproofing all terraces in our apartment complex. Their work was exceptional - no more complaints from residents about leakages even during heavy monsoons. Their technical expertise and quality of products are outstanding.",
+      "As a banking professional, I understand the importance of reliable solutions. When wall deterioration issues threatened my property's structural integrity, Building Doctor provided expert analysis and effective remediation. Their systematic approach and quality materials restored my walls to perfect condition, giving me complete peace of mind.",
     hasVideo: true,
+    videoUrl: "https://youtu.be/iRz9kVHwsqE?si=KBZPvFg3l-8dOcPk",
   },
   {
     id: 3,
-    name: "Dr. Lakshmi Narayanan",
-    location: "School Principal, Madurai",
-    rating: 4.5,
+    name: "Mrs. Flora Nalini",
+    location: "Ramalinga Nagar, Trichy",
+    rating: 5,
     content:
-      "We engaged OM Vinayaga Associates for structural repairs and waterproofing work at our school building. The team was extremely professional, completed the project on time, and provided excellent after-service support. The results have been long-lasting.",
+      "We had persistent water leakage issues that were causing significant damage to our home. Multiple contractors suggested expensive solutions that didn't work. Building Doctor's innovative approach using their specialized products completely solved our leakage problems. The results have been outstanding and long-lasting.",
     hasVideo: true,
+    videoUrl: "https://youtu.be/9uVRbT57P80?si=iO1HNy3TrAKKpAqi",
   },
   {
     id: 4,
-    name: "Kiran",
-    location: "Homeowner, Madambakkam",
+    name: "Mr. Madanagopal",
+    location: "Chrompet",
     rating: 5,
     content:
-      "Building Doctor resolved our longstanding leakage issues quickly and efficiently. Their team was professional and provided excellent service from start to finish. The quality of workmanship exceeded our expectations.",
+      "When water leakage damaged our property, everyone told us to demolish and rebuild the affected walls. Building Doctor provided an innovative solution that fixed the problem without any demolition. Their expertise saved us significant time, money, and hassle while delivering superior results.",
     hasVideo: true,
+    videoUrl: "https://youtu.be/AOzIal0FnkM?si=CxfdhSpMYcQxF3Va",
   },
   {
     id: 5,
-    name: "Paari",
-    location: "Property Owner, Tambaram-Mudichur",
-    rating: 4.8,
-    content:
-      "I was impressed with Building Doctor's innovative solutions for my old property. Their expertise in waterproofing helped save my building from further deterioration. Highly recommend their services!",
-    hasVideo: true,
-  },
-  {
-    id: 6,
-    name: "Krishnamoorthy",
-    location: "Resident, KK Nagar",
+    name: "Mr. Jagadeesh",
+    location: "Plumbing & Electricals",
     rating: 5,
     content:
-      "The quality of materials and technical knowledge of the Building Doctor team is exceptional. They resolved our complex structural issues with minimal disruption to our daily routine.",
+      "As a professional in the plumbing and electrical field, I've seen many waterproofing solutions fail over time. Building Doctor's products and application techniques are exceptional. Their systematic approach to addressing structural issues has impressed me greatly, and I now recommend their services to all my clients.",
     hasVideo: true,
-  },
-  {
-    id: 7,
-    name: "Priya Sharma",
-    location: "Villa Owner, Thiruparankundram",
-    rating: 4.7,
-    content:
-      "Excellent waterproofing service for our villa's basement. The team completed the work within the promised timeline and the results have been outstanding. No water seepage issues since then.",
-    hasVideo: false,
-  },
-  {
-    id: 8,
-    name: "Murugan Industries",
-    location: "Factory Owner, Sivaganga Road",
-    rating: 5,
-    content:
-      "OM Vinayaga Associates provided comprehensive waterproofing solutions for our industrial facility. Their professional approach and quality materials ensured long-lasting protection for our warehouse.",
-    hasVideo: true,
+    videoUrl: "https://youtu.be/mw1FsYqYcUI?si=7HwRvdPUeKkPBHKH",
   },
 ];
 

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { TESTIMONIALS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight, User, Play } from "lucide-react";
+import TestimonialVideoModal from "../TestimonialVideoModal";
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -9,6 +10,8 @@ const Testimonials = () => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [selectedVideoUrl, setSelectedVideoUrl] = useState(null);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const sliderRef = useRef(null);
   const autoPlayRef = useRef(null);
 
@@ -110,6 +113,17 @@ const Testimonials = () => {
     }
   };
 
+  const handleVideoClick = (videoUrl) => {
+    setSelectedVideoUrl(videoUrl);
+    setIsVideoModalOpen(true);
+    setIsAutoPlay(false); // Stop auto-play when video is opened
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoModalOpen(false);
+    setSelectedVideoUrl(null);
+  };
+
   return (
     <section
       id="testimonials"
@@ -189,7 +203,18 @@ const Testimonials = () => {
                   </p>
                   
                   {testimonial.hasVideo && (
-                    <div className="text-primary font-medium text-sm cursor-pointer hover:text-primary/80 transition-colors flex items-center">
+                    <div 
+                      className="text-primary font-medium text-sm cursor-pointer hover:text-primary/80 transition-colors flex items-center"
+                      onClick={() => handleVideoClick(testimonial.videoUrl)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          handleVideoClick(testimonial.videoUrl);
+                        }
+                      }}
+                    >
                       <Play size={16} className="mr-2" />
                       Watch Video Testimonial
                     </div>
@@ -250,6 +275,13 @@ const Testimonials = () => {
             Swipe left or right to see more testimonials
           </p>
         </div>
+
+        {/* Video Modal */}
+        <TestimonialVideoModal 
+          isOpen={isVideoModalOpen}
+          onClose={closeVideoModal}
+          videoUrl={selectedVideoUrl}
+        />
       </div>
     </section>
   );
