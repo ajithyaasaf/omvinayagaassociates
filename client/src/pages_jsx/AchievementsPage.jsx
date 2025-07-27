@@ -281,16 +281,18 @@ const AchievementsPage = () => {
                     <div className="max-w-4xl mx-auto">
                       {/* Award Images - Single Combined Display */}
                       {award.images && (
-                        <div className="flex">
+                        <div className="flex overflow-hidden">
                           <img
                             src={award.images[0]}
                             alt="Excellence Award - Part 1"
-                            className="w-1/2 h-auto object-contain"
+                            className="w-1/2 h-auto object-cover"
+                            style={{ objectPosition: 'top', maxHeight: '400px' }}
                           />
                           <img
                             src={award.images[1]}
                             alt="Excellence Award - Part 2"
-                            className="w-1/2 h-auto object-contain"
+                            className="w-1/2 h-auto object-cover"
+                            style={{ objectPosition: 'top', maxHeight: '400px' }}
                           />
                         </div>
                       )}
