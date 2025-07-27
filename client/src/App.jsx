@@ -19,6 +19,7 @@ const ProductsPage = lazy(() => import("./pages_jsx/ProductsPage.jsx"));
 const ProductDetailPage = lazy(() => import("./pages_jsx/ProductDetailPage.jsx"));
 const AboutPage = lazy(() => import("./pages_jsx/AboutPage.jsx"));
 const ContactPage = lazy(() => import("./pages_jsx/ContactPage.jsx"));
+const AchievementsPage = lazy(() => import("./pages_jsx/AchievementsPage.jsx"));
 const AdminPage = lazy(() => import("./pages_jsx/AdminPage.jsx"));
 
 function App() {
@@ -114,6 +115,11 @@ function App() {
             <Route path="/contact">
               <PageWrapper>
                 <ContactPage />
+              </PageWrapper>
+            </Route>
+            <Route path="/achievements">
+              <PageWrapper>
+                <AchievementsPage />
               </PageWrapper>
             </Route>
             <Route path="/admin">

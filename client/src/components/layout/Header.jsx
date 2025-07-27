@@ -9,6 +9,7 @@ import {
   Users,
   Phone,
   Lock,
+  Trophy,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { COMPANY_TITLE } from "../../data/company";
@@ -70,6 +71,16 @@ const Header = () => {
       path: "/services",
       icon: (
         <Users
+          size={16}
+          className="text-primary group-hover:text-secondary transition-colors"
+        />
+      ),
+    },
+    {
+      name: "Achievements",
+      path: "/achievements",
+      icon: (
+        <Trophy
           size={16}
           className="text-primary group-hover:text-secondary transition-colors"
         />
