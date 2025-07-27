@@ -268,73 +268,34 @@ const AchievementsPage = () => {
               >
                 {/* Featured Excellence Award */}
                 {majorAwards.filter(award => award.featured).map((award, index) => (
-                  <motion.div key={index} variants={itemVariants} className="mb-12">
-                    <div className="text-center mb-8">
-                      <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                        🏆 Featured Achievement
+                  <div key={index} className="mb-12">
+                    <div className="text-center mb-6">
+                      <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                        Excellence in Building Restoration & Water Proofing 2024
                       </h2>
-                      <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Our most prestigious recognition for outstanding excellence in the construction industry
+                      <p className="text-gray-600">
+                        Industry Recognition for Technical Excellence
                       </p>
                     </div>
                     
-                    <Card className={`${award.color} hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 max-w-6xl mx-auto`}>
-                      <CardHeader className="text-center pb-4">
-                        <div className="flex justify-center mb-6">
-                          <div className="bg-white p-4 rounded-full shadow-lg">
-                            {award.icon}
-                          </div>
+                    <div className="max-w-4xl mx-auto">
+                      {/* Award Images - Single Combined Display */}
+                      {award.images && (
+                        <div className="flex">
+                          <img
+                            src={award.images[0]}
+                            alt="Excellence Award - Part 1"
+                            className="w-1/2 h-auto object-contain"
+                          />
+                          <img
+                            src={award.images[1]}
+                            alt="Excellence Award - Part 2"
+                            className="w-1/2 h-auto object-contain"
+                          />
                         </div>
-                        <CardTitle className="text-3xl font-bold text-gray-900 mb-2">
-                          {award.title}
-                        </CardTitle>
-                        <CardDescription className="text-xl text-gray-700 font-medium">
-                          {award.organization} • {award.year}
-                        </CardDescription>
-                        <Badge variant="outline" className="bg-white/70 text-lg px-4 py-2 mt-4">
-                          {award.category}
-                        </Badge>
-                      </CardHeader>
-                      
-                      <CardContent>
-                        <p className="text-gray-800 text-center text-lg leading-relaxed mb-8 max-w-3xl mx-auto">
-                          {award.description}
-                        </p>
-                        
-                        {/* Award Images Gallery */}
-                        {award.images && (
-                          <div className="flex flex-col md:flex-row mt-8 rounded-xl overflow-hidden shadow-lg">
-                            {award.images.map((image, imgIndex) => (
-                              <Dialog key={imgIndex}>
-                                <DialogTrigger asChild>
-                                  <div className="cursor-pointer flex-1">
-                                    <img
-                                      src={image}
-                                      alt={`${award.title} - Image ${imgIndex + 1}`}
-                                      className="w-full h-80 md:h-96 object-cover"
-                                    />
-                                  </div>
-                                </DialogTrigger>
-                                <DialogContent className="max-w-4xl max-h-[90vh] p-0">
-                                  <img
-                                    src={image}
-                                    alt={`${award.title} - Image ${imgIndex + 1}`}
-                                    className="w-full h-full object-contain rounded-lg"
-                                  />
-                                </DialogContent>
-                              </Dialog>
-                            ))}
-                          </div>
-                        )}
-                        
-                        <div className="text-center mt-8">
-                          <p className="text-sm text-gray-600 italic">
-                            Click on images to view in full size
-                          </p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
+                      )}
+                    </div>
+                  </div>
                 ))}
 
                 {/* Other Major Awards */}
