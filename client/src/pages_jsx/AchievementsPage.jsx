@@ -8,6 +8,7 @@ import { Award, Trophy, Star, PlayCircle, GraduationCap, Users, Megaphone, Heart
 // Import award images
 import excellenceAward1 from "@/assets/awards/excellence-award-1.png";
 import excellenceAward2 from "@/assets/awards/excellence-award-2.png";
+import womenEntrepreneurAward from "@/assets/awards/women-entrepreneur-award.png";
 
 const AchievementsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("awards");
@@ -31,7 +32,9 @@ const AchievementsPage = () => {
       year: "2025",
       category: "Leadership",
       icon: <Award className="w-8 h-8 text-purple-500" />,
-      color: "bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200"
+      color: "bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200",
+      image: womenEntrepreneurAward,
+      featured: true
     },
     {
       title: "Excellence in Building Restoration & Water Proofing",
@@ -266,33 +269,50 @@ const AchievementsPage = () => {
                 animate="visible"
                 className="space-y-8"
               >
-                {/* Featured Excellence Award */}
+                {/* Featured Awards */}
                 {majorAwards.filter(award => award.featured).map((award, index) => (
                   <div key={index} className="mb-8">
                     <div className="text-center mb-6">
                       <h2 className="text-3xl font-bold text-gray-900 mb-2">
-                        Excellence in Building Restoration & Water Proofing 2024
+                        {award.title}
                       </h2>
+                      {award.recipient && (
+                        <p className="text-xl font-semibold text-gray-700 mb-1">
+                          {award.recipient}
+                        </p>
+                      )}
                       <p className="text-gray-600">
-                        Industry Recognition for Technical Excellence
+                        {award.organization} • {award.year}
                       </p>
                     </div>
                     
                     <div className="max-w-4xl mx-auto">
-                      {/* Award Images - Single Combined Display */}
+                      {/* Multiple Award Images - Combined Display */}
                       {award.images && (
                         <div className="flex overflow-hidden">
                           <img
                             src={award.images[0]}
-                            alt="Excellence Award - Part 1"
+                            alt={`${award.title} - Part 1`}
                             className="w-1/2 h-auto object-cover"
                             style={{ objectPosition: 'top', maxHeight: '400px' }}
                           />
                           <img
                             src={award.images[1]}
-                            alt="Excellence Award - Part 2"
+                            alt={`${award.title} - Part 2`}
                             className="w-1/2 h-auto object-cover"
                             style={{ objectPosition: 'top', maxHeight: '400px' }}
+                          />
+                        </div>
+                      )}
+                      
+                      {/* Single Award Image */}
+                      {award.image && !award.images && (
+                        <div className="flex justify-center overflow-hidden">
+                          <img
+                            src={award.image}
+                            alt={award.title}
+                            className="max-w-md h-auto object-cover rounded-lg"
+                            style={{ objectPosition: 'top', maxHeight: '500px' }}
                           />
                         </div>
                       )}
