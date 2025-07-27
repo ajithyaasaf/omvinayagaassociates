@@ -5,6 +5,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Award, Trophy, Star, PlayCircle, GraduationCap, Users, Megaphone, Heart } from "lucide-react";
+// Import award images
+import excellenceAward1 from "@/assets/awards/excellence-award-1.png";
+import excellenceAward2 from "@/assets/awards/excellence-award-2.png";
 
 const AchievementsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("awards");
@@ -37,7 +40,9 @@ const AchievementsPage = () => {
       year: "2024",
       category: "Technical Excellence",
       icon: <Star className="w-8 h-8 text-blue-500" />,
-      color: "bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200"
+      color: "bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200",
+      images: [excellenceAward1, excellenceAward2],
+      featured: true
     },
     {
       title: "Madurai City Iconic Award",
@@ -261,13 +266,93 @@ const AchievementsPage = () => {
                 animate="visible"
                 className="space-y-8"
               >
-                {/* Major Awards */}
+                {/* Featured Excellence Award */}
+                {majorAwards.filter(award => award.featured).map((award, index) => (
+                  <motion.div key={index} variants={itemVariants} className="mb-12">
+                    <div className="text-center mb-8">
+                      <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                        🏆 Featured Achievement
+                      </h2>
+                      <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Our most prestigious recognition for outstanding excellence in the construction industry
+                      </p>
+                    </div>
+                    
+                    <Card className={`${award.color} hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 max-w-6xl mx-auto`}>
+                      <CardHeader className="text-center pb-4">
+                        <div className="flex justify-center mb-6">
+                          <div className="bg-white p-4 rounded-full shadow-lg">
+                            {award.icon}
+                          </div>
+                        </div>
+                        <CardTitle className="text-3xl font-bold text-gray-900 mb-2">
+                          {award.title}
+                        </CardTitle>
+                        <CardDescription className="text-xl text-gray-700 font-medium">
+                          {award.organization} • {award.year}
+                        </CardDescription>
+                        <Badge variant="outline" className="bg-white/70 text-lg px-4 py-2 mt-4">
+                          {award.category}
+                        </Badge>
+                      </CardHeader>
+                      
+                      <CardContent>
+                        <p className="text-gray-800 text-center text-lg leading-relaxed mb-8 max-w-3xl mx-auto">
+                          {award.description}
+                        </p>
+                        
+                        {/* Award Images Gallery */}
+                        {award.images && (
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                            {award.images.map((image, imgIndex) => (
+                              <Dialog key={imgIndex}>
+                                <DialogTrigger asChild>
+                                  <motion.div
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="cursor-pointer group relative overflow-hidden rounded-xl shadow-lg"
+                                  >
+                                    <img
+                                      src={image}
+                                      alt={`${award.title} - Image ${imgIndex + 1}`}
+                                      className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+                                    />
+                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
+                                      <div className="bg-white/90 rounded-full p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        <Star className="w-6 h-6 text-yellow-600" />
+                                      </div>
+                                    </div>
+                                  </motion.div>
+                                </DialogTrigger>
+                                <DialogContent className="max-w-4xl max-h-[90vh] p-0">
+                                  <img
+                                    src={image}
+                                    alt={`${award.title} - Image ${imgIndex + 1}`}
+                                    className="w-full h-full object-contain rounded-lg"
+                                  />
+                                </DialogContent>
+                              </Dialog>
+                            ))}
+                          </div>
+                        )}
+                        
+                        <div className="text-center mt-8">
+                          <p className="text-sm text-gray-600 italic">
+                            Click on images to view in full size
+                          </p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+
+                {/* Other Major Awards */}
                 <div>
                   <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
-                    Major Awards & Recognition
+                    Other Awards & Recognition
                   </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {majorAwards.map((award, index) => (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {majorAwards.filter(award => !award.featured).map((award, index) => (
                       <motion.div key={index} variants={itemVariants}>
                         <Card className={`${award.color} hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2`}>
                           <CardHeader className="text-center">
