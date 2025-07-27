@@ -303,26 +303,17 @@ const AchievementsPage = () => {
                         
                         {/* Award Images Gallery */}
                         {award.images && (
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                          <div className="flex flex-col md:flex-row mt-8 rounded-xl overflow-hidden shadow-lg">
                             {award.images.map((image, imgIndex) => (
                               <Dialog key={imgIndex}>
                                 <DialogTrigger asChild>
-                                  <motion.div
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    className="cursor-pointer group relative overflow-hidden rounded-xl shadow-lg"
-                                  >
+                                  <div className="cursor-pointer flex-1">
                                     <img
                                       src={image}
                                       alt={`${award.title} - Image ${imgIndex + 1}`}
-                                      className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+                                      className="w-full h-80 md:h-96 object-cover"
                                     />
-                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
-                                      <div className="bg-white/90 rounded-full p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <Star className="w-6 h-6 text-yellow-600" />
-                                      </div>
-                                    </div>
-                                  </motion.div>
+                                  </div>
                                 </DialogTrigger>
                                 <DialogContent className="max-w-4xl max-h-[90vh] p-0">
                                   <img
