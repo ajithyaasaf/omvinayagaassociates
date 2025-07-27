@@ -268,7 +268,7 @@ const AchievementsPage = () => {
               >
                 {/* Featured Excellence Award */}
                 {majorAwards.filter(award => award.featured).map((award, index) => (
-                  <div key={index} className="mb-12">
+                  <div key={index} className="mb-8">
                     <div className="text-center mb-6">
                       <h2 className="text-3xl font-bold text-gray-900 mb-2">
                         Excellence in Building Restoration & Water Proofing 2024
