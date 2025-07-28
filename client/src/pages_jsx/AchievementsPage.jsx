@@ -694,49 +694,7 @@ const AchievementsPage = () => {
                   </div>
                 </div>
 
-                {/* Other Media Activities Section */}
-                <div className="bg-white rounded-2xl shadow-lg p-8">
-                  <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-secondary inline-block pb-2">
-                      📢 Media Outreach Activities
-                    </h2>
-                    <p className="text-gray-600 text-lg">Additional media appearances and promotional activities</p>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {mediaActivities
-                      .filter((media) => !media.featured)
-                      .map((media, index) => (
-                        <motion.div key={index} variants={itemVariants}>
-                          <Card className="bg-gradient-to-r from-blue-50 to-white hover:shadow-xl transition-all duration-300 border-2 border-secondary h-full">
-                            <CardHeader>
-                              <div className="flex items-start space-x-4">
-                                <div className="bg-secondary/20 p-3 rounded-full flex-shrink-0">
-                                  {media.icon}
-                                </div>
-                                <div className="flex-1">
-                                  <CardTitle className="text-lg text-gray-900 mb-2">
-                                    {media.title}
-                                  </CardTitle>
-                                  <CardDescription className="text-gray-600 font-medium">
-                                    📡 {media.platform} • {media.type}
-                                  </CardDescription>
-                                </div>
-                              </div>
-                            </CardHeader>
-                            <CardContent>
-                              <p className="text-gray-700 leading-relaxed mb-4">
-                                {media.description}
-                              </p>
-                              <Badge variant="outline" className="bg-white/80 border-secondary">
-                                Media Activity
-                              </Badge>
-                            </CardContent>
-                          </Card>
-                        </motion.div>
-                      ))}
-                  </div>
-                </div>
+
               </motion.div>
             </TabsContent>
 
