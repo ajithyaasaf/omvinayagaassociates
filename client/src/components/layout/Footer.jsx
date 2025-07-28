@@ -123,7 +123,7 @@ const Footer = () => {
                     CONTACT.addresses.map((address, index) => (
                       <div key={index} className="border-l-2 border-primary/30 pl-3">
                         <p className="text-xs text-secondary font-medium mb-1">
-                          {index === 0 ? "Main Office" : "Branch Office"}
+                          {index === 0 ? "ADDRESS 1" : "ADDRESS 2"}
                         </p>
                         <p className="text-sm leading-relaxed">
                           {address}
