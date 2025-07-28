@@ -26,6 +26,7 @@ import excellenceAward2 from "@/assets/awards/excellence-award-2.png";
 import womenEntrepreneurAward from "@/assets/awards/women-entrepreneur-award.png";
 import cidcCertificate from "@/assets/awards/cidc-waterproofing-certificate.png";
 import maduraiIconicAward from "@/assets/awards/madurai-iconic-award.png";
+import radioCityFmInterview from "@/assets/awards/radio-city-fm-interview.png";
 
 const AchievementsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("awards");
@@ -112,9 +113,11 @@ const AchievementsPage = () => {
       title: "Radio City FM Business Talk",
       type: "Radio Interview",
       description:
-        "Live telecast discussing Building Doctor services and industry insights",
+        "Live telecast discussing Building Doctor services and industry insights with professional interview setup",
       platform: "Radio City FM",
       icon: <Megaphone className="w-6 h-6 text-red-500" />,
+      image: radioCityFmInterview,
+      featured: true,
     },
     {
       title: "Pudhuyugham TV Program",
@@ -508,13 +511,56 @@ const AchievementsPage = () => {
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="space-y-6"
+                className="space-y-8"
               >
                 <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
                   Media Coverage & Outreach
                 </h2>
+                
+                {/* Featured Media Coverage */}
+                {mediaActivities
+                  .filter((media) => media.featured)
+                  .map((media, index) => (
+                    <div key={index} className="mb-8">
+                      <div className="text-center mb-6">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                          {media.title}
+                        </h3>
+                        <p className="text-gray-600">
+                          {media.platform} • {media.type}
+                        </p>
+                      </div>
+                      
+                      <div className="max-w-4xl mx-auto">
+                        {/* Media Image */}
+                        {media.image && (
+                          <div className="flex justify-center overflow-hidden mb-6">
+                            <img
+                              src={media.image}
+                              alt={media.title}
+                              className="max-w-3xl h-auto object-cover rounded-lg shadow-lg"
+                              style={{
+                                objectPosition: "top",
+                                maxHeight: "600px",
+                              }}
+                            />
+                          </div>
+                        )}
+                        
+                        <div className="text-center">
+                          <p className="text-gray-700 text-lg leading-relaxed max-w-2xl mx-auto">
+                            {media.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+                  Other Media Activities
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {mediaActivities.map((media, index) => (
+                  {mediaActivities.filter((media) => !media.featured).map((media, index) => (
                     <motion.div key={index} variants={itemVariants}>
                       <Card className="bg-white hover:shadow-lg transition-shadow duration-300">
                         <CardHeader>
