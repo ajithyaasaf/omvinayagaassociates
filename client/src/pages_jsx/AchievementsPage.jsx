@@ -339,8 +339,8 @@ const AchievementsPage = () => {
                 {/* Featured Awards Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-primary inline-block pb-2">
-                      🏆 Major Awards & Recognition
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                      Major Awards & Recognition
                     </h2>
                     <p className="text-gray-600 text-lg">Our most prestigious accomplishments and industry recognition</p>
                   </div>
@@ -367,7 +367,7 @@ const AchievementsPage = () => {
                               </h3>
                               {award.recipient && (
                                 <p className="text-lg font-semibold text-primary mb-2">
-                                  🎖️ {award.recipient}
+                                  {award.recipient}
                                 </p>
                               )}
                               <p className="text-gray-700 font-medium mb-3">
@@ -451,8 +451,8 @@ const AchievementsPage = () => {
                 {/* Professional Certifications Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-secondary inline-block pb-2">
-                      🎓 Professional Certifications
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4 ">
+                      Professional Certifications
                     </h2>
                     <p className="text-gray-600 text-lg">Technical expertise and professional qualifications</p>
                   </div>
@@ -479,7 +479,7 @@ const AchievementsPage = () => {
                               </h3>
                               {cert.recipient && (
                                 <p className="text-lg font-semibold text-accent mb-2">
-                                  👨‍🎓 {cert.recipient}
+                                  {cert.recipient}
                                 </p>
                               )}
                               <p className="text-gray-700 font-medium mb-3">
@@ -524,7 +524,7 @@ const AchievementsPage = () => {
                 {/* Other Awards Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-accent inline-block pb-2">
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4 ">
                       🌟 Additional Recognition
                     </h2>
                     <p className="text-gray-600 text-lg">More achievements and industry recognition</p>
@@ -574,7 +574,7 @@ const AchievementsPage = () => {
                 {/* Other Certifications Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-muted-foreground inline-block pb-2">
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4 ">
                       📋 Additional Certifications
                     </h2>
                     <p className="text-gray-600 text-lg">Ongoing professional development and training</p>
@@ -629,8 +629,8 @@ const AchievementsPage = () => {
                 {/* Featured Media Coverage Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-primary inline-block pb-2">
-                      📺 Featured Media Coverage
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4 ">
+                      Featured Media Coverage
                     </h2>
                     <p className="text-gray-600 text-lg">Our presence in mainstream media and industry publications</p>
                   </div>
@@ -656,7 +656,7 @@ const AchievementsPage = () => {
                                 {media.title}
                               </h3>
                               <p className="text-lg font-semibold text-accent mb-3">
-                                📻 {media.platform}
+                                {media.platform}
                               </p>
                               <p className="text-gray-600 leading-relaxed mb-4">
                                 {media.description}
@@ -709,8 +709,8 @@ const AchievementsPage = () => {
                 {/* Featured Educational Programs Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-accent inline-block pb-2">
-                      🎓 Featured Educational Programs
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4 ">
+                      Featured Educational Programs
                     </h2>
                     <p className="text-gray-600 text-lg">Knowledge sharing and educational outreach in academic institutions</p>
                   </div>
@@ -817,7 +817,7 @@ const AchievementsPage = () => {
                 {/* Other Educational Activities Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-primary inline-block pb-2">
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4 ">
                       📚 Educational Activities
                     </h2>
                     <p className="text-gray-600 text-lg">Additional educational outreach and knowledge sharing initiatives</p>
@@ -839,7 +839,7 @@ const AchievementsPage = () => {
                                     {edu.institution}
                                   </CardTitle>
                                   <CardDescription className="text-gray-600 font-medium">
-                                    🎯 {edu.activity}
+                                    {edu.activity}
                                     {edu.department && ` • ${edu.department}`}
                                   </CardDescription>
                                 </div>
@@ -872,7 +872,7 @@ const AchievementsPage = () => {
                 {/* Featured Community Activities Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-secondary inline-block pb-2">
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4 ">
                       ❤️ Featured Community Impact
                     </h2>
                     <p className="text-gray-600 text-lg">Making a positive difference in our community through partnerships and celebrations</p>
@@ -937,8 +937,8 @@ const AchievementsPage = () => {
                 {/* Other Community Activities Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-accent inline-block pb-2">
-                      🤝 Community Activities
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4 ">
+                      Community Activities
                     </h2>
                     <p className="text-gray-600 text-lg">Additional community engagement and social responsibility initiatives</p>
                   </div>
