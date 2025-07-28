@@ -34,7 +34,7 @@ import fatimaCollege from "@/assets/awards/fatima-college.png";
 import mohamedSathakCollege from "@/assets/awards/mohamed-sathak-college.png";
 import kakkaipadiniyarSchool from "@/assets/awards/kakkaipadiniyar-school.png";
 import nmssvnCollege from "@/assets/awards/nmssvn-college.png";
-import mcubeMouPartnership from "@/assets/awards/mcube-mou-partnership.png";
+import achievementCeremony from "@/assets/awards/achievement-ceremony.png";
 import amcePongalCelebration from "@/assets/awards/amce-pongal-celebration.png";
 import diwaliCelebrations from "@/assets/awards/diwali-celebrations.png";
 import teamAchievement from "@/assets/team-achievement.png";
@@ -213,12 +213,12 @@ const AchievementsPage = () => {
   // Community and Business Impact
   const communityImpact = [
     {
-      title: "M-Cube MOU Partnership",
+      title: "Achievement Recognition Ceremony",
       description:
-        "Strategic partnership providing BD materials and technical guidance to engineering students for their academic projects with formal MOU documentation",
-      category: "Student Support",
-      icon: <Users className="w-6 h-6 text-green-500" />,
-      image: mcubeMouPartnership,
+        "Formal recognition ceremony celebrating outstanding achievements in building restoration and community service with official acknowledgment",
+      category: "Recognition",
+      icon: <Award className="w-6 h-6 text-gold-500" />,
+      image: achievementCeremony,
       featured: true,
     },
     {
