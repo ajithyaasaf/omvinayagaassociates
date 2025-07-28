@@ -134,13 +134,18 @@ const ContactPage = () => {
                   <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                     <MapPin className="text-white" size={20} strokeWidth={2.5} />
                   </div>
-                  <div>
-                    <h4 className="font-medium mb-1">Address</h4>
+                  <div className="space-y-3">
+                    <h4 className="font-medium mb-3">Address</h4>
                     {CONTACT.addresses ? (
                       CONTACT.addresses.map((address, index) => (
-                        <p key={index} className="text-gray-600 mb-2">
-                          {address}
-                        </p>
+                        <div key={index} className="border-l-3 border-primary/40 pl-4 py-2 bg-gray-100/50 rounded-r-lg">
+                          <p className="text-xs text-primary font-semibold mb-1">
+                            {index === 0 ? "Main Office" : "Branch Office"}
+                          </p>
+                          <p className="text-gray-600 text-sm leading-relaxed">
+                            {address}
+                          </p>
+                        </div>
                       ))
                     ) : (
                       <p className="text-gray-600">{CONTACT.address}</p>

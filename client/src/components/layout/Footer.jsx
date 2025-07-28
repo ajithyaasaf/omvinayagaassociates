@@ -118,12 +118,17 @@ const Footer = () => {
                   size={18}
                   strokeWidth={2.5}
                 />
-                <div>
+                <div className="space-y-3">
                   {CONTACT.addresses ? (
                     CONTACT.addresses.map((address, index) => (
-                      <p key={index} className="text-sm mb-2">
-                        {address}
-                      </p>
+                      <div key={index} className="border-l-2 border-primary/30 pl-3">
+                        <p className="text-xs text-secondary font-medium mb-1">
+                          {index === 0 ? "Main Office" : "Branch Office"}
+                        </p>
+                        <p className="text-sm leading-relaxed">
+                          {address}
+                        </p>
+                      </div>
                     ))
                   ) : (
                     <p className="text-sm">{CONTACT.address}</p>
