@@ -27,6 +27,7 @@ import womenEntrepreneurAward from "@/assets/awards/women-entrepreneur-award.png
 import cidcCertificate from "@/assets/awards/cidc-waterproofing-certificate.png";
 import maduraiIconicAward from "@/assets/awards/madurai-iconic-award.png";
 import radioCityFmInterview from "@/assets/awards/radio-city-fm-interview.png";
+import pudhuyugamTvProgram from "@/assets/awards/pudhuyugam-tv-program.png";
 
 const AchievementsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("awards");
@@ -120,11 +121,13 @@ const AchievementsPage = () => {
       featured: true,
     },
     {
-      title: "Pudhuyugham TV Program",
+      title: "Pudhuyugam TV Program",
       type: "Television Appearance",
-      description: "Featured program showcasing building restoration expertise",
-      platform: "Pudhuyugham TV",
+      description: "Featured program showcasing building restoration expertise with award ceremony and recognition",
+      platform: "Pudhuyugam TV",
       icon: <PlayCircle className="w-6 h-6 text-blue-500" />,
+      image: pudhuyugamTvProgram,
+      featured: true,
     },
   ];
 
