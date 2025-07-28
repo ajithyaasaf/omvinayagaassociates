@@ -12,16 +12,18 @@ import LoadingSpinner from "./components/ui/LoadingSpinner";
 
 import { pageTransition } from "./utils/animations";
 
-// Lazy load pages to improve initial load performance
-const HomePage = lazy(() => import("./pages_jsx/HomePage.jsx"));
-const NotFound = lazy(() => import("./pages/not-found.jsx"));
-const ServicesPage = lazy(() => import("./pages_jsx/ServicesPage.jsx"));
-const ProductsPage = lazy(() => import("./pages_jsx/ProductsPage.jsx"));
+// Pre-load critical pages for faster navigation
+import HomePage from "./pages_jsx/HomePage.jsx";
+import AboutPage from "./pages_jsx/AboutPage.jsx";
+import ServicesPage from "./pages_jsx/ServicesPage.jsx";
+import ProductsPage from "./pages_jsx/ProductsPage.jsx";
+import ContactPage from "./pages_jsx/ContactPage.jsx";
+
+// Lazy load less critical pages
 const ProductDetailPage = lazy(() => import("./pages_jsx/ProductDetailPage.jsx"));
-const AboutPage = lazy(() => import("./pages_jsx/AboutPage.jsx"));
-const ContactPage = lazy(() => import("./pages_jsx/ContactPage.jsx"));
 const AchievementsPage = lazy(() => import("./pages_jsx/AchievementsPage.jsx"));
 const AdminPage = lazy(() => import("./pages_jsx/AdminPage.jsx"));
+const NotFound = lazy(() => import("./pages/not-found.jsx"));
 
 function App() {
   const [location] = useLocation();
@@ -42,7 +44,7 @@ function App() {
     >
       <Suspense fallback={
         <div className="fixed inset-0 bg-white z-[60] flex items-center justify-center">
-          <LoadingSpinner size="large" showText={true} variant="logo" />
+          <LoadingSpinner size="medium" showText={false} variant="simple" />
         </div>
       }>
         {children}
@@ -67,7 +69,7 @@ function App() {
     <div className="flex flex-col min-h-screen overflow-x-hidden w-full">
       <Header />
       <main className="flex-grow w-full overflow-x-hidden">
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" initial={false}>
           <Switch key={location} location={location}>
             <Route path="/">
               <PageWrapper>

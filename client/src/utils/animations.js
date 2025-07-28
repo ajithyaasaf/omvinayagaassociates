@@ -140,7 +140,7 @@ export const pulse = {
   }
 };
 
-// Page transition animation for App.jsx - optimized for performance
+// Page transition animation for App.jsx - optimized for performance and speed
 export const pageTransition = {
   initial: {
     opacity: 0
@@ -148,14 +148,14 @@ export const pageTransition = {
   animate: {
     opacity: 1,
     transition: {
-      duration: 0.3,
+      duration: 0.15,
       ease: "easeOut"
     }
   },
   exit: {
     opacity: 0,
     transition: {
-      duration: 0.2,
+      duration: 0.1,
       ease: "easeIn"
     }
   }
