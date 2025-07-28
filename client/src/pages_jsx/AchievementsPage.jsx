@@ -30,6 +30,10 @@ import radioCityFmInterview from "@/assets/awards/radio-city-fm-interview.png";
 import pudhuyugamTvProgram from "@/assets/awards/pudhuyugam-tv-program.png";
 import velammalCollegeAward from "@/assets/awards/velammal-college-award.png";
 import velammalCollegeLecture from "@/assets/awards/velammal-college-lecture.png";
+import fatimaCollege from "@/assets/awards/fatima-college.png";
+import mohamedSathakCollege from "@/assets/awards/mohamed-sathak-college.png";
+import kakkaipadiniyarSchool from "@/assets/awards/kakkaipadiniyar-school.png";
+import nmssvnCollege from "@/assets/awards/nmssvn-college.png";
 
 const AchievementsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("awards");
@@ -154,7 +158,34 @@ const AchievementsPage = () => {
       institution: "Fatima College",
       activity: "Guest Lecture",
       description:
-        "Educational presentation on building restoration techniques",
+        "Educational presentation on building restoration techniques with faculty engagement",
+      image: fatimaCollege,
+      featured: true,
+    },
+    {
+      institution: "Mohamed Sathak Engineering College",
+      activity: "Guest Lecture",
+      department: "Civil Engineering",
+      description:
+        "Technical presentation on waterproofing solutions to Civil Engineering students and faculty",
+      image: mohamedSathakCollege,
+      featured: true,
+    },
+    {
+      institution: "Kakkaipadiniyar Govt. Girls Hr. Sec. School",
+      activity: "Educational Outreach",
+      description:
+        "Awareness program on building maintenance and construction safety for high school students",
+      image: kakkaipadiniyarSchool,
+      featured: true,
+    },
+    {
+      institution: "NMSSVN College",
+      activity: "Guest Lecture & Workshop",
+      description:
+        "Comprehensive program including guest lecture and hands-on workshop on building restoration techniques",
+      image: nmssvnCollege,
+      featured: true,
     },
     {
       institution: "Mohammed Sathak Polytechnic College",
@@ -641,6 +672,21 @@ const AchievementsPage = () => {
                               style={{
                                 objectPosition: "top",
                                 maxHeight: "400px",
+                              }}
+                            />
+                          </div>
+                        )}
+                        
+                        {/* Single Educational Image */}
+                        {edu.image && !edu.images && (
+                          <div className="flex justify-center overflow-hidden mb-6">
+                            <img
+                              src={edu.image}
+                              alt={edu.institution}
+                              className="max-w-2xl h-auto object-cover rounded-lg shadow-lg"
+                              style={{
+                                objectPosition: "top",
+                                maxHeight: "500px",
                               }}
                             />
                           </div>
