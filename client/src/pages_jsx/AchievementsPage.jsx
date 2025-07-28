@@ -334,146 +334,189 @@ const AchievementsPage = () => {
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="space-y-8"
+                className="space-y-12"
               >
-                {/* Featured Awards */}
-                {majorAwards
-                  .filter((award) => award.featured)
-                  .map((award, index) => (
-                    <div key={index} className="mb-8">
-                      <div className="text-center mb-6">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-2">
-                          {award.title}
-                        </h2>
-                        {award.recipient && (
-                          <p className="text-xl font-semibold text-gray-700 mb-1">
-                            {award.recipient}
-                          </p>
-                        )}
-                        <p className="text-gray-600">
-                          {award.organization} • {award.year}
-                        </p>
-                      </div>
-
-                      <div className="max-w-4xl mx-auto">
-                        {/* Multiple Award Images - Combined Display */}
-                        {award.images && (
-                          <div className="flex overflow-hidden">
-                            <img
-                              src={award.images[0]}
-                              alt={`${award.title} - Part 1`}
-                              className="w-1/2 h-auto object-cover"
-                              style={{
-                                objectPosition: "top",
-                                maxHeight: "400px",
-                              }}
-                            />
-                            <img
-                              src={award.images[1]}
-                              alt={`${award.title} - Part 2`}
-                              className="w-1/2 h-auto object-cover"
-                              style={{
-                                objectPosition: "top",
-                                maxHeight: "400px",
-                              }}
-                            />
+                {/* Featured Awards Section */}
+                <div className="bg-white rounded-2xl shadow-lg p-8">
+                  <div className="text-center mb-8">
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-yellow-400 inline-block pb-2">
+                      🏆 Major Awards & Recognition
+                    </h2>
+                    <p className="text-gray-600 text-lg">Our most prestigious accomplishments and industry recognition</p>
+                  </div>
+                  
+                  <div className="space-y-12">
+                    {majorAwards
+                      .filter((award) => award.featured)
+                      .map((award, index) => (
+                        <motion.div 
+                          key={index} 
+                          className="border-l-4 border-yellow-400 pl-8 bg-gradient-to-r from-yellow-50 to-white rounded-r-2xl shadow-md p-6"
+                          variants={itemVariants}
+                        >
+                          <div className="flex flex-col lg:flex-row gap-8 items-center">
+                            <div className="flex-1 text-center lg:text-left">
+                              <div className="flex items-center justify-center lg:justify-start mb-4">
+                                {award.icon}
+                                <Badge className="ml-4 bg-yellow-400 text-black font-bold">
+                                  {award.year}
+                                </Badge>
+                              </div>
+                              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                                {award.title}
+                              </h3>
+                              {award.recipient && (
+                                <p className="text-lg font-semibold text-blue-700 mb-2">
+                                  🎖️ {award.recipient}
+                                </p>
+                              )}
+                              <p className="text-gray-700 font-medium mb-3">
+                                {award.organization}
+                              </p>
+                              <p className="text-gray-600 leading-relaxed mb-4">
+                                {award.description}
+                              </p>
+                              <Badge variant="outline" className="bg-white/80 border-yellow-400">
+                                {award.category}
+                              </Badge>
+                            </div>
+                            
+                            <div className="flex-shrink-0">
+                              {/* Multiple Award Images */}
+                              {award.images && (
+                                <div className="flex gap-2 rounded-lg overflow-hidden shadow-lg">
+                                  <img
+                                    src={award.images[0]}
+                                    alt={`${award.title} - Part 1`}
+                                    className="w-48 h-64 object-cover hover:scale-105 transition-transform duration-300"
+                                  />
+                                  <img
+                                    src={award.images[1]}
+                                    alt={`${award.title} - Part 2`}
+                                    className="w-48 h-64 object-cover hover:scale-105 transition-transform duration-300"
+                                  />
+                                </div>
+                              )}
+                              
+                              {/* Single Award Image */}
+                              {award.image && !award.images && (
+                                <div className="rounded-lg overflow-hidden shadow-lg">
+                                  <img
+                                    src={award.image}
+                                    alt={award.title}
+                                    className="w-80 h-64 object-cover hover:scale-105 transition-transform duration-300"
+                                  />
+                                </div>
+                              )}
+                            </div>
                           </div>
-                        )}
+                        </motion.div>
+                      ))}
+                  </div>
+                </div>
 
-                        {/* Single Award Image */}
-                        {award.image && !award.images && (
-                          <div className="flex justify-center overflow-hidden">
-                            <img
-                              src={award.image}
-                              alt={award.title}
-                              className="max-w-md h-auto object-cover rounded-lg"
-                              style={{
-                                objectPosition: "top",
-                                maxHeight: "500px",
-                              }}
-                            />
+                {/* Professional Certifications Section */}
+                <div className="bg-white rounded-2xl shadow-lg p-8">
+                  <div className="text-center mb-8">
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-blue-400 inline-block pb-2">
+                      🎓 Professional Certifications
+                    </h2>
+                    <p className="text-gray-600 text-lg">Technical expertise and professional qualifications</p>
+                  </div>
+                  
+                  <div className="space-y-8">
+                    {certifications
+                      .filter((cert) => cert.featured)
+                      .map((cert, index) => (
+                        <motion.div 
+                          key={index} 
+                          className="border-l-4 border-blue-400 pl-8 bg-gradient-to-r from-blue-50 to-white rounded-r-2xl shadow-md p-6"
+                          variants={itemVariants}
+                        >
+                          <div className="flex flex-col lg:flex-row gap-8 items-center">
+                            <div className="flex-1 text-center lg:text-left">
+                              <div className="flex items-center justify-center lg:justify-start mb-4">
+                                {cert.icon}
+                                <Badge className="ml-4 bg-blue-400 text-white font-bold">
+                                  Certified
+                                </Badge>
+                              </div>
+                              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                                {cert.title}
+                              </h3>
+                              {cert.recipient && (
+                                <p className="text-lg font-semibold text-green-700 mb-2">
+                                  👨‍🎓 {cert.recipient}
+                                </p>
+                              )}
+                              <p className="text-gray-700 font-medium mb-3">
+                                {cert.organization}
+                              </p>
+                              <p className="text-gray-600 leading-relaxed mb-4">
+                                {cert.description}
+                              </p>
+                              <Badge variant="outline" className="bg-white/80 border-blue-400">
+                                {cert.category}
+                              </Badge>
+                            </div>
+                            
+                            {cert.image && (
+                              <div className="flex-shrink-0">
+                                <div className="rounded-lg overflow-hidden shadow-lg">
+                                  <img
+                                    src={cert.image}
+                                    alt={cert.title}
+                                    className="w-80 h-64 object-cover hover:scale-105 transition-transform duration-300"
+                                  />
+                                </div>
+                              </div>
+                            )}
                           </div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
+                        </motion.div>
+                      ))}
+                  </div>
+                </div>
 
-                {/* Featured Certifications */}
-                {certifications
-                  .filter((cert) => cert.featured)
-                  .map((cert, index) => (
-                    <div key={index} className="mb-8">
-                      <div className="text-center mb-6">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-2">
-                          {cert.title}
-                        </h2>
-                        {cert.recipient && (
-                          <p className="text-xl font-semibold text-gray-700 mb-1">
-                            {cert.recipient}
-                          </p>
-                        )}
-                        <p className="text-gray-600">
-                          {cert.organization}
-                        </p>
-                      </div>
-
-                      <div className="max-w-4xl mx-auto">
-                        {/* Single Certificate Image */}
-                        {cert.image && (
-                          <div className="flex justify-center overflow-hidden">
-                            <img
-                              src={cert.image}
-                              alt={cert.title}
-                              className="max-w-2xl h-auto object-cover rounded-lg shadow-lg"
-                              style={{
-                                objectPosition: "top",
-                                maxHeight: "500px",
-                              }}
-                            />
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-
-                {/* Other Major Awards */}
-                <div>
-                  <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
-                    Other Awards & Recognition
-                  </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Other Awards Section */}
+                <div className="bg-white rounded-2xl shadow-lg p-8">
+                  <div className="text-center mb-8">
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-green-400 inline-block pb-2">
+                      🌟 Additional Recognition
+                    </h2>
+                    <p className="text-gray-600 text-lg">More achievements and industry recognition</p>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {majorAwards
                       .filter((award) => !award.featured)
                       .map((award, index) => (
                         <motion.div key={index} variants={itemVariants}>
-                          <Card
-                            className={`${award.color} hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2`}
-                          >
-                            <CardHeader className="text-center">
-                              <div className="flex justify-center mb-4">
+                          <Card className={`${award.color} hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-2 h-full`}>
+                            <CardHeader className="text-center pb-4">
+                              <div className="flex justify-center mb-4 bg-white/80 rounded-full w-16 h-16 mx-auto items-center">
                                 {award.icon}
                               </div>
-                              <CardTitle className="text-xl font-bold text-gray-900">
+                              <CardTitle className="text-xl font-bold text-gray-900 mb-2">
                                 {award.title}
                               </CardTitle>
                               {award.recipient && (
-                                <p className="text-lg font-semibold text-gray-700">
-                                  {award.recipient}
+                                <p className="text-lg font-semibold text-gray-700 mb-1">
+                                  🏅 {award.recipient}
                                 </p>
                               )}
-                              <CardDescription className="text-gray-600">
-                                {award.organization} • {award.year}
+                              <CardDescription className="text-gray-600 font-medium">
+                                {award.organization}
                               </CardDescription>
+                              <Badge className="mt-2 bg-white/90 text-gray-800 border-gray-300">
+                                {award.year}
+                              </Badge>
                             </CardHeader>
                             <CardContent>
-                              <p className="text-gray-700 text-center leading-relaxed">
+                              <p className="text-gray-700 text-center leading-relaxed mb-4">
                                 {award.description}
                               </p>
-                              <div className="flex justify-center mt-4">
-                                <Badge
-                                  variant="outline"
-                                  className="bg-white/50"
-                                >
+                              <div className="flex justify-center">
+                                <Badge variant="outline" className="bg-white/50 border-gray-400">
                                   {award.category}
                                 </Badge>
                               </div>
@@ -484,41 +527,48 @@ const AchievementsPage = () => {
                   </div>
                 </div>
 
-                {/* Professional Certifications */}
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-                    Professional Certifications
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {certifications.map((cert, index) => (
-                      <motion.div key={index} variants={itemVariants}>
-                        <Card className="bg-white hover:shadow-lg transition-shadow duration-300">
-                          <CardHeader>
-                            <div className="flex items-start space-x-4">
-                              <div className="bg-blue-100 p-3 rounded-full">
-                                {cert.icon}
+                {/* Other Certifications Section */}
+                <div className="bg-white rounded-2xl shadow-lg p-8">
+                  <div className="text-center mb-8">
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-purple-400 inline-block pb-2">
+                      📋 Additional Certifications
+                    </h2>
+                    <p className="text-gray-600 text-lg">Ongoing professional development and training</p>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {certifications
+                      .filter((cert) => !cert.featured)
+                      .map((cert, index) => (
+                        <motion.div key={index} variants={itemVariants}>
+                          <Card className="bg-gradient-to-r from-purple-50 to-white hover:shadow-lg transition-all duration-300 border-2 border-purple-200 h-full">
+                            <CardHeader>
+                              <div className="flex items-start space-x-4">
+                                <div className="bg-purple-100 p-3 rounded-full flex-shrink-0">
+                                  {cert.icon}
+                                </div>
+                                <div className="flex-1">
+                                  <CardTitle className="text-lg text-gray-900 mb-2">
+                                    {cert.title}
+                                  </CardTitle>
+                                  <CardDescription className="text-gray-600 font-medium">
+                                    {cert.organization}
+                                    {cert.presenter && ` • Presented by ${cert.presenter}`}
+                                  </CardDescription>
+                                </div>
                               </div>
-                              <div className="flex-1">
-                                <CardTitle className="text-lg text-gray-900">
-                                  {cert.title}
-                                </CardTitle>
-                                <CardDescription className="text-gray-600">
-                                  {cert.organization}
-                                  {cert.presenter &&
-                                    ` • Presented by ${cert.presenter}`}
-                                </CardDescription>
-                              </div>
-                            </div>
-                          </CardHeader>
-                          <CardContent>
-                            <p className="text-gray-700">{cert.description}</p>
-                            <Badge variant="outline" className="mt-3">
-                              {cert.category}
-                            </Badge>
-                          </CardContent>
-                        </Card>
-                      </motion.div>
-                    ))}
+                            </CardHeader>
+                            <CardContent>
+                              <p className="text-gray-700 leading-relaxed mb-4">
+                                {cert.description}
+                              </p>
+                              <Badge variant="outline" className="bg-white/80 border-purple-400">
+                                {cert.category}
+                              </Badge>
+                            </CardContent>
+                          </Card>
+                        </motion.div>
+                      ))}
                   </div>
                 </div>
               </motion.div>
@@ -530,79 +580,107 @@ const AchievementsPage = () => {
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="space-y-8"
+                className="space-y-12"
               >
-                <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-                  Media Coverage & Outreach
-                </h2>
-                
-                {/* Featured Media Coverage */}
-                {mediaActivities
-                  .filter((media) => media.featured)
-                  .map((media, index) => (
-                    <div key={index} className="mb-8">
-                      <div className="text-center mb-6">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                          {media.title}
-                        </h3>
-                        <p className="text-gray-600">
-                          {media.platform} • {media.type}
-                        </p>
-                      </div>
-                      
-                      <div className="max-w-4xl mx-auto">
-                        {/* Media Image */}
-                        {media.image && (
-                          <div className="flex justify-center overflow-hidden mb-6">
-                            <img
-                              src={media.image}
-                              alt={media.title}
-                              className="max-w-3xl h-auto object-cover rounded-lg shadow-lg"
-                              style={{
-                                objectPosition: "top",
-                                maxHeight: "600px",
-                              }}
-                            />
-                          </div>
-                        )}
-                        
-                        <div className="text-center">
-                          <p className="text-gray-700 text-lg leading-relaxed max-w-2xl mx-auto">
-                            {media.description}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-                  Other Media Activities
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {mediaActivities.filter((media) => !media.featured).map((media, index) => (
-                    <motion.div key={index} variants={itemVariants}>
-                      <Card className="bg-white hover:shadow-lg transition-shadow duration-300">
-                        <CardHeader>
-                          <div className="flex items-start space-x-4">
-                            <div className="bg-red-100 p-3 rounded-full">
-                              {media.icon}
-                            </div>
-                            <div className="flex-1">
-                              <CardTitle className="text-lg text-gray-900">
+                {/* Featured Media Coverage Section */}
+                <div className="bg-white rounded-2xl shadow-lg p-8">
+                  <div className="text-center mb-8">
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-red-400 inline-block pb-2">
+                      📺 Featured Media Coverage
+                    </h2>
+                    <p className="text-gray-600 text-lg">Our presence in mainstream media and industry publications</p>
+                  </div>
+                  
+                  <div className="space-y-12">
+                    {mediaActivities
+                      .filter((media) => media.featured)
+                      .map((media, index) => (
+                        <motion.div 
+                          key={index} 
+                          className="border-l-4 border-red-400 pl-8 bg-gradient-to-r from-red-50 to-white rounded-r-2xl shadow-md p-6"
+                          variants={itemVariants}
+                        >
+                          <div className="flex flex-col lg:flex-row gap-8 items-center">
+                            <div className="flex-1 text-center lg:text-left">
+                              <div className="flex items-center justify-center lg:justify-start mb-4">
+                                {media.icon}
+                                <Badge className="ml-4 bg-red-400 text-white font-bold">
+                                  {media.type}
+                                </Badge>
+                              </div>
+                              <h3 className="text-2xl font-bold text-gray-900 mb-2">
                                 {media.title}
-                              </CardTitle>
-                              <CardDescription className="text-gray-600">
-                                {media.platform} • {media.type}
-                              </CardDescription>
+                              </h3>
+                              <p className="text-lg font-semibold text-red-700 mb-3">
+                                📻 {media.platform}
+                              </p>
+                              <p className="text-gray-600 leading-relaxed mb-4">
+                                {media.description}
+                              </p>
+                              <Badge variant="outline" className="bg-white/80 border-red-400">
+                                Media Coverage
+                              </Badge>
                             </div>
+                            
+                            {media.image && (
+                              <div className="flex-shrink-0">
+                                <div className="rounded-lg overflow-hidden shadow-lg">
+                                  <img
+                                    src={media.image}
+                                    alt={media.title}
+                                    className="w-80 h-64 object-cover hover:scale-105 transition-transform duration-300"
+                                  />
+                                </div>
+                              </div>
+                            )}
                           </div>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-gray-700">{media.description}</p>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
+                        </motion.div>
+                      ))}
+                  </div>
+                </div>
+
+                {/* Other Media Activities Section */}
+                <div className="bg-white rounded-2xl shadow-lg p-8">
+                  <div className="text-center mb-8">
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-orange-400 inline-block pb-2">
+                      📢 Media Outreach Activities
+                    </h2>
+                    <p className="text-gray-600 text-lg">Additional media appearances and promotional activities</p>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {mediaActivities
+                      .filter((media) => !media.featured)
+                      .map((media, index) => (
+                        <motion.div key={index} variants={itemVariants}>
+                          <Card className="bg-gradient-to-r from-orange-50 to-white hover:shadow-xl transition-all duration-300 border-2 border-orange-200 h-full">
+                            <CardHeader>
+                              <div className="flex items-start space-x-4">
+                                <div className="bg-orange-100 p-3 rounded-full flex-shrink-0">
+                                  {media.icon}
+                                </div>
+                                <div className="flex-1">
+                                  <CardTitle className="text-lg text-gray-900 mb-2">
+                                    {media.title}
+                                  </CardTitle>
+                                  <CardDescription className="text-gray-600 font-medium">
+                                    📡 {media.platform} • {media.type}
+                                  </CardDescription>
+                                </div>
+                              </div>
+                            </CardHeader>
+                            <CardContent>
+                              <p className="text-gray-700 leading-relaxed mb-4">
+                                {media.description}
+                              </p>
+                              <Badge variant="outline" className="bg-white/80 border-orange-400">
+                                Media Activity
+                              </Badge>
+                            </CardContent>
+                          </Card>
+                        </motion.div>
+                      ))}
+                  </div>
                 </div>
               </motion.div>
             </TabsContent>
@@ -613,106 +691,126 @@ const AchievementsPage = () => {
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="space-y-8"
+                className="space-y-12"
               >
-                <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-                  Educational Outreach
-                </h2>
-                
-                {/* Featured Educational Programs */}
-                {educationalOutreach
-                  .filter((edu) => edu.featured)
-                  .map((edu, index) => (
-                    <div key={index} className="mb-8">
-                      <div className="text-center mb-6">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                          {edu.institution}
-                        </h3>
-                        <p className="text-gray-600">
-                          {edu.activity} • {edu.department}
-                        </p>
-                      </div>
-                      
-                      <div className="max-w-4xl mx-auto">
-                        {/* Educational Images */}
-                        {edu.images && (
-                          <div className="flex gap-4 overflow-hidden mb-6 justify-center">
-                            <img
-                              src={edu.images[0]}
-                              alt={`${edu.institution} - Award Ceremony`}
-                              className="w-1/2 max-w-md h-auto object-cover rounded-lg shadow-lg"
-                              style={{
-                                objectPosition: "top",
-                                maxHeight: "400px",
-                              }}
-                            />
-                            <img
-                              src={edu.images[1]}
-                              alt={`${edu.institution} - Student Audience`}
-                              className="w-1/2 max-w-md h-auto object-cover rounded-lg shadow-lg"
-                              style={{
-                                objectPosition: "top",
-                                maxHeight: "400px",
-                              }}
-                            />
-                          </div>
-                        )}
-                        
-                        {/* Single Educational Image */}
-                        {edu.image && !edu.images && (
-                          <div className="flex justify-center overflow-hidden mb-6">
-                            <img
-                              src={edu.image}
-                              alt={edu.institution}
-                              className="max-w-2xl h-auto object-cover rounded-lg shadow-lg"
-                              style={{
-                                objectPosition: "top",
-                                maxHeight: "500px",
-                              }}
-                            />
-                          </div>
-                        )}
-                        
-                        <div className="text-center">
-                          <p className="text-gray-700 text-lg leading-relaxed max-w-2xl mx-auto">
-                            {edu.description}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-                  Other Educational Activities
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {educationalOutreach.filter((edu) => !edu.featured).map((edu, index) => (
-                    <motion.div key={index} variants={itemVariants}>
-                      <Card className="bg-white hover:shadow-lg transition-shadow duration-300 h-full">
-                        <CardHeader>
-                          <div className="flex items-start space-x-3">
-                            <div className="bg-green-100 p-2 rounded-full">
-                              <GraduationCap className="w-5 h-5 text-green-600" />
-                            </div>
-                            <div className="flex-1">
-                              <CardTitle className="text-lg text-gray-900 leading-tight">
+                {/* Featured Educational Programs Section */}
+                <div className="bg-white rounded-2xl shadow-lg p-8">
+                  <div className="text-center mb-8">
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-green-400 inline-block pb-2">
+                      🎓 Featured Educational Programs
+                    </h2>
+                    <p className="text-gray-600 text-lg">Knowledge sharing and educational outreach in academic institutions</p>
+                  </div>
+                  
+                  <div className="space-y-12">
+                    {educationalOutreach
+                      .filter((edu) => edu.featured)
+                      .map((edu, index) => (
+                        <motion.div 
+                          key={index} 
+                          className="border-l-4 border-green-400 pl-8 bg-gradient-to-r from-green-50 to-white rounded-r-2xl shadow-md p-6"
+                          variants={itemVariants}
+                        >
+                          <div className="flex flex-col lg:flex-row gap-8 items-center">
+                            <div className="flex-1 text-center lg:text-left">
+                              <div className="flex items-center justify-center lg:justify-start mb-4">
+                                <GraduationCap className="w-8 h-8 text-green-600" />
+                                <Badge className="ml-4 bg-green-400 text-white font-bold">
+                                  Educational
+                                </Badge>
+                              </div>
+                              <h3 className="text-2xl font-bold text-gray-900 mb-2">
                                 {edu.institution}
-                              </CardTitle>
-                              <CardDescription className="text-gray-600">
-                                {edu.activity}
+                              </h3>
+                              <p className="text-lg font-semibold text-green-700 mb-3">
+                                🏛️ {edu.activity}
                                 {edu.department && ` • ${edu.department}`}
-                              </CardDescription>
+                              </p>
+                              <p className="text-gray-600 leading-relaxed mb-4">
+                                {edu.description}
+                              </p>
+                              <Badge variant="outline" className="bg-white/80 border-green-400">
+                                Educational Outreach
+                              </Badge>
+                            </div>
+                            
+                            <div className="flex-shrink-0">
+                              {/* Educational Images */}
+                              {edu.images && (
+                                <div className="flex gap-2 rounded-lg overflow-hidden shadow-lg">
+                                  <img
+                                    src={edu.images[0]}
+                                    alt={`${edu.institution} - Award Ceremony`}
+                                    className="w-48 h-64 object-cover hover:scale-105 transition-transform duration-300"
+                                  />
+                                  <img
+                                    src={edu.images[1]}
+                                    alt={`${edu.institution} - Student Audience`}
+                                    className="w-48 h-64 object-cover hover:scale-105 transition-transform duration-300"
+                                  />
+                                </div>
+                              )}
+                              
+                              {/* Single Educational Image */}
+                              {edu.image && !edu.images && (
+                                <div className="rounded-lg overflow-hidden shadow-lg">
+                                  <img
+                                    src={edu.image}
+                                    alt={edu.institution}
+                                    className="w-80 h-64 object-cover hover:scale-105 transition-transform duration-300"
+                                  />
+                                </div>
+                              )}
                             </div>
                           </div>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-gray-700 text-sm leading-relaxed">
-                            {edu.description}
-                          </p>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
+                        </motion.div>
+                      ))}
+                  </div>
+                </div>
+
+                {/* Other Educational Activities Section */}
+                <div className="bg-white rounded-2xl shadow-lg p-8">
+                  <div className="text-center mb-8">
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-teal-400 inline-block pb-2">
+                      📚 Educational Activities
+                    </h2>
+                    <p className="text-gray-600 text-lg">Additional educational outreach and knowledge sharing initiatives</p>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {educationalOutreach
+                      .filter((edu) => !edu.featured)
+                      .map((edu, index) => (
+                        <motion.div key={index} variants={itemVariants}>
+                          <Card className="bg-gradient-to-r from-teal-50 to-white hover:shadow-xl transition-all duration-300 border-2 border-teal-200 h-full">
+                            <CardHeader>
+                              <div className="flex items-start space-x-4">
+                                <div className="bg-teal-100 p-3 rounded-full flex-shrink-0">
+                                  <GraduationCap className="w-6 h-6 text-teal-600" />
+                                </div>
+                                <div className="flex-1">
+                                  <CardTitle className="text-lg text-gray-900 mb-2 leading-tight">
+                                    {edu.institution}
+                                  </CardTitle>
+                                  <CardDescription className="text-gray-600 font-medium">
+                                    🎯 {edu.activity}
+                                    {edu.department && ` • ${edu.department}`}
+                                  </CardDescription>
+                                </div>
+                              </div>
+                            </CardHeader>
+                            <CardContent>
+                              <p className="text-gray-700 leading-relaxed mb-4">
+                                {edu.description}
+                              </p>
+                              <Badge variant="outline" className="bg-white/80 border-teal-400">
+                                Education
+                              </Badge>
+                            </CardContent>
+                          </Card>
+                        </motion.div>
+                      ))}
+                  </div>
                 </div>
               </motion.div>
             </TabsContent>
@@ -723,79 +821,101 @@ const AchievementsPage = () => {
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="space-y-8"
+                className="space-y-12"
               >
-                <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-                  Community Impact
-                </h2>
-                
-                {/* Featured Community Activities */}
-                {communityImpact
-                  .filter((impact) => impact.featured)
-                  .map((impact, index) => (
-                    <div key={index} className="mb-8">
-                      <div className="text-center mb-6">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                          {impact.title}
-                        </h3>
-                        <Badge variant="outline" className="mb-2">
-                          {impact.category}
-                        </Badge>
-                      </div>
-                      
-                      <div className="max-w-4xl mx-auto">
-                        {/* Community Image */}
-                        {impact.image && (
-                          <div className="flex justify-center overflow-hidden mb-6">
-                            <img
-                              src={impact.image}
-                              alt={impact.title}
-                              className="max-w-3xl h-auto object-cover rounded-lg shadow-lg"
-                              style={{
-                                objectPosition: "top",
-                                maxHeight: "600px",
-                              }}
-                            />
-                          </div>
-                        )}
-                        
-                        <div className="text-center">
-                          <p className="text-gray-700 text-lg leading-relaxed max-w-2xl mx-auto">
-                            {impact.description}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-                  Other Community Activities
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {communityImpact.filter((impact) => !impact.featured).map((impact, index) => (
-                    <motion.div key={index} variants={itemVariants}>
-                      <Card className="bg-white hover:shadow-lg transition-shadow duration-300">
-                        <CardHeader>
-                          <div className="flex items-start space-x-4">
-                            <div className="bg-orange-100 p-3 rounded-full">
-                              {impact.icon}
-                            </div>
-                            <div className="flex-1">
-                              <CardTitle className="text-lg text-gray-900">
+                {/* Featured Community Activities Section */}
+                <div className="bg-white rounded-2xl shadow-lg p-8">
+                  <div className="text-center mb-8">
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-pink-400 inline-block pb-2">
+                      ❤️ Featured Community Impact
+                    </h2>
+                    <p className="text-gray-600 text-lg">Making a positive difference in our community through partnerships and celebrations</p>
+                  </div>
+                  
+                  <div className="space-y-12">
+                    {communityImpact
+                      .filter((impact) => impact.featured)
+                      .map((impact, index) => (
+                        <motion.div 
+                          key={index} 
+                          className="border-l-4 border-pink-400 pl-8 bg-gradient-to-r from-pink-50 to-white rounded-r-2xl shadow-md p-6"
+                          variants={itemVariants}
+                        >
+                          <div className="flex flex-col lg:flex-row gap-8 items-center">
+                            <div className="flex-1 text-center lg:text-left">
+                              <div className="flex items-center justify-center lg:justify-start mb-4">
+                                {impact.icon}
+                                <Badge className="ml-4 bg-pink-400 text-white font-bold">
+                                  {impact.category}
+                                </Badge>
+                              </div>
+                              <h3 className="text-2xl font-bold text-gray-900 mb-2">
                                 {impact.title}
-                              </CardTitle>
-                              <Badge variant="outline" className="mt-2">
-                                {impact.category}
+                              </h3>
+                              <p className="text-gray-600 leading-relaxed mb-4">
+                                {impact.description}
+                              </p>
+                              <Badge variant="outline" className="bg-white/80 border-pink-400">
+                                Community Impact
                               </Badge>
                             </div>
+                            
+                            {impact.image && (
+                              <div className="flex-shrink-0">
+                                <div className="rounded-lg overflow-hidden shadow-lg">
+                                  <img
+                                    src={impact.image}
+                                    alt={impact.title}
+                                    className="w-80 h-64 object-cover hover:scale-105 transition-transform duration-300"
+                                  />
+                                </div>
+                              </div>
+                            )}
                           </div>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-gray-700">{impact.description}</p>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
+                        </motion.div>
+                      ))}
+                  </div>
+                </div>
+
+                {/* Other Community Activities Section */}
+                <div className="bg-white rounded-2xl shadow-lg p-8">
+                  <div className="text-center mb-8">
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4 border-b-4 border-indigo-400 inline-block pb-2">
+                      🤝 Community Activities
+                    </h2>
+                    <p className="text-gray-600 text-lg">Additional community engagement and social responsibility initiatives</p>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {communityImpact
+                      .filter((impact) => !impact.featured)
+                      .map((impact, index) => (
+                        <motion.div key={index} variants={itemVariants}>
+                          <Card className="bg-gradient-to-r from-indigo-50 to-white hover:shadow-xl transition-all duration-300 border-2 border-indigo-200 h-full">
+                            <CardHeader>
+                              <div className="flex items-start space-x-4">
+                                <div className="bg-indigo-100 p-3 rounded-full flex-shrink-0">
+                                  {impact.icon}
+                                </div>
+                                <div className="flex-1">
+                                  <CardTitle className="text-lg text-gray-900 mb-2">
+                                    {impact.title}
+                                  </CardTitle>
+                                  <Badge variant="outline" className="bg-white/80 border-indigo-400">
+                                    {impact.category}
+                                  </Badge>
+                                </div>
+                              </div>
+                            </CardHeader>
+                            <CardContent>
+                              <p className="text-gray-700 leading-relaxed">
+                                {impact.description}
+                              </p>
+                            </CardContent>
+                          </Card>
+                        </motion.div>
+                      ))}
+                  </div>
                 </div>
               </motion.div>
             </TabsContent>
