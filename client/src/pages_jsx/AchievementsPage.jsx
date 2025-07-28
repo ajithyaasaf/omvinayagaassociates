@@ -28,6 +28,8 @@ import cidcCertificate from "@/assets/awards/cidc-waterproofing-certificate.png"
 import maduraiIconicAward from "@/assets/awards/madurai-iconic-award.png";
 import radioCityFmInterview from "@/assets/awards/radio-city-fm-interview.png";
 import pudhuyugamTvProgram from "@/assets/awards/pudhuyugam-tv-program.png";
+import velammalCollegeAward from "@/assets/awards/velammal-college-award.png";
+import velammalCollegeLecture from "@/assets/awards/velammal-college-lecture.png";
 
 const AchievementsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("awards");
@@ -135,10 +137,12 @@ const AchievementsPage = () => {
   const educationalOutreach = [
     {
       institution: "Velammal Engineering College",
-      activity: "Guest Lecture",
+      activity: "Guest Lecture & Recognition",
       department: "Civil Engineering",
       description:
-        "Introduced Building Doctor products to first-year Civil Engineering students as part of their syllabus",
+        "Introduced Building Doctor products to first-year Civil Engineering students as part of their syllabus with formal recognition ceremony",
+      images: [velammalCollegeAward, velammalCollegeLecture],
+      featured: true,
     },
     {
       institution: "Thiyagarajar Engineering College",
@@ -597,13 +601,65 @@ const AchievementsPage = () => {
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="space-y-6"
+                className="space-y-8"
               >
                 <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
                   Educational Outreach
                 </h2>
+                
+                {/* Featured Educational Programs */}
+                {educationalOutreach
+                  .filter((edu) => edu.featured)
+                  .map((edu, index) => (
+                    <div key={index} className="mb-8">
+                      <div className="text-center mb-6">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                          {edu.institution}
+                        </h3>
+                        <p className="text-gray-600">
+                          {edu.activity} • {edu.department}
+                        </p>
+                      </div>
+                      
+                      <div className="max-w-4xl mx-auto">
+                        {/* Educational Images */}
+                        {edu.images && (
+                          <div className="flex gap-4 overflow-hidden mb-6 justify-center">
+                            <img
+                              src={edu.images[0]}
+                              alt={`${edu.institution} - Award Ceremony`}
+                              className="w-1/2 max-w-md h-auto object-cover rounded-lg shadow-lg"
+                              style={{
+                                objectPosition: "top",
+                                maxHeight: "400px",
+                              }}
+                            />
+                            <img
+                              src={edu.images[1]}
+                              alt={`${edu.institution} - Student Audience`}
+                              className="w-1/2 max-w-md h-auto object-cover rounded-lg shadow-lg"
+                              style={{
+                                objectPosition: "top",
+                                maxHeight: "400px",
+                              }}
+                            />
+                          </div>
+                        )}
+                        
+                        <div className="text-center">
+                          <p className="text-gray-700 text-lg leading-relaxed max-w-2xl mx-auto">
+                            {edu.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+                  Other Educational Activities
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {educationalOutreach.map((edu, index) => (
+                  {educationalOutreach.filter((edu) => !edu.featured).map((edu, index) => (
                     <motion.div key={index} variants={itemVariants}>
                       <Card className="bg-white hover:shadow-lg transition-shadow duration-300 h-full">
                         <CardHeader>
