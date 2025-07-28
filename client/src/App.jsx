@@ -48,7 +48,7 @@ function App() {
 
   // Import the new professional loading spinner
   const BrandedLoadingSpinner = () => (
-    <div className="flex flex-col items-center justify-center min-h-[60vh]">
+    <div className="fixed inset-0 bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center z-50">
       <LoadingSpinner size="large" showText={true} variant="logo" />
     </div>
   );
