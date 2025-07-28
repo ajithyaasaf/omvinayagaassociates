@@ -1,14 +1,30 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { Award, Trophy, Star, PlayCircle, GraduationCap, Users, Megaphone, Heart } from "lucide-react";
+import {
+  Award,
+  Trophy,
+  Star,
+  PlayCircle,
+  GraduationCap,
+  Users,
+  Megaphone,
+  Heart,
+} from "lucide-react";
 // Import award images
 import excellenceAward1 from "@/assets/awards/excellence-award-1.png";
 import excellenceAward2 from "@/assets/awards/excellence-award-2.png";
 import womenEntrepreneurAward from "@/assets/awards/women-entrepreneur-award.png";
+import cidcCertificate from "@/assets/awards/cidc-waterproofing-certificate.png";
 
 const AchievementsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("awards");
@@ -18,45 +34,49 @@ const AchievementsPage = () => {
     {
       title: "Promotion Pioneer of the Year 2025",
       organization: "Building Doctor",
-      description: "Recognized for outstanding promotional activities and brand building initiatives",
+      description:
+        "Recognized for outstanding promotional activities and brand building initiatives",
       year: "2025",
       category: "Business Excellence",
       icon: <Trophy className="w-8 h-8 text-yellow-500" />,
-      color: "bg-gradient-to-br from-yellow-50 to-orange-50 border-yellow-200"
+      color: "bg-gradient-to-br from-yellow-50 to-orange-50 border-yellow-200",
     },
     {
       title: "Best Women Entrepreneur 2025",
       recipient: "Dr. SK Kamaleeswari",
       organization: "Building Doctor Madurai",
-      description: "Outstanding leadership and entrepreneurial excellence in construction industry",
+      description:
+        "Outstanding leadership and entrepreneurial excellence in construction industry",
       year: "2025",
       category: "Leadership",
       icon: <Award className="w-8 h-8 text-purple-500" />,
       color: "bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200",
       image: womenEntrepreneurAward,
-      featured: true
+      featured: true,
     },
     {
       title: "Excellence in Building Restoration & Water Proofing",
       organization: "Industry Recognition",
-      description: "Technical excellence and innovation in building restoration services",
+      description:
+        "Technical excellence and innovation in building restoration services",
       year: "2024",
       category: "Technical Excellence",
       icon: <Star className="w-8 h-8 text-blue-500" />,
       color: "bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200",
       images: [excellenceAward1, excellenceAward2],
-      featured: true
+      featured: true,
     },
     {
       title: "Madurai City Iconic Award",
       specialization: "Water Proofing",
       organization: "Madurai City",
-      description: "Recognized as an iconic service provider in water proofing solutions",
+      description:
+        "Recognized as an iconic service provider in water proofing solutions",
       year: "2024",
       category: "Regional Recognition",
       icon: <Trophy className="w-8 h-8 text-green-500" />,
-      color: "bg-gradient-to-br from-green-50 to-emerald-50 border-green-200"
-    }
+      color: "bg-gradient-to-br from-green-50 to-emerald-50 border-green-200",
+    },
   ];
 
   // Professional Certifications
@@ -64,18 +84,23 @@ const AchievementsPage = () => {
     {
       title: "Water Proofing and Insulation Certificate",
       organization: "CIDC (Construction Industry Development Council)",
-      description: "Professional certification in advanced water proofing techniques",
+      recipient: "Ramesh J",
+      description:
+        "Successfully completed Online (Hybrid) Course on Waterproofing and Insulation (3 Weeks) conducted virtually during November, 2024",
       category: "Technical Certification",
-      icon: <GraduationCap className="w-6 h-6 text-blue-600" />
+      icon: <GraduationCap className="w-6 h-6 text-blue-600" />,
+      image: cidcCertificate,
+      featured: true,
     },
     {
       title: "Best Product Presentation Award",
       organization: "Forum Presentation",
       presenter: "Mr. Nakeeran Gopal",
-      description: "Excellence in product demonstration and technical presentation",
+      description:
+        "Excellence in product demonstration and technical presentation",
       category: "Presentation Excellence",
-      icon: <Award className="w-6 h-6 text-green-600" />
-    }
+      icon: <Award className="w-6 h-6 text-green-600" />,
+    },
   ];
 
   // Media Coverage and Outreach
@@ -83,17 +108,18 @@ const AchievementsPage = () => {
     {
       title: "Radio City FM Business Talk",
       type: "Radio Interview",
-      description: "Live telecast discussing Building Doctor services and industry insights",
+      description:
+        "Live telecast discussing Building Doctor services and industry insights",
       platform: "Radio City FM",
-      icon: <Megaphone className="w-6 h-6 text-red-500" />
+      icon: <Megaphone className="w-6 h-6 text-red-500" />,
     },
     {
       title: "Pudhuyugham TV Program",
       type: "Television Appearance",
       description: "Featured program showcasing building restoration expertise",
       platform: "Pudhuyugham TV",
-      icon: <PlayCircle className="w-6 h-6 text-blue-500" />
-    }
+      icon: <PlayCircle className="w-6 h-6 text-blue-500" />,
+    },
   ];
 
   // Educational Outreach
@@ -102,55 +128,61 @@ const AchievementsPage = () => {
       institution: "Velammal Engineering College",
       activity: "Guest Lecture",
       department: "Civil Engineering",
-      description: "Introduced Building Doctor products to first-year Civil Engineering students as part of their syllabus"
+      description:
+        "Introduced Building Doctor products to first-year Civil Engineering students as part of their syllabus",
     },
     {
       institution: "Thiyagarajar Engineering College",
       activity: "Principal Meeting & Presentation",
-      description: "Official meeting with college principal to discuss industry collaboration"
+      description:
+        "Official meeting with college principal to discuss industry collaboration",
     },
     {
       institution: "Fatima College",
       activity: "Guest Lecture",
-      description: "Educational presentation on building restoration techniques"
+      description:
+        "Educational presentation on building restoration techniques",
     },
     {
       institution: "Mohammed Sathak Polytechnic College",
       activity: "Guest Lecture",
-      description: "Technical presentation on modern construction repair methods"
+      description:
+        "Technical presentation on modern construction repair methods",
     },
     {
       institution: "Kakkaipadiniyar Govt. Girls Hr. Sec. School",
       activity: "Educational Program",
-      description: "Inspiring young minds about careers in construction and engineering"
+      description:
+        "Inspiring young minds about careers in construction and engineering",
     },
     {
       institution: "NMSSVN College",
       activity: "Student Engagement",
-      description: "Interactive session with engineering students"
-    }
+      description: "Interactive session with engineering students",
+    },
   ];
 
   // Community and Business Impact
   const communityImpact = [
     {
       title: "M-Cube MOU Partnership",
-      description: "Provided BD materials and guidance to engineering students for their projects",
+      description:
+        "Provided BD materials and guidance to engineering students for their projects",
       category: "Student Support",
-      icon: <Users className="w-6 h-6 text-green-500" />
+      icon: <Users className="w-6 h-6 text-green-500" />,
     },
     {
       title: "AMCE Pongal Celebration Sponsor",
       description: "Community engagement through festival sponsorship",
       category: "Community Support",
-      icon: <Heart className="w-6 h-6 text-red-500" />
+      icon: <Heart className="w-6 h-6 text-red-500" />,
     },
     {
       title: "Diwali Celebrations",
       description: "Team building and community celebration initiatives",
       category: "Team Building",
-      icon: <Users className="w-6 h-6 text-orange-500" />
-    }
+      icon: <Users className="w-6 h-6 text-orange-500" />,
+    },
   ];
 
   const containerVariants = {
@@ -158,9 +190,9 @@ const AchievementsPage = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
@@ -169,15 +201,15 @@ const AchievementsPage = () => {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.5
-      }
-    }
+        duration: 0.5,
+      },
+    },
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
       {/* Hero Section */}
-      <motion.section 
+      <motion.section
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -196,8 +228,8 @@ const AchievementsPage = () => {
                 <Trophy className="w-16 h-16 text-yellow-300" />
               </div>
             </motion.div>
-            
-            <motion.h1 
+
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
@@ -205,31 +237,41 @@ const AchievementsPage = () => {
             >
               Our Achievements
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
               className="text-xl md:text-2xl text-blue-100 leading-relaxed"
             >
-              Celebrating excellence, innovation, and leadership in the building restoration industry
+              Celebrating excellence, innovation, and leadership in the building
+              restoration industry
             </motion.p>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
               className="flex flex-wrap justify-center gap-4 mt-8"
             >
-              <Badge variant="secondary" className="bg-white/20 text-white border-white/30 px-4 py-2 text-lg">
+              <Badge
+                variant="secondary"
+                className="bg-white/20 text-white border-white/30 px-4 py-2 text-lg"
+              >
                 <Award className="w-5 h-5 mr-2" />
                 Industry Leader
               </Badge>
-              <Badge variant="secondary" className="bg-white/20 text-white border-white/30 px-4 py-2 text-lg">
+              <Badge
+                variant="secondary"
+                className="bg-white/20 text-white border-white/30 px-4 py-2 text-lg"
+              >
                 <Trophy className="w-5 h-5 mr-2" />
                 Award Winner
               </Badge>
-              <Badge variant="secondary" className="bg-white/20 text-white border-white/30 px-4 py-2 text-lg">
+              <Badge
+                variant="secondary"
+                className="bg-white/20 text-white border-white/30 px-4 py-2 text-lg"
+              >
                 <Star className="w-5 h-5 mr-2" />
                 Excellence Pioneer
               </Badge>
@@ -270,55 +312,104 @@ const AchievementsPage = () => {
                 className="space-y-8"
               >
                 {/* Featured Awards */}
-                {majorAwards.filter(award => award.featured).map((award, index) => (
-                  <div key={index} className="mb-8">
-                    <div className="text-center mb-6">
-                      <h2 className="text-3xl font-bold text-gray-900 mb-2">
-                        {award.title}
-                      </h2>
-                      {award.recipient && (
-                        <p className="text-xl font-semibold text-gray-700 mb-1">
-                          {award.recipient}
+                {majorAwards
+                  .filter((award) => award.featured)
+                  .map((award, index) => (
+                    <div key={index} className="mb-8">
+                      <div className="text-center mb-6">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                          {award.title}
+                        </h2>
+                        {award.recipient && (
+                          <p className="text-xl font-semibold text-gray-700 mb-1">
+                            {award.recipient}
+                          </p>
+                        )}
+                        <p className="text-gray-600">
+                          {award.organization} • {award.year}
                         </p>
-                      )}
-                      <p className="text-gray-600">
-                        {award.organization} • {award.year}
-                      </p>
+                      </div>
+
+                      <div className="max-w-4xl mx-auto">
+                        {/* Multiple Award Images - Combined Display */}
+                        {award.images && (
+                          <div className="flex overflow-hidden">
+                            <img
+                              src={award.images[0]}
+                              alt={`${award.title} - Part 1`}
+                              className="w-1/2 h-auto object-cover"
+                              style={{
+                                objectPosition: "top",
+                                maxHeight: "400px",
+                              }}
+                            />
+                            <img
+                              src={award.images[1]}
+                              alt={`${award.title} - Part 2`}
+                              className="w-1/2 h-auto object-cover"
+                              style={{
+                                objectPosition: "top",
+                                maxHeight: "400px",
+                              }}
+                            />
+                          </div>
+                        )}
+
+                        {/* Single Award Image */}
+                        {award.image && !award.images && (
+                          <div className="flex justify-center overflow-hidden">
+                            <img
+                              src={award.image}
+                              alt={award.title}
+                              className="max-w-md h-auto object-cover rounded-lg"
+                              style={{
+                                objectPosition: "top",
+                                maxHeight: "500px",
+                              }}
+                            />
+                          </div>
+                        )}
+                      </div>
                     </div>
-                    
-                    <div className="max-w-4xl mx-auto">
-                      {/* Multiple Award Images - Combined Display */}
-                      {award.images && (
-                        <div className="flex overflow-hidden">
-                          <img
-                            src={award.images[0]}
-                            alt={`${award.title} - Part 1`}
-                            className="w-1/2 h-auto object-cover"
-                            style={{ objectPosition: 'top', maxHeight: '400px' }}
-                          />
-                          <img
-                            src={award.images[1]}
-                            alt={`${award.title} - Part 2`}
-                            className="w-1/2 h-auto object-cover"
-                            style={{ objectPosition: 'top', maxHeight: '400px' }}
-                          />
-                        </div>
-                      )}
-                      
-                      {/* Single Award Image */}
-                      {award.image && !award.images && (
-                        <div className="flex justify-center overflow-hidden">
-                          <img
-                            src={award.image}
-                            alt={award.title}
-                            className="max-w-md h-auto object-cover rounded-lg"
-                            style={{ objectPosition: 'top', maxHeight: '500px' }}
-                          />
-                        </div>
-                      )}
+                  ))}
+
+                {/* Featured Certifications */}
+                {certifications
+                  .filter((cert) => cert.featured)
+                  .map((cert, index) => (
+                    <div key={index} className="mb-8">
+                      <div className="text-center mb-6">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                          {cert.title}
+                        </h2>
+                        {cert.recipient && (
+                          <p className="text-xl font-semibold text-gray-700 mb-1">
+                            {cert.recipient}
+                          </p>
+                        )}
+                        <p className="text-gray-600">
+                          {cert.organization}
+                        </p>
+                      </div>
+
+                      <div className="max-w-4xl mx-auto">
+                        {/* Single Certificate Image */}
+                        {cert.image && (
+                          <div className="flex justify-center overflow-hidden">
+                            <img
+                              src={cert.image}
+                              alt={cert.title}
+                              className="max-w-2xl h-auto object-cover rounded-lg shadow-lg"
+                              style={{
+                                objectPosition: "top",
+                                maxHeight: "500px",
+                              }}
+                            />
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
 
                 {/* Other Major Awards */}
                 <div>
@@ -326,38 +417,45 @@ const AchievementsPage = () => {
                     Other Awards & Recognition
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {majorAwards.filter(award => !award.featured).map((award, index) => (
-                      <motion.div key={index} variants={itemVariants}>
-                        <Card className={`${award.color} hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2`}>
-                          <CardHeader className="text-center">
-                            <div className="flex justify-center mb-4">
-                              {award.icon}
-                            </div>
-                            <CardTitle className="text-xl font-bold text-gray-900">
-                              {award.title}
-                            </CardTitle>
-                            {award.recipient && (
-                              <p className="text-lg font-semibold text-gray-700">
-                                {award.recipient}
+                    {majorAwards
+                      .filter((award) => !award.featured)
+                      .map((award, index) => (
+                        <motion.div key={index} variants={itemVariants}>
+                          <Card
+                            className={`${award.color} hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2`}
+                          >
+                            <CardHeader className="text-center">
+                              <div className="flex justify-center mb-4">
+                                {award.icon}
+                              </div>
+                              <CardTitle className="text-xl font-bold text-gray-900">
+                                {award.title}
+                              </CardTitle>
+                              {award.recipient && (
+                                <p className="text-lg font-semibold text-gray-700">
+                                  {award.recipient}
+                                </p>
+                              )}
+                              <CardDescription className="text-gray-600">
+                                {award.organization} • {award.year}
+                              </CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                              <p className="text-gray-700 text-center leading-relaxed">
+                                {award.description}
                               </p>
-                            )}
-                            <CardDescription className="text-gray-600">
-                              {award.organization} • {award.year}
-                            </CardDescription>
-                          </CardHeader>
-                          <CardContent>
-                            <p className="text-gray-700 text-center leading-relaxed">
-                              {award.description}
-                            </p>
-                            <div className="flex justify-center mt-4">
-                              <Badge variant="outline" className="bg-white/50">
-                                {award.category}
-                              </Badge>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      </motion.div>
-                    ))}
+                              <div className="flex justify-center mt-4">
+                                <Badge
+                                  variant="outline"
+                                  className="bg-white/50"
+                                >
+                                  {award.category}
+                                </Badge>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        </motion.div>
+                      ))}
                   </div>
                 </div>
 
@@ -381,7 +479,8 @@ const AchievementsPage = () => {
                                 </CardTitle>
                                 <CardDescription className="text-gray-600">
                                   {cert.organization}
-                                  {cert.presenter && ` • Presented by ${cert.presenter}`}
+                                  {cert.presenter &&
+                                    ` • Presented by ${cert.presenter}`}
                                 </CardDescription>
                               </div>
                             </div>
