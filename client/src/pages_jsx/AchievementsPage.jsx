@@ -393,11 +393,11 @@ const AchievementsPage = () => {
                                         className="w-48 h-64 object-cover hover:scale-105 transition-transform duration-300 cursor-pointer"
                                       />
                                     </DialogTrigger>
-                                    <DialogContent className="max-w-4xl">
+                                    <DialogContent className="max-w-[95vw] max-h-[95vh] w-full h-full p-2 sm:p-4">
                                       <img
                                         src={award.images[0]}
                                         alt={`${award.title} - Part 1`}
-                                        className="w-full h-auto object-contain"
+                                        className="w-full h-full max-h-[85vh] object-contain rounded-lg"
                                       />
                                     </DialogContent>
                                   </Dialog>
@@ -409,11 +409,11 @@ const AchievementsPage = () => {
                                         className="w-48 h-64 object-cover hover:scale-105 transition-transform duration-300 cursor-pointer"
                                       />
                                     </DialogTrigger>
-                                    <DialogContent className="max-w-4xl">
+                                    <DialogContent className="max-w-[95vw] max-h-[95vh] w-full h-full p-2 sm:p-4">
                                       <img
                                         src={award.images[1]}
                                         alt={`${award.title} - Part 2`}
-                                        className="w-full h-auto object-contain"
+                                        className="w-full h-full max-h-[85vh] object-contain rounded-lg"
                                       />
                                     </DialogContent>
                                   </Dialog>
@@ -432,11 +432,11 @@ const AchievementsPage = () => {
                                       />
                                     </div>
                                   </DialogTrigger>
-                                  <DialogContent className="max-w-4xl">
+                                  <DialogContent className="max-w-[95vw] max-h-[95vh] w-full h-full p-2 sm:p-4">
                                     <img
                                       src={award.image}
                                       alt={award.title}
-                                      className="w-full h-auto object-contain"
+                                      className="w-full h-full max-h-[85vh] object-contain rounded-lg"
                                     />
                                   </DialogContent>
                                 </Dialog>
@@ -505,11 +505,11 @@ const AchievementsPage = () => {
                                       />
                                     </div>
                                   </DialogTrigger>
-                                  <DialogContent className="max-w-4xl">
+                                  <DialogContent className="max-w-[95vw] max-h-[95vh] w-full h-full p-2 sm:p-4">
                                     <img
                                       src={cert.image}
                                       alt={cert.title}
-                                      className="w-full h-auto object-contain"
+                                      className="w-full h-full max-h-[85vh] object-contain rounded-lg"
                                     />
                                   </DialogContent>
                                 </Dialog>
@@ -678,11 +678,11 @@ const AchievementsPage = () => {
                                       />
                                     </div>
                                   </DialogTrigger>
-                                  <DialogContent className="max-w-4xl">
+                                  <DialogContent className="max-w-[95vw] max-h-[95vh] w-full h-full p-2 sm:p-4">
                                     <img
                                       src={media.image}
                                       alt={media.title}
-                                      className="w-full h-auto object-contain"
+                                      className="w-full h-full max-h-[85vh] object-contain rounded-lg"
                                     />
                                   </DialogContent>
                                 </Dialog>
@@ -801,11 +801,11 @@ const AchievementsPage = () => {
                                         className="w-48 h-64 object-cover hover:scale-105 transition-transform duration-300 cursor-pointer"
                                       />
                                     </DialogTrigger>
-                                    <DialogContent className="max-w-4xl">
+                                    <DialogContent className="max-w-[95vw] max-h-[95vh] w-full h-full p-2 sm:p-4">
                                       <img
                                         src={edu.images[0]}
                                         alt={`${edu.institution} - Award Ceremony`}
-                                        className="w-full h-auto object-contain"
+                                        className="w-full h-full max-h-[85vh] object-contain rounded-lg"
                                       />
                                     </DialogContent>
                                   </Dialog>
@@ -817,11 +817,11 @@ const AchievementsPage = () => {
                                         className="w-48 h-64 object-cover hover:scale-105 transition-transform duration-300 cursor-pointer"
                                       />
                                     </DialogTrigger>
-                                    <DialogContent className="max-w-4xl">
+                                    <DialogContent className="max-w-[95vw] max-h-[95vh] w-full h-full p-2 sm:p-4">
                                       <img
                                         src={edu.images[1]}
                                         alt={`${edu.institution} - Student Audience`}
-                                        className="w-full h-auto object-contain"
+                                        className="w-full h-full max-h-[85vh] object-contain rounded-lg"
                                       />
                                     </DialogContent>
                                   </Dialog>
@@ -840,11 +840,11 @@ const AchievementsPage = () => {
                                       />
                                     </div>
                                   </DialogTrigger>
-                                  <DialogContent className="max-w-4xl">
+                                  <DialogContent className="max-w-[95vw] max-h-[95vh] w-full h-full p-2 sm:p-4">
                                     <img
                                       src={edu.image}
                                       alt={edu.institution}
-                                      className="w-full h-auto object-contain"
+                                      className="w-full h-full max-h-[85vh] object-contain rounded-lg"
                                     />
                                   </DialogContent>
                                 </Dialog>
@@ -960,11 +960,11 @@ const AchievementsPage = () => {
                                       />
                                     </div>
                                   </DialogTrigger>
-                                  <DialogContent className="max-w-4xl">
+                                  <DialogContent className="max-w-[95vw] max-h-[95vh] w-full h-full p-2 sm:p-4">
                                     <img
                                       src={impact.image}
                                       alt={impact.title}
-                                      className="w-full h-auto object-contain"
+                                      className="w-full h-full max-h-[85vh] object-contain rounded-lg"
                                     />
                                   </DialogContent>
                                 </Dialog>
