@@ -736,7 +736,7 @@ const AchievementsPage = () => {
                                 {edu.institution}
                               </h3>
                               <p className="text-lg font-semibold text-primary mb-3">
-                                🏛️ {edu.activity}
+                                {edu.activity}
                                 {edu.department && ` • ${edu.department}`}
                               </p>
                               <p className="text-gray-600 leading-relaxed mb-4">
@@ -817,8 +817,8 @@ const AchievementsPage = () => {
                 {/* Other Educational Activities Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4 ">
-                      📚 Educational Activities
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                      Educational Activities
                     </h2>
                     <p className="text-gray-600 text-lg">Additional educational outreach and knowledge sharing initiatives</p>
                   </div>
@@ -872,8 +872,8 @@ const AchievementsPage = () => {
                 {/* Featured Community Activities Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4 ">
-                      ❤️ Featured Community Impact
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                      Featured Community Impact
                     </h2>
                     <p className="text-gray-600 text-lg">Making a positive difference in our community through partnerships and celebrations</p>
                   </div>
