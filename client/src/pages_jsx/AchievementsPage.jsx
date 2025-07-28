@@ -260,81 +260,22 @@ const AchievementsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
-      {/* Hero Section */}
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative py-20 bg-gradient-to-r from-blue-900 via-blue-800 to-green-800 text-white overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-black/20"></div>
+    <div className="pt-24">
+      <section className="bg-[#2b4c7e] py-20 relative">
+        <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center max-w-4xl mx-auto">
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="flex justify-center mb-6"
-            >
-              <div className="bg-white/10 backdrop-blur-sm rounded-full p-6">
-                <Trophy className="w-16 h-16 text-yellow-300" />
-              </div>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-yellow-300 to-white bg-clip-text text-transparent"
-            >
+          <div className="text-center text-white">
+            <h1 className="font-montserrat font-bold text-4xl md:text-5xl mb-4">
               Our Achievements
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="text-xl md:text-2xl text-blue-100 leading-relaxed"
-            >
-              Celebrating excellence, innovation, and leadership in the building
-              restoration industry
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-              className="flex flex-wrap justify-center gap-4 mt-8"
-            >
-              <Badge
-                variant="secondary"
-                className="bg-white/20 text-white border-white/30 px-4 py-2 text-lg"
-              >
-                <Award className="w-5 h-5 mr-2" />
-                Industry Leader
-              </Badge>
-              <Badge
-                variant="secondary"
-                className="bg-white/20 text-white border-white/30 px-4 py-2 text-lg"
-              >
-                <Trophy className="w-5 h-5 mr-2" />
-                Award Winner
-              </Badge>
-              <Badge
-                variant="secondary"
-                className="bg-white/20 text-white border-white/30 px-4 py-2 text-lg"
-              >
-                <Star className="w-5 h-5 mr-2" />
-                Excellence Pioneer
-              </Badge>
-            </motion.div>
+            </h1>
+            <p className="max-w-2xl mx-auto text-lg text-gray-200">
+              Celebrating excellence, innovation, and leadership in the building restoration industry
+            </p>
           </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* Main Content */}
-      <section className="py-16">
+      <section className="py-16 bg-gradient-to-br from-blue-50 via-white to-green-50">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="awards" className="w-full">
             <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-12 bg-white shadow-lg">
