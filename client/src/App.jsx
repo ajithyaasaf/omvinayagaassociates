@@ -1,7 +1,7 @@
 import { Route, Switch, useLocation } from "wouter";
 import { Toaster } from "@/components/ui/toaster";
 import { AnimatePresence, motion } from "framer-motion";
-import { Suspense, lazy, useEffect } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import WhatsappButton from "./components/WhatsappButton";
@@ -33,24 +33,50 @@ function App() {
     window.scrollTo(0, 0);
   }, [location]);
 
-  // Create a PageWrapper component for animations
-  const PageWrapper = ({ children }) => (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      variants={pageTransition}
-      className="w-full"
-    >
-      <Suspense fallback={
-        <div className="fixed inset-0 bg-white z-[60] flex items-center justify-center">
-          <LoadingSpinner size="medium" showText={false} variant="simple" />
-        </div>
-      }>
-        {children}
-      </Suspense>
-    </motion.div>
-  );
+  // Create a PageWrapper component for animations with 1-second minimum loading time
+  const PageWrapper = ({ children }) => {
+    const [showSpinner, setShowSpinner] = useState(true);
+    const [isReady, setIsReady] = useState(false);
+
+    useEffect(() => {
+      // Minimum 1-second loading time
+      const timer = setTimeout(() => {
+        setIsReady(true);
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+      if (isReady) {
+        setShowSpinner(false);
+      }
+    }, [isReady]);
+
+    return (
+      <motion.div
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        variants={pageTransition}
+        className="w-full"
+      >
+        {showSpinner ? (
+          <div className="fixed inset-0 bg-white z-[60] flex items-center justify-center">
+            <LoadingSpinner size="large" showText={true} variant="logo" />
+          </div>
+        ) : (
+          <Suspense fallback={
+            <div className="fixed inset-0 bg-white z-[60] flex items-center justify-center">
+              <LoadingSpinner size="large" showText={true} variant="logo" />
+            </div>
+          }>
+            {children}
+          </Suspense>
+        )}
+      </motion.div>
+    );
+  };
 
   // Import the new professional loading spinner
   const BrandedLoadingSpinner = () => (
