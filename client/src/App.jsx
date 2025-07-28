@@ -62,12 +62,12 @@ function App() {
         className="w-full"
       >
         {showSpinner ? (
-          <div className="fixed inset-0 bg-white z-[60] flex items-center justify-center">
+          <div className="fixed inset-0 bg-white/80 backdrop-blur-sm z-[60] flex items-center justify-center">
             <LoadingSpinner size="large" showText={true} variant="logo" />
           </div>
         ) : (
           <Suspense fallback={
-            <div className="fixed inset-0 bg-white z-[60] flex items-center justify-center">
+            <div className="fixed inset-0 bg-white/80 backdrop-blur-sm z-[60] flex items-center justify-center">
               <LoadingSpinner size="large" showText={true} variant="logo" />
             </div>
           }>
