@@ -21,8 +21,8 @@ import {
   Heart,
 } from "lucide-react";
 // Import award images
-import excellenceAward1 from "@/assets/awards/excellence-award-1.png";
-import excellenceAward2 from "@/assets/awards/excellence-award-2.png";
+import excellenceAward1 from "@/assets/awards/excellence-award-1-new.png";
+import excellenceAward2 from "@/assets/awards/excellence-award-2-new.png";
 import womenEntrepreneurAward from "@/assets/awards/women-entrepreneur-award-new.png";
 import cidcCertificate from "@/assets/awards/cidc-waterproofing-certificate.png";
 import maduraiIconicAward from "@/assets/awards/madurai-iconic-award.png";
