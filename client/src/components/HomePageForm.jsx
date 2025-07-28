@@ -12,6 +12,7 @@ import {
   FilePlus,
   AlertCircle,
 } from "lucide-react";
+import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -518,9 +519,14 @@ const HomePageForm = ({ isOpen: externalIsOpen, onClose }) => {
                           className="w-full bg-primary hover:bg-secondary text-primary-foreground"
                           disabled={isSubmitting}
                         >
-                          {isSubmitting
-                            ? "Submitting..."
-                            : "Request Free Consultation"}
+                          {isSubmitting ? (
+                            <div className="flex items-center justify-center gap-2">
+                              <LoadingSpinner size="small" showText={false} variant="simple" />
+                              <span>Submitting...</span>
+                            </div>
+                          ) : (
+                            "Request Free Consultation"
+                          )}
                         </Button>
                         <p className="text-xs text-muted-foreground mt-2 text-center">
                           We'll contact you soon to discuss your building issues
@@ -738,7 +744,14 @@ const HomePageForm = ({ isOpen: externalIsOpen, onClose }) => {
                         className="w-full bg-primary hover:bg-secondary text-primary-foreground"
                         disabled={isSubmitting}
                       >
-                        {isSubmitting ? "Sending..." : "Send Message"}
+                        {isSubmitting ? (
+                          <div className="flex items-center justify-center gap-2">
+                            <LoadingSpinner size="small" showText={false} variant="simple" />
+                            <span>Sending...</span>
+                          </div>
+                        ) : (
+                          "Send Message"
+                        )}
                       </Button>
                       <p className="text-xs text-muted-foreground mt-2 text-center">
                         Our team will get back to you as soon as possible.
