@@ -144,69 +144,10 @@ const AchievementsPage = () => {
   // Educational Outreach
   const educationalOutreach = [
     {
-      institution: "Velammal Engineering College",
-      activity: "Guest Lecture & Recognition",
-      department: "Civil Engineering",
-      description:
-        "Introduced Building Doctor products to first-year Civil Engineering students as part of their syllabus with formal recognition ceremony",
-      images: [velammalCollegeAward, velammalCollegeLecture],
-      featured: true,
-    },
-    {
       institution: "Thiyagarajar Engineering College",
       activity: "Principal Meeting & Presentation",
       description:
         "Official meeting with college principal to discuss industry collaboration",
-    },
-    {
-      institution: "Fatima College",
-      activity: "Guest Lecture",
-      description:
-        "Educational presentation on building restoration techniques with faculty engagement",
-      image: fatimaCollege,
-      featured: true,
-    },
-    {
-      institution: "Mohamed Sathak Engineering College",
-      activity: "Guest Lecture",
-      department: "Civil Engineering",
-      description:
-        "Technical presentation on waterproofing solutions to Civil Engineering students and faculty",
-      image: mohamedSathakCollege,
-      featured: true,
-    },
-    {
-      institution: "Kakkaipadiniyar Govt. Girls Hr. Sec. School",
-      activity: "Educational Outreach",
-      description:
-        "Awareness program on building maintenance and construction safety for high school students",
-      image: kakkaipadiniyarSchool,
-      featured: true,
-    },
-    {
-      institution: "NMSSVN College",
-      activity: "Guest Lecture & Workshop",
-      description:
-        "Comprehensive program including guest lecture and hands-on workshop on building restoration techniques",
-      image: nmssvnCollege,
-      featured: true,
-    },
-    {
-      institution: "Mohammed Sathak Polytechnic College",
-      activity: "Guest Lecture",
-      description:
-        "Technical presentation on modern construction repair methods",
-    },
-    {
-      institution: "Kakkaipadiniyar Govt. Girls Hr. Sec. School",
-      activity: "Educational Program",
-      description:
-        "Inspiring young minds about careers in construction and engineering",
-    },
-    {
-      institution: "NMSSVN College",
-      activity: "Student Engagement",
-      description: "Interactive session with engineering students",
     },
   ];
 
