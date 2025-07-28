@@ -130,7 +130,7 @@ const ContactSection = () => {
                     CONTACT.addresses.map((address, index) => (
                       <div key={index} className="border-l-3 border-primary/40 pl-4 py-2 bg-gray-100/50 rounded-r-lg">
                         <p className="text-xs text-primary font-semibold mb-1">
-                          {index === 0 ? "MAIN OFFICE" : "BRANCH OFFICE"}
+                          {index === 0 ? "ADDRESS 1" : "ADDRESS 2"}
                         </p>
                         <p className="text-gray-600 text-sm leading-relaxed">
                           {address}
