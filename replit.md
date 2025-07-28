@@ -110,6 +110,7 @@ Required environment variables:
 
 ## Changelog
 
+- July 28, 2025. Successfully completed migration from Replit Agent to Replit environment with full compatibility, security enhancements, and proper client/server separation - all dependencies working, API endpoints functional, no LSP errors, development server running on port 5000, fixed page transition spinner z-index to appear above navbar
 - July 28, 2025. Implemented professional loading spinner design using company OM Vinayaga Associates logo with multiple variants (logo, simple, building) and three sizes (small, medium, large), replaced generic loading states with branded experience throughout application, created fullscreen page transition spinner positioned above navbar, maintained skeleton loading for product pages per user preference
 - July 28, 2025. Completed comprehensive typography hierarchy audit and standardization across all pages: implemented consistent responsive heading scales (h1: text-3xl md:text-4xl lg:text-5xl), standardized subtitle font weights and sizes, ensured proper font-medium for descriptive text, optimized Montserrat font usage with weights 400/500/600/700, and established consistent visual hierarchy from Hero components to page headers following modern design principles
 - July 28, 2025. Updated Excellence in Building Restoration & Water Proofing award images with new professional photos in achievements page Awards tab and fixed all image modal dialogs to be fully responsive on mobile and desktop devices

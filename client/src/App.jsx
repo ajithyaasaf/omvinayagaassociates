@@ -40,7 +40,11 @@ function App() {
       variants={pageTransition}
       className="w-full"
     >
-      <Suspense fallback={<LoadingSpinner />}>
+      <Suspense fallback={
+        <div className="fixed inset-0 bg-white z-[60] flex items-center justify-center">
+          <LoadingSpinner size="large" showText={true} variant="logo" />
+        </div>
+      }>
         {children}
       </Suspense>
     </motion.div>
