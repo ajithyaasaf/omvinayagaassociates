@@ -23,7 +23,7 @@ import {
 // Import award images
 import excellenceAward1 from "@/assets/awards/excellence-award-1.png";
 import excellenceAward2 from "@/assets/awards/excellence-award-2.png";
-import womenEntrepreneurAward from "@/assets/awards/women-entrepreneur-award.png";
+import womenEntrepreneurAward from "@/assets/awards/women-entrepreneur-award-new.png";
 import cidcCertificate from "@/assets/awards/cidc-waterproofing-certificate.png";
 import maduraiIconicAward from "@/assets/awards/madurai-iconic-award.png";
 import radioCityFmInterview from "@/assets/awards/radio-city-fm-interview.png";
