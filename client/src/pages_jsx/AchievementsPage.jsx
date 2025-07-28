@@ -34,6 +34,9 @@ import fatimaCollege from "@/assets/awards/fatima-college.png";
 import mohamedSathakCollege from "@/assets/awards/mohamed-sathak-college.png";
 import kakkaipadiniyarSchool from "@/assets/awards/kakkaipadiniyar-school.png";
 import nmssvnCollege from "@/assets/awards/nmssvn-college.png";
+import mcubeMouPartnership from "@/assets/awards/mcube-mou-partnership.png";
+import amcePongalCelebration from "@/assets/awards/amce-pongal-celebration.png";
+import diwaliCelebrations from "@/assets/awards/diwali-celebrations.png";
 
 const AchievementsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("awards");
@@ -211,21 +214,27 @@ const AchievementsPage = () => {
     {
       title: "M-Cube MOU Partnership",
       description:
-        "Provided BD materials and guidance to engineering students for their projects",
+        "Strategic partnership providing BD materials and technical guidance to engineering students for their academic projects with formal MOU documentation",
       category: "Student Support",
       icon: <Users className="w-6 h-6 text-green-500" />,
+      image: mcubeMouPartnership,
+      featured: true,
     },
     {
       title: "AMCE Pongal Celebration Sponsor",
-      description: "Community engagement through festival sponsorship",
+      description: "Community engagement through traditional Pongal festival sponsorship with cultural celebration support",
       category: "Community Support",
       icon: <Heart className="w-6 h-6 text-red-500" />,
+      image: amcePongalCelebration,
+      featured: true,
     },
     {
       title: "Diwali Celebrations",
-      description: "Team building and community celebration initiatives",
+      description: "Team building and community celebration initiatives during Diwali festival with employee engagement activities",
       category: "Team Building",
       icon: <Users className="w-6 h-6 text-orange-500" />,
+      image: diwaliCelebrations,
+      featured: true,
     },
   ];
 
@@ -742,13 +751,56 @@ const AchievementsPage = () => {
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="space-y-6"
+                className="space-y-8"
               >
                 <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
                   Community Impact
                 </h2>
+                
+                {/* Featured Community Activities */}
+                {communityImpact
+                  .filter((impact) => impact.featured)
+                  .map((impact, index) => (
+                    <div key={index} className="mb-8">
+                      <div className="text-center mb-6">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                          {impact.title}
+                        </h3>
+                        <Badge variant="outline" className="mb-2">
+                          {impact.category}
+                        </Badge>
+                      </div>
+                      
+                      <div className="max-w-4xl mx-auto">
+                        {/* Community Image */}
+                        {impact.image && (
+                          <div className="flex justify-center overflow-hidden mb-6">
+                            <img
+                              src={impact.image}
+                              alt={impact.title}
+                              className="max-w-3xl h-auto object-cover rounded-lg shadow-lg"
+                              style={{
+                                objectPosition: "top",
+                                maxHeight: "600px",
+                              }}
+                            />
+                          </div>
+                        )}
+                        
+                        <div className="text-center">
+                          <p className="text-gray-700 text-lg leading-relaxed max-w-2xl mx-auto">
+                            {impact.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+                  Other Community Activities
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {communityImpact.map((impact, index) => (
+                  {communityImpact.filter((impact) => !impact.featured).map((impact, index) => (
                     <motion.div key={index} variants={itemVariants}>
                       <Card className="bg-white hover:shadow-lg transition-shadow duration-300">
                         <CardHeader>
