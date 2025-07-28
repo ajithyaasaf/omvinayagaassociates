@@ -25,6 +25,7 @@ import excellenceAward1 from "@/assets/awards/excellence-award-1.png";
 import excellenceAward2 from "@/assets/awards/excellence-award-2.png";
 import womenEntrepreneurAward from "@/assets/awards/women-entrepreneur-award.png";
 import cidcCertificate from "@/assets/awards/cidc-waterproofing-certificate.png";
+import maduraiIconicAward from "@/assets/awards/madurai-iconic-award.png";
 
 const AchievementsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("awards");
@@ -67,15 +68,17 @@ const AchievementsPage = () => {
       featured: true,
     },
     {
-      title: "Madurai City Iconic Award",
+      title: "Madurai Iconic Award",
       specialization: "Water Proofing",
-      organization: "Madurai City",
+      organization: "Radio City FM & Madurai Citizens Awards 2024",
       description:
-        "Recognized as an iconic service provider in water proofing solutions",
+        "Recognized as an iconic service provider in water proofing solutions for Madurai city",
       year: "2024",
       category: "Regional Recognition",
       icon: <Trophy className="w-8 h-8 text-green-500" />,
       color: "bg-gradient-to-br from-green-50 to-emerald-50 border-green-200",
+      image: maduraiIconicAward,
+      featured: true,
     },
   ];
 
