@@ -37,6 +37,7 @@ import nmssvnCollege from "@/assets/awards/nmssvn-college.png";
 import mcubeMouPartnership from "@/assets/awards/mcube-mou-partnership.png";
 import amcePongalCelebration from "@/assets/awards/amce-pongal-celebration.png";
 import diwaliCelebrations from "@/assets/awards/diwali-celebrations.png";
+import teamAchievement from "@/assets/team-achievement.png";
 
 const AchievementsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("awards");
@@ -261,16 +262,48 @@ const AchievementsPage = () => {
 
   return (
     <div className="pt-24">
-      <section className="bg-[#2b4c7e] py-20 relative">
+      <section className="bg-[#2b4c7e] py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center text-white">
-            <h1 className="font-montserrat font-bold text-4xl md:text-5xl mb-4">
-              Our Achievements
-            </h1>
-            <p className="max-w-2xl mx-auto text-lg text-gray-200">
-              Celebrating excellence, innovation, and leadership in the building restoration industry
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <div className="text-center lg:text-left text-white">
+              <h1 className="font-montserrat font-bold text-4xl md:text-5xl mb-4">
+                Our Achievements
+              </h1>
+              <p className="text-lg text-gray-200 mb-6">
+                Celebrating excellence, innovation, and leadership in the building restoration industry
+              </p>
+              <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+                <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium">
+                  Industry Leaders
+                </span>
+                <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium">
+                  Award Winners
+                </span>
+                <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium">
+                  Excellence Pioneer
+                </span>
+              </div>
+            </div>
+
+            {/* Team Achievement Image */}
+            <div className="relative">
+              <div className="bg-white p-3 rounded-xl shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                <img
+                  src={teamAchievement}
+                  alt="Team Achievement - Building Doctor Awards"
+                  className="w-full h-auto rounded-lg object-cover"
+                  style={{ maxHeight: "300px" }}
+                />
+                <div className="absolute -top-3 -right-3 bg-yellow-400 text-black p-2 rounded-full shadow-lg">
+                  <Trophy className="w-6 h-6" />
+                </div>
+              </div>
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -left-4 w-20 h-20 bg-yellow-400/20 rounded-full blur-xl"></div>
+              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-blue-400/20 rounded-full blur-xl"></div>
+            </div>
           </div>
         </div>
       </section>
