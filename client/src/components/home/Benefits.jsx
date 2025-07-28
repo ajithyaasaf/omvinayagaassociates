@@ -58,7 +58,7 @@ const Benefits = () => {
             </span>
           </div>
 
-          <h2 className="font-montserrat font-bold text-3xl md:text-5xl mb-6 leading-tight">
+          <h2 className="font-montserrat font-bold text-2xl md:text-3xl lg:text-4xl mb-6 leading-tight">
             Why Choose{" "}
             <span className="text-primary relative">
               OM Vinayaga Associates
@@ -66,7 +66,7 @@ const Benefits = () => {
             </span>
           </h2>
 
-          <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
+          <p className="text-gray-600 text-base md:text-lg leading-relaxed font-medium">
             We don't just repair buildings — we engineer solutions that last,
             combining cutting-edge technology with decades of expertise.
           </p>

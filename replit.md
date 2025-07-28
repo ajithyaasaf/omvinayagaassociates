@@ -110,6 +110,7 @@ Required environment variables:
 
 ## Changelog
 
+- July 28, 2025. Completed comprehensive typography hierarchy audit and standardization across all pages: implemented consistent responsive heading scales (h1: text-3xl md:text-4xl lg:text-5xl), standardized subtitle font weights and sizes, ensured proper font-medium for descriptive text, optimized Montserrat font usage with weights 400/500/600/700, and established consistent visual hierarchy from Hero components to page headers following modern design principles
 - July 28, 2025. Updated Excellence in Building Restoration & Water Proofing award images with new professional photos in achievements page Awards tab and fixed all image modal dialogs to be fully responsive on mobile and desktop devices
 - July 28, 2025. Successfully completed migration from Replit Agent to Replit environment with all dependencies working properly, no LSP errors, and development server running smoothly on port 5000
 - July 28, 2025. Updated achievements page with strict color consistency using only application's primary colors (primary #19b5ff, secondary, accent teal, muted grays), made all images clickable with modal dialogs for better viewability, and maintained professional organization across all four tabs with proper visual hierarchy and responsive design

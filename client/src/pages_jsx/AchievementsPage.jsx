@@ -276,10 +276,10 @@ const AchievementsPage = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center text-white max-w-4xl mx-auto">
             <div className="bg-black/30 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/20">
-              <h1 className="font-montserrat font-bold text-4xl md:text-5xl mb-6 text-white drop-shadow-2xl">
+              <h1 className="font-montserrat font-bold text-3xl md:text-4xl lg:text-5xl mb-6 text-white drop-shadow-2xl">
                 Our Achievements
               </h1>
-              <p className="text-xl text-gray-100 mb-8 leading-relaxed drop-shadow-lg">
+              <p className="text-base md:text-lg lg:text-xl text-gray-100 mb-8 leading-relaxed drop-shadow-lg font-medium">
                 Celebrating excellence, innovation, and leadership in the building restoration industry
               </p>
               

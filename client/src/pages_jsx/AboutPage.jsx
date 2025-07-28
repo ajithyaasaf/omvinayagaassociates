@@ -15,10 +15,10 @@ const AboutPage = () => {
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center text-white">
-            <h1 className="font-montserrat font-bold text-4xl md:text-5xl mb-4">
+            <h1 className="font-montserrat font-bold text-3xl md:text-4xl lg:text-5xl mb-4">
               About Us
             </h1>
-            <p className="max-w-2xl mx-auto text-lg text-gray-200">
+            <p className="max-w-2xl mx-auto text-base md:text-lg text-gray-200 font-medium">
               Building Doctor Franchise in Madurai - Your trusted partner for
               building repairs
             </p>
@@ -35,7 +35,7 @@ const AboutPage = () => {
                   Our Story
                 </p>
               </div>
-              <h2 className="font-montserrat font-bold text-3xl md:text-4xl mb-6">
+              <h2 className="font-montserrat font-bold text-2xl md:text-3xl lg:text-4xl mb-6">
                 Building Trust Through{" "}
                 <span className="text-primary">Quality Solutions</span>
               </h2>
@@ -91,7 +91,7 @@ const AboutPage = () => {
                 Our Approach
               </p>
             </div>
-            <h2 className="font-montserrat font-bold text-3xl mb-6">
+            <h2 className="font-montserrat font-bold text-2xl md:text-3xl mb-6">
               What Sets Us Apart
             </h2>
             <p className="text-gray-600">
@@ -154,7 +154,7 @@ const AboutPage = () => {
                 Leadership
               </p>
             </div>
-            <h2 className="font-montserrat font-bold text-3xl mb-6">
+            <h2 className="font-montserrat font-bold text-2xl md:text-3xl mb-6">
               Meet Our Directors
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">

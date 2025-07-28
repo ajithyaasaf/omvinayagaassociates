@@ -11,7 +11,7 @@ const About = () => {
             <div className="inline-block px-4 py-1 bg-primary bg-opacity-10 rounded-full mb-3">
               <p className="text-sm font-medium text-primary">About Us</p>
             </div>
-            <h2 className="font-montserrat font-bold text-3xl md:text-4xl mb-6">
+            <h2 className="font-montserrat font-bold text-2xl md:text-3xl lg:text-4xl mb-6">
               Madurai's Trusted{" "}
               <span className="text-primary">Building Repair Experts</span>
             </h2>
@@ -106,7 +106,7 @@ const About = () => {
         {/* Team Section */}
         <div className="mt-20">
           <div className="text-center mb-12">
-            <h2 className="font-montserrat font-bold text-2xl md:text-3xl mb-3">
+            <h2 className="font-montserrat font-bold text-xl md:text-2xl lg:text-3xl mb-3">
               Meet Our <span className="text-primary">Leadership</span>
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">

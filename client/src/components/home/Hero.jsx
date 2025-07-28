@@ -209,7 +209,7 @@ const Hero = () => {
               initial="hidden"
               animate="visible"
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="font-montserrat font-bold text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-8"
+              className="font-montserrat font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white leading-tight mb-8"
             >
               Transform Your
               <br className="hidden md:block" />
@@ -239,7 +239,7 @@ const Hero = () => {
               initial="hidden"
               animate="visible"
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-white/80 text-lg md:text-xl leading-relaxed mb-10 max-w-xl"
+              className="text-white/90 text-base md:text-lg lg:text-xl leading-relaxed mb-10 max-w-xl font-medium"
             >
               We diagnose and treat all building ailments with precision. From
               waterproofing to structural repairs, our experts provide

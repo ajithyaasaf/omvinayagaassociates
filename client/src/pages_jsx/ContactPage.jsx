@@ -115,8 +115,8 @@ const ContactPage = () => {
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center text-white">
-            <h1 className="font-montserrat font-bold text-4xl md:text-5xl mb-4">Contact Us</h1>
-            <p className="max-w-2xl mx-auto text-lg text-gray-200">
+            <h1 className="font-montserrat font-bold text-3xl md:text-4xl lg:text-5xl mb-4">Contact Us</h1>
+            <p className="max-w-2xl mx-auto text-base md:text-lg text-gray-200 font-medium">
               Reach out to our experts for consultations, quotes, or to schedule a site visit
             </p>
           </div>
@@ -127,7 +127,7 @@ const ContactPage = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
             <div className="md:col-span-2 bg-gray-50 rounded-xl p-6 md:p-8">
-              <h3 className="font-montserrat font-bold text-xl mb-6">Contact Information</h3>
+              <h3 className="font-montserrat font-bold text-lg md:text-xl mb-6">Contact Information</h3>
               
               <div className="space-y-6">
                 <div className="flex items-start">

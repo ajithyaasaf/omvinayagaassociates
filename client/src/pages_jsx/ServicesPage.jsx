@@ -49,8 +49,8 @@ const ServicesPage = () => {
             variants={fadeInUp(0.3)}
             className="text-center text-white"
           >
-            <h1 className="font-montserrat font-bold text-4xl md:text-5xl mb-4">Our Services</h1>
-            <p className="max-w-2xl mx-auto text-lg text-gray-200">
+            <h1 className="font-montserrat font-bold text-3xl md:text-4xl lg:text-5xl mb-4">Our Services</h1>
+            <p className="max-w-2xl mx-auto text-base md:text-lg text-gray-200 font-medium">
               Comprehensive building repair and maintenance solutions to protect and enhance your property
             </p>
           </motion.div>
@@ -65,7 +65,7 @@ const ServicesPage = () => {
             variants={fadeInUp(0.4)}
             className="max-w-3xl mx-auto text-center mb-12"
           >
-            <h2 className="font-montserrat font-bold text-3xl mb-4">Expert Solutions for All Building Problems</h2>
+            <h2 className="font-montserrat font-bold text-2xl md:text-3xl mb-4">Expert Solutions for All Building Problems</h2>
             <p className="text-gray-600">
               At OM Vinayaga Associates, we offer a comprehensive range of specialized services designed to address all your building repair and maintenance needs. Our team of experts uses high-quality products and proven techniques to deliver long-lasting results.
             </p>
