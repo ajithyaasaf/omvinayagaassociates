@@ -312,7 +312,7 @@ const AchievementsPage = () => {
             <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-12 bg-gradient-to-r from-blue-50 to-cyan-50 p-2 rounded-2xl shadow-xl border border-blue-100 backdrop-blur-sm">
               <TabsTrigger 
                 value="awards" 
-                className="text-sm md:text-base font-semibold transition-all duration-300 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=active]:transform hover:bg-blue-100 hover:scale-102 hover:transform relative overflow-hidden"
+                className="text-sm md:text-base font-semibold transition-all duration-300 rounded-xl data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=active]:transform hover:bg-primary/10 hover:scale-102 hover:transform relative overflow-hidden"
               >
                 <Trophy className="w-4 h-4 mr-2" />
                 <span className="hidden sm:inline">Awards</span>
@@ -320,7 +320,7 @@ const AchievementsPage = () => {
               </TabsTrigger>
               <TabsTrigger 
                 value="media" 
-                className="text-sm md:text-base font-semibold transition-all duration-300 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-pink-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=active]:transform hover:bg-purple-100 hover:scale-102 hover:transform relative overflow-hidden"
+                className="text-sm md:text-base font-semibold transition-all duration-300 rounded-xl data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=active]:transform hover:bg-primary/10 hover:scale-102 hover:transform relative overflow-hidden"
               >
                 <Megaphone className="w-4 h-4 mr-2" />
                 <span className="hidden sm:inline">Media</span>
@@ -328,7 +328,7 @@ const AchievementsPage = () => {
               </TabsTrigger>
               <TabsTrigger 
                 value="education" 
-                className="text-sm md:text-base font-semibold transition-all duration-300 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-500 data-[state=active]:to-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=active]:transform hover:bg-green-100 hover:scale-102 hover:transform relative overflow-hidden"
+                className="text-sm md:text-base font-semibold transition-all duration-300 rounded-xl data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=active]:transform hover:bg-primary/10 hover:scale-102 hover:transform relative overflow-hidden"
               >
                 <GraduationCap className="w-4 h-4 mr-2" />
                 <span className="hidden sm:inline">Education</span>
@@ -336,7 +336,7 @@ const AchievementsPage = () => {
               </TabsTrigger>
               <TabsTrigger 
                 value="community" 
-                className="text-sm md:text-base font-semibold transition-all duration-300 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-orange-500 data-[state=active]:to-red-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=active]:transform hover:bg-orange-100 hover:scale-102 hover:transform relative overflow-hidden"
+                className="text-sm md:text-base font-semibold transition-all duration-300 rounded-xl data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=active]:transform hover:bg-primary/10 hover:scale-102 hover:transform relative overflow-hidden"
               >
                 <Heart className="w-4 h-4 mr-2" />
                 <span className="hidden sm:inline">Community</span>
