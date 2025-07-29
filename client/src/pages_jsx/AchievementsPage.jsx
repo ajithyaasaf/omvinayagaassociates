@@ -276,8 +276,26 @@ const AchievementsPage = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center text-white max-w-4xl mx-auto">
             <div className="bg-black/30 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/20">
-              <h1 className="font-montserrat font-bold text-3xl md:text-4xl lg:text-5xl mb-6 text-white drop-shadow-2xl">
-                Our Achievements
+              <h1 className="font-montserrat font-bold text-3xl md:text-4xl lg:text-5xl mb-6 text-white drop-shadow-2xl leading-tight">
+                Our{" "}
+                <span className="relative text-yellow-300">
+                  Achievements
+                  <svg
+                    className="absolute -bottom-2 left-0 w-full"
+                    viewBox="0 0 385 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 9C116.62 4.46 243.652 2.99999 382 9"
+                      stroke="#FCD34D"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
               </h1>
               <p className="text-base md:text-lg lg:text-xl text-gray-100 mb-8 leading-relaxed drop-shadow-lg font-medium">
                 Celebrating excellence, innovation, and leadership in the building restoration industry
@@ -355,8 +373,12 @@ const AchievementsPage = () => {
                 {/* Featured Awards Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-primary mb-4">
-                      Major Awards & Recognition
+                    <h2 className="font-montserrat font-bold text-2xl md:text-3xl lg:text-4xl mb-4 leading-tight">
+                      Major Awards &{" "}
+                      <span className="text-primary relative">
+                        Recognition
+                        <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
+                      </span>
                     </h2>
                     <p className="text-gray-600 text-lg">Our most prestigious accomplishments and industry recognition</p>
                   </div>
@@ -467,8 +489,12 @@ const AchievementsPage = () => {
                 {/* Professional Certifications Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-primary mb-4">
-                      Professional Certifications
+                    <h2 className="font-montserrat font-bold text-2xl md:text-3xl lg:text-4xl mb-4 leading-tight">
+                      Professional{" "}
+                      <span className="text-primary relative">
+                        Certifications
+                        <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
+                      </span>
                     </h2>
                     <p className="text-gray-600 text-lg">Technical expertise and professional qualifications</p>
                   </div>
@@ -540,8 +566,12 @@ const AchievementsPage = () => {
                 {/* Other Awards Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-primary mb-4">
-                      Additional Recognition
+                    <h2 className="font-montserrat font-bold text-2xl md:text-3xl lg:text-4xl mb-4 leading-tight">
+                      Additional{" "}
+                      <span className="text-primary relative">
+                        Recognition
+                        <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
+                      </span>
                     </h2>
                     <p className="text-gray-600 text-lg">More achievements and industry recognition</p>
                   </div>
@@ -590,8 +620,12 @@ const AchievementsPage = () => {
                 {/* Other Certifications Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-primary mb-4">
-                      Additional Certifications
+                    <h2 className="font-montserrat font-bold text-2xl md:text-3xl lg:text-4xl mb-4 leading-tight">
+                      Additional{" "}
+                      <span className="text-primary relative">
+                        Certifications
+                        <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
+                      </span>
                     </h2>
                     <p className="text-gray-600 text-lg">Ongoing professional development and training</p>
                   </div>
@@ -645,8 +679,12 @@ const AchievementsPage = () => {
                 {/* Featured Media Coverage Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-primary mb-4">
-                      Featured Media Coverage
+                    <h2 className="font-montserrat font-bold text-2xl md:text-3xl lg:text-4xl mb-4 leading-tight">
+                      Featured Media{" "}
+                      <span className="text-primary relative">
+                        Coverage
+                        <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
+                      </span>
                     </h2>
                     <p className="text-gray-600 text-lg">Our presence in mainstream media and industry publications</p>
                   </div>
@@ -725,8 +763,12 @@ const AchievementsPage = () => {
                 {/* Featured Educational Programs Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-primary mb-4">
-                      Featured Educational Programs
+                    <h2 className="font-montserrat font-bold text-2xl md:text-3xl lg:text-4xl mb-4 leading-tight">
+                      Featured Educational{" "}
+                      <span className="text-primary relative">
+                        Programs
+                        <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
+                      </span>
                     </h2>
                     <p className="text-gray-600 text-lg">Knowledge sharing and educational outreach in academic institutions</p>
                   </div>
@@ -833,8 +875,12 @@ const AchievementsPage = () => {
                 {/* Other Educational Activities Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-primary mb-4">
-                      Educational Activities
+                    <h2 className="font-montserrat font-bold text-2xl md:text-3xl lg:text-4xl mb-4 leading-tight">
+                      Educational{" "}
+                      <span className="text-primary relative">
+                        Activities
+                        <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
+                      </span>
                     </h2>
                     <p className="text-gray-600 text-lg">Additional educational outreach and knowledge sharing initiatives</p>
                   </div>
@@ -888,8 +934,12 @@ const AchievementsPage = () => {
                 {/* Featured Community Activities Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-primary mb-4">
-                      Featured Community Impact
+                    <h2 className="font-montserrat font-bold text-2xl md:text-3xl lg:text-4xl mb-4 leading-tight">
+                      Featured Community{" "}
+                      <span className="text-primary relative">
+                        Impact
+                        <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
+                      </span>
                     </h2>
                     <p className="text-gray-600 text-lg">Making a positive difference in our community through partnerships and celebrations</p>
                   </div>
@@ -953,8 +1003,12 @@ const AchievementsPage = () => {
                 {/* Other Community Activities Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-primary mb-4">
-                      Community Activities
+                    <h2 className="font-montserrat font-bold text-2xl md:text-3xl lg:text-4xl mb-4 leading-tight">
+                      Community{" "}
+                      <span className="text-primary relative">
+                        Activities
+                        <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
+                      </span>
                     </h2>
                     <p className="text-gray-600 text-lg">Additional community engagement and social responsibility initiatives</p>
                   </div>
