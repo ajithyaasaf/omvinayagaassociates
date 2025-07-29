@@ -264,22 +264,22 @@ const ProductDetailPage = () => {
         {/* Additional Info Tabs */}
         <div className="mt-16">
           <div className="border-b border-gray-200 mb-6">
-            <div className="flex">
+            <div className="flex overflow-x-auto scrollbar-hide">
               <button 
                 onClick={() => setActiveTab('description')}
-                className={`py-3 px-6 border-b-2 font-medium ${activeTab === 'description' ? 'border-primary text-primary' : 'border-transparent text-gray-600 hover:text-gray-800'}`}
+                className={`py-3 px-4 md:px-6 border-b-2 font-medium text-sm md:text-base whitespace-nowrap flex-shrink-0 ${activeTab === 'description' ? 'border-primary text-primary' : 'border-transparent text-gray-600 hover:text-gray-800'}`}
               >
                 Description
               </button>
               <button 
                 onClick={() => setActiveTab('specifications')}
-                className={`py-3 px-6 border-b-2 font-medium ${activeTab === 'specifications' ? 'border-primary text-primary' : 'border-transparent text-gray-600 hover:text-gray-800'}`}
+                className={`py-3 px-4 md:px-6 border-b-2 font-medium text-sm md:text-base whitespace-nowrap flex-shrink-0 ${activeTab === 'specifications' ? 'border-primary text-primary' : 'border-transparent text-gray-600 hover:text-gray-800'}`}
               >
                 Specifications
               </button>
               <button 
                 onClick={() => setActiveTab('application')}
-                className={`py-3 px-6 border-b-2 font-medium ${activeTab === 'application' ? 'border-primary text-primary' : 'border-transparent text-gray-600 hover:text-gray-800'}`}
+                className={`py-3 px-4 md:px-6 border-b-2 font-medium text-sm md:text-base whitespace-nowrap flex-shrink-0 ${activeTab === 'application' ? 'border-primary text-primary' : 'border-transparent text-gray-600 hover:text-gray-800'}`}
               >
                 Application Guide
               </button>
