@@ -131,7 +131,7 @@ const Benefits = () => {
 
                   {/* Dynamic content based on benefit type */}
                   <div className="flex-1 flex flex-col justify-center">
-                    <ul className="space-y-2.5 mb-6">
+                    <ul className="space-y-3 mb-6">
                       {benefit.id === 1 && (
                         <>
                           <li className="flex items-start text-sm">
@@ -141,10 +141,6 @@ const Benefits = () => {
                           <li className="flex items-start text-sm">
                             <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
                             <span>Trained professionals with 15+ years experience</span>
-                          </li>
-                          <li className="flex items-start text-sm">
-                            <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
-                            <span>Specialized equipment for all repair services</span>
                           </li>
                           <li className="flex items-start text-sm">
                             <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
@@ -162,10 +158,6 @@ const Benefits = () => {
                           <li className="flex items-start text-sm">
                             <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
                             <span>Industry-leading warranties</span>
-                          </li>
-                          <li className="flex items-start text-sm">
-                            <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
-                            <span>Guaranteed solutions & post-service support</span>
                           </li>
                           <li className="flex items-start text-sm">
                             <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
@@ -187,10 +179,6 @@ const Benefits = () => {
                           <li className="flex items-start text-sm">
                             <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
                             <span>Complete project management</span>
-                          </li>
-                          <li className="flex items-start text-sm">
-                            <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
-                            <span>From diagnosis to final solution</span>
                           </li>
                         </>
                       )}
