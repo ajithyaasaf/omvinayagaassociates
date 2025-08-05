@@ -112,12 +112,12 @@ const ProductDetailPage = () => {
       <div className="bg-gray-50 py-4 mb-8">
         <div className="container mx-auto px-4">
           <div className="flex items-center text-sm">
-            <Link href="/">
-              <a className="text-gray-600 hover:text-primary">Home</a>
+            <Link href="/" className="text-gray-600 hover:text-primary">
+              Home
             </Link>
             <span className="mx-2 text-gray-400">/</span>
-            <Link href="/products">
-              <a className="text-gray-600 hover:text-primary">Products</a>
+            <Link href="/products" className="text-gray-600 hover:text-primary">
+              Products
             </Link>
             <span className="mx-2 text-gray-400">/</span>
             <span className="text-primary font-medium">{product.name}</span>
