@@ -333,32 +333,28 @@ const AchievementsPage = () => {
                 className="text-xs sm:text-sm md:text-base font-semibold transition-all duration-300 rounded-xl data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=active]:transform hover:bg-primary/10 hover:scale-102 hover:transform relative overflow-hidden whitespace-nowrap flex-shrink-0 px-3 sm:px-4 md:px-6"
               >
                 <Trophy className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                <span className="hidden sm:inline">Awards</span>
-                <span className="sm:hidden">🏆</span>
+                <span>Awards</span>
               </TabsTrigger>
               <TabsTrigger 
                 value="media" 
                 className="text-xs sm:text-sm md:text-base font-semibold transition-all duration-300 rounded-xl data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=active]:transform hover:bg-primary/10 hover:scale-102 hover:transform relative overflow-hidden whitespace-nowrap flex-shrink-0 px-3 sm:px-4 md:px-6"
               >
                 <Megaphone className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                <span className="hidden sm:inline">Media</span>
-                <span className="sm:hidden">📺</span>
+                <span>Media</span>
               </TabsTrigger>
               <TabsTrigger 
                 value="education" 
                 className="text-xs sm:text-sm md:text-base font-semibold transition-all duration-300 rounded-xl data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=active]:transform hover:bg-primary/10 hover:scale-102 hover:transform relative overflow-hidden whitespace-nowrap flex-shrink-0 px-3 sm:px-4 md:px-6"
               >
                 <GraduationCap className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                <span className="hidden sm:inline">Education</span>
-                <span className="sm:hidden">🎓</span>
+                <span>Education</span>
               </TabsTrigger>
               <TabsTrigger 
                 value="community" 
                 className="text-xs sm:text-sm md:text-base font-semibold transition-all duration-300 rounded-xl data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=active]:transform hover:bg-primary/10 hover:scale-102 hover:transform relative overflow-hidden whitespace-nowrap flex-shrink-0 px-3 sm:px-4 md:px-6"
               >
                 <Heart className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                <span className="hidden sm:inline">Community</span>
-                <span className="sm:hidden">❤️</span>
+                <span>Community</span>
               </TabsTrigger>
             </TabsList>
 
