@@ -119,45 +119,96 @@ const Benefits = () => {
 
               {/* Back of card */}
               <div
-                className={`absolute inset-0 bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-8 flex flex-col text-white
+                className={`absolute inset-0 bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-6 md:p-8 flex flex-col justify-between text-white
                   transform transition-all duration-500 [transform-style:preserve-3d] [backface-visibility:hidden]
                   ${activeCard === benefit.id ? "opacity-100 [transform:rotateY(0deg)]" : "opacity-0 [transform:rotateY(180deg)]"}
                 `}
               >
-                <div className="flex flex-col h-full justify-center items-center text-center">
-                  <h3 className="font-montserrat font-bold text-xl md:text-2xl mb-6">
+                <div className="flex flex-col h-full">
+                  <h3 className="font-montserrat font-bold text-lg md:text-xl mb-4 text-center">
                     {benefit.title}
                   </h3>
 
-                  <ul className="space-y-3 mb-8">
-                    <li className="flex items-start">
-                      <ChevronRight className="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" />
-                      <span>
-                        Certified technicians with 10+ years experience
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <ChevronRight className="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" />
-                      <span>
-                        Premium materials with industry-leading warranties
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <ChevronRight className="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Instant support</span>
-                    </li>
-                  </ul>
+                  {/* Dynamic content based on benefit type */}
+                  <div className="flex-1 flex flex-col justify-center">
+                    <ul className="space-y-2.5 mb-6">
+                      {benefit.id === 1 && (
+                        <>
+                          <li className="flex items-start text-sm">
+                            <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
+                            <span>ISO 9001:2000 certified company</span>
+                          </li>
+                          <li className="flex items-start text-sm">
+                            <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
+                            <span>Trained professionals with 15+ years experience</span>
+                          </li>
+                          <li className="flex items-start text-sm">
+                            <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
+                            <span>Specialized equipment for all repair services</span>
+                          </li>
+                          <li className="flex items-start text-sm">
+                            <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
+                            <span>Building Doctor authorized franchise</span>
+                          </li>
+                        </>
+                      )}
+                      
+                      {benefit.id === 2 && (
+                        <>
+                          <li className="flex items-start text-sm">
+                            <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
+                            <span>Premium quality products & materials</span>
+                          </li>
+                          <li className="flex items-start text-sm">
+                            <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
+                            <span>Industry-leading warranties</span>
+                          </li>
+                          <li className="flex items-start text-sm">
+                            <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
+                            <span>Guaranteed solutions & post-service support</span>
+                          </li>
+                          <li className="flex items-start text-sm">
+                            <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
+                            <span>Quality checks at every stage</span>
+                          </li>
+                        </>
+                      )}
+                      
+                      {benefit.id === 3 && (
+                        <>
+                          <li className="flex items-start text-sm">
+                            <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
+                            <span>One-stop solution for all building repairs</span>
+                          </li>
+                          <li className="flex items-start text-sm">
+                            <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
+                            <span>Customized approaches for unique problems</span>
+                          </li>
+                          <li className="flex items-start text-sm">
+                            <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
+                            <span>Complete project management</span>
+                          </li>
+                          <li className="flex items-start text-sm">
+                            <ChevronRight className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
+                            <span>From diagnosis to final solution</span>
+                          </li>
+                        </>
+                      )}
+                    </ul>
+                  </div>
 
-                  <button className="mt-auto group inline-flex items-center bg-white/20 hover:bg-white/30 px-6 py-3 rounded-full font-medium transition-all">
-                    <span>Request Service</span>
-                    <MoveRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  <div className="text-center">
+                    <button className="group inline-flex items-center bg-white/20 hover:bg-white/30 px-5 py-2.5 rounded-full text-sm font-medium transition-all">
+                      <span>Request Service</span>
+                      <MoveRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  </div>
                 </div>
 
-                {/* Abstract shapes */}
-                <div className="absolute top-4 right-4 w-20 h-20 border-2 border-white/20 rounded-full"></div>
-                <div className="absolute bottom-10 left-6 w-12 h-12 border-2 border-white/10 rounded-full"></div>
-                <div className="absolute top-1/3 left-6 w-8 h-8 bg-white/10 rounded-full"></div>
+                {/* Abstract shapes - smaller and better positioned */}
+                <div className="absolute top-3 right-3 w-12 h-12 border border-white/20 rounded-full"></div>
+                <div className="absolute bottom-4 left-4 w-8 h-8 border border-white/10 rounded-full"></div>
+                <div className="absolute top-1/4 left-4 w-6 h-6 bg-white/10 rounded-full"></div>
               </div>
             </div>
           ))}
