@@ -25,7 +25,6 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
-
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -71,7 +70,7 @@ const AboutPage = () => {
             <div className="relative">
               <div className="bg-white p-4 rounded-xl shadow-xl relative z-20 overflow-hidden">
                 <img
-                  src={directorImage}
+                  src="/src/assets/building-doctor-icon.png"
                   alt={CONTACT.director}
                   className="w-full h-[400px] rounded-lg object-contain bg-gray-100"
                 />
@@ -82,7 +81,6 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
-
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">
@@ -145,7 +143,6 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
-
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -293,7 +290,6 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
-
       {/*  <section className="py-16 bg-primary/10">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
