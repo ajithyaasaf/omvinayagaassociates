@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 
 // Preload images for faster rendering
+import img2 from "../../assets/new.jpg";
 import thermalImage from "../../assets/thermal.png";
 import sealantsImage from "../../assets/sealants.png";
 import img1 from "../../assets/img1.png";
@@ -117,7 +118,7 @@ const Hero = () => {
       top: currentProblem === 0 ? "25%" : currentProblem === 1 ? "40%" : "60%",
       left: currentProblem === 0 ? "70%" : currentProblem === 1 ? "30%" : "55%",
     }),
-    [currentProblem]
+    [currentProblem],
   );
 
   // Animation variants - defined once and reused
@@ -322,7 +323,7 @@ const Hero = () => {
               {/* Main image with fancy border */}
               <div className="relative z-20 overflow-hidden rounded-2xl shadow-2xl border-4 border-white/10 bg-gradient-to-br from-primary/40 to-primary/20 backdrop-blur-sm">
                 <img
-                  src={img1}
+                  src={img2}
                   alt="Building Doctor Professional"
                   className="w-full object-cover h-[500px]"
                   loading="eager"

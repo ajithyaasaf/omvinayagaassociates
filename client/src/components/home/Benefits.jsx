@@ -144,7 +144,7 @@ const Benefits = () => {
                     </li>
                     <li className="flex items-start">
                       <ChevronRight className="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" />
-                      <span>24/7 emergency service available</span>
+                      <span>Instant support</span>
                     </li>
                   </ul>
 
@@ -175,7 +175,7 @@ const Benefits = () => {
                 {/* Decorative corner accent */}
                 <div className="absolute top-0 left-0 w-24 h-24 bg-primary/5 rounded-br-3xl"></div>
                 <div className="absolute bottom-0 right-0 w-40 h-40 bg-primary/5 rounded-tl-3xl"></div>
-                
+
                 <div className="inline-flex items-center px-5 py-2.5 bg-primary/10 rounded-full text-primary text-sm font-medium mb-8 relative z-10">
                   <Building2 className="w-5 h-5 mr-2" />
                   <span>Our Impact</span>
@@ -185,10 +185,21 @@ const Benefits = () => {
                   Trusted by
                   <span className="inline-block relative ml-3">
                     <span className="text-primary">Thousands</span>
-                    <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 385 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M3 9C116.62 4.46 243.652 2.99999 382 9" stroke="hsl(30 76% 50%)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                    <svg
+                      className="absolute -bottom-2 left-0 w-full"
+                      viewBox="0 0 385 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3 9C116.62 4.46 243.652 2.99999 382 9"
+                        stroke="hsl(30 76% 50%)"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
-                  </span> 
+                  </span>
                   in Madurai
                 </h2>
 
@@ -200,18 +211,25 @@ const Benefits = () => {
 
                 <div className="grid grid-cols-2 gap-10 mb-12 relative z-10">
                   {STATS.map((stat) => (
-                    <div key={stat.id} className="group relative transform transition-transform hover:-translate-y-1">
+                    <div
+                      key={stat.id}
+                      className="group relative transform transition-transform hover:-translate-y-1"
+                    >
                       {/* Card background with subtle gradient */}
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-white rounded-xl -z-10"></div>
-                      
+
                       <div className="p-6">
                         <div className="text-5xl font-bold text-primary mb-3 flex items-center">
                           {stat.value}
-                          <span className="ml-1.5 text-lg text-primary/60">+</span>
+                          <span className="ml-1.5 text-lg text-primary/60">
+                            +
+                          </span>
                         </div>
-                        <p className="text-gray-700 font-medium">{stat.label}</p>
+                        <p className="text-gray-700 font-medium">
+                          {stat.label}
+                        </p>
                       </div>
-                      
+
                       {/* Corner accent */}
                       <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary/30 rounded-br-xl"></div>
                     </div>
@@ -246,9 +264,9 @@ const Benefits = () => {
                 {/* Building Doctor Icon */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="relative w-[400px] h-[400px]">
-                    <img 
-                      src={buildingDoctorIcon} 
-                      alt="Building Doctor" 
+                    <img
+                      src={buildingDoctorIcon}
+                      alt="Building Doctor"
                       className="w-full h-full object-contain z-10 relative animate-float"
                     />
                     <div className="absolute inset-0 bg-white/20 rounded-full blur-3xl -z-10 animate-pulse"></div>
