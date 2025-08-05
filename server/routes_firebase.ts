@@ -4,8 +4,8 @@ import { storage } from "./storage";
 import { z } from "zod";
 import { 
   contactSchema, productSchema, inquirySchema, serviceSchema, testimonialSchema, faqSchema, intentSchema,
-  type Product, type Contact, type Inquiry, type Service, type Testimonial, type Faq, type Intent
-} from "@shared/schema";
+  type Product, type Contact, type Inquiry, type Service, type Testimonial, type FAQ, type Intent
+} from "@shared/firebase-schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API routes - prefix all routes with /api
