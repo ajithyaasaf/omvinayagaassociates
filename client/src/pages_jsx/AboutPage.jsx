@@ -30,7 +30,7 @@ const AboutPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-block px-4 py-1 bg-primary bg-opacity-10 rounded-full mb-3">
-                <p className="text-xs font-semibold text-white uppercase tracking-wider">
+                <p className="text-xs font-semibold text-primary uppercase tracking-wider">
                   Our Story
                 </p>
               </div>
@@ -155,9 +155,10 @@ const AboutPage = () => {
               Meet Our Directors
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Our company is led by experienced directors who bring diverse expertise
-              in business development, education, and technical engineering to deliver
-              exceptional building repair and maintenance solutions.
+              Our company is led by experienced directors who bring diverse
+              expertise in business development, education, and technical
+              engineering to deliver exceptional building repair and maintenance
+              solutions.
             </p>
           </div>
 
@@ -165,20 +166,25 @@ const AboutPage = () => {
             {/* Directors Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {DIRECTORS.map((director, index) => (
-                <div key={director.id} className="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div
+                  key={director.id}
+                  className="bg-white rounded-2xl shadow-xl overflow-hidden"
+                >
                   <div className="bg-primary p-6 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mt-16 -mr-16"></div>
                     <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full -mb-16 -ml-16"></div>
-                    
+
                     <div className="relative z-10 text-center">
                       <div className="w-24 h-24 mb-4 rounded-full mx-auto relative overflow-hidden border-4 border-white/30">
                         <img
-                          src={index === 0 ? drKamaleeswariImage : directorImage}
+                          src={
+                            index === 0 ? drKamaleeswariImage : directorImage
+                          }
                           alt={director.name}
                           className="w-full h-full object-cover object-center"
                         />
                       </div>
-                      
+
                       <h3 className="text-white font-montserrat font-bold text-xl mb-1">
                         {director.name}
                       </h3>
@@ -190,16 +196,16 @@ const AboutPage = () => {
                           {director.credentials}
                         </p>
                       )}
-                      
+
                       <div className="w-16 h-1 bg-white/50 mx-auto"></div>
                     </div>
                   </div>
-                  
+
                   <div className="p-6">
                     <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                       {director.description}
                     </p>
-                    
+
                     <div className="space-y-4">
                       <div>
                         <h4 className="font-montserrat font-semibold text-gray-800 mb-2 text-sm">
@@ -207,13 +213,16 @@ const AboutPage = () => {
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {director.specialties.map((specialty, i) => (
-                            <span key={i} className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs">
+                            <span
+                              key={i}
+                              className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs"
+                            >
                               {specialty}
                             </span>
                           ))}
                         </div>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-montserrat font-semibold text-gray-800 mb-2 text-sm">
                           Key Achievements
@@ -228,23 +237,22 @@ const AboutPage = () => {
                         </ul>
                       </div>
                     </div>
-                    
-
                   </div>
                 </div>
               ))}
             </div>
-            
+
             {/* Call to Action */}
             <div className="mt-12 text-center">
               <Link
                 to="/contact"
                 className="inline-flex items-center bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-lg transition-colors"
               >
-                <i className="fas fa-envelope mr-2"></i> Get in Touch with Our Team
+                <i className="fas fa-envelope mr-2"></i> Get in Touch with Our
+                Team
               </Link>
             </div>
-            
+
             {/* Team Specialties */}
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white p-6 rounded-xl shadow-lg">
