@@ -7,6 +7,8 @@ This project is a professional digital platform for OM Vinayaga Associates, a Bu
 Preferred communication style: Simple, everyday language.
 
 ## Recent Changes
+- August 5, 2025: Enhanced inquiry table in Admin page to display all form fields - added Address and Message columns with truncated text and hover tooltips for complete data visibility
+- August 5, 2025: Completed Firebase-only architecture migration - removed PostgreSQL dependencies, created firebase-schema.ts, updated routes to use Firebase schemas
 - August 5, 2025: Fixed DOM nesting warning in ProductDetailPage breadcrumb navigation by removing nested anchor tags inside Link components - resolved React DOM validation errors
 - August 5, 2025: Fixed Achievements page tab duplicate icons by removing emoji spans and keeping only Lucide React icons for clean professional appearance
 - August 5, 2025: Updated Products page header to display "Products" instead of product count for cleaner UI

@@ -1112,10 +1112,16 @@ const AdminPage = () => {
                             Phone
                           </th>
                           <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
+                            Email
+                          </th>
+                          <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
                             Issue Type
                           </th>
                           <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
-                            Email
+                            Address
+                          </th>
+                          <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
+                            Message
                           </th>
                           <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
                             Date
@@ -1154,12 +1160,22 @@ const AdminPage = () => {
                               {inquiry.phone}
                             </td>
                             <td className="border border-gray-200 px-4 py-2">
+                              {inquiry.email || "-"}
+                            </td>
+                            <td className="border border-gray-200 px-4 py-2">
                               <span className="inline-block px-2 py-1 bg-muted text-muted-foreground text-xs rounded-full">
                                 {inquiry.issueType || "General Inquiry"}
                               </span>
                             </td>
                             <td className="border border-gray-200 px-4 py-2">
-                              {inquiry.email || "-"}
+                              <div className="max-w-32 truncate" title={inquiry.address || ""}>
+                                {inquiry.address || "-"}
+                              </div>
+                            </td>
+                            <td className="border border-gray-200 px-4 py-2">
+                              <div className="max-w-40 truncate" title={inquiry.message || ""}>
+                                {inquiry.message || "-"}
+                              </div>
                             </td>
                             <td className="border border-gray-200 px-4 py-2 text-sm text-foreground">
                               {inquiry.createdAt
