@@ -1392,10 +1392,7 @@ const ProductsPage = () => {
                   {isLoading ? (
                     <div className="h-6 w-32 bg-gray-200 animate-pulse rounded"></div>
                   ) : (
-                    <>
-                      {filteredProducts.length}{" "}
-                      {filteredProducts.length === 1 ? "Product" : "Products"}
-                    </>
+                    "Products"
                   )}
                 </h2>
                 
