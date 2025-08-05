@@ -241,7 +241,7 @@ const ChatBot = () => {
       return response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['/api/intents'] });
+      queryClient.invalidateQueries({ queryKey: ['intents'] });
     },
   });
 
