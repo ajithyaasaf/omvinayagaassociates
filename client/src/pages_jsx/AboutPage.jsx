@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { CONTACT, STATS, DIRECTORS } from "@/lib/constants";
 import directorImage from "@/assets/jeyaram.jpg";
 import drKamaleeswariImage from "@/assets/dr_kamaleeswari.jpg";
+import buildingDoctorIcon from "@/assets/building-doctor-icon.png";
 
 const AboutPage = () => {
   useEffect(() => {
@@ -70,7 +71,7 @@ const AboutPage = () => {
             <div className="relative">
               <div className="bg-white p-4 rounded-xl shadow-xl relative z-20 overflow-hidden">
                 <img
-                  src="/src/assets/building-doctor-icon.png"
+                  src={buildingDoctorIcon}
                   alt={CONTACT.director}
                   className="w-full h-[400px] rounded-lg object-contain bg-gray-100"
                 />
