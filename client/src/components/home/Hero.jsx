@@ -266,7 +266,7 @@ const Hero = () => {
               transition={{ duration: 0.5, delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-5"
             >
-              <Link href="/services">
+              <Link href="/contact">
                 <span className="relative inline-flex group/btn">
                   <span className="absolute inset-0 translate-x-1.5 translate-y-1.5 bg-primary/20 rounded-full transform transition-transform group-hover/btn:translate-x-0 group-hover/btn:translate-y-0"></span>
                   <span className="relative inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-full font-medium transition shadow-lg">
@@ -275,7 +275,7 @@ const Hero = () => {
                   </span>
                 </span>
               </Link>
-              <Link href="/contact">
+              <Link href="/services">
                 <span className="inline-flex items-center bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-full font-medium transition-all cursor-pointer">
                   View Solutions
                   <Play className="ml-2 w-4 h-4 fill-current" />
