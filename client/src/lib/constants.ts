@@ -198,6 +198,7 @@ export const PRODUCT_CATEGORIES = [
 
 // Featured Products based on the Building Doctor website
 export const FEATURED_PRODUCTS = [
+  // Crack Filling Products
   {
     id: 3,
     name: "Crack Stop XP",
@@ -212,6 +213,20 @@ export const FEATURED_PRODUCTS = [
     category: "crack-filling",
   },
   {
+    id: 4,
+    name: "Crack Stop Plus",
+    description:
+      "Advanced crack filling compound for hairline to moderate cracks with excellent adhesion and flexibility.",
+    price: 380,
+    image:
+      "https://buildingdoctor.owncart.shop/uploads/images/gaIIbPM5-D-crackstop%20xp.webp",
+    rating: 4.7,
+    isBestseller: true,
+    category: "crack-filling",
+  },
+  
+  // Waterproofing Products
+  {
     id: 7,
     name: "Instant Stop",
     description:
@@ -223,6 +238,43 @@ export const FEATURED_PRODUCTS = [
     isBestseller: false,
     category: "waterproofing",
   },
+  {
+    id: 13,
+    name: "Aqua Shield Pro",
+    description:
+      "Premium liquid waterproofing membrane for terraces, bathrooms, and external walls. Long-lasting protection.",
+    price: 1250,
+    image:
+      "https://buildingdoctor.owncart.shop/uploads/images/HJnjDJZPJ7-instastop.webp",
+    rating: 4.8,
+    isBestseller: true,
+    category: "waterproofing",
+  },
+  {
+    id: 14,
+    name: "Leak Seal Ultra",
+    description:
+      "High-performance waterproof sealant for joints, gaps, and penetrations. Weather-resistant formula.",
+    price: 890,
+    image:
+      "https://buildingdoctor.owncart.shop/uploads/images/HJnjDJZPJ7-instastop.webp",
+    rating: 4.6,
+    category: "waterproofing",
+  },
+  {
+    id: 15,
+    name: "Hydro Block",
+    description:
+      "Crystalline waterproofing admixture that becomes integral part of concrete structure.",
+    price: 2100,
+    image:
+      "https://buildingdoctor.owncart.shop/uploads/images/HJnjDJZPJ7-instastop.webp",
+    rating: 4.9,
+    isNew: true,
+    category: "waterproofing",
+  },
+  
+  // Grouts & Anchors
   {
     id: 12,
     name: "Nanguram Anchor Fix",
@@ -237,6 +289,31 @@ export const FEATURED_PRODUCTS = [
     category: "grouts-anchors",
   },
   {
+    id: 16,
+    name: "Micro Grout HF",
+    description:
+      "High-flow micro grout for precision grouting applications. Excellent workability and strength development.",
+    price: 850,
+    image:
+      "https://buildingdoctor.owncart.shop/uploads/images/7BJUO_YDt--nanguram%20anchorfix.webp",
+    rating: 4.7,
+    category: "grouts-anchors",
+  },
+  {
+    id: 17,
+    name: "Epoxy Anchor Kit",
+    description:
+      "Complete epoxy anchoring system for structural connections and heavy-duty fixings.",
+    price: 1200,
+    image:
+      "https://buildingdoctor.owncart.shop/uploads/images/7BJUO_YDt--nanguram%20anchorfix.webp",
+    rating: 4.9,
+    isBestseller: true,
+    category: "grouts-anchors",
+  },
+  
+  // Tapes
+  {
     id: 9,
     name: "Seal Tape SA",
     description:
@@ -249,6 +326,30 @@ export const FEATURED_PRODUCTS = [
     category: "tapes",
   },
   {
+    id: 18,
+    name: "Joint Seal Tape",
+    description:
+      "Weather-resistant joint sealing tape for expansion joints and construction joints.",
+    price: 320,
+    image:
+      "https://buildingdoctor.owncart.shop/uploads/images/RV2zw1fIn4-seal%20tape%20sa.webp",
+    rating: 4.5,
+    category: "tapes",
+  },
+  {
+    id: 19,
+    name: "Butyl Flash Tape",
+    description:
+      "High-performance butyl rubber flashing tape for waterproofing and air sealing applications.",
+    price: 450,
+    image:
+      "https://buildingdoctor.owncart.shop/uploads/images/RV2zw1fIn4-seal%20tape%20sa.webp",
+    rating: 4.7,
+    category: "tapes",
+  },
+  
+  // Thermal Insulation
+  {
     id: 8,
     name: "Thermoshield Coat",
     description:
@@ -260,6 +361,229 @@ export const FEATURED_PRODUCTS = [
     isBestseller: false,
     isNew: true,
     category: "thermal-insulation",
+  },
+  {
+    id: 20,
+    name: "Heat Block Pro",
+    description:
+      "Professional-grade heat reflective coating for industrial and residential applications.",
+    price: 2890,
+    image:
+      "https://buildingdoctor.owncart.shop/uploads/images/zEKKw5xPht-thermoshield-coat.webp",
+    rating: 4.8,
+    category: "thermal-insulation",
+  },
+  {
+    id: 21,
+    name: "Insul Board",
+    description:
+      "Rigid insulation boards for walls and roofs with excellent thermal resistance properties.",
+    price: 1560,
+    image:
+      "https://buildingdoctor.owncart.shop/uploads/images/zEKKw5xPht-thermoshield-coat.webp",
+    rating: 4.6,
+    category: "thermal-insulation",
+  },
+  
+  // Admixtures
+  {
+    id: 22,
+    name: "Concrete Plus",
+    description:
+      "High-performance concrete admixture for enhanced strength, durability, and workability.",
+    price: 280,
+    rating: 4.7,
+    isBestseller: true,
+    category: "admixtures",
+  },
+  {
+    id: 23,
+    name: "Plasticizer Pro",
+    description:
+      "Water-reducing admixture that improves concrete workability and reduces water content.",
+    price: 195,
+    rating: 4.6,
+    category: "admixtures",
+  },
+  {
+    id: 24,
+    name: "Set Controller",
+    description:
+      "Retarding admixture for controlling concrete setting time in hot weather conditions.",
+    price: 315,
+    rating: 4.5,
+    category: "admixtures",
+  },
+  {
+    id: 25,
+    name: "Air Guard",
+    description:
+      "Air-entraining admixture for freeze-thaw protection and improved concrete durability.",
+    price: 225,
+    rating: 4.8,
+    isNew: true,
+    category: "admixtures",
+  },
+  
+  // Bonding Agents
+  {
+    id: 26,
+    name: "Bond Master SBR",
+    description:
+      "Styrene Butadiene Rubber bonding agent for excellent adhesion between old and new concrete.",
+    price: 420,
+    rating: 4.8,
+    isBestseller: true,
+    category: "bonding-agents",
+  },
+  {
+    id: 27,
+    name: "Epoxy Bond",
+    description:
+      "Two-component epoxy bonding agent for structural repairs and bonding applications.",
+    price: 780,
+    rating: 4.9,
+    category: "bonding-agents",
+  },
+  {
+    id: 28,
+    name: "Acrylic Bond",
+    description:
+      "Multi-purpose acrylic bonding agent for plaster, render, and tile adhesive applications.",
+    price: 290,
+    rating: 4.6,
+    category: "bonding-agents",
+  },
+  
+  // Corrosion Treatments
+  {
+    id: 29,
+    name: "Rebar Guard",
+    description:
+      "Corrosion inhibiting primer for steel reinforcement protection in concrete structures.",
+    price: 650,
+    rating: 4.8,
+    isBestseller: true,
+    category: "corrosion-treatments",
+  },
+  {
+    id: 30,
+    name: "Rust Converter Pro",
+    description:
+      "Advanced rust converter that transforms rust into a protective coating for steel surfaces.",
+    price: 485,
+    rating: 4.7,
+    category: "corrosion-treatments",
+  },
+  {
+    id: 31,
+    name: "Anti-Corr Shield",
+    description:
+      "Long-term corrosion protection coating for exposed steel and metal surfaces.",
+    price: 890,
+    rating: 4.9,
+    isNew: true,
+    category: "corrosion-treatments",
+  },
+  
+  // Sealants
+  {
+    id: 32,
+    name: "Poly Seal MS",
+    description:
+      "Modified silicone sealant with excellent adhesion and weather resistance for construction joints.",
+    price: 340,
+    rating: 4.7,
+    isBestseller: true,
+    category: "sealants",
+  },
+  {
+    id: 33,
+    name: "Structural Glaze",
+    description:
+      "High-strength structural glazing sealant for curtain wall and facade applications.",
+    price: 580,
+    rating: 4.8,
+    category: "sealants",
+  },
+  {
+    id: 34,
+    name: "Weather Seal Ultra",
+    description:
+      "Premium weatherproofing sealant with 25-year durability guarantee for exterior applications.",
+    price: 720,
+    rating: 4.9,
+    isNew: true,
+    category: "sealants",
+  },
+  {
+    id: 35,
+    name: "Joint Flex",
+    description:
+      "Flexible polyurethane sealant for moving joints and connections with high movement capability.",
+    price: 395,
+    rating: 4.6,
+    category: "sealants",
+  },
+  
+  // Special Products
+  {
+    id: 36,
+    name: "Fungicide Treatment",
+    description:
+      "Anti-fungal treatment for walls and surfaces affected by mold and fungal growth.",
+    price: 520,
+    rating: 4.7,
+    category: "special-products",
+  },
+  {
+    id: 37,
+    name: "Salt Attack Guard",
+    description:
+      "Specialized treatment for concrete structures affected by salt attack and efflorescence.",
+    price: 680,
+    rating: 4.8,
+    category: "special-products",
+  },
+  {
+    id: 38,
+    name: "Carbon Fiber Wrap",
+    description:
+      "High-strength carbon fiber reinforcement system for structural strengthening applications.",
+    price: 2500,
+    rating: 4.9,
+    isBestseller: true,
+    category: "special-products",
+  },
+  
+  // Tiling Aids
+  {
+    id: 39,
+    name: "Tile Adhesive Plus",
+    description:
+      "Premium tile adhesive with enhanced bonding strength for wall and floor tile applications.",
+    price: 380,
+    rating: 4.6,
+    isBestseller: true,
+    category: "tiling-aids",
+  },
+  {
+    id: 40,
+    name: "Grout Shield",
+    description:
+      "Water-resistant tile grout with anti-microbial properties and color consistency.",
+    price: 240,
+    rating: 4.7,
+    category: "tiling-aids",
+  },
+  {
+    id: 41,
+    name: "Tile Spacer System",
+    description:
+      "Professional tile spacing system for perfect tile alignment and consistent joint spacing.",
+    price: 150,
+    rating: 4.5,
+    category: "tiling-aids",
   },
 ];
 
