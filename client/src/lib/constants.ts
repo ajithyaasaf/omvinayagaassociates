@@ -180,12 +180,10 @@ export const SERVICES = [
   },
 ];
 
-// Products Categories
+// Products Categories - Only categories that have products
 export const PRODUCT_CATEGORIES = [
   { id: "all", name: "All Products" },
-  { id: "admixtures", name: "Admixtures" },
   { id: "bonding-agents", name: "Bonding Agents" },
-  { id: "corrosion-treatments", name: "Corrosion Treatments" },
   { id: "crack-filling", name: "Crack Filling" },
   { id: "grouts-anchors", name: "Grouts & Anchors" },
   { id: "sealants", name: "Sealants" },
