@@ -902,6 +902,82 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Firebase and Environment diagnostic endpoint for production debugging
+  app.get("/api/debug/env", async (req, res) => {
+    try {
+      const { getFirebaseConfig } = await import('./firebase.config');
+      const envCheck = {
+        nodeEnv: process.env.NODE_ENV || 'development',
+        hasFirebaseApiKey: !!process.env.FIREBASE_API_KEY,
+        hasFirebaseProjectId: !!process.env.FIREBASE_PROJECT_ID,
+        hasFirebaseDatabaseUrl: !!process.env.FIREBASE_DATABASE_URL,
+        firebaseConfigKeys: Object.keys(getFirebaseConfig()),
+        timestamp: new Date().toISOString()
+      };
+      
+      res.json({ 
+        success: true, 
+        environment: envCheck,
+        message: "Environment diagnostic complete"
+      });
+    } catch (error) {
+      res.status(500).json({ 
+        success: false, 
+        message: "Environment diagnostic failed", 
+        error: (error as Error).message 
+      });
+    }
+  });
+
+  // Test inquiry endpoint with detailed logging for production debugging
+  app.post("/api/debug/inquiry-test", async (req, res) => {
+    try {
+      console.log('=== DEBUG INQUIRY TEST ===');
+      console.log('Environment:', process.env.NODE_ENV);
+      console.log('Request body:', JSON.stringify(req.body, null, 2));
+      console.log('Request headers:', JSON.stringify(req.headers, null, 2));
+      
+      // Test the same logic as the real inquiry endpoint
+      const testData = {
+        name: "Test User",
+        email: "test@example.com", 
+        phone: "1234567890",
+        issueType: "Test Issue",
+        address: "Test Address",
+        message: "Test message"
+      };
+      
+      const parsedData = inquirySchema.parse(testData);
+      console.log('Test data parsed successfully');
+      
+      const newInquiry = await storage.createInquiry({
+        name: parsedData.name,
+        email: parsedData.email || null,
+        phone: parsedData.phone,
+        issueType: parsedData.issueType || "",
+        message: parsedData.message || null,
+        address: parsedData.address || null
+      });
+      
+      console.log('Test inquiry created successfully');
+      
+      res.json({
+        success: true,
+        message: "Debug inquiry test passed",
+        testInquiry: newInquiry,
+        environment: process.env.NODE_ENV
+      });
+    } catch (error) {
+      console.error('Debug inquiry test failed:', error);
+      res.status(500).json({
+        success: false,
+        message: "Debug inquiry test failed",
+        error: (error as Error).message,
+        stack: (error as Error).stack
+      });
+    }
+  });
+
   // Set up authentication if needed
   // setupAuth(app);
 

@@ -3,8 +3,12 @@ import { registerRoutes } from "./routes_firebase";
 import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+
+// Add body parsing middleware with size limits and error handling
+app.use(express.json({ 
+  limit: '10mb'
+}));
+app.use(express.urlencoded({ extended: false, limit: '10mb' }));
 
 app.use((req, res, next) => {
   const start = Date.now();
