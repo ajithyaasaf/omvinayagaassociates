@@ -122,30 +122,56 @@ const createDataInFirebase = async (path, data) => {
     
     // First, get existing data
     const snapshot = await get(dataRef);
-    let existingData = [];
+    let newId = 1;
     
     if (snapshot.exists()) {
       const current = snapshot.val();
-      existingData = Array.isArray(current) ? current : Object.values(current);
+      let existingIds = [];
+      
+      // Handle both array and object structures, filtering out null values
+      if (Array.isArray(current)) {
+        existingIds = current
+          .filter(item => item !== null && item !== undefined && typeof item === 'object' && 'id' in item)
+          .map(item => item.id)
+          .filter(id => !isNaN(parseInt(id)))
+          .map(id => parseInt(id));
+      } else if (current && typeof current === 'object') {
+        existingIds = Object.keys(current)
+          .filter(key => !isNaN(parseInt(key)) && current[key] !== null)
+          .map(key => parseInt(key));
+      }
+      
+      if (existingIds.length > 0) {
+        newId = Math.max(...existingIds) + 1;
+      }
     }
     
-    // Generate a new ID (max ID + 1)
-    const newId = existingData.length > 0 
-      ? Math.max(...existingData.map(item => item?.id || 0)) + 1 
-      : 1;
-    
-    // Add ID and creation date to new item
-    const newItem = {
-      ...data,
+    // Clean the data to ensure no undefined values
+    const cleanData = {
+      name: data.name || "",
+      email: data.email || null,
+      phone: data.phone || "",
+      issueType: data.issueType || "",
+      message: data.message || null,
+      address: data.address || null,
       id: newId,
       createdAt: new Date().toISOString()
     };
     
-    // Add to array and save back to Firebase
-    const updatedData = [...existingData, newItem];
-    await set(dataRef, updatedData);
+    // Remove any undefined values completely
+    Object.keys(cleanData).forEach(key => {
+      if (cleanData[key] === undefined) {
+        delete cleanData[key];
+      }
+    });
     
-    return { success: true, data: newItem };
+    console.log('Creating data with clean object:', cleanData);
+    
+    // Save directly to the specific ID path to avoid array structure issues
+    const itemRef = ref(db, `${path}/${newId}`);
+    await set(itemRef, cleanData);
+    
+    return { success: true, data: cleanData };
   } catch (error) {
     console.error(`Error creating data in ${path}:`, error);
     return { success: false, message: error.message };
