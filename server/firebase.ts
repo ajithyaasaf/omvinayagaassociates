@@ -503,13 +503,22 @@ export class FirebaseStorage {
   
   async deleteContact(id: number): Promise<boolean> {
     try {
+      console.log(`Attempting to delete contact with ID: ${id}`);
       const snapshot = await get(ref(database, `contacts/${id}`));
-      if (!snapshot.exists()) return false;
+      
+      if (!snapshot.exists()) {
+        console.log(`Contact with ID ${id} does not exist in database`);
+        return false;
+      }
 
+      console.log(`Found contact with ID ${id}, proceeding with deletion`);
       await remove(ref(database, `contacts/${id}`));
+      console.log(`Successfully deleted contact with ID ${id}`);
       return true;
     } catch (error) {
       console.error('Firebase deleteContact error:', error);
+      console.error('Error details:', (error as Error).message);
+      console.error('Error stack:', (error as Error).stack);
       return false;
     }
   }
@@ -632,13 +641,22 @@ export class FirebaseStorage {
   
   async deleteInquiry(id: number): Promise<boolean> {
     try {
+      console.log(`Attempting to delete inquiry with ID: ${id}`);
       const snapshot = await get(ref(database, `inquiries/${id}`));
-      if (!snapshot.exists()) return false;
+      
+      if (!snapshot.exists()) {
+        console.log(`Inquiry with ID ${id} does not exist in database`);
+        return false;
+      }
 
+      console.log(`Found inquiry with ID ${id}, proceeding with deletion`);
       await remove(ref(database, `inquiries/${id}`));
+      console.log(`Successfully deleted inquiry with ID ${id}`);
       return true;
     } catch (error) {
       console.error('Firebase deleteInquiry error:', error);
+      console.error('Error details:', (error as Error).message);
+      console.error('Error stack:', (error as Error).stack);
       return false;
     }
   }
@@ -717,13 +735,22 @@ export class FirebaseStorage {
 
   async deleteIntent(id: number): Promise<boolean> {
     try {
+      console.log(`Attempting to delete intent with ID: ${id}`);
       const snapshot = await get(ref(database, `intents/${id}`));
-      if (!snapshot.exists()) return false;
+      
+      if (!snapshot.exists()) {
+        console.log(`Intent with ID ${id} does not exist in database`);
+        return false;
+      }
 
+      console.log(`Found intent with ID ${id}, proceeding with deletion`);
       await remove(ref(database, `intents/${id}`));
+      console.log(`Successfully deleted intent with ID ${id}`);
       return true;
     } catch (error) {
       console.error('Firebase deleteIntent error:', error);
+      console.error('Error details:', (error as Error).message);
+      console.error('Error stack:', (error as Error).stack);
       return false;
     }
   }

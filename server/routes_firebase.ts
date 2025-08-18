@@ -266,6 +266,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Create product in Firebase
       const newProduct = await storage.createProduct({
         ...parsedData,
+        image: parsedData.image || "", // Ensure image is always a string
         price: parsedData.price || 0,
         rating: parsedData.rating || 4.0,
         isBestseller: parsedData.isBestseller || false, 
