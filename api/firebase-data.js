@@ -72,15 +72,29 @@ const deleteFromFirebase = async (path, id) => {
         return { success: false, message: 'Item not found' };
       }
       
-      // Create new array without the deleted item
-      const updatedData = [...data.slice(0, index), ...data.slice(index + 1)];
+      // Create new array without the deleted item, filtering out null/undefined values
+      const updatedData = data
+        .filter(item => item !== null && item !== undefined && item.id !== parseInt(id));
+      
       await remove(dataRef); // Remove all data
       
       // If there are remaining items, set them back
       if (updatedData.length > 0) {
-        const db = getDatabase(firebaseApp);
-        const dataRef = ref(db, path);
-        await set(dataRef, updatedData);
+        // Clean the data to ensure no undefined values
+        const cleanData = updatedData.map(item => {
+          if (item && typeof item === 'object') {
+            const cleaned = {};
+            Object.keys(item).forEach(key => {
+              if (item[key] !== undefined) {
+                cleaned[key] = item[key];
+              }
+            });
+            return cleaned;
+          }
+          return item;
+        });
+        
+        await set(dataRef, cleanData);
       }
       
       return { success: true };
@@ -106,10 +120,13 @@ const deleteFromFirebase = async (path, id) => {
         return { success: false, message: 'Item not found' };
       }
       
+      console.log(`Deleting item with key ${targetKey} from path ${path}/${targetKey}`);
+      
       // Remove the specific item
       const itemRef = ref(db, `${path}/${targetKey}`);
       await remove(itemRef);
       
+      console.log(`Successfully deleted item with ID ${id} from ${path}`);
       return { success: true };
     }
     
