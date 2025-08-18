@@ -145,8 +145,8 @@ const AdminPage = () => {
     queryFn: fetchTabData("inquiries"),
     enabled:
       isAuthenticated && (activeTab === "inquiries" || activeTab === "all"),
-    staleTime: 0, // Always consider data stale for real-time updates
-    refetchInterval: 3000, // Poll every 3 seconds for real-time updates
+    staleTime: 0, // Always fetch fresh data
+    refetchInterval: 2000, // Poll every 2 seconds for instant updates
   });
 
   const {
@@ -159,8 +159,8 @@ const AdminPage = () => {
     queryFn: fetchTabData("intents"),
     enabled:
       isAuthenticated && (activeTab === "intents" || activeTab === "all"),
-    staleTime: 0, // Always consider data stale for real-time updates
-    refetchInterval: 3000, // Poll every 3 seconds for real-time updates
+    staleTime: 0, // Always fetch fresh data
+    refetchInterval: 2000, // Poll every 2 seconds for instant updates
   });
 
   const {
@@ -173,8 +173,8 @@ const AdminPage = () => {
     queryFn: fetchTabData("contacts"),
     enabled:
       isAuthenticated && (activeTab === "contacts" || activeTab === "all"),
-    staleTime: 0, // Always consider data stale for real-time updates
-    refetchInterval: 3000, // Poll every 3 seconds for real-time updates
+    staleTime: 0, // Always fetch fresh data
+    refetchInterval: 2000, // Poll every 2 seconds for instant updates
   });
 
   const deleteInquiryMutation = useMutation({
@@ -1039,12 +1039,7 @@ const AdminPage = () => {
                         {inquiries.length}
                       </span>
                     )}
-                    {isLoading && (
-                      <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
-                      </span>
-                    )}
+
                   </div>
                 </TabsTrigger>
                 <TabsTrigger
@@ -1077,12 +1072,7 @@ const AdminPage = () => {
                         {contactSubmissions.length}
                       </span>
                     )}
-                    {isLoadingContacts && (
-                      <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                      </span>
-                    )}
+
                   </div>
                 </TabsTrigger>
                 <TabsTrigger
@@ -1115,22 +1105,12 @@ const AdminPage = () => {
                         {intentSubmissions.length}
                       </span>
                     )}
-                    {isIntentsLoading && (
-                      <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
-                      </span>
-                    )}
+
                   </div>
                 </TabsTrigger>
               </TabsList>
 
-              <div className="text-xs text-muted-foreground mb-4 text-center flex items-center justify-center gap-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span>Real-time updates active - Auto-refresh every 3 seconds</span>
-                </div>
-              </div>
+
 
               <TabsContent value="inquiries" className="mt-0 space-y-6">
                 {/* Enhanced Tab Header */}
