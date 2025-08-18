@@ -107,7 +107,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Inquiries from popup form endpoint
   app.post("/api/inquiries", async (req, res) => {
     try {
+      console.log('Inquiry form data received:', JSON.stringify(req.body, null, 2));
+      
       const parsedData = inquirySchema.parse(req.body);
+      console.log('Inquiry form parsed successfully:', JSON.stringify(parsedData, null, 2));
       
       // Create inquiry in Firebase
       const newInquiry = await storage.createInquiry({
@@ -126,6 +129,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     } catch (error) {
       if (error instanceof z.ZodError) {
+        console.log('Inquiry form validation error:', JSON.stringify(error.errors, null, 2));
+        console.log('Inquiry form data received:', JSON.stringify(req.body, null, 2));
         res.status(400).json({
           success: false,
           message: "Invalid inquiry data",
@@ -133,6 +138,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         });
       } else {
         console.error('Inquiry creation error:', error);
+        console.error('Inquiry error stack:', error.stack);
         res.status(500).json({
           success: false,
           message: "Failed to process inquiry"
