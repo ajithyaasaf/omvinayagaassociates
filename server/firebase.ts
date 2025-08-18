@@ -613,8 +613,8 @@ export class FirebaseStorage {
       
       // Remove any undefined values completely
       Object.keys(cleanInquiryData).forEach(key => {
-        if (cleanInquiryData[key] === undefined) {
-          delete cleanInquiryData[key];
+        if ((cleanInquiryData as any)[key] === undefined) {
+          delete (cleanInquiryData as any)[key];
         }
       });
       
@@ -625,8 +625,8 @@ export class FirebaseStorage {
       return newInquiry;
     } catch (error) {
       console.error('Firebase createInquiry error:', error);
-      console.error('Error details:', error.message);
-      throw new Error(`Failed to create inquiry in Firebase: ${error.message}`);
+      console.error('Error details:', (error as Error).message);
+      throw new Error(`Failed to create inquiry in Firebase: ${(error as Error).message}`);
     }
   }
   
