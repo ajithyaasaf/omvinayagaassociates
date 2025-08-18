@@ -62,27 +62,43 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Delete a contact submission
   app.delete("/api/contacts/:id", async (req, res) => {
     try {
+      console.log(`=== DELETE CONTACT REQUEST ===`);
+      console.log(`Contact ID: ${req.params.id}`);
+      console.log(`Request headers:`, req.headers);
+      
       const contactId = parseInt(req.params.id);
+      
+      if (isNaN(contactId)) {
+        console.log(`Invalid contact ID: ${req.params.id}`);
+        return res.status(400).json({
+          success: false,
+          message: "Invalid contact ID"
+        });
+      }
       
       // Delete contact from Firebase
       const success = await storage.deleteContact(contactId);
       
       if (!success) {
+        console.log(`Contact ${contactId} not found in database`);
         return res.status(404).json({
           success: false,
           message: "Contact submission not found"
         });
       }
       
+      console.log(`Contact ${contactId} deleted successfully`);
       res.status(200).json({
         success: true,
         message: "Contact submission deleted successfully"
       });
     } catch (error) {
       console.error('Contact deletion error:', error);
+      console.error('Error details:', (error as Error).message);
       res.status(500).json({
         success: false,
-        message: "Failed to delete contact submission"
+        message: "Failed to delete contact submission",
+        error: (error as Error).message
       });
     }
   });
@@ -164,27 +180,43 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Delete an inquiry
   app.delete("/api/inquiries/:id", async (req, res) => {
     try {
+      console.log(`=== DELETE INQUIRY REQUEST ===`);
+      console.log(`Inquiry ID: ${req.params.id}`);
+      console.log(`Request headers:`, req.headers);
+      
       const inquiryId = parseInt(req.params.id);
+      
+      if (isNaN(inquiryId)) {
+        console.log(`Invalid inquiry ID: ${req.params.id}`);
+        return res.status(400).json({
+          success: false,
+          message: "Invalid inquiry ID"
+        });
+      }
       
       // Delete inquiry from Firebase
       const success = await storage.deleteInquiry(inquiryId);
       
       if (!success) {
+        console.log(`Inquiry ${inquiryId} not found in database`);
         return res.status(404).json({
           success: false,
           message: "Inquiry not found"
         });
       }
       
+      console.log(`Inquiry ${inquiryId} deleted successfully`);
       res.status(200).json({
         success: true,
         message: "Inquiry deleted successfully"
       });
     } catch (error) {
       console.error('Inquiry deletion error:', error);
+      console.error('Error details:', (error as Error).message);
       res.status(500).json({
         success: false,
-        message: "Failed to delete inquiry"
+        message: "Failed to delete inquiry",
+        error: (error as Error).message
       });
     }
   });
@@ -857,27 +889,43 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Delete an intent form submission
   app.delete("/api/intents/:id", async (req, res) => {
     try {
+      console.log(`=== DELETE INTENT REQUEST ===`);
+      console.log(`Intent ID: ${req.params.id}`);
+      console.log(`Request headers:`, req.headers);
+      
       const intentId = parseInt(req.params.id);
+      
+      if (isNaN(intentId)) {
+        console.log(`Invalid intent ID: ${req.params.id}`);
+        return res.status(400).json({
+          success: false,
+          message: "Invalid intent ID"
+        });
+      }
       
       // Delete intent from Firebase
       const success = await storage.deleteIntent(intentId);
       
       if (!success) {
+        console.log(`Intent ${intentId} not found in database`);
         return res.status(404).json({
           success: false,
           message: "Intent form submission not found"
         });
       }
       
+      console.log(`Intent ${intentId} deleted successfully`);
       res.status(200).json({
         success: true,
         message: "Intent form submission deleted successfully"
       });
     } catch (error) {
       console.error('Intent deletion error:', error);
+      console.error('Error details:', (error as Error).message);
       res.status(500).json({
         success: false,
-        message: "Failed to delete intent form submission"
+        message: "Failed to delete intent form submission",
+        error: (error as Error).message
       });
     }
   });
