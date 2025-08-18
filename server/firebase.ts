@@ -523,11 +523,25 @@ export class FirebaseStorage {
       if (!snapshot.exists()) return [];
 
       const inquiries = snapshot.val();
-      return Object.keys(inquiries).map(key => ({
-        ...inquiries[key],
-        id: parseInt(key),
-        createdAt: inquiries[key].createdAt ? new Date(inquiries[key].createdAt) : null
-      }));
+      
+      // Handle both array and object structures, filtering out null values
+      if (Array.isArray(inquiries)) {
+        return inquiries
+          .filter(item => item !== null && item !== undefined && typeof item === 'object')
+          .map(item => ({
+            ...item,
+            id: item.id || 0,
+            createdAt: item.createdAt ? new Date(item.createdAt) : null
+          }));
+      } else {
+        return Object.keys(inquiries)
+          .filter(key => inquiries[key] !== null && inquiries[key] !== undefined)
+          .map(key => ({
+            ...inquiries[key],
+            id: parseInt(key),
+            createdAt: inquiries[key].createdAt ? new Date(inquiries[key].createdAt) : null
+          }));
+      }
     } catch (error) {
       console.error('Firebase getInquiries error:', error);
       return [];
@@ -539,16 +553,27 @@ export class FirebaseStorage {
       // Generate a new ID
       let id = 1;
 
-      // Get the highest existing ID
+      // Get the highest existing ID  
       const snapshot = await get(ref(database, 'inquiries'));
       if (snapshot.exists() && snapshot.val() !== null) {
         const inquiries = snapshot.val();
-        // Make sure inquiries is not null and has keys
-        if (inquiries && Object.keys(inquiries).length > 0) {
-          // Filter out non-numeric keys and convert to numbers
-          const inquiryIds = Object.keys(inquiries)
-            .filter(key => !isNaN(parseInt(key)))
-            .map(key => parseInt(key));
+        // Handle both array and object structures
+        if (inquiries) {
+          let inquiryIds: number[] = [];
+          
+          // If it's an array, filter out null values and extract IDs
+          if (Array.isArray(inquiries)) {
+            inquiryIds = inquiries
+              .filter(item => item !== null && item !== undefined && typeof item === 'object' && 'id' in item)
+              .map(item => item.id)
+              .filter(id => !isNaN(parseInt(id)))
+              .map(id => parseInt(id));
+          } else {
+            // If it's an object, get keys that are valid numbers
+            inquiryIds = Object.keys(inquiries)
+              .filter(key => !isNaN(parseInt(key)) && inquiries[key] !== null)
+              .map(key => parseInt(key));
+          }
           
           if (inquiryIds.length > 0) {
             id = Math.max(...inquiryIds) + 1;
@@ -557,9 +582,9 @@ export class FirebaseStorage {
       }
 
       // Ensure id is a valid number
-      if (isNaN(id)) {
-        id = 1; // Default to 1 if we somehow got NaN
-        console.warn('ID calculation resulted in NaN, defaulting to 1');
+      if (isNaN(id) || id < 1) {
+        id = 1; // Default to 1 if we somehow got NaN or invalid number
+        console.warn('ID calculation resulted in invalid value, defaulting to 1');
       }
 
       const createdAt = new Date();
@@ -574,15 +599,34 @@ export class FirebaseStorage {
         throw new Error('Cannot create inquiry with invalid ID (NaN)');
       }
       
-      await set(ref(database, `inquiries/${id}`), {
-        ...newInquiry,
-        createdAt: createdAt.toISOString() // Store as string in Firebase
+      // Clean the data to ensure no undefined values
+      const cleanInquiryData = {
+        name: newInquiry.name || "",
+        email: newInquiry.email || null,
+        phone: newInquiry.phone || "",
+        issueType: newInquiry.issueType || "",
+        message: newInquiry.message || null,
+        address: newInquiry.address || null,
+        id: newInquiry.id,
+        createdAt: createdAt.toISOString()
+      };
+      
+      // Remove any undefined values completely
+      Object.keys(cleanInquiryData).forEach(key => {
+        if (cleanInquiryData[key] === undefined) {
+          delete cleanInquiryData[key];
+        }
       });
+      
+      console.log('Creating inquiry with clean data:', cleanInquiryData);
+      
+      await set(ref(database, `inquiries/${id}`), cleanInquiryData);
       
       return newInquiry;
     } catch (error) {
       console.error('Firebase createInquiry error:', error);
-      throw new Error('Failed to create inquiry in Firebase');
+      console.error('Error details:', error.message);
+      throw new Error(`Failed to create inquiry in Firebase: ${error.message}`);
     }
   }
   
