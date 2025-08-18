@@ -40,9 +40,9 @@ export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       queryFn: getQueryFn({ on401: "throw" }),
-      refetchInterval: false,
+      refetchInterval: 3000, // Poll every 3 seconds for real-time updates
       refetchOnWindowFocus: true, // Refetch when user returns to tab
-      staleTime: 5000, // 5 seconds
+      staleTime: 0, // Always consider data stale for real-time updates
       retry: 1,
     },
     mutations: {

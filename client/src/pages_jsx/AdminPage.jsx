@@ -145,7 +145,8 @@ const AdminPage = () => {
     queryFn: fetchTabData("inquiries"),
     enabled:
       isAuthenticated && (activeTab === "inquiries" || activeTab === "all"),
-    staleTime: 5000, // 5 seconds for more frequent updates
+    staleTime: 0, // Always consider data stale for real-time updates
+    refetchInterval: 3000, // Poll every 3 seconds for real-time updates
   });
 
   const {
@@ -158,7 +159,8 @@ const AdminPage = () => {
     queryFn: fetchTabData("intents"),
     enabled:
       isAuthenticated && (activeTab === "intents" || activeTab === "all"),
-    staleTime: 5000, // 5 seconds for more frequent updates
+    staleTime: 0, // Always consider data stale for real-time updates
+    refetchInterval: 3000, // Poll every 3 seconds for real-time updates
   });
 
   const {
@@ -171,7 +173,8 @@ const AdminPage = () => {
     queryFn: fetchTabData("contacts"),
     enabled:
       isAuthenticated && (activeTab === "contacts" || activeTab === "all"),
-    staleTime: 5000, // 5 seconds for more frequent updates
+    staleTime: 0, // Always consider data stale for real-time updates
+    refetchInterval: 3000, // Poll every 3 seconds for real-time updates
   });
 
   const deleteInquiryMutation = useMutation({
@@ -198,13 +201,17 @@ const AdminPage = () => {
       return { id: inquiryId, response };
     },
     onSuccess: (data) => {
+      // Immediate optimistic update
       queryClient.setQueryData(["inquiries"], (oldData) => {
         return oldData
           ? oldData.filter((inquiry) => inquiry.id !== data.id)
           : [];
       });
 
+      // Force refetch all data to ensure consistency
       queryClient.invalidateQueries({ queryKey: ["inquiries"] });
+      queryClient.invalidateQueries({ queryKey: ["contacts"] });
+      queryClient.invalidateQueries({ queryKey: ["intents"] });
 
       toast({
         title: "Inquiry deleted",
@@ -242,13 +249,17 @@ const AdminPage = () => {
       return { id: contactId, response };
     },
     onSuccess: (data) => {
+      // Immediate optimistic update
       queryClient.setQueryData(["contacts"], (oldData) => {
         return oldData
           ? oldData.filter((contact) => contact.id !== data.id)
           : [];
       });
 
+      // Force refetch all data to ensure consistency
       queryClient.invalidateQueries({ queryKey: ["contacts"] });
+      queryClient.invalidateQueries({ queryKey: ["inquiries"] });
+      queryClient.invalidateQueries({ queryKey: ["intents"] });
 
       toast({
         title: "Contact submission deleted",
@@ -287,11 +298,15 @@ const AdminPage = () => {
       return { id: intentId, response };
     },
     onSuccess: (data) => {
+      // Immediate optimistic update
       queryClient.setQueryData(["intents"], (oldData) => {
         return oldData ? oldData.filter((intent) => intent.id !== data.id) : [];
       });
 
+      // Force refetch all data to ensure consistency
       queryClient.invalidateQueries({ queryKey: ["intents"] });
+      queryClient.invalidateQueries({ queryKey: ["contacts"] });
+      queryClient.invalidateQueries({ queryKey: ["inquiries"] });
 
       toast({
         title: "Intent form submission deleted",
@@ -1024,14 +1039,12 @@ const AdminPage = () => {
                         {inquiries.length}
                       </span>
                     )}
-                    {lastUpdated &&
-                      lastUpdated.type === "inquiries" &&
-                      activeTab !== "inquiries" && (
-                        <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                        </span>
-                      )}
+                    {isLoading && (
+                      <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                      </span>
+                    )}
                   </div>
                 </TabsTrigger>
                 <TabsTrigger
@@ -1064,14 +1077,12 @@ const AdminPage = () => {
                         {contactSubmissions.length}
                       </span>
                     )}
-                    {lastUpdated &&
-                      lastUpdated.type === "contacts" &&
-                      activeTab !== "contacts" && (
-                        <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                        </span>
-                      )}
+                    {isLoadingContacts && (
+                      <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                      </span>
+                    )}
                   </div>
                 </TabsTrigger>
                 <TabsTrigger
@@ -1104,24 +1115,22 @@ const AdminPage = () => {
                         {intentSubmissions.length}
                       </span>
                     )}
-                    {lastUpdated &&
-                      lastUpdated.type === "intents" &&
-                      activeTab !== "intents" && (
-                        <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                        </span>
-                      )}
+                    {isIntentsLoading && (
+                      <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
+                      </span>
+                    )}
                   </div>
                 </TabsTrigger>
               </TabsList>
 
-              {lastUpdated && (
-                <div className="text-xs text-muted-foreground mb-4 text-center">
-                  Last update: {lastUpdated.type} at{" "}
-                  {new Date(lastUpdated.timestamp).toLocaleTimeString()}
+              <div className="text-xs text-muted-foreground mb-4 text-center flex items-center justify-center gap-2">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <span>Real-time updates active - Auto-refresh every 3 seconds</span>
                 </div>
-              )}
+              </div>
 
               <TabsContent value="inquiries" className="mt-0 space-y-6">
                 {/* Enhanced Tab Header */}
