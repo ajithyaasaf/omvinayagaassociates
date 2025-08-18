@@ -87,6 +87,15 @@ const AdminPage = () => {
   // Set up WebSocket connection for real-time updates
   useEffect(() => {
     if (isAuthenticated) {
+      // Only enable WebSocket in development environment
+      const isProduction = window.location.hostname.includes('omvinayagaassociates.com') || 
+                          window.location.hostname.includes('vercel.app');
+      
+      if (isProduction) {
+        console.log("WebSocket disabled in production environment");
+        return;
+      }
+
       if (
         webSocketRef.current &&
         webSocketRef.current.readyState === WebSocket.OPEN

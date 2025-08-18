@@ -96,7 +96,13 @@ const deleteFromFirebase = async (path, id) => {
         }
       }
       
+      // Also check if the key itself matches the ID (since we now store by ID as key)
+      if (!targetKey && data[id]) {
+        targetKey = id;
+      }
+      
       if (!targetKey) {
+        console.log(`Item with ID ${id} not found in data:`, Object.keys(data));
         return { success: false, message: 'Item not found' };
       }
       
@@ -244,7 +250,12 @@ export default async function handler(req, res) {
       }
       
       // For all other endpoints, return array directly
-      return res.status(200).json(Array.isArray(data) ? data : []);
+      // Handle object structure - convert to array and filter out null values
+      if (data && typeof data === 'object' && !Array.isArray(data)) {
+        const arrayData = Object.values(data).filter(item => item !== null && item !== undefined);
+        return res.status(200).json(arrayData);
+      }
+      return res.status(200).json(Array.isArray(data) ? data.filter(item => item !== null) : []);
     }
     
     // Handle POST requests - for form submissions
