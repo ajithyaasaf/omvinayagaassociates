@@ -107,20 +107,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Inquiries from popup form endpoint
   app.post("/api/inquiries", async (req, res) => {
     try {
-      console.log('Inquiry form data received:', JSON.stringify(req.body, null, 2));
+      console.log('=== INQUIRY FORM SUBMISSION ===');
+      console.log('Raw request body:', JSON.stringify(req.body, null, 2));
+      console.log('Request headers:', JSON.stringify(req.headers, null, 2));
+      console.log('Content-Type:', req.get('Content-Type'));
       
+      // Validate the request body
       const parsedData = inquirySchema.parse(req.body);
       console.log('Inquiry form parsed successfully:', JSON.stringify(parsedData, null, 2));
       
-      // Create inquiry in Firebase
-      const newInquiry = await storage.createInquiry({
+      // Prepare data for Firebase with proper null handling
+      const inquiryDataForFirebase = {
         name: parsedData.name,
         email: parsedData.email || null,
         phone: parsedData.phone,
         issueType: parsedData.issueType || "",
         message: parsedData.message || null,
         address: parsedData.address || null
-      });
+      };
+      
+      console.log('Data prepared for Firebase:', JSON.stringify(inquiryDataForFirebase, null, 2));
+      
+      // Create inquiry in Firebase
+      const newInquiry = await storage.createInquiry(inquiryDataForFirebase);
+      console.log('Inquiry created successfully in Firebase:', JSON.stringify(newInquiry, null, 2));
       
       res.status(200).json({
         success: true,
@@ -129,19 +139,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     } catch (error) {
       if (error instanceof z.ZodError) {
-        console.log('Inquiry form validation error:', JSON.stringify(error.errors, null, 2));
-        console.log('Inquiry form data received:', JSON.stringify(req.body, null, 2));
+        console.error('=== INQUIRY VALIDATION ERROR ===');
+        console.error('Validation errors:', JSON.stringify(error.errors, null, 2));
+        console.error('Request body that failed validation:', JSON.stringify(req.body, null, 2));
         res.status(400).json({
           success: false,
           message: "Invalid inquiry data",
           errors: error.errors
         });
       } else {
-        console.error('Inquiry creation error:', error);
-        console.error('Inquiry error stack:', error.stack);
+        console.error('=== INQUIRY CREATION ERROR ===');
+        console.error('Error message:', (error as Error)?.message || 'Unknown error');
+        console.error('Error stack:', (error as Error)?.stack || 'No stack trace available');
+        console.error('Error object:', error);
         res.status(500).json({
           success: false,
-          message: "Failed to process inquiry"
+          message: "Failed to process inquiry",
+          error: (error as Error)?.message || 'Unknown error'
         });
       }
     }
@@ -252,6 +266,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Create product in Firebase
       const newProduct = await storage.createProduct({
         ...parsedData,
+        price: parsedData.price || 0,
         rating: parsedData.rating || 4.0,
         isBestseller: parsedData.isBestseller || false, 
         isNew: parsedData.isNew || false

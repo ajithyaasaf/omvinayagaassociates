@@ -716,7 +716,7 @@ export class FirebaseStorage {
       console.log(`Retrieved visitor stats from Firestore: ${firestoreCount} visits`);
       return { totalVisits: firestoreCount };
     } catch (error) {
-      console.warn('Firestore unavailable, using in-memory count:', error.message);
+      console.warn('Firestore unavailable, using in-memory count:', (error as Error)?.message || 'Unknown error');
       console.log(`Using in-memory visitor count: ${this.memoryVisitorCount}`);
       return { totalVisits: this.memoryVisitorCount };
     }
@@ -758,7 +758,7 @@ export class FirebaseStorage {
       console.log(`Visitor count incremented to: ${firestoreCount} (Firestore synced)`);
       return { totalVisits: firestoreCount };
     } catch (error) {
-      console.warn('Firestore increment failed, using in-memory count:', error.message);
+      console.warn('Firestore increment failed, using in-memory count:', (error as Error)?.message || 'Unknown error');
       console.log(`Visitor count incremented to: ${this.memoryVisitorCount} (in-memory only)`);
       return { totalVisits: this.memoryVisitorCount };
     }
