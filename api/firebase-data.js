@@ -324,3 +324,6 @@ export default async function handler(req, res) {
     });
   }
 }
+
+// Export the helper functions for use in other API routes
+export { getDataFromFirebase, deleteFromFirebase, createDataInFirebase };
