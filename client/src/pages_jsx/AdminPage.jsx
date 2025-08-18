@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, Link } from "wouter";
 import { motion } from "framer-motion";
 import { useQuery, useMutation } from "@tanstack/react-query";
@@ -73,9 +73,7 @@ const AdminPage = () => {
   const [sortOrder, setSortOrder] = useState("desc"); // Default to newest first
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
-  const [lastUpdated, setLastUpdated] = useState(null);
   const { toast } = useToast();
-  const webSocketRef = useRef(null);
 
   // Check if user is already authenticated (from localStorage)
   useEffect(() => {
@@ -84,102 +82,6 @@ const AdminPage = () => {
       setIsAuthenticated(true);
     }
   }, []);
-
-  // Set up WebSocket connection for real-time updates
-  useEffect(() => {
-    if (isAuthenticated) {
-      // Only enable WebSocket in development environment
-      const isProduction = window.location.hostname.includes('omvinayagaassociates.com') || 
-                          window.location.hostname.includes('vercel.app');
-      
-      if (isProduction) {
-        console.log("WebSocket disabled in production environment");
-        return;
-      }
-
-      if (
-        webSocketRef.current &&
-        webSocketRef.current.readyState === WebSocket.OPEN
-      ) {
-        webSocketRef.current.close();
-      }
-
-      const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-      const wsUrl = `${protocol}//${window.location.host}/ws`;
-
-      const socket = new WebSocket(wsUrl);
-      webSocketRef.current = socket;
-
-      socket.addEventListener("open", (event) => {
-        console.log("WebSocket connection established");
-      });
-
-      socket.addEventListener("message", (event) => {
-        try {
-          const message = JSON.parse(event.data);
-          console.log("WebSocket message received:", message);
-
-          if (message.type === "inquiries_updated") {
-            queryClient.setQueryData(["inquiries"], message.data);
-            setLastUpdated({
-              type: "inquiries",
-              timestamp: new Date().toISOString(),
-            });
-            if (activeTab === "inquiries") {
-              toast({
-                title: "Data updated",
-                description: "Inquiries have been updated in real-time.",
-                duration: 2000,
-              });
-            }
-          } else if (message.type === "contacts_updated") {
-            queryClient.setQueryData(["contacts"], message.data);
-            setLastUpdated({
-              type: "contacts",
-              timestamp: new Date().toISOString(),
-            });
-            if (activeTab === "contacts") {
-              toast({
-                title: "Data updated",
-                description: "Contacts have been updated in real-time.",
-                duration: 2000,
-              });
-            }
-          } else if (message.type === "intents_updated") {
-            queryClient.setQueryData(["intents"], message.data);
-            setLastUpdated({
-              type: "intents",
-              timestamp: new Date().toISOString(),
-            });
-            if (activeTab === "intents") {
-              toast({
-                title: "Data updated",
-                description:
-                  "Exit intent forms have been updated in real-time.",
-                duration: 2000,
-              });
-            }
-          }
-        } catch (error) {
-          console.error("Error parsing WebSocket message:", error);
-        }
-      });
-
-      socket.addEventListener("error", (error) => {
-        console.error("WebSocket error:", error);
-      });
-
-      socket.addEventListener("close", (event) => {
-        console.log("WebSocket connection closed", event.code, event.reason);
-      });
-
-      return () => {
-        if (socket && socket.readyState === WebSocket.OPEN) {
-          socket.close();
-        }
-      };
-    }
-  }, [isAuthenticated, toast, activeTab]);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -219,15 +121,6 @@ const AdminPage = () => {
 
   const handleTabChange = (tabName) => {
     setActiveTab(tabName);
-
-    if (lastUpdated && lastUpdated.type === tabName) {
-      setLastUpdated((prev) => {
-        if (prev && prev.type === tabName) {
-          return null;
-        }
-        return prev;
-      });
-    }
   };
 
   const fetchTabData = (endpoint) => {
@@ -252,7 +145,7 @@ const AdminPage = () => {
     queryFn: fetchTabData("inquiries"),
     enabled:
       isAuthenticated && (activeTab === "inquiries" || activeTab === "all"),
-    staleTime: 60000,
+    staleTime: 5000, // 5 seconds for more frequent updates
   });
 
   const {
@@ -265,7 +158,7 @@ const AdminPage = () => {
     queryFn: fetchTabData("intents"),
     enabled:
       isAuthenticated && (activeTab === "intents" || activeTab === "all"),
-    staleTime: 60000,
+    staleTime: 5000, // 5 seconds for more frequent updates
   });
 
   const {
@@ -278,7 +171,7 @@ const AdminPage = () => {
     queryFn: fetchTabData("contacts"),
     enabled:
       isAuthenticated && (activeTab === "contacts" || activeTab === "all"),
-    staleTime: 60000,
+    staleTime: 5000, // 5 seconds for more frequent updates
   });
 
   const deleteInquiryMutation = useMutation({
@@ -312,8 +205,6 @@ const AdminPage = () => {
       });
 
       queryClient.invalidateQueries({ queryKey: ["inquiries"] });
-      refetchContacts();
-      refetchIntents();
 
       toast({
         title: "Inquiry deleted",
@@ -358,8 +249,6 @@ const AdminPage = () => {
       });
 
       queryClient.invalidateQueries({ queryKey: ["contacts"] });
-      refetchInquiries();
-      refetchIntents();
 
       toast({
         title: "Contact submission deleted",
@@ -403,8 +292,6 @@ const AdminPage = () => {
       });
 
       queryClient.invalidateQueries({ queryKey: ["intents"] });
-      refetchInquiries();
-      refetchContacts();
 
       toast({
         title: "Intent form submission deleted",
