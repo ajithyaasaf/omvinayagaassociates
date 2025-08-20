@@ -73,7 +73,6 @@ const AdminPage = () => {
   const [sortOrder, setSortOrder] = useState("desc"); // Default to newest first
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
-  const [lastActivity, setLastActivity] = useState(new Date());
   const { toast } = useToast();
 
   // Check if user is already authenticated (from localStorage)
@@ -179,24 +178,6 @@ const AdminPage = () => {
     refetchInterval: 2000, // Poll every 2 seconds for instant updates
   });
 
-  // Update last activity when data changes
-  useEffect(() => {
-    if (inquiries && inquiries.length >= 0) {
-      setLastActivity(new Date());
-    }
-  }, [inquiries]);
-
-  useEffect(() => {
-    if (contactSubmissions && contactSubmissions.length >= 0) {
-      setLastActivity(new Date());
-    }
-  }, [contactSubmissions]);
-
-  useEffect(() => {
-    if (intentSubmissions && intentSubmissions.length >= 0) {
-      setLastActivity(new Date());
-    }
-  }, [intentSubmissions]);
 
   const deleteInquiryMutation = useMutation({
     mutationFn: async (id) => {
@@ -725,12 +706,6 @@ const AdminPage = () => {
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg px-4 py-2 border border-gray-200 shadow-sm">
-                <div className="text-xs text-gray-500">Last activity</div>
-                <div className="text-sm font-medium text-gray-900">
-                  {lastActivity.toLocaleTimeString()}
-                </div>
-              </div>
               <Button
                 variant="outline"
                 onClick={handleLogout}
