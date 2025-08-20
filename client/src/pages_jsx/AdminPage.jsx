@@ -1363,6 +1363,142 @@ const AdminPage = () => {
                   )}
                 </div>
 
+                {/* Expanded Inquiry Details */}
+                {expandedItem && expandedItem.startsWith("inquiry-") && (
+                  <div className="bg-white/90 backdrop-blur-sm rounded-xl border border-gray-200 shadow-lg p-6">
+                    {filteredInquiries
+                      .filter((inquiry) => `inquiry-${inquiry.id}` === expandedItem)
+                      .map((inquiry) => (
+                        <div key={`expanded-inquiry-${inquiry.id}`} className="space-y-6">
+                          <div className="flex items-center justify-between border-b border-gray-200 pb-4">
+                            <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                              <div className="w-8 h-8 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center">
+                                <span className="font-bold text-blue-700 text-sm">
+                                  {inquiry.name.charAt(0).toUpperCase()}
+                                </span>
+                              </div>
+                              Inquiry Details - {inquiry.name}
+                            </h3>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => setExpandedItem(null)}
+                              className="text-gray-500 hover:text-gray-700"
+                            >
+                              <X className="h-4 w-4" />
+                            </Button>
+                          </div>
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-4">
+                              <div>
+                                <label className="text-sm font-medium text-gray-700 mb-1 block">
+                                  Customer Name
+                                </label>
+                                <p className="text-gray-900 bg-gray-50 p-3 rounded-lg">
+                                  {inquiry.name}
+                                </p>
+                              </div>
+                              
+                              <div>
+                                <label className="text-sm font-medium text-gray-700 mb-1 block">
+                                  Phone Number
+                                </label>
+                                <p className="text-gray-900 bg-gray-50 p-3 rounded-lg">
+                                  {inquiry.phone}
+                                </p>
+                              </div>
+                              
+                              <div>
+                                <label className="text-sm font-medium text-gray-700 mb-1 block">
+                                  Email Address
+                                </label>
+                                <p className="text-gray-900 bg-gray-50 p-3 rounded-lg">
+                                  {inquiry.email || "No email provided"}
+                                </p>
+                              </div>
+                              
+                              <div>
+                                <label className="text-sm font-medium text-gray-700 mb-1 block">
+                                  Issue Type
+                                </label>
+                                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                                  {inquiry.issueType || "General Inquiry"}
+                                </span>
+                              </div>
+                            </div>
+
+                            <div className="space-y-4">
+                              <div>
+                                <label className="text-sm font-medium text-gray-700 mb-1 block">
+                                  Location/Address
+                                </label>
+                                <p className="text-gray-900 bg-gray-50 p-3 rounded-lg min-h-[3rem]">
+                                  {inquiry.address || "No address provided"}
+                                </p>
+                              </div>
+                              
+                              <div>
+                                <label className="text-sm font-medium text-gray-700 mb-1 block">
+                                  Message/Details
+                                </label>
+                                <p className="text-gray-900 bg-gray-50 p-3 rounded-lg min-h-[6rem]">
+                                  {inquiry.message || "No message provided"}
+                                </p>
+                              </div>
+                              
+                              <div>
+                                <label className="text-sm font-medium text-gray-700 mb-1 block">
+                                  Submission Date
+                                </label>
+                                <p className="text-gray-900 bg-gray-50 p-3 rounded-lg">
+                                  {inquiry.createdAt ? formatDate(inquiry.createdAt) : "Recent"}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="flex gap-3 pt-4 border-t border-gray-200">
+                            <Button
+                              onClick={() => setExpandedItem(null)}
+                              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
+                            >
+                              Close Details
+                            </Button>
+                            <AlertDialog>
+                              <AlertDialogTrigger asChild>
+                                <Button variant="destructive" className="px-6">
+                                  <Trash2 className="h-4 w-4 mr-2" />
+                                  Delete Inquiry
+                                </Button>
+                              </AlertDialogTrigger>
+                              <AlertDialogContent>
+                                <AlertDialogHeader>
+                                  <AlertDialogTitle>Delete Inquiry</AlertDialogTitle>
+                                  <AlertDialogDescription>
+                                    Are you sure you want to delete this inquiry from {inquiry.name}? This action cannot be undone.
+                                  </AlertDialogDescription>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                  <AlertDialogAction
+                                    onClick={() => {
+                                      deleteInquiryMutation.mutate(inquiry.id);
+                                      setExpandedItem(null);
+                                    }}
+                                    className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                                  >
+                                    Delete
+                                  </AlertDialogAction>
+                                </AlertDialogFooter>
+                              </AlertDialogContent>
+                            </AlertDialog>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                )}
+
                 {/* Enhanced Pagination */}
                 {filteredInquiries.length > itemsPerPage && (
                   <div className="mt-6 flex justify-center">
