@@ -707,7 +707,7 @@ const AdminPage = () => {
               <div className="bg-white/80 backdrop-blur-sm rounded-lg px-4 py-2 border border-gray-200 shadow-sm">
                 <div className="text-xs text-gray-500">Last activity</div>
                 <div className="text-sm font-medium text-gray-900">
-                  {lastUpdated ? new Date(lastUpdated.timestamp).toLocaleString() : 'Just now'}
+                  Just now
                 </div>
               </div>
               <Button
