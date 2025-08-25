@@ -15,15 +15,15 @@ const RESPONSES = {
   goodbye:
     "Thank you for chatting with us. Feel free to contact us anytime for your building repair needs!",
   about:
-    "OM Vinayaga Associates is the official Building Doctor franchise in Madurai, led by Er. Ramesh Jeyaraman. With 10+ years of excellence in building repairs and waterproofing, we've completed 1000+ projects and served 10,000+ happy customers, protecting over 1M+ sq.ft of building space.",
+    "OM Vinayaga Associates is the official Building Doctor franchise in Madurai, with over 10 years of experience in building repairs and waterproofing. We've helped more than 2,000 clients restore and protect their properties.",
   location:
-    "We are located at No.6, North Gate, Opp.Devaki Scan, Near Balaji Gas, S.S Colony, Madurai -625016. We serve Madurai and surrounding areas including Tirunelveli, Tuticorin, Dindigul, and Theni.",
+    "We are located at Door No. 131, Shop No. 12, Kallazhagar Complex, Thallakulam Main Road, Madurai. We serve Madurai and surrounding areas including Tirunelveli, Tuticorin, Dindigul, and Theni.",
   experience:
-    "Our team has 10+ years of specialized experience in building repair and diagnostics. We've successfully completed 1000+ projects ranging from residential buildings to commercial complexes, serving 10,000+ happy customers.",
+    "Our team has over 10 years of specialized experience in building repair and diagnostics. We've successfully completed more than 2,000 projects ranging from residential buildings to commercial complexes.",
   expertise:
     "Our technical experts are certified professionals with extensive training in advanced building repair techniques and latest waterproofing technologies.",
   contact:
-    "You can reach us by phone at +91 81 90 09 00 59 or +91 78 73 73 23 23, or email at omvinayagaassociates@gmail.com. Our office is located at No.6, North Gate, Opp.Devaki Scan, Near Balaji Gas, S.S Colony, Madurai -625016. We're open Monday to Saturday, 9:00 AM to 7:00 PM.",
+    "You can reach us by phone at +91 81 90 09 00 59 or +91 78 73 73 23 23, or email at omvinayagaassociates@gmail.com. Our office is open Monday to Saturday, 9:30 AM to 7:30 PM.",
   appointment:
     "Great! To schedule a diagnosis, I'll need a few details. First, what's your name?",
   appointment_phone_request:
@@ -33,7 +33,7 @@ const RESPONSES = {
   appointment_issue_request:
     "Got it! What specific building issue are you facing? (e.g., roof leakage, wall cracks, seepage, waterproofing, etc.)",
   appointment_time_request:
-    "Thanks for the details! What's the best time for our technician to visit? We're available Monday to Saturday, 9:00 AM to 7:00 PM.",
+    "Thanks for the details! What's the best time for our technician to visit? We're available Monday to Saturday, 9:30 AM to 7:30 PM.",
   appointment_confirmed:
     "Perfect! Your diagnosis appointment has been scheduled. Here's a summary:\n\n📋 Your Details:\n• Name: [NAME]\n• Phone: [PHONE]\n• Location: [LOCATION]\n• Issue: [ISSUE]\n• Time: [TIME]\n\nOur technician will call you shortly to confirm the visit. Thank you for choosing OM Vinayaga Associates!",
   emergency:
@@ -43,15 +43,15 @@ const RESPONSES = {
   services:
     "We offer a variety of building repair and waterproofing services. Which specific service are you interested in?",
   services_list:
-    "Our comprehensive services include:\n• Waterproofing Solutions (roof, bathroom, basement, external walls)\n• Sealants for joints, gaps, and weather sealing\n• Admixtures for concrete enhancement\n• Bonding Agents for surface strengthening\n• Crack Filling and structural repairs\n• Corrosion Treatments for metal protection\n• Tile Aids for perfect installations\n• Thermal Insulations for energy efficiency\n• Anchor and Joint Solutions for structural connections\n• Tapes and Sealing Solutions for watertight protection",
+    "Our main services include:\n• Waterproofing (roof, bathroom, basement)\n• Crack Repair & Structural Strengthening\n• Seepage & Dampness Control\n• Chemical Treatments & Injections\n• Expansion Joint Solutions\n• Building Health Assessments\n• Rehabilitation & Retrofitting",
   pricing:
     "Our pricing varies based on the specific requirements of your building. We offer free site inspections to provide accurate quotations. Would you like to schedule an inspection?",
   price_range:
-    "Our service pricing varies based on the scope of work, property size, and specific requirements. We offer cost-effective solutions designed to deliver excellent results while helping you save money in the long run. Contact us for a detailed quotation.",
+    "For residential properties, our services typically range from ₹5,000 for minor repairs to ₹50,000+ for comprehensive solutions. Commercial projects are quoted based on scope and area.",
   payment:
     "We accept payments via bank transfer, UPI, credit/debit cards, and cash. For larger projects, we offer flexible payment schedules tied to project milestones.",
   discounts:
-    "We offer various promotional offers and seasonal discounts throughout the year. Contact us to learn about current promotions and special offers available for your project.",
+    "We currently offer a 10% discount on your first service, and additional 5% discount for senior citizens. We also have seasonal promotions throughout the year.",
   process:
     "Our 6-step process includes: 1) Initial consultation, 2) Detailed site inspection, 3) Root cause diagnosis, 4) Customized solution proposal, 5) Professional execution, and 6) Quality verification and follow-up.",
   inspection:
@@ -65,7 +65,7 @@ const RESPONSES = {
   materials:
     "We use only premium quality, internationally certified materials for all our repair and waterproofing solutions, ensuring long-lasting results. Our products are eco-friendly and safe for residential use.",
   warranty:
-    "All our services come with comprehensive written warranties, giving you peace of mind and assurance of quality workmanship. Warranty periods vary based on the specific service and are provided in writing upon project completion.",
+    "All our services come with written guarantees. Depending on the service, warranties range from 1 to 10 years. Our waterproofing solutions typically carry a 5-7 year warranty against leakages.",
   quality_control:
     "We implement a strict 3-tier quality control process with pre-application testing, during-application supervision, and post-application verification to ensure top-notch results.",
   brands:
@@ -132,9 +132,9 @@ const QUICK_REPLIES = [
 ];
 
 const APPOINTMENT_QUICK_REPLIES = [
-  { id: "morning", text: "Morning (9:00AM-1PM)" },
+  { id: "morning", text: "Morning (9:30AM-1PM)" },
   { id: "afternoon", text: "Afternoon (1PM-4PM)" },
-  { id: "evening", text: "Evening (4PM-7:00PM)" },
+  { id: "evening", text: "Evening (4PM-7:30PM)" },
 ];
 
 const GENERAL_QUICK_REPLIES = [
@@ -340,48 +340,24 @@ const ChatBot = () => {
             botResponse = "Please provide your complete address or location in Madurai (e.g., Anna Nagar, KK Nagar, etc.) so our technician can visit.";
           }
         } else if (appointmentFlow.step === 'issue') {
-          // Store issue type and save appointment immediately
+          // Store issue type and move to time selection
           const issue = input.trim();
           // Validate issue: at least 5 characters, contains letters
           const issueRegex = /[a-zA-Z]/;
           if (issue.length >= 5 && issueRegex.test(issue)) {
-            // Save appointment to database with structured data
-            const appointmentData = {
-              name: appointmentFlow.name,
-              phone: appointmentFlow.phoneNumber,
-              service: "Building Diagnosis",
-              message: `Appointment booked via chatbot for building diagnosis`,
-              location: appointmentFlow.location,
+            setAppointmentFlow(prev => ({
+              ...prev,
               issueType: issue,
-              timePreference: "Flexible timing (Monday to Saturday, 9:00 AM to 7:00 PM)",
-              consent: true
-            };
-            
-            saveAppointmentMutation.mutate(appointmentData);
-            
-            // Update appointment flow
-            setAppointmentFlow({
-              isActive: false,
-              step: 'completed',
-              name: appointmentFlow.name,
-              phoneNumber: appointmentFlow.phoneNumber,
-              location: appointmentFlow.location,
-              issueType: issue,
-              timeSlot: "Flexible timing",
-              service: "Building Diagnosis"
-            });
-            
-            // Create personalized confirmation message
-            botResponse = RESPONSES.appointment_confirmed
-              .replace('[NAME]', appointmentFlow.name)
-              .replace('[PHONE]', appointmentFlow.phoneNumber)
-              .replace('[LOCATION]', appointmentFlow.location)
-              .replace('[ISSUE]', issue)
-              .replace('[TIME]', "Flexible timing");
-            newQuickReplies = PROBLEM_QUICK_REPLIES;
+              step: 'time'
+            }));
+            botResponse = RESPONSES.appointment_time_request;
+            newQuickReplies = APPOINTMENT_QUICK_REPLIES;
           } else {
             botResponse = "Please describe the building issue you're facing in detail (e.g., 'roof leakage during rain', 'wall cracks appearing', 'seepage in bathroom', etc.)";
           }
+        } else if (appointmentFlow.step === 'time') {
+          // This will be handled in the quick reply selection
+          botResponse = "Please select a time slot from the options above.";
         }
       }
       // Main conversation patterns
@@ -761,6 +737,53 @@ const ChatBot = () => {
         case "about":
           botResponse = RESPONSES.about;
           quickReplies = GENERAL_QUICK_REPLIES;
+          break;
+
+        // Appointment time slots
+        case "morning":
+        case "afternoon":
+        case "evening":
+          if (appointmentFlow.isActive && appointmentFlow.step === 'time') {
+            const timeSlotText = option.text; // e.g., "Morning (9AM-12PM)"
+            
+            // Save appointment to database with structured data
+            const appointmentData = {
+              name: appointmentFlow.name,
+              phone: appointmentFlow.phoneNumber,
+              service: "Building Diagnosis",
+              message: `Appointment booked via chatbot for building diagnosis`,
+              location: appointmentFlow.location,
+              issueType: appointmentFlow.issueType,
+              timePreference: timeSlotText,
+              consent: true
+            };
+            
+            saveAppointmentMutation.mutate(appointmentData);
+            
+            // Update appointment flow
+            setAppointmentFlow({
+              isActive: false,
+              step: 'completed',
+              name: appointmentFlow.name,
+              phoneNumber: appointmentFlow.phoneNumber,
+              location: appointmentFlow.location,
+              issueType: appointmentFlow.issueType,
+              timeSlot: timeSlotText,
+              service: "Building Diagnosis"
+            });
+            
+            // Create personalized confirmation message
+            botResponse = RESPONSES.appointment_confirmed
+              .replace('[NAME]', appointmentFlow.name)
+              .replace('[PHONE]', appointmentFlow.phoneNumber)
+              .replace('[LOCATION]', appointmentFlow.location)
+              .replace('[ISSUE]', appointmentFlow.issueType)
+              .replace('[TIME]', timeSlotText);
+            quickReplies = PROBLEM_QUICK_REPLIES;
+          } else {
+            botResponse = "Please start by selecting 'Schedule a Diagnosis' to book an appointment.";
+            quickReplies = QUICK_REPLIES;
+          }
           break;
 
         // Company information quick replies
