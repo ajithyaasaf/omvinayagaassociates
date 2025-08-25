@@ -15,15 +15,15 @@ const RESPONSES = {
   goodbye:
     "Thank you for chatting with us. Feel free to contact us anytime for your building repair needs!",
   about:
-    "OM Vinayaga Associates is the official Building Doctor franchise in Madurai, with over 10 years of experience in building repairs and waterproofing. We've helped more than 2,000 clients restore and protect their properties.",
+    "OM Vinayaga Associates is the official Building Doctor franchise in Madurai, with over 10 years of experience in building repairs and waterproofing. We've successfully completed 1000+ projects and helped 10,000+ happy customers restore and protect their properties.",
   location:
-    "We are located at Door No. 131, Shop No. 12, Kallazhagar Complex, Thallakulam Main Road, Madurai. We serve Madurai and surrounding areas including Tirunelveli, Tuticorin, Dindigul, and Theni.",
+    "We are located at No.6, North Gate, Opp.Devaki Scan, Near Balaji Gas, S.S Colony, Madurai -625016. We serve Madurai and surrounding areas including Tirunelveli, Tuticorin, Dindigul, and Theni.",
   experience:
-    "Our team has over 10 years of specialized experience in building repair and diagnostics. We've successfully completed more than 2,000 projects ranging from residential buildings to commercial complexes.",
+    "Our team has over 10 years of specialized experience in building repair and diagnostics. We've successfully completed 1000+ projects ranging from residential buildings to commercial complexes, serving 10,000+ happy customers.",
   expertise:
     "Our technical experts are certified professionals with extensive training in advanced building repair techniques and latest waterproofing technologies.",
   contact:
-    "You can reach us by phone at +91 81 90 09 00 59 or +91 78 73 73 23 23, or email at omvinayagaassociates@gmail.com. Our office is open Monday to Saturday, 9:30 AM to 7:30 PM.",
+    "You can reach us by phone at +91 81 90 09 00 59 or +91 78 73 73 23 23, or email at omvinayagaassociates@gmail.com. Our office is open Monday to Saturday, 9:00 AM to 7:00 PM.",
   appointment:
     "Great! To schedule a diagnosis, I'll need a few details. First, what's your name?",
   appointment_phone_request:
@@ -33,7 +33,7 @@ const RESPONSES = {
   appointment_issue_request:
     "Got it! What specific building issue are you facing? (e.g., roof leakage, wall cracks, seepage, waterproofing, etc.)",
   appointment_time_request:
-    "Thanks for the details! What's the best time for our technician to visit? We're available Monday to Saturday, 9:30 AM to 7:30 PM.",
+    "Thanks for the details! What's the best time for our technician to visit? We're available Monday to Saturday, 9:00 AM to 7:00 PM.",
   appointment_confirmed:
     "Perfect! Your diagnosis appointment has been scheduled. Here's a summary:\n\n📋 Your Details:\n• Name: [NAME]\n• Phone: [PHONE]\n• Location: [LOCATION]\n• Issue: [ISSUE]\n• Time: [TIME]\n\nOur technician will call you shortly to confirm the visit. Thank you for choosing OM Vinayaga Associates!",
   emergency:
@@ -45,13 +45,13 @@ const RESPONSES = {
   services_list:
     "Our main services include:\n• Waterproofing (roof, bathroom, basement)\n• Crack Repair & Structural Strengthening\n• Seepage & Dampness Control\n• Chemical Treatments & Injections\n• Expansion Joint Solutions\n• Building Health Assessments\n• Rehabilitation & Retrofitting",
   pricing:
-    "Our pricing varies based on the specific requirements of your building. We offer free site inspections to provide accurate quotations. Would you like to schedule an inspection?",
+    "Our pricing varies based on the specific requirements of your building. We provide detailed quotations after thorough site inspections. Would you like to schedule an inspection?",
   price_range:
-    "For residential properties, our services typically range from ₹5,000 for minor repairs to ₹50,000+ for comprehensive solutions. Commercial projects are quoted based on scope and area.",
+    "Our service costs vary depending on the type and scope of work required. We provide competitive pricing after assessing your specific building needs. Contact us for a detailed quotation.",
   payment:
     "We accept payments via bank transfer, UPI, credit/debit cards, and cash. For larger projects, we offer flexible payment schedules tied to project milestones.",
   discounts:
-    "We currently offer a 10% discount on your first service, and additional 5% discount for senior citizens. We also have seasonal promotions throughout the year.",
+    "We offer competitive pricing and occasional seasonal promotions. Contact us directly to learn about current offers and discuss your specific requirements.",
   process:
     "Our 6-step process includes: 1) Initial consultation, 2) Detailed site inspection, 3) Root cause diagnosis, 4) Customized solution proposal, 5) Professional execution, and 6) Quality verification and follow-up.",
   inspection:
@@ -61,27 +61,27 @@ const RESPONSES = {
   preparation:
     "Before our team arrives, we recommend clearing access to problem areas and removing any valuable or fragile items from the work zone. Our team will use protective coverings for furniture and floors.",
   post_repair:
-    "After completing repairs, we provide a maintenance guide specific to your property. We also schedule a free follow-up inspection after 3 months to ensure all solutions are performing optimally.",
+    "After completing repairs, we provide a maintenance guide specific to your property. We also offer follow-up support to ensure all solutions are performing optimally.",
   materials:
-    "We use only premium quality, internationally certified materials for all our repair and waterproofing solutions, ensuring long-lasting results. Our products are eco-friendly and safe for residential use.",
+    "We use quality materials and certified products for all our repair and waterproofing solutions, ensuring reliable and long-lasting results that are safe for residential use.",
   warranty:
-    "All our services come with written guarantees. Depending on the service, warranties range from 1 to 10 years. Our waterproofing solutions typically carry a 5-7 year warranty against leakages.",
+    "We provide warranty coverage for our services. Warranty terms vary depending on the type of service and specific requirements. Contact us for detailed warranty information for your project.",
   quality_control:
-    "We implement a strict 3-tier quality control process with pre-application testing, during-application supervision, and post-application verification to ensure top-notch results.",
+    "We maintain strict quality control standards throughout our work process to ensure professional results. Our team supervises every step of the project from initial assessment to completion.",
   brands:
-    "We work with industry-leading brands like Dr. Fixit, Fosroc, BASF, Sika, and MYK Laticrete to ensure the highest quality repairs with performance guarantees.",
+    "We use high-quality, certified materials and products from reputable manufacturers to ensure the highest quality repairs and long-lasting results.",
   waterproofing:
-    "Our comprehensive waterproofing services include roof waterproofing, bathroom waterproofing, basement waterproofing, and external wall treatments. We use advanced membrane, cementitious, and injection technologies tailored to each surface type and exposure level.",
+    "Our comprehensive waterproofing services include roof waterproofing, bathroom waterproofing, basement waterproofing, and external wall treatments. We provide customized solutions based on your specific requirements and building conditions.",
   roof_waterproofing:
-    "Our roof waterproofing uses multi-layer treatments including primer coats, membrane/liquid applications, and protective top coats. We address both flat and sloped roofs with customized solutions.",
+    "Our roof waterproofing services provide effective solutions for both flat and sloped roofs using quality materials and proven techniques to prevent leaks and water damage.",
   bathroom_waterproofing:
-    "Our bathroom waterproofing involves treating the entire wet area including floors, walls, and joints with specialized systems that prevent water migration while allowing substrate breathability.",
+    "Our bathroom waterproofing involves treating floors, walls, and joints in wet areas with specialized systems to prevent water seepage and damage.",
   basement_waterproofing:
     "For basements, we utilize a combination of exterior barrier systems and interior treatments to protect against ground water infiltration, hydrostatic pressure, and rising dampness.",
   external_waterproofing:
     "Our external wall treatments provide protection against driving rain, prevent water absorption, and maintain breathability to prevent trapped moisture problems.",
   cracks:
-    "We provide comprehensive crack repair solutions using advanced epoxy injections, carbon fiber reinforcement, and specialized fillers based on crack type (structural vs. non-structural) and movement patterns.",
+    "We provide comprehensive crack repair solutions using appropriate repair techniques based on the crack type and severity. Our solutions address both structural and non-structural cracks effectively.",
   hairline_cracks:
     "For hairline and shrinkage cracks, we use flexible acrylic fillers that accommodate minor movements while providing waterproof sealing.",
   structural_cracks:
