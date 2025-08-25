@@ -3,11 +3,11 @@ export const COMPANY_TITLE = "Building Doctor Franchise";
 export const COMPANY_DESCRIPTION = "Your trusted partner for all building repair and maintenance needs in Madurai and surrounding areas.";
 
 export const CONTACT = {
-  address: "OM Vinayaga Associates, NO.6, NORTH GATE, OPP.DEVAKI SCAN, NEAR BALAJI GAS, S.S COLONY, MADURAI -625016",
+  address: "OM Vinayaga Associates, No.6, North Gate, Opp.Devaki Scan, Near Balaji Gas, S.S Colony, Madurai -625016",
   phone: ["+91 93429 68038", "+91 78737 32323"],
   email: "omvinayagaassociates@gmail.com",
   director: "Er. Ramesh Jeyaraman",
-  workingHours: "Monday to Saturday from 09.30 am to 07.30 pm",
+  workingHours: "Monday to Saturday from 09.00 AM to 07.00 PM",
   whatsapp: "https://wa.me/917873732323"
 };
 

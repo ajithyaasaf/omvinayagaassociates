@@ -8,14 +8,14 @@ export const COMPANY_DESCRIPTION =
 export const CONTACT = {
   addresses: [
     "Door No. 131, Shop No. 12, Kallazhagar Complex, Thallakulam Main Road, Madurai",
-    "NO.6, NORTH GATE, OPP.DEVAKI SCAN, NEAR BALAJI GAS, S.S COLONY, MADURAI -625016",
+    "No.6, North Gate, Opp.Devaki Scan, Near Balaji Gas, S.S Colony, Madurai -625016",
   ],
-  address: "NO.6, NORTH GATE, OPP.DEVAKI SCAN, NEAR BALAJI GAS, S.S COLONY, MADURAI -625016", // Keeping for backward compatibility
+  address: "No.6, North Gate, Opp.Devaki Scan, Near Balaji Gas, S.S Colony, Madurai -625016", // Keeping for backward compatibility
   director: "Er.Ramesh Jeyaraman B.E",
   title: "Director",
   phone: ["+91 81900 90059", "+91 78737 32323"],
   email: "omvinayagaassociates@gmail.com",
-  workingHours: "Monday to Saturday from 09.30 am to 07.30 pm",
+  workingHours: "Monday to Saturday from 09.00 AM to 07.00 PM",
   website: "www.buildingdoctor.org",
   social: {
     facebook: "BuildingDoctor Madurai",
