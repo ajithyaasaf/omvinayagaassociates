@@ -4,7 +4,7 @@ export const COMPANY_DESCRIPTION = "Your trusted partner for all building repair
 
 export const CONTACT = {
   address: "OM Vinayaga Associates, No.6, North Gate, Opp.Devaki Scan, Near Balaji Gas, S.S Colony, Madurai -625016",
-  phone: ["+91 93 42 96 80 38", "+91 78 73 73 23 23"],
+  phone: ["+91 78 73 73 23 23", "+91 78 73 73 23 23"],
   email: "omvinayagaassociates@gmail.com",
   director: "Er. Ramesh Jeyaraman",
   workingHours: "Monday to Saturday from 09.00 AM to 07.00 PM",
