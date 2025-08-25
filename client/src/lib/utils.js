@@ -42,6 +42,6 @@ export function getStarRating(rating) {
 
 // Format date to readable string
 export function formatDate(dateString) {
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
   return new Date(dateString).toLocaleDateString('en-US', options);
 }

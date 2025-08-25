@@ -49,9 +49,11 @@ export const VisitorCounter = ({
     );
   }
 
-  // Format visitor count with comma separators for better readability
+  // Format visitor count with comma separators and 2-digit format for better readability
   const formatNumber = (num: number) => {
-    return new Intl.NumberFormat('en-US').format(num);
+    return new Intl.NumberFormat('en-US', {
+      minimumIntegerDigits: 2
+    }).format(num);
   };
 
   const visitorCount = visitorStats?.totalVisits || 0;
