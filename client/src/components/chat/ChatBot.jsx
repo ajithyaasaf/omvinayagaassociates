@@ -15,7 +15,7 @@ const RESPONSES = {
   goodbye:
     "Thank you for chatting with us. Feel free to contact us anytime for your building repair needs!",
   about:
-    "OM Vinayaga Associates is the official Building Doctor franchise in Madurai, with 10+ years of excellence in building repairs and waterproofing. We've completed 1000+ projects and served 10,000+ happy customers, protecting over 1M+ sq.ft of building space.",
+    "OM Vinayaga Associates is the official Building Doctor franchise in Madurai, led by Er. Ramesh Jeyaraman. With 10+ years of excellence in building repairs and waterproofing, we've completed 1000+ projects and served 10,000+ happy customers, protecting over 1M+ sq.ft of building space.",
   location:
     "We are located at No.6, North Gate, Opp.Devaki Scan, Near Balaji Gas, S.S Colony, Madurai -625016. We serve Madurai and surrounding areas including Tirunelveli, Tuticorin, Dindigul, and Theni.",
   experience:
@@ -33,7 +33,7 @@ const RESPONSES = {
   appointment_issue_request:
     "Got it! What specific building issue are you facing? (e.g., roof leakage, wall cracks, seepage, waterproofing, etc.)",
   appointment_time_request:
-    "Thanks for the details! What's the best time for our technician to visit? We're available Monday to Saturday, 9:30 AM to 7:30 PM.",
+    "Thanks for the details! What's the best time for our technician to visit? We're available Monday to Saturday, 9:00 AM to 7:00 PM.",
   appointment_confirmed:
     "Perfect! Your diagnosis appointment has been scheduled. Here's a summary:\n\n📋 Your Details:\n• Name: [NAME]\n• Phone: [PHONE]\n• Location: [LOCATION]\n• Issue: [ISSUE]\n• Time: [TIME]\n\nOur technician will call you shortly to confirm the visit. Thank you for choosing OM Vinayaga Associates!",
   emergency:
@@ -47,11 +47,11 @@ const RESPONSES = {
   pricing:
     "Our pricing varies based on the specific requirements of your building. We offer free site inspections to provide accurate quotations. Would you like to schedule an inspection?",
   price_range:
-    "For residential properties, our services typically range from ₹5,000 for minor repairs to ₹50,000+ for comprehensive solutions. Commercial projects are quoted based on scope and area.",
+    "Our service pricing varies based on the scope of work, property size, and specific requirements. We offer cost-effective solutions designed to deliver excellent results while helping you save money in the long run. Contact us for a detailed quotation.",
   payment:
     "We accept payments via bank transfer, UPI, credit/debit cards, and cash. For larger projects, we offer flexible payment schedules tied to project milestones.",
   discounts:
-    "We currently offer a 10% discount on your first service, and additional 5% discount for senior citizens. We also have seasonal promotions throughout the year.",
+    "We offer various promotional offers and seasonal discounts throughout the year. Contact us to learn about current promotions and special offers available for your project.",
   process:
     "Our 6-step process includes: 1) Initial consultation, 2) Detailed site inspection, 3) Root cause diagnosis, 4) Customized solution proposal, 5) Professional execution, and 6) Quality verification and follow-up.",
   inspection:
@@ -65,7 +65,7 @@ const RESPONSES = {
   materials:
     "We use only premium quality, internationally certified materials for all our repair and waterproofing solutions, ensuring long-lasting results. Our products are eco-friendly and safe for residential use.",
   warranty:
-    "All our services come with written guarantees. Depending on the service, warranties range from 1 to 10 years. Our waterproofing solutions typically carry a 5-7 year warranty against leakages.",
+    "All our services come with comprehensive written warranties, giving you peace of mind and assurance of quality workmanship. Warranty periods vary based on the specific service and are provided in writing upon project completion.",
   quality_control:
     "We implement a strict 3-tier quality control process with pre-application testing, during-application supervision, and post-application verification to ensure top-notch results.",
   brands:
@@ -132,9 +132,9 @@ const QUICK_REPLIES = [
 ];
 
 const APPOINTMENT_QUICK_REPLIES = [
-  { id: "morning", text: "Morning (9:30AM-1PM)" },
+  { id: "morning", text: "Morning (9:00AM-1PM)" },
   { id: "afternoon", text: "Afternoon (1PM-4PM)" },
-  { id: "evening", text: "Evening (4PM-7:30PM)" },
+  { id: "evening", text: "Evening (4PM-7:00PM)" },
 ];
 
 const GENERAL_QUICK_REPLIES = [
@@ -353,7 +353,7 @@ const ChatBot = () => {
               message: `Appointment booked via chatbot for building diagnosis`,
               location: appointmentFlow.location,
               issueType: issue,
-              timePreference: "Flexible timing (Monday to Saturday, 9:30 AM to 7:30 PM)",
+              timePreference: "Flexible timing (Monday to Saturday, 9:00 AM to 7:00 PM)",
               consent: true
             };
             
