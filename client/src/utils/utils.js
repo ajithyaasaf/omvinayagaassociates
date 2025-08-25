@@ -79,8 +79,8 @@ export function formatDate(dateString, locale = 'en-IN') {
   
   const options = { 
     year: 'numeric', 
-    month: '2-digit', 
-    day: '2-digit' 
+    month: 'long', 
+    day: 'numeric' 
   };
   
   return new Date(dateString).toLocaleDateString(locale, options);
