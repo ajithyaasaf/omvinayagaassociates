@@ -15,15 +15,15 @@ const RESPONSES = {
   goodbye:
     "Thank you for chatting with us. Feel free to contact us anytime for your building repair needs!",
   about:
-    "OM Vinayaga Associates is the official Building Doctor franchise in Madurai, with over 10 years of experience in building repairs and waterproofing. We've helped more than 2,000 clients restore and protect their properties.",
+    "OM Vinayaga Associates is the official Building Doctor franchise in Madurai, with 10+ years of excellence in building repairs and waterproofing. We've completed 1000+ projects and served 10,000+ happy customers, protecting over 1M+ sq.ft of building space.",
   location:
-    "We are located at Door No. 131, Shop No. 12, Kallazhagar Complex, Thallakulam Main Road, Madurai. We serve Madurai and surrounding areas including Tirunelveli, Tuticorin, Dindigul, and Theni.",
+    "We are located at No.6, North Gate, Opp.Devaki Scan, Near Balaji Gas, S.S Colony, Madurai -625016. We serve Madurai and surrounding areas including Tirunelveli, Tuticorin, Dindigul, and Theni.",
   experience:
-    "Our team has over 10 years of specialized experience in building repair and diagnostics. We've successfully completed more than 2,000 projects ranging from residential buildings to commercial complexes.",
+    "Our team has 10+ years of specialized experience in building repair and diagnostics. We've successfully completed 1000+ projects ranging from residential buildings to commercial complexes, serving 10,000+ happy customers.",
   expertise:
     "Our technical experts are certified professionals with extensive training in advanced building repair techniques and latest waterproofing technologies.",
   contact:
-    "You can reach us by phone at +91 81 90 09 00 59 or +91 78 73 73 23 23, or email at omvinayagaassociates@gmail.com. Our office is open Monday to Saturday, 9:30 AM to 7:30 PM.",
+    "You can reach us by phone at +91 81 90 09 00 59 or +91 78 73 73 23 23, or email at omvinayagaassociates@gmail.com. Our office is located at No.6, North Gate, Opp.Devaki Scan, Near Balaji Gas, S.S Colony, Madurai -625016. We're open Monday to Saturday, 9:00 AM to 7:00 PM.",
   appointment:
     "Great! To schedule a diagnosis, I'll need a few details. First, what's your name?",
   appointment_phone_request:
@@ -43,7 +43,7 @@ const RESPONSES = {
   services:
     "We offer a variety of building repair and waterproofing services. Which specific service are you interested in?",
   services_list:
-    "Our main services include:\n• Waterproofing (roof, bathroom, basement)\n• Crack Repair & Structural Strengthening\n• Seepage & Dampness Control\n• Chemical Treatments & Injections\n• Expansion Joint Solutions\n• Building Health Assessments\n• Rehabilitation & Retrofitting",
+    "Our comprehensive services include:\n• Waterproofing Solutions (roof, bathroom, basement, external walls)\n• Sealants for joints, gaps, and weather sealing\n• Admixtures for concrete enhancement\n• Bonding Agents for surface strengthening\n• Crack Filling and structural repairs\n• Corrosion Treatments for metal protection\n• Tile Aids for perfect installations\n• Thermal Insulations for energy efficiency\n• Anchor and Joint Solutions for structural connections\n• Tapes and Sealing Solutions for watertight protection",
   pricing:
     "Our pricing varies based on the specific requirements of your building. We offer free site inspections to provide accurate quotations. Would you like to schedule an inspection?",
   price_range:
