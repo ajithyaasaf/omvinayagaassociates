@@ -13,7 +13,7 @@ export const CONTACT = {
   address: "No.6, North Gate, Opp.Devaki Scan, Near Balaji Gas, S.S Colony, Madurai -625016", // Keeping for backward compatibility
   director: "Er.Ramesh Jeyaraman B.E",
   title: "Director",
-  phone: ["+91 81900 90059", "+91 78737 32323"],
+  phone: ["+91 81 90 09 00 59", "+91 78 73 73 23 23"],
   email: "omvinayagaassociates@gmail.com",
   workingHours: "Monday to Saturday from 09.00 AM to 07.00 PM",
   website: "www.buildingdoctor.org",

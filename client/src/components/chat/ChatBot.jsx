@@ -23,7 +23,7 @@ const RESPONSES = {
   expertise:
     "Our technical experts are certified professionals with extensive training in advanced building repair techniques and latest waterproofing technologies.",
   contact:
-    "You can reach us by phone at +91 81900 90059 or +91 78737 32323, or email at omvinayagaassociates@gmail.com. Our office is open Monday to Saturday, 9:30 AM to 7:30 PM.",
+    "You can reach us by phone at +91 81 90 09 00 59 or +91 78 73 73 23 23, or email at omvinayagaassociates@gmail.com. Our office is open Monday to Saturday, 9:30 AM to 7:30 PM.",
   appointment:
     "Great! To schedule a diagnosis, I'll need a few details. First, what's your name?",
   appointment_phone_request:
@@ -37,7 +37,7 @@ const RESPONSES = {
   appointment_confirmed:
     "Perfect! Your diagnosis appointment has been scheduled. Here's a summary:\n\n📋 Your Details:\n• Name: [NAME]\n• Phone: [PHONE]\n• Location: [LOCATION]\n• Issue: [ISSUE]\n• Time: [TIME]\n\nOur technician will call you shortly to confirm the visit. Thank you for choosing OM Vinayaga Associates!",
   emergency:
-    "For emergency services like severe leaks or structural concerns, please call our emergency line at +91 81900 90059. We offer prompt response for critical situations during working hours.",
+    "For emergency services like severe leaks or structural concerns, please call our emergency line at +91 81 90 09 00 59. We offer prompt response for critical situations during working hours.",
   visit_timing:
     "Our site visits typically take 30-60 minutes depending on the size of the property and complexity of issues. Our technician will thoroughly inspect the problem areas and explain the findings.",
   services:
