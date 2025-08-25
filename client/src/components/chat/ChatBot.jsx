@@ -340,24 +340,48 @@ const ChatBot = () => {
             botResponse = "Please provide your complete address or location in Madurai (e.g., Anna Nagar, KK Nagar, etc.) so our technician can visit.";
           }
         } else if (appointmentFlow.step === 'issue') {
-          // Store issue type and move to time selection
+          // Store issue type and save appointment immediately
           const issue = input.trim();
           // Validate issue: at least 5 characters, contains letters
           const issueRegex = /[a-zA-Z]/;
           if (issue.length >= 5 && issueRegex.test(issue)) {
-            setAppointmentFlow(prev => ({
-              ...prev,
+            // Save appointment to database with structured data
+            const appointmentData = {
+              name: appointmentFlow.name,
+              phone: appointmentFlow.phoneNumber,
+              service: "Building Diagnosis",
+              message: `Appointment booked via chatbot for building diagnosis`,
+              location: appointmentFlow.location,
               issueType: issue,
-              step: 'time'
-            }));
-            botResponse = RESPONSES.appointment_time_request;
-            newQuickReplies = APPOINTMENT_QUICK_REPLIES;
+              timePreference: "Flexible timing (Monday to Saturday, 9:30 AM to 7:30 PM)",
+              consent: true
+            };
+            
+            saveAppointmentMutation.mutate(appointmentData);
+            
+            // Update appointment flow
+            setAppointmentFlow({
+              isActive: false,
+              step: 'completed',
+              name: appointmentFlow.name,
+              phoneNumber: appointmentFlow.phoneNumber,
+              location: appointmentFlow.location,
+              issueType: issue,
+              timeSlot: "Flexible timing",
+              service: "Building Diagnosis"
+            });
+            
+            // Create personalized confirmation message
+            botResponse = RESPONSES.appointment_confirmed
+              .replace('[NAME]', appointmentFlow.name)
+              .replace('[PHONE]', appointmentFlow.phoneNumber)
+              .replace('[LOCATION]', appointmentFlow.location)
+              .replace('[ISSUE]', issue)
+              .replace('[TIME]', "Flexible timing");
+            newQuickReplies = PROBLEM_QUICK_REPLIES;
           } else {
             botResponse = "Please describe the building issue you're facing in detail (e.g., 'roof leakage during rain', 'wall cracks appearing', 'seepage in bathroom', etc.)";
           }
-        } else if (appointmentFlow.step === 'time') {
-          // This will be handled in the quick reply selection
-          botResponse = "Please select a time slot from the options above.";
         }
       }
       // Main conversation patterns
@@ -737,53 +761,6 @@ const ChatBot = () => {
         case "about":
           botResponse = RESPONSES.about;
           quickReplies = GENERAL_QUICK_REPLIES;
-          break;
-
-        // Appointment time slots
-        case "morning":
-        case "afternoon":
-        case "evening":
-          if (appointmentFlow.isActive && appointmentFlow.step === 'time') {
-            const timeSlotText = option.text; // e.g., "Morning (9AM-12PM)"
-            
-            // Save appointment to database with structured data
-            const appointmentData = {
-              name: appointmentFlow.name,
-              phone: appointmentFlow.phoneNumber,
-              service: "Building Diagnosis",
-              message: `Appointment booked via chatbot for building diagnosis`,
-              location: appointmentFlow.location,
-              issueType: appointmentFlow.issueType,
-              timePreference: timeSlotText,
-              consent: true
-            };
-            
-            saveAppointmentMutation.mutate(appointmentData);
-            
-            // Update appointment flow
-            setAppointmentFlow({
-              isActive: false,
-              step: 'completed',
-              name: appointmentFlow.name,
-              phoneNumber: appointmentFlow.phoneNumber,
-              location: appointmentFlow.location,
-              issueType: appointmentFlow.issueType,
-              timeSlot: timeSlotText,
-              service: "Building Diagnosis"
-            });
-            
-            // Create personalized confirmation message
-            botResponse = RESPONSES.appointment_confirmed
-              .replace('[NAME]', appointmentFlow.name)
-              .replace('[PHONE]', appointmentFlow.phoneNumber)
-              .replace('[LOCATION]', appointmentFlow.location)
-              .replace('[ISSUE]', appointmentFlow.issueType)
-              .replace('[TIME]', timeSlotText);
-            quickReplies = PROBLEM_QUICK_REPLIES;
-          } else {
-            botResponse = "Please start by selecting 'Schedule a Diagnosis' to book an appointment.";
-            quickReplies = QUICK_REPLIES;
-          }
           break;
 
         // Company information quick replies
