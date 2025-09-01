@@ -48,7 +48,7 @@ const AboutPage = () => {
               <p className="text-gray-600 mb-6">
                 Led by {CONTACT.director}, our team combines technical expertise
                 with a customer-first approach to deliver exceptional results.
-                We have successfully completed over 1000 projects, helping both
+                We have successfully completed over 2000 projects, helping both
                 residential and commercial property owners address their
                 building repair needs.
               </p>
