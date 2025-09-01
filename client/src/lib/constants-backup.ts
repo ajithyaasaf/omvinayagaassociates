@@ -80,7 +80,7 @@ export const DIRECTORS = [
       "Authorized Building Doctor Franchise Owner",
     ],
     awards: [
-      "CIDC certified",
+      "Construction Industry Development Council (CIDC) certified",
       "Excellence in Building Repair Solutions",
       "Outstanding Customer Service Award",
       "Best Franchise Performance Award",
