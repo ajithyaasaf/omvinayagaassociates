@@ -101,10 +101,9 @@ const AchievementsPage = () => {
       organization: "CIDC (Construction Industry Development Council)",
       recipient: "Ramesh J",
       description:
-        "Successfully completed Online (Hybrid) Course on Waterproofing and Insulation (3 Weeks) conducted virtually during November, 2024",
+        "Successfully completed Online (Hybrid) Course on Waterproofing and Insulation (3 Weeks) conducted during November, 2024",
       category: "Technical Certification",
       icon: <GraduationCap className="w-6 h-6 text-blue-600" />,
-      image: cidcCertificate,
       featured: true,
     },
     {
@@ -144,7 +143,7 @@ const AchievementsPage = () => {
   // Educational Outreach
   const educationalOutreach = [
     {
-      institution: "Velammal Engineering College",
+      institution: "Velammal MOU Signed",
       activity: "Guest Lecture & Recognition",
       department: "Engineering",
       description:
