@@ -373,17 +373,32 @@ const ContactSection = () => {
 
         {/* Map Section */}
         <div className="mt-16 bg-white rounded-xl shadow-lg overflow-hidden">
-          <div className="h-96 bg-gray-200">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.8999114405763!2d78.12356181079485!3d9.9361916741588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c59fc9ffd737%3A0x44e6b0aa1d66d76c!2sNorth%20Gate%2C%20SS%20Colony%2C%20Madurai%2C%20Tamil%20Nadu%20625010!5e0!3m2!1sen!2sin!4v1684758905019!5m2!1sen!2sin"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen={true}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="OM Vinayaga Associates - S.S Colony Location"
-            ></iframe>
+          <div className="relative">
+            <div className="h-96 bg-gray-200">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.8999114405763!2d78.12356181079485!3d9.9361916741588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c59fc9ffd737%3A0x44e6b0aa1d66d76c!2sNorth%20Gate%2C%20SS%20Colony%2C%20Madurai%2C%20Tamil%20Nadu%20625010!5e0!3m2!1sen!2sin!4v1684758905019!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="OM Vinayaga Associates - S.S Colony Location"
+              ></iframe>
+            </div>
+            <div className="absolute bottom-4 right-4">
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=No.6,+North+Gate,+Opp.Devaki+Scan,+Near+Balaji+Gas,+S.S+Colony,+Madurai+-625016"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-md font-medium transition shadow-lg flex items-center gap-2"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                </svg>
+                Get Directions
+              </a>
+            </div>
           </div>
         </div>
       </div>
