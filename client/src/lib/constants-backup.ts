@@ -64,12 +64,12 @@ export const DIRECTORS = [
     id: 2,
     name: "Er. Ramesh Jeyaraman B.E",
     title: "Director",
-    credentials: "B.E (Civil Engineering)",
+    credentials: "B.E",
     description:
-      "Civil engineering expert with extensive experience in building repair and waterproofing solutions. Leader of OM Vinayaga Associates since its inception with over 15 years of hands-on experience in the construction industry.",
+      "Engineering expert with extensive experience in building repair and waterproofing solutions. Leader of OM Vinayaga Associates since its inception with over 15 years of hands-on experience in the construction industry.",
     image: "jeyaram.jpg",
     education: [
-      "Bachelor of Engineering in Civil Engineering",
+      "Bachelor of Engineering",
       "Certified Building Doctor Franchise Owner",
       "Continuous training in latest industry innovations",
     ],

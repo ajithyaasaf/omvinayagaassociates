@@ -140,7 +140,7 @@ const About = () => {
                       </p>
                       <div className="w-12 h-1 bg-primary mx-auto mb-4"></div>
                       <p className="text-gray-600 text-sm">
-                        Civil engineering expert with over 10 years of
+                        Engineering expert with over 10 years of
                         experience in building repair and waterproofing
                         solutions. Leads our technical team with a vision for
                         excellence and innovation.
@@ -191,7 +191,7 @@ const About = () => {
                           Technical Consultants
                         </h4>
                         <p className="text-gray-600 text-sm">
-                          Experienced civil engineers providing in-depth
+                          Experienced engineers providing in-depth
                           analysis and solutions for complex building problems.
                         </p>
                       </div>
