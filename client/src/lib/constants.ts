@@ -65,7 +65,7 @@ export const DIRECTORS = [
     id: 2,
     name: "Er. Ramesh Jeyaraman B.E",
     title: "Director",
-    credentials: "B.E, CIDC certified",
+    credentials: "B.E",
     description:
       "Engineering expert with extensive experience in building repair and waterproofing solutions. Leader of OM Vinayaga Associates since its inception with over 15 years of hands-on experience in the construction industry.",
     image: "jeyaram.jpg",
@@ -80,6 +80,7 @@ export const DIRECTORS = [
       "Authorized Building Doctor Franchise Owner",
     ],
     awards: [
+      "CIDC certified",
       "Excellence in Building Repair Solutions",
       "Outstanding Customer Service Award",
       "Best Franchise Performance Award",
