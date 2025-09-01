@@ -146,9 +146,9 @@ const AchievementsPage = () => {
     {
       institution: "Velammal Engineering College",
       activity: "Guest Lecture & Recognition",
-      department: "Civil Engineering",
+      department: "Engineering",
       description:
-        "Introduced Building Doctor products to first-year Civil Engineering students as part of their syllabus with formal recognition ceremony",
+        "Introduced Building Doctor products to first-year Engineering students as part of their syllabus with formal recognition ceremony",
       images: [velammalCollegeAward, velammalCollegeLecture],
       featured: true,
     },
@@ -169,9 +169,9 @@ const AchievementsPage = () => {
     {
       institution: "Mohamed Sathak Engineering College",
       activity: "Guest Lecture",
-      department: "Civil Engineering",
+      department: "Engineering",
       description:
-        "Technical presentation on waterproofing solutions to Civil Engineering students and faculty",
+        "Technical presentation on waterproofing solutions to Engineering students and faculty",
       image: mohamedSathakCollege,
       featured: true,
     },
