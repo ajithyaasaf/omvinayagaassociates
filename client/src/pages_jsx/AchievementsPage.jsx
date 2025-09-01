@@ -101,7 +101,7 @@ const AchievementsPage = () => {
       organization: "CIDC (Construction Industry Development Council)",
       recipient: "Ramesh J",
       description:
-        "Successfully completed Online (Hybrid) Course on Waterproofing and Insulation (3 Weeks) conducted during November, 2024",
+        "Successfully completed Course on Waterproofing and Insulation  conducted during November, 2024",
       category: "Technical Certification",
       icon: <GraduationCap className="w-6 h-6 text-blue-600" />,
       featured: true,
@@ -132,7 +132,8 @@ const AchievementsPage = () => {
     {
       title: "Pudhuyugam TV Program",
       type: "Television Appearance",
-      description: "Featured program showcasing building restoration expertise with award ceremony and recognition",
+      description:
+        "Featured program showcasing building restoration expertise with award ceremony and recognition",
       platform: "Pudhuyugam TV",
       icon: <PlayCircle className="w-6 h-6 text-blue-500" />,
       image: pudhuyugamTvProgram,
@@ -222,7 +223,8 @@ const AchievementsPage = () => {
     },
     {
       title: "AMCE Pongal Celebration Sponsor",
-      description: "Community engagement through traditional Pongal festival sponsorship with cultural celebration support",
+      description:
+        "Community engagement through traditional Pongal festival sponsorship with cultural celebration support",
       category: "Community Support",
       icon: <Heart className="w-6 h-6 text-red-500" />,
       image: amcePongalCelebration,
@@ -230,7 +232,8 @@ const AchievementsPage = () => {
     },
     {
       title: "Diwali Celebrations",
-      description: "Team building and community celebration initiatives during Diwali festival with employee engagement activities",
+      description:
+        "Team building and community celebration initiatives during Diwali festival with employee engagement activities",
       category: "Team Building",
       icon: <Users className="w-6 h-6 text-orange-500" />,
       image: diwaliCelebrations,
@@ -261,17 +264,17 @@ const AchievementsPage = () => {
 
   return (
     <div className="pt-24">
-      <section 
+      <section
         className="py-20 relative overflow-hidden bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url(${teamAchievement})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/60"></div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center text-white max-w-4xl mx-auto">
             <div className="bg-black/30 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/20">
@@ -297,9 +300,10 @@ const AchievementsPage = () => {
                 </span>
               </h1>
               <p className="text-base md:text-lg lg:text-xl text-gray-100 mb-8 leading-relaxed drop-shadow-lg font-medium">
-                Celebrating excellence, innovation, and leadership in the building restoration industry
+                Celebrating excellence, innovation, and leadership in the
+                building restoration industry
               </p>
-              
+
               <div className="flex flex-wrap justify-center gap-4 mb-6">
                 <span className="bg-yellow-400/90 text-black px-6 py-3 rounded-full text-sm font-bold shadow-lg backdrop-blur-sm">
                   <Trophy className="w-4 h-4 mr-2 inline" />
@@ -314,7 +318,7 @@ const AchievementsPage = () => {
                   Excellence Pioneer
                 </span>
               </div>
-              
+
               <p className="text-sm text-gray-300 italic">
                 "Together we build excellence, one achievement at a time"
               </p>
@@ -327,29 +331,29 @@ const AchievementsPage = () => {
         <div className="container mx-auto px-4">
           <Tabs defaultValue="awards" className="w-full">
             <TabsList className="flex w-full overflow-x-auto scrollbar-hide mb-12 bg-gradient-to-r from-blue-50 to-cyan-50 p-2 rounded-2xl shadow-xl border border-blue-100 backdrop-blur-sm">
-              <TabsTrigger 
-                value="awards" 
+              <TabsTrigger
+                value="awards"
                 className="text-xs sm:text-sm md:text-base font-semibold transition-all duration-300 rounded-xl data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=active]:transform hover:bg-primary/10 hover:scale-102 hover:transform relative overflow-hidden whitespace-nowrap flex-shrink-0 px-3 sm:px-4 md:px-6"
               >
                 <Trophy className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                 <span>Awards</span>
               </TabsTrigger>
-              <TabsTrigger 
-                value="media" 
+              <TabsTrigger
+                value="media"
                 className="text-xs sm:text-sm md:text-base font-semibold transition-all duration-300 rounded-xl data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=active]:transform hover:bg-primary/10 hover:scale-102 hover:transform relative overflow-hidden whitespace-nowrap flex-shrink-0 px-3 sm:px-4 md:px-6"
               >
                 <Megaphone className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                 <span>Media</span>
               </TabsTrigger>
-              <TabsTrigger 
-                value="education" 
+              <TabsTrigger
+                value="education"
                 className="text-xs sm:text-sm md:text-base font-semibold transition-all duration-300 rounded-xl data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=active]:transform hover:bg-primary/10 hover:scale-102 hover:transform relative overflow-hidden whitespace-nowrap flex-shrink-0 px-3 sm:px-4 md:px-6"
               >
                 <GraduationCap className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                 <span>Education</span>
               </TabsTrigger>
-              <TabsTrigger 
-                value="community" 
+              <TabsTrigger
+                value="community"
                 className="text-xs sm:text-sm md:text-base font-semibold transition-all duration-300 rounded-xl data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=active]:transform hover:bg-primary/10 hover:scale-102 hover:transform relative overflow-hidden whitespace-nowrap flex-shrink-0 px-3 sm:px-4 md:px-6"
               >
                 <Heart className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
@@ -375,15 +379,18 @@ const AchievementsPage = () => {
                         <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
                       </span>
                     </h2>
-                    <p className="text-gray-600 text-lg">Our most prestigious accomplishments and industry recognition</p>
+                    <p className="text-gray-600 text-lg">
+                      Our most prestigious accomplishments and industry
+                      recognition
+                    </p>
                   </div>
-                  
+
                   <div className="space-y-12">
                     {majorAwards
                       .filter((award) => award.featured)
                       .map((award, index) => (
-                        <motion.div 
-                          key={index} 
+                        <motion.div
+                          key={index}
                           className="border-l-4 border-primary pl-8 bg-gradient-to-r from-blue-50 to-white rounded-r-2xl shadow-md p-6"
                           variants={itemVariants}
                         >
@@ -409,11 +416,14 @@ const AchievementsPage = () => {
                               <p className="text-gray-600 leading-relaxed mb-4">
                                 {award.description}
                               </p>
-                              <Badge variant="outline" className="bg-white/80 border-primary">
+                              <Badge
+                                variant="outline"
+                                className="bg-white/80 border-primary"
+                              >
                                 {award.category}
                               </Badge>
                             </div>
-                            
+
                             <div className="flex-shrink-0">
                               {/* Multiple Award Images */}
                               {award.images && (
@@ -452,7 +462,7 @@ const AchievementsPage = () => {
                                   </Dialog>
                                 </div>
                               )}
-                              
+
                               {/* Single Award Image */}
                               {award.image && !award.images && (
                                 <Dialog>
@@ -491,15 +501,17 @@ const AchievementsPage = () => {
                         <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
                       </span>
                     </h2>
-                    <p className="text-gray-600 text-lg">Technical expertise and professional qualifications</p>
+                    <p className="text-gray-600 text-lg">
+                      Technical expertise and professional qualifications
+                    </p>
                   </div>
-                  
+
                   <div className="space-y-8">
                     {certifications
                       .filter((cert) => cert.featured)
                       .map((cert, index) => (
-                        <motion.div 
-                          key={index} 
+                        <motion.div
+                          key={index}
                           className="border-l-4 border-secondary pl-8 bg-gradient-to-r from-blue-50 to-white rounded-r-2xl shadow-md p-6"
                           variants={itemVariants}
                         >
@@ -525,11 +537,14 @@ const AchievementsPage = () => {
                               <p className="text-gray-600 leading-relaxed mb-4">
                                 {cert.description}
                               </p>
-                              <Badge variant="outline" className="bg-white/80 border-secondary">
+                              <Badge
+                                variant="outline"
+                                className="bg-white/80 border-secondary"
+                              >
                                 {cert.category}
                               </Badge>
                             </div>
-                            
+
                             {cert.image && (
                               <div className="flex-shrink-0">
                                 <Dialog>
@@ -568,9 +583,11 @@ const AchievementsPage = () => {
                         <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
                       </span>
                     </h2>
-                    <p className="text-gray-600 text-lg">More achievements and industry recognition</p>
+                    <p className="text-gray-600 text-lg">
+                      More achievements and industry recognition
+                    </p>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {majorAwards
                       .filter((award) => !award.featured)
@@ -601,7 +618,10 @@ const AchievementsPage = () => {
                                 {award.description}
                               </p>
                               <div className="flex justify-center">
-                                <Badge variant="outline" className="bg-white/80 border-accent">
+                                <Badge
+                                  variant="outline"
+                                  className="bg-white/80 border-accent"
+                                >
                                   {award.category}
                                 </Badge>
                               </div>
@@ -622,9 +642,11 @@ const AchievementsPage = () => {
                         <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
                       </span>
                     </h2>
-                    <p className="text-gray-600 text-lg">Ongoing professional development and training</p>
+                    <p className="text-gray-600 text-lg">
+                      Ongoing professional development and training
+                    </p>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {certifications
                       .filter((cert) => !cert.featured)
@@ -642,7 +664,8 @@ const AchievementsPage = () => {
                                   </CardTitle>
                                   <CardDescription className="text-gray-600 font-medium">
                                     {cert.organization}
-                                    {cert.presenter && ` • Presented by ${cert.presenter}`}
+                                    {cert.presenter &&
+                                      ` • Presented by ${cert.presenter}`}
                                   </CardDescription>
                                 </div>
                               </div>
@@ -651,7 +674,10 @@ const AchievementsPage = () => {
                               <p className="text-gray-700 leading-relaxed mb-4">
                                 {cert.description}
                               </p>
-                              <Badge variant="outline" className="bg-white/80 border-muted-foreground">
+                              <Badge
+                                variant="outline"
+                                className="bg-white/80 border-muted-foreground"
+                              >
                                 {cert.category}
                               </Badge>
                             </CardContent>
@@ -681,15 +707,17 @@ const AchievementsPage = () => {
                         <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
                       </span>
                     </h2>
-                    <p className="text-gray-600 text-lg">Our presence in mainstream media and industry publications</p>
+                    <p className="text-gray-600 text-lg">
+                      Our presence in mainstream media and industry publications
+                    </p>
                   </div>
-                  
+
                   <div className="space-y-12">
                     {mediaActivities
                       .filter((media) => media.featured)
                       .map((media, index) => (
-                        <motion.div 
-                          key={index} 
+                        <motion.div
+                          key={index}
                           className="border-l-4 border-primary pl-8 bg-gradient-to-r from-blue-50 to-white rounded-r-2xl shadow-md p-6"
                           variants={itemVariants}
                         >
@@ -710,11 +738,14 @@ const AchievementsPage = () => {
                               <p className="text-gray-600 leading-relaxed mb-4">
                                 {media.description}
                               </p>
-                              <Badge variant="outline" className="bg-white/80 border-primary">
+                              <Badge
+                                variant="outline"
+                                className="bg-white/80 border-primary"
+                              >
                                 Media Coverage
                               </Badge>
                             </div>
-                            
+
                             {media.image && (
                               <div className="flex-shrink-0">
                                 <Dialog>
@@ -742,8 +773,6 @@ const AchievementsPage = () => {
                       ))}
                   </div>
                 </div>
-
-
               </motion.div>
             </TabsContent>
 
@@ -765,15 +794,18 @@ const AchievementsPage = () => {
                         <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
                       </span>
                     </h2>
-                    <p className="text-gray-600 text-lg">Knowledge sharing and educational outreach in academic institutions</p>
+                    <p className="text-gray-600 text-lg">
+                      Knowledge sharing and educational outreach in academic
+                      institutions
+                    </p>
                   </div>
-                  
+
                   <div className="space-y-12">
                     {educationalOutreach
                       .filter((edu) => edu.featured)
                       .map((edu, index) => (
-                        <motion.div 
-                          key={index} 
+                        <motion.div
+                          key={index}
                           className="border-l-4 border-accent pl-8 bg-gradient-to-r from-cyan-50 to-white rounded-r-2xl shadow-md p-6"
                           variants={itemVariants}
                         >
@@ -795,11 +827,14 @@ const AchievementsPage = () => {
                               <p className="text-gray-600 leading-relaxed mb-4">
                                 {edu.description}
                               </p>
-                              <Badge variant="outline" className="bg-white/80 border-accent">
+                              <Badge
+                                variant="outline"
+                                className="bg-white/80 border-accent"
+                              >
                                 Educational Outreach
                               </Badge>
                             </div>
-                            
+
                             <div className="flex-shrink-0">
                               {/* Educational Images */}
                               {edu.images && (
@@ -838,7 +873,7 @@ const AchievementsPage = () => {
                                   </Dialog>
                                 </div>
                               )}
-                              
+
                               {/* Single Educational Image */}
                               {edu.image && !edu.images && (
                                 <Dialog>
@@ -877,9 +912,12 @@ const AchievementsPage = () => {
                         <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
                       </span>
                     </h2>
-                    <p className="text-gray-600 text-lg">Additional educational outreach and knowledge sharing initiatives</p>
+                    <p className="text-gray-600 text-lg">
+                      Additional educational outreach and knowledge sharing
+                      initiatives
+                    </p>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {educationalOutreach
                       .filter((edu) => !edu.featured)
@@ -906,7 +944,10 @@ const AchievementsPage = () => {
                               <p className="text-gray-700 leading-relaxed mb-4">
                                 {edu.description}
                               </p>
-                              <Badge variant="outline" className="bg-white/80 border-accent">
+                              <Badge
+                                variant="outline"
+                                className="bg-white/80 border-accent"
+                              >
                                 Education
                               </Badge>
                             </CardContent>
@@ -936,15 +977,18 @@ const AchievementsPage = () => {
                         <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
                       </span>
                     </h2>
-                    <p className="text-gray-600 text-lg">Making a positive difference in our community through partnerships and celebrations</p>
+                    <p className="text-gray-600 text-lg">
+                      Making a positive difference in our community through
+                      partnerships and celebrations
+                    </p>
                   </div>
-                  
+
                   <div className="space-y-12">
                     {communityImpact
                       .filter((impact) => impact.featured)
                       .map((impact, index) => (
-                        <motion.div 
-                          key={index} 
+                        <motion.div
+                          key={index}
                           className="border-l-4 border-secondary pl-8 bg-gradient-to-r from-blue-50 to-white rounded-r-2xl shadow-md p-6"
                           variants={itemVariants}
                         >
@@ -962,11 +1006,14 @@ const AchievementsPage = () => {
                               <p className="text-gray-600 leading-relaxed mb-4">
                                 {impact.description}
                               </p>
-                              <Badge variant="outline" className="bg-white/80 border-secondary">
+                              <Badge
+                                variant="outline"
+                                className="bg-white/80 border-secondary"
+                              >
                                 Community Impact
                               </Badge>
                             </div>
-                            
+
                             {impact.image && (
                               <div className="flex-shrink-0">
                                 <Dialog>
@@ -1005,9 +1052,12 @@ const AchievementsPage = () => {
                         <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
                       </span>
                     </h2>
-                    <p className="text-gray-600 text-lg">Additional community engagement and social responsibility initiatives</p>
+                    <p className="text-gray-600 text-lg">
+                      Additional community engagement and social responsibility
+                      initiatives
+                    </p>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {communityImpact
                       .filter((impact) => !impact.featured)
@@ -1023,7 +1073,10 @@ const AchievementsPage = () => {
                                   <CardTitle className="text-lg text-gray-900 mb-2">
                                     {impact.title}
                                   </CardTitle>
-                                  <Badge variant="outline" className="bg-white/80 border-accent">
+                                  <Badge
+                                    variant="outline"
+                                    className="bg-white/80 border-accent"
+                                  >
                                     {impact.category}
                                   </Badge>
                                 </div>
