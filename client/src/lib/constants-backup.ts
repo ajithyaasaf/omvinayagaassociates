@@ -708,7 +708,7 @@ export const BEFORE_AFTER = [
 // Company Stats
 export const STATS = [
   { id: 1, value: "1000+", label: "Projects Completed" },
-  { id: 2, value: "10000+", label: "Happy Customers" },
+  { id: 2, value: "2000+", label: "Happy Customers" },
   { id: 3, value: "100+", label: "Products" },
   { id: 4, value: "75+", label: "Services" },
 ];

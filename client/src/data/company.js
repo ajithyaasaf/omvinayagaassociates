@@ -56,7 +56,7 @@ export const STATS = [
   },
   {
     id: 7,
-    value: "10000+",
+    value: "2000+",
     label: "Happy Customers",
   },
   {
