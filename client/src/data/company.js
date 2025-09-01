@@ -5,8 +5,8 @@ export const COMPANY_DESCRIPTION =
 
 export const CONTACT = {
   addresses: [
-    "Door No. 131, Shop No. 12, Kallazhagar Complex, Thallakulam Main Road, Madurai",
     "No.6, North Gate, Opp.Devaki Scan, Near Balaji Gas, S.S Colony, Madurai -625016",
+    "Door No. 131, Shop No. 12, Kallazhagar Complex, Thallakulam Main Road, Madurai",
   ],
   address: "No.6, North Gate, Opp.Devaki Scan, Near Balaji Gas, S.S Colony, Madurai -625016", // Keeping for backward compatibility
   phone: ["+91 81 90 09 00 59", "+91 78 73 73 23 23"],
