@@ -46,7 +46,7 @@ export const DIRECTORS = [
       "Motivational Speaker and Business Consultant",
     ],
     awards: [
-      "Siwa award",
+      "SIWAA award",
       "The Best Emerging Women Entrepreneur",
       "The Best Product Presentation Award",
       "The Best Business Posting Award",
