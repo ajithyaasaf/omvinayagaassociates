@@ -15,11 +15,11 @@ const RESPONSES = {
   goodbye:
     "Thank you for chatting with us. Feel free to contact us anytime for your building repair needs!",
   about:
-    "OM Vinayaga Associates is the official Building Doctor franchise in Madurai, with over 10 years of experience in building repairs and waterproofing. We've successfully completed 2000+ projects and helped 2,000+ happy customers restore and protect their properties.",
+    "OM Vinayaga Associates is the official Building Doctor franchise in Madurai, with over 10 years of experience in building repairs and waterproofing. We've successfully completed 2000+ projects and helped 1,950+ happy customers restore and protect their properties.",
   location:
     "We are located at No.6, North Gate, Opp.Devaki Scan, Near Balaji Gas, S.S Colony, Madurai -625016 and Door No. 131, Shop No. 12, Kallazhagar Complex, Thallakulam Main Road, Madurai. We serve Madurai and surrounding areas including Tirunelveli, Tuticorin, Dindigul, and Theni.",
   experience:
-    "Our team has over 10 years of specialized experience in building repair and diagnostics. We've successfully completed 2000+ projects ranging from residential buildings to commercial complexes, serving 2,000+ happy customers.",
+    "Our team has over 10 years of specialized experience in building repair and diagnostics. We've successfully completed 2000+ projects ranging from residential buildings to commercial complexes, serving 1,950+ happy customers.",
   expertise:
     "Our technical experts are certified professionals with extensive training in advanced building repair techniques and latest waterproofing technologies.",
   contact:
