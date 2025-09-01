@@ -75,7 +75,7 @@ export const DIRECTORS = [
     ],
     experience: [
       "15+ years in construction and building repair industry",
-      "Successfully led over 1000+ projects throughout Tamil Nadu",
+      "Successfully led over 2000+ projects throughout Tamil Nadu",
       "Authorized Building Doctor Franchise Owner",
     ],
     awards: [
@@ -707,7 +707,7 @@ export const BEFORE_AFTER = [
 
 // Company Stats
 export const STATS = [
-  { id: 1, value: "1000+", label: "Projects Completed" },
+  { id: 1, value: "2000+", label: "Projects Completed" },
   { id: 2, value: "2000+", label: "Happy Customers" },
   { id: 3, value: "100+", label: "Products" },
   { id: 4, value: "75+", label: "Services" },

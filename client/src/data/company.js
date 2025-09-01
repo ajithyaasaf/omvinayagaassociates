@@ -26,7 +26,7 @@ export const SOCIAL_MEDIA = {
 export const STATS = [
   {
     id: 1,
-    value: "1000+",
+    value: "2000+",
     label: "Projects Completed",
   },
   {
