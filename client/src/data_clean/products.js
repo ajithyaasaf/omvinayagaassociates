@@ -175,6 +175,56 @@ export const PRODUCTS = [
     isBestseller: false,
     isNew: true,
     category: "bonding-agents"
+  },
+  {
+    id: 16,
+    name: "BD DAMP STOP XW",
+    description: "Low viscosity, highly penetrating silane solution that permanently stops rising dampness in masonry walls. Specially designed for wet brick masonry areas with excellent penetration properties.",
+    price: 680,
+    image: "https://buildingdoctor.org/assets/products/bd-damp-stop-xw.jpg",
+    rating: 4.7,
+    isBestseller: false,
+    isNew: true,
+    category: "waterproofing",
+    features: [
+      "Low viscosity allowing for high penetration",
+      "Non-staining formula",
+      "Reduces water and chloride intrusion",
+      "Increases freeze thaw resistance",
+      "Minimizes efflorescence",
+      "Penetrates deeply into wet brick masonry walls"
+    ],
+    applicationAreas: [
+      "Rising damped brick work areas at wet condition",
+      "Wet brick masonry walls",
+      "Ground floor and basement walls",
+      "Areas affected by capillary water rise"
+    ],
+    applicationMethod: [
+      "Remove skirting or floor board and plaster till the 1st and 2nd layer of brick exposes",
+      "Drill 12mm or 14mm holes at 1st and 2nd brick at 45° angle to center of the wall",
+      "Insert tubes in drilled holes and adjust drip rates to keep holes full without overflowing",
+      "Inject by Pressure Grouting until 2 layers of brick are fully saturated",
+      "Continue injection until brick gets saturated and wall is allowed to dry",
+      "Plug holes with cement mortar",
+      "Re-plaster with BD BUILDING ALL ROUNDER modified mortar"
+    ],
+    applicationTools: ["Pressure Grouting Machine", "Bucket", "Measuring Jar", "12mm Bit Rod", "10mm Dia HDP Nozzle"],
+    specifications: {
+      "Self Life": "12 Months",
+      "Pot Life": "4 to 5 Hours",
+      "Dilution": "No dilution with water",
+      "Available Package": "5 kg",
+      "Coverage": "Depends upon penetration and porosity"
+    },
+    benefits: [
+      "Permanently stops rising dampness",
+      "Works effectively on wet walls",
+      "Deep penetration into masonry",
+      "Non-staining application",
+      "Increases structural durability",
+      "Prevents efflorescence formation"
+    ]
   }
 ];
 

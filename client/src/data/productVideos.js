@@ -123,8 +123,8 @@ export const PRODUCT_VIDEOS = {
     ]
   },
 
-  // BD DAMPSTOP XW Video Configuration
-  "BD DAMPSTOP XW": {
+  // BD DAMP STOP XW Video Configuration
+  "BD DAMP STOP XW": {
     videoId: "rUNM-IWmhxA", // YouTube video ID from the provided link
     benefits: [
       "Low viscosity allowing for high penetration into wet walls",
