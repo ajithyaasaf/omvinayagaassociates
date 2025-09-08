@@ -26,6 +26,7 @@ const ContactSection = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState(1);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -357,24 +358,57 @@ const ContactSection = () => {
           </div>
         </div>
 
-        {/* Map Section */}
+        {/* Maps Section with Tabs */}
         <div className="mt-16 bg-white rounded-xl shadow-lg overflow-hidden">
+          <div className="border-b">
+            <div className="flex">
+              {CONTACT.locations.map((location) => (
+                <button
+                  key={location.id}
+                  className={`flex-1 px-6 py-4 font-medium transition ${
+                    selectedLocation === location.id
+                      ? 'border-b-2 border-primary text-primary bg-primary/5'
+                      : 'text-gray-600 hover:text-primary hover:bg-gray-50'
+                  }`}
+                  onClick={() => setSelectedLocation(location.id)}
+                >
+                  <div className="text-center">
+                    <div className="font-semibold">{location.area}</div>
+                    <div className="text-sm opacity-75">{location.phone}</div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
           <div className="relative">
             <div className="h-96 bg-gray-200">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.8999114405763!2d78.12356181079485!3d9.9361916741588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c59fc9ffd737%3A0x44e6b0aa1d66d76c!2sNorth%20Gate%2C%20SS%20Colony%2C%20Madurai%2C%20Tamil%20Nadu%20625010!5e0!3m2!1sen!2sin!4v1684758905019!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={true}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="OM Vinayaga Associates - S.S Colony Location"
-              ></iframe>
+              {selectedLocation === 1 ? (
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.8999114405763!2d78.12356181079485!3d9.9361916741588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c59fc9ffd737%3A0x44e6b0aa1d66d76c!2sNorth%20Gate%2C%20SS%20Colony%2C%20Madurai%2C%20Tamil%20Nadu%20625010!5e0!3m2!1sen!2sin!4v1684758905019!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="OM Vinayaga Associates - S.S Colony Location"
+                ></iframe>
+              ) : (
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.7899346883!2d78.11891507583068!3d9.940058573954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c5a06b8e4c67%3A0x11c5d0e2f3f1c8a9!2sThallakulam%20Main%20Rd%2C%20Madurai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1684758905020!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="OM Vinayaga Associates - Thallakulam Location"
+                ></iframe>
+              )}
             </div>
             <div className="absolute bottom-4 right-4">
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=No.6,+North+Gate,+Opp.Devaki+Scan,+Near+Balaji+Gas,+S.S+Colony,+Madurai+-625016"
+                href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(CONTACT.locations.find(loc => loc.id === selectedLocation)?.address || '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-md font-medium transition shadow-lg flex items-center gap-2"
