@@ -599,7 +599,7 @@ export const PRODUCTS = [
       "Remove skirting or floor board and plaster till the 1st and 2nd layer of brick exposes",
       "Drifting method may vary little depending upon type of brick", 
       "12 mm or 14 mm holes are to be drilled at 1st and 2nd brick at 45° angle to center of the wall",
-      "Insert the tube in drilled hole and Drip tubes are inserted in the holes of brick previously made",
+      "Insert the tube in drilled hole and Drip tubes are inserted in the holes of brick previously made and drip rates are so adjusted that hole made in the wall always remain full without overflowing",
       "Inject by Pressure Grouting on the holes till the 2 layer of brick is fully saturated with BD DAMP STOP XW",
       "Product will over flow from the mouth of drilled whole, once the 1st and 2nd layer of brick is fully saturated",
       "Pressure Grouting injection is continued till brick get saturated with BD DAMP STOP XW liquid and wall is allowed to dry",
