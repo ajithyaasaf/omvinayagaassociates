@@ -86,16 +86,21 @@ const Footer = () => {
                   size={18}
                   strokeWidth={2.5}
                 />
-                <div>
-                  {CONTACT.phone.map((phone, index) => (
-                    <p key={index} className="text-sm">
-                      <a
-                        href={`tel:${phone.replace(/\s+/g, "")}`}
-                        className="hover:text-primary transition-colors"
-                      >
-                        {phone}
-                      </a>
-                    </p>
+                <div className="space-y-3">
+                  {CONTACT.locations.map((location) => (
+                    <div key={location.id} className="border-l-2 border-primary/30 pl-3">
+                      <p className="text-xs text-secondary font-medium mb-1">
+                        {location.area}
+                      </p>
+                      <p className="text-sm">
+                        <a
+                          href={`tel:${location.phone.replace(/\s+/g, "")}`}
+                          className="hover:text-primary transition-colors"
+                        >
+                          {location.phone}
+                        </a>
+                      </p>
+                    </div>
                   ))}
                 </div>
               </li>
@@ -119,20 +124,19 @@ const Footer = () => {
                   strokeWidth={2.5}
                 />
                 <div className="space-y-3">
-                  {CONTACT.addresses ? (
-                    CONTACT.addresses.map((address, index) => (
-                      <div key={index} className="border-l-2 border-primary/30 pl-3">
-                        <p className="text-xs text-secondary font-medium mb-1">
-                          {index === 0 ? "ADDRESS 1" : "ADDRESS 2"}
-                        </p>
-                        <p className="text-sm leading-relaxed">
-                          {address}
-                        </p>
-                      </div>
-                    ))
-                  ) : (
-                    <p className="text-sm">{CONTACT.address}</p>
-                  )}
+                  {CONTACT.locations.map((location) => (
+                    <div key={location.id} className="border-l-2 border-primary/30 pl-3">
+                      <p className="text-xs text-secondary font-medium mb-1">
+                        {location.area}
+                      </p>
+                      <p className="text-sm leading-relaxed">
+                        {location.address}
+                      </p>
+                      <p className="text-xs text-primary font-medium mt-2">
+                        Phone: {location.phone}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </li>
               <li className="flex items-start">

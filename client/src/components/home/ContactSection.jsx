@@ -125,39 +125,25 @@ const ContactSection = () => {
                   <MapPin className="text-white" size={20} strokeWidth={2.5} />
                 </div>
                 <div className="space-y-3">
-                  <h4 className="font-medium mb-3">Address</h4>
-                  {CONTACT.addresses ? (
-                    CONTACT.addresses.map((address, index) => (
-                      <div key={index} className="border-l-3 border-primary/40 pl-4 py-2 bg-gray-100/50 rounded-r-lg">
-                        <p className="text-xs text-primary font-semibold mb-1">
-                          {index === 0 ? "ADDRESS 1" : "ADDRESS 2"}
-                        </p>
-                        <p className="text-gray-600 text-sm leading-relaxed">
-                          {address}
-                        </p>
+                  <h4 className="font-medium mb-3">Our Locations</h4>
+                  {CONTACT.locations.map((location) => (
+                    <div key={location.id} className="border-l-3 border-primary/40 pl-4 py-3 bg-gray-100/50 rounded-r-lg">
+                      <p className="text-xs text-primary font-semibold mb-2">
+                        {location.area}
+                      </p>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-2">
+                        {location.address}
+                      </p>
+                      <div className="flex items-center">
+                        <Phone className="text-primary mr-2" size={14} strokeWidth={2.5} />
+                        <a
+                          href={`tel:${location.phone.replace(/\s+/g, "")}`}
+                          className="text-primary hover:text-primary/80 transition text-sm font-medium"
+                        >
+                          {location.phone}
+                        </a>
                       </div>
-                    ))
-                  ) : (
-                    <p className="text-gray-600">{CONTACT.address}</p>
-                  )}
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                  <Phone className="text-white" size={20} strokeWidth={2.5} />
-                </div>
-                <div>
-                  <h4 className="font-medium mb-1">Phone</h4>
-                  {CONTACT.phone.map((phone, index) => (
-                    <p key={index} className="text-gray-600">
-                      <a
-                        href={`tel:${phone.replace(/\s+/g, "")}`}
-                        className="hover:text-primary transition"
-                      >
-                        {phone}
-                      </a>
-                    </p>
+                    </div>
                   ))}
                 </div>
               </div>
