@@ -384,7 +384,7 @@ const ContactSection = () => {
             <div className="h-96 bg-gray-200">
               {selectedLocation === 1 ? (
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.8999114405763!2d78.12356181079485!3d9.9361916741588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c59fc9ffd737%3A0x44e6b0aa1d66d76c!2sNorth%20Gate%2C%20SS%20Colony%2C%20Madurai%2C%20Tamil%20Nadu%20625010!5e0!3m2!1sen!2sin!4v1684758905019!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.9!2d78.123!3d9.936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwNTYnMTAuMyJOIDc4wrAwNycyMi44IkU!5e0!3m2!1sen!2sin!4v1684758905019!5m2!1sen!2sin&q=No.6,+North+Gate,+Opp.Devaki+Scan,+Near+Balaji+Gas,+S.S+Colony,+Madurai+-625016"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -395,7 +395,7 @@ const ContactSection = () => {
                 ></iframe>
               ) : (
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.7899346883!2d78.11891507583068!3d9.940058573954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c5a06b8e4c67%3A0x11c5d0e2f3f1c8a9!2sThallakulam%20Main%20Rd%2C%20Madurai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1684758905020!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.7!2d78.134!3d9.933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwNTUnNTkuMCJOIDc4wrAwOCcwMi40IkU!5e0!3m2!1sen!2sin!4v1684758905020!5m2!1sen!2sin&q=Door+No.+131,+Shop+No.+12,+Kallazhagar+Complex,+Thallakulam+Main+Road,+Madurai"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
