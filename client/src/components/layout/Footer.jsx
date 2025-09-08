@@ -5,7 +5,6 @@ import {
   MapPin,
   Clock,
   Facebook,
-  Twitter,
   Instagram,
   MessageCircle,
 } from "lucide-react";
@@ -46,15 +45,6 @@ const Footer = () => {
                 <Facebook size={20} strokeWidth={2} />
               </a>
               <a
-                href={SOCIAL_MEDIA.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-secondary hover:text-primary transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter size={20} strokeWidth={2} />
-              </a>
-              <a
                 href={SOCIAL_MEDIA.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -88,7 +78,10 @@ const Footer = () => {
                 />
                 <div className="space-y-3">
                   {CONTACT.locations.map((location) => (
-                    <div key={location.id} className="border-l-2 border-primary/30 pl-3">
+                    <div
+                      key={location.id}
+                      className="border-l-2 border-primary/30 pl-3"
+                    >
                       <p className="text-xs text-secondary font-medium mb-1">
                         {location.area}
                       </p>
@@ -125,7 +118,10 @@ const Footer = () => {
                 />
                 <div className="space-y-3">
                   {CONTACT.locations.map((location) => (
-                    <div key={location.id} className="border-l-2 border-primary/30 pl-3">
+                    <div
+                      key={location.id}
+                      className="border-l-2 border-primary/30 pl-3"
+                    >
                       <p className="text-xs text-secondary font-medium mb-1">
                         {location.area}
                       </p>
@@ -270,20 +266,20 @@ const Footer = () => {
             <div className="mt-2 md:mt-0 mr-4 md:mr-8">
               <VisitorCounter />
             </div>
-            {/*  <div className="mt-3 md:mt-0">
-              <a
-                href="#"
-                className="text-xs text-gray-400 hover:text-orange-500 mx-2 transition-colors"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="#"
-                className="text-xs text-gray-400 hover:text-orange-500 mx-2 transition-colors"
-              >
-                Terms of Service
-              </a>
-            </div> */}
+            {/*  <div className="mt-3 md:mt-0">
+<a
+href="#"
+className="text-xs text-gray-400 hover:text-orange-500 mx-2 transition-colors"
+>
+Privacy Policy
+</a>
+<a
+href="#"
+className="text-xs text-gray-400 hover:text-orange-500 mx-2 transition-colors"
+>
+Terms of Service
+</a>
+</div> */}
           </div>
         </div>
       </div>
