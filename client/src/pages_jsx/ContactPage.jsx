@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CONTACT } from "@/data/company";
+import { CONTACT, SOCIAL_MEDIA } from "@/data/company";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { 
@@ -188,7 +188,7 @@ const ContactPage = () => {
                 <h4 className="font-medium mb-3">Follow Us</h4>
                 <div className="flex space-x-4">
                   <a 
-                    href={`https://www.facebook.com/${CONTACT.social.facebook}`} 
+                    href={SOCIAL_MEDIA.facebook} 
                     className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary/90 transition"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -197,7 +197,7 @@ const ContactPage = () => {
                     <Facebook size={18} strokeWidth={2.5} />
                   </a>
                   <a 
-                    href={`https://twitter.com/${CONTACT.social.twitter}`} 
+                    href={SOCIAL_MEDIA.twitter} 
                     className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary/90 transition"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -206,13 +206,22 @@ const ContactPage = () => {
                     <Twitter size={18} strokeWidth={2.5} />
                   </a>
                   <a 
-                    href={`https://www.instagram.com/${CONTACT.social.instagram}`} 
+                    href={SOCIAL_MEDIA.instagram} 
                     className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary/90 transition"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram"
                   >
                     <Instagram size={18} strokeWidth={2.5} />
+                  </a>
+                  <a 
+                    href={CONTACT.whatsapp} 
+                    className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary/90 transition"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp"
+                  >
+                    <MessageCircle size={18} strokeWidth={2.5} />
                   </a>
                 </div>
               </div>
@@ -380,7 +389,7 @@ const ContactPage = () => {
                   <Phone className="mr-2" size={18} strokeWidth={2.5} /> Call Now
                 </a>
                 <a 
-                  href={CONTACT.social.whatsapp}
+                  href={CONTACT.whatsapp}
                   className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md font-medium transition flex items-center justify-center"
                   target="_blank"
                   rel="noopener noreferrer"
