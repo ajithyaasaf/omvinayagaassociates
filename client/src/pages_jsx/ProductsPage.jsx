@@ -11,6 +11,7 @@ import {
   X,
 } from "lucide-react";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
+import bdDampStopXwImage from "../assets/bd-dampstop-xw-20lit.png";
 
 // Real Building Doctor Products based on website data
 export const PRODUCTS = [
@@ -571,8 +572,7 @@ export const PRODUCTS = [
       "Rising Damp Proofing solution specially designed for wet walls",
     subtitle: "Low viscosity, highly penetrating silane solution that permanently stops rising dampness in masonry walls",
     price: 680,
-    image:
-      "@assets/image_1757337307635.png",
+    image: bdDampStopXwImage,
     rating: 4.7,
     isBestseller: false,
     category: "waterproofing",
