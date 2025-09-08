@@ -572,7 +572,7 @@ export const PRODUCTS = [
     subtitle: "Low viscosity, highly penetrating silane solution that permanently stops rising dampness in masonry walls",
     price: 680,
     image:
-      "@assets/image_1757336208385.png",
+      "@assets/image_1757337307635.png",
     rating: 4.7,
     isBestseller: false,
     category: "waterproofing",
