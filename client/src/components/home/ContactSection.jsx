@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CONTACT } from "@/lib/constants";
+import { CONTACT } from "@/data/company";
 import { SOCIAL_MEDIA } from "@/data/company";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest, queryClient } from "@/lib/queryClient";

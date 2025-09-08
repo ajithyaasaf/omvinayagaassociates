@@ -6,6 +6,21 @@ export const COMPANY_DESCRIPTION =
 
 // Contact Information
 export const CONTACT = {
+  locations: [
+    {
+      id: 1,
+      address: "No.6, North Gate, Opp.Devaki Scan, Near Balaji Gas, S.S Colony, Madurai -625016",
+      phone: "+91 78 73 73 23 23",
+      area: "S.S Colony"
+    },
+    {
+      id: 2,
+      address: "Door No. 131, Shop No. 12, Kallazhagar Complex, Thallakulam Main Road, Madurai",
+      phone: "+91 81 90 09 00 59", 
+      area: "Thallakulam"
+    }
+  ],
+  // Legacy arrays for backward compatibility
   addresses: [
     "No.6, North Gate, Opp.Devaki Scan, Near Balaji Gas, S.S Colony, Madurai -625016",
     "Door No. 131, Shop No. 12, Kallazhagar Complex, Thallakulam Main Road, Madurai",
