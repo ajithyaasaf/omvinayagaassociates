@@ -356,6 +356,7 @@ const ProductDetailPage = () => {
             {activeTab === 'specifications' && (
               <>
                 <h3 className="text-primary">📦 Technical Specifications</h3>
+                
                 {product.packageSizes && (
                   <div className="bg-gray-50 p-4 rounded-lg mb-4">
                     <h4 className="font-semibold text-gray-800 mb-2">Package Sizes & Rates</h4>
@@ -374,41 +375,130 @@ const ProductDetailPage = () => {
                     <p>{product.coverage}</p>
                   </div>
                 )}
-                
-                <div className="bg-orange-50 p-4 rounded-lg mb-4">
-                  <h4 className="font-semibold text-orange-800">Product Properties</h4>
-                  <ul className="space-y-1 mt-2">
-                    <li>• Type: {product.name.includes('Paint Remover') ? 'Solvent-based, Non-flammable' : 'Chemical resistant coating'}</li>
-                    <li>• Form: {product.name.includes('Paint Remover') ? 'Liquid' : 'Paste/Liquid'}</li>
-                    <li>• Application: {product.name.includes('Paint Remover') ? 'Brush or spray' : 'Brush, roller, or spray'}</li>
-                    <li>• Shelf Life: 12 months from manufacturing date</li>
-                  </ul>
-                </div>
+
+                {/* Custom Specifications for specific products */}
+                {product.specifications ? (
+                  <div className="bg-blue-50 p-4 rounded-lg mb-4">
+                    <h4 className="font-semibold text-blue-800 mb-2">Product Specifications</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      {Object.entries(product.specifications).map(([key, value], index) => (
+                        <div key={index} className="flex justify-between items-center py-1">
+                          <span className="font-medium">{key}:</span>
+                          <span>{value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="bg-orange-50 p-4 rounded-lg mb-4">
+                    <h4 className="font-semibold text-orange-800">Product Properties</h4>
+                    <ul className="space-y-1 mt-2">
+                      <li>• Type: {product.name.includes('Paint Remover') ? 'Solvent-based, Non-flammable' : 'Chemical resistant coating'}</li>
+                      <li>• Form: {product.name.includes('Paint Remover') ? 'Liquid' : 'Paste/Liquid'}</li>
+                      <li>• Application: {product.name.includes('Paint Remover') ? 'Brush or spray' : 'Brush, roller, or spray'}</li>
+                      <li>• Shelf Life: 12 months from manufacturing date</li>
+                    </ul>
+                  </div>
+                )}
+
+                {/* Application Tools */}
+                {product.applicationTools && (
+                  <div className="bg-purple-50 p-4 rounded-lg mb-4">
+                    <h4 className="font-semibold text-purple-800 mb-2">🛠️ Application Tools Required</h4>
+                    <ul className="space-y-1">
+                      {product.applicationTools.map((tool, index) => (
+                        <li key={index} className="flex items-center">
+                          <i className="fas fa-tools text-purple-600 text-sm mr-2"></i>
+                          {tool}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Benefits */}
+                {product.benefits && (
+                  <div className="bg-green-50 p-4 rounded-lg mb-4">
+                    <h4 className="font-semibold text-green-800 mb-2">✨ Product Benefits</h4>
+                    <ul className="space-y-1">
+                      {product.benefits.map((benefit, index) => (
+                        <li key={index} className="flex items-start">
+                          <i className="fas fa-check-circle text-green-600 text-sm mr-2 mt-0.5"></i>
+                          {benefit}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Tamil Benefits */}
+                {product.tamilBenefits && (
+                  <div className="bg-yellow-50 p-4 rounded-lg mb-4">
+                    <h4 className="font-semibold text-yellow-800 mb-2">🌟 பயன்கள் (Tamil)</h4>
+                    <ul className="space-y-1">
+                      {product.tamilBenefits.map((benefit, index) => (
+                        <li key={index} className="flex items-start">
+                          <i className="fas fa-star text-yellow-600 text-sm mr-2 mt-0.5"></i>
+                          {benefit}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </>
             )}
 
             {activeTab === 'application' && (
               <>
                 <h3 className="text-primary">🔧 Application Method</h3>
-                <div className="bg-gray-50 p-4 rounded-lg mb-4">
-                  <ol className="list-decimal list-inside space-y-2">
-                    {product.name.includes('Paint Remover') ? (
-                      <>
-                        <li><strong>Surface Preparation:</strong> Clean the surface to remove loose dirt and debris. Ensure adequate ventilation.</li>
-                        <li><strong>Application:</strong> Apply Paint Remover evenly using brush or spray. Allow penetration time as per coating thickness.</li>
-                        <li><strong>Removal:</strong> Scrape off softened paint using putty knife or scraper. For stubborn areas, reapply and wait.</li>
-                        <li><strong>Cleaning:</strong> Clean the surface with water or appropriate solvent to remove residue.</li>
-                      </>
-                    ) : (
-                      <>
-                        <li><strong>Surface Preparation:</strong> Clean thoroughly using wire brush to remove dust, loose particles, moss, and cement droppings. Wash with water and let dry completely.</li>
-                        <li><strong>Mixing:</strong> For two-component products, mix Base and Hardener in recommended ratio using mechanical mixer until smooth and homogeneous.</li>
-                        <li><strong>Application:</strong> Apply first coat using brush or roller in circular motion. Apply second coat in cross direction after first coat is tacky but not fully dried.</li>
-                        <li><strong>Protection:</strong> Cover with cement plaster or tiles after application to protect from direct sunlight and rain.</li>
-                      </>
-                    )}
-                  </ol>
-                </div>
+                
+                {/* Custom Application Method for specific products */}
+                {product.applicationMethod ? (
+                  <div className="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 className="font-semibold text-gray-800 mb-3">📋 Step-by-Step Instructions</h4>
+                    <ol className="list-decimal list-inside space-y-2">
+                      {product.applicationMethod.map((step, index) => (
+                        <li key={index} className="text-gray-700">
+                          <span className="font-medium text-gray-800">Step {index + 1}:</span> {step}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                ) : (
+                  <div className="bg-gray-50 p-4 rounded-lg mb-4">
+                    <ol className="list-decimal list-inside space-y-2">
+                      {product.name.includes('Paint Remover') ? (
+                        <>
+                          <li><strong>Surface Preparation:</strong> Clean the surface to remove loose dirt and debris. Ensure adequate ventilation.</li>
+                          <li><strong>Application:</strong> Apply Paint Remover evenly using brush or spray. Allow penetration time as per coating thickness.</li>
+                          <li><strong>Removal:</strong> Scrape off softened paint using putty knife or scraper. For stubborn areas, reapply and wait.</li>
+                          <li><strong>Cleaning:</strong> Clean the surface with water or appropriate solvent to remove residue.</li>
+                        </>
+                      ) : (
+                        <>
+                          <li><strong>Surface Preparation:</strong> Clean thoroughly using wire brush to remove dust, loose particles, moss, and cement droppings. Wash with water and let dry completely.</li>
+                          <li><strong>Mixing:</strong> For two-component products, mix Base and Hardener in recommended ratio using mechanical mixer until smooth and homogeneous.</li>
+                          <li><strong>Application:</strong> Apply first coat using brush or roller in circular motion. Apply second coat in cross direction after first coat is tacky but not fully dried.</li>
+                          <li><strong>Protection:</strong> Cover with cement plaster or tiles after application to protect from direct sunlight and rain.</li>
+                        </>
+                      )}
+                    </ol>
+                  </div>
+                )}
+
+                {/* Tamil Application Method */}
+                {product.tamilApplicationMethod && (
+                  <div className="bg-orange-50 p-4 rounded-lg mb-4">
+                    <h4 className="font-semibold text-orange-800 mb-3">📋 பயன்படுத்தும் முறை (Tamil Instructions)</h4>
+                    <ol className="list-decimal list-inside space-y-2">
+                      {product.tamilApplicationMethod.map((step, index) => (
+                        <li key={index} className="text-orange-700">
+                          <span className="font-medium text-orange-800">படி {index + 1}:</span> {step}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                )}
 
                 <h3 className="text-primary mt-6">⚠️ Important Notes</h3>
                 <ul className="bg-yellow-50 p-4 rounded-lg space-y-1">
