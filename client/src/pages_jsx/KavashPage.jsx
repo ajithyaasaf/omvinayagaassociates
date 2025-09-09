@@ -31,6 +31,7 @@ import {
   fadeInRight,
   staggerContainer,
 } from "@/utils/animations";
+import TextType from "@/components/TextType";
 
 const KavashPage = () => {
   const [expandedSection, setExpandedSection] = useState(null);
@@ -243,9 +244,18 @@ const KavashPage = () => {
               >
                 Protection for Footing to Finishing
               </h1>
-              <p className="text-xl md:text-2xl font-medium text-white/90 mb-6">
-                "Prevention is Better than Cure"
-              </p>
+              <div className="text-xl md:text-2xl font-medium text-white/90 mb-6">
+                <TextType
+                  text="Prevention is Better than Cure"
+                  typingSpeed={80}
+                  initialDelay={1000}
+                  pauseDuration={3000}
+                  loop={false}
+                  showCursor={false}
+                  startOnVisible={true}
+                  className="text-xl md:text-2xl font-medium text-white/90"
+                />
+              </div>
             </motion.div>
 
             <motion.h2
