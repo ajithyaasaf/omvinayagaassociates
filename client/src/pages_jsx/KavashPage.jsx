@@ -20,6 +20,11 @@ import { fadeInUp, staggerContainer } from "@/utils/animations";
 
 const KavashPage = () => {
   const [expandedSection, setExpandedSection] = useState(null);
+  
+  // Debug state
+  useEffect(() => {
+    console.log('Expanded section changed to:', expandedSection);
+  }, [expandedSection]);
 
   useEffect(() => {
     document.title =
@@ -324,7 +329,7 @@ const KavashPage = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto">
             {solutionAreas.map((area, index) => (
               <motion.div
                 key={area.id}
@@ -370,10 +375,11 @@ const KavashPage = () => {
                 <AnimatePresence mode="wait">
                   {expandedSection === area.id && (
                     <motion.div
+                      key={`content-${area.id}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.2, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
                       <div className="px-6 pb-6">
