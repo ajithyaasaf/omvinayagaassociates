@@ -38,8 +38,20 @@ const KavashPage = () => {
   useEffect(() => {
     document.title =
       "KAVASH - Protection for Footing to Finishing | OM Vinayaga Associates";
+    
+    // Add meta description for SEO
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'KAVASH by Building Doctor offers complete building protection solutions – from footing to finishing. Waterproofing, crack solutions, tile fixing, wall protection and more.');
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = 'KAVASH by Building Doctor offers complete building protection solutions – from footing to finishing. Waterproofing, crack solutions, tile fixing, wall protection and more.';
+      document.head.appendChild(meta);
+    }
   }, []);
 
+  // Accordion-style: only one section open at a time for better mobile UX
   const toggleSection = (sectionId) => {
     setExpandedSection(expandedSection === sectionId ? null : sectionId);
   };
@@ -135,9 +147,12 @@ const KavashPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white" role="main">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-primary">
+      <section 
+        className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-primary"
+        aria-labelledby="kavash-hero-title"
+      >
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-black/20"></div>
           <div className="absolute top-10 right-10 opacity-10">
@@ -161,17 +176,17 @@ const KavashPage = () => {
                   KAVASH
                 </span>
               </div>
-              <div className="text-2xl md:text-3xl font-semibold text-yellow-400 mb-6">
+              <h1 id="kavash-hero-title" className="text-2xl md:text-3xl font-semibold text-yellow-400 mb-6">
                 Protection for Footing to Finishing
-              </div>
+              </h1>
             </motion.div>
 
-            <motion.h1
+            <motion.h2
               variants={fadeInUp}
               className="text-3xl md:text-5xl font-bold mb-6"
             >
               Special Scheme for New Buildings
-            </motion.h1>
+            </motion.h2>
 
             <motion.div variants={fadeInUp} className="space-y-4 mb-8">
               <p className="text-lg md:text-xl text-yellow-200 font-medium">
@@ -196,7 +211,10 @@ const KavashPage = () => {
       </section>
 
       {/* Quick Stats Section */}
-      <section className="py-16 bg-gradient-to-r from-gray-50 to-blue-50">
+      <section 
+        className="py-16 bg-gradient-to-r from-gray-50 to-blue-50"
+        aria-labelledby="kavash-stats-title"
+      >
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
@@ -224,16 +242,19 @@ const KavashPage = () => {
               variants={fadeInUp}
               className="text-2xl md:text-3xl font-bold text-gray-800"
             >
-              <span className="bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">
+              <h2 id="kavash-stats-title" className="bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">
                 "Prevention is Better than Cure"
-              </span>
+              </h2>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Solutions by Area Section */}
-      <section className="py-20 bg-white">
+      <section 
+        className="py-20 bg-white"
+        aria-labelledby="solutions-title"
+      >
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
@@ -242,7 +263,7 @@ const KavashPage = () => {
             variants={fadeInUp}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 id="solutions-title" className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
                 Protection Solutions by Area
               </span>
@@ -357,10 +378,12 @@ const KavashPage = () => {
                   Contact Us
                 </button>
               </Link>
-              <button className="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-lg text-lg font-bold flex items-center gap-3 transition-all transform hover:scale-105">
-                <Phone className="w-6 h-6" />
-                Get Free Consultation
-              </button>
+              <a href="tel:+917873732323">
+                <button className="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-lg text-lg font-bold flex items-center gap-3 transition-all transform hover:scale-105">
+                  <Phone className="w-6 h-6" />
+                  Get Free Consultation
+                </button>
+              </a>
             </motion.div>
           </motion.div>
         </div>
@@ -424,7 +447,7 @@ const KavashPage = () => {
           </motion.div>
         </div>
       </section>
-    </div>
+    </main>
   );
 };
 
