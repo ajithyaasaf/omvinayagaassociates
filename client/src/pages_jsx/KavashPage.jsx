@@ -70,10 +70,6 @@ const KavashPage = () => {
         {
           name: "BD WALLSHIELD - EXTERIOR DECORATIVE COATING", 
           tamil: "வெளிப்புற அலங்கார பூச்சு கலவை"
-        },
-        {
-          name: "BD AQUA SEAL 2K (OR) BD BUILDING ALL ROUNDER (OR) BD GARDEN GUARD",
-          tamil: "நீர் தாங்கும் பலப்படுத்தும் பூச்சு"
         }
       ],
     },
