@@ -233,14 +233,14 @@ const KavashPage = () => {
             className="text-center text-white max-w-6xl mx-auto"
           >
             <motion.div variants={fadeInUp} className="mb-8">
-              <div className="text-6xl md:text-8xl font-bold mb-4">
+              <div className="font-montserrat font-bold text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-4">
                 <span className="bg-gradient-to-r from-yellow-400 via-primary to-blue-600 bg-clip-text text-transparent">
                   KAVASH
                 </span>
               </div>
               <h1
                 id="kavash-hero-title"
-                className="text-2xl md:text-3xl font-semibold text-yellow-400 mb-2"
+                className="font-montserrat text-2xl md:text-3xl font-semibold text-yellow-400 mb-2"
               >
                 Protection for Footing to Finishing
               </h1>
@@ -260,17 +260,17 @@ const KavashPage = () => {
 
             <motion.h2
               variants={fadeInUp}
-              className="text-3xl md:text-5xl font-bold mb-6"
+              className="font-montserrat text-3xl md:text-5xl font-bold mb-6"
             >
               Special Scheme for New Buildings
             </motion.h2>
 
             <motion.div variants={fadeInUp} className="space-y-4 mb-8">
-              <p className="text-lg md:text-xl text-yellow-200 font-medium">
+              <p className="font-montserrat text-lg md:text-xl text-yellow-200 font-medium">
                 உங்கள் புதிய கட்டிடங்களை காலம் கடந்து காத்திடும் எங்களின்
                 அதிநவீன சிகிச்சைகள்..!
               </p>
-              <p className="text-lg md:text-xl text-blue-100">
+              <p className="font-montserrat text-lg md:text-xl text-blue-100">
                 Protecting your new building for generations with our ultimate
                 solutions!
               </p>
@@ -278,7 +278,7 @@ const KavashPage = () => {
 
             <motion.div variants={fadeInUp}>
               <Link to="/contact">
-                <button className="bg-gradient-to-r from-primary to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-12 py-4 rounded-lg text-xl font-bold flex items-center gap-3 mx-auto transition-all transform hover:scale-105 shadow-xl">
+                <button className="font-montserrat bg-gradient-to-r from-primary to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-12 py-4 rounded-lg text-xl font-bold flex items-center gap-3 mx-auto transition-all transform hover:scale-105 shadow-xl">
                   Get Offer <ArrowRight className="w-6 h-6" />
                 </button>
               </Link>
