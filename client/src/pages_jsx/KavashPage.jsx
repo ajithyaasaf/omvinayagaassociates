@@ -3,258 +3,423 @@ import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
+  ChevronDown,
   ChevronRight,
   Star,
   Shield,
-  Droplets,
+  Home,
   Hammer,
-  Zap,
+  Droplets,
   Award,
-  Play,
   Phone,
   Mail,
   CheckCircle2,
   Building2,
-  Sparkles,
-  Target,
   Users,
+  MapPin,
+  Wrench,
+  Layers,
+  Square,
+  Waves,
+  HardHat,
+  Palette,
   TrendingUp,
 } from "lucide-react";
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer } from "@/utils/animations";
 
 const KavashPage = () => {
-  const [activeTab, setActiveTab] = useState("overview");
+  const [expandedSection, setExpandedSection] = useState(null);
 
   useEffect(() => {
-    document.title = "Kavash Solutions | OM Vinayaga Associates";
+    document.title = "KAVASH - Protection for Footing to Finishing | OM Vinayaga Associates";
   }, []);
 
-  // Kavash content based on the WhatsApp images you provided
-  // This is a placeholder structure - please provide the actual content from your images
-  const kavashContent = {
-    title: "KAVASH",
-    subtitle: "Premium Building Solutions",
-    description: "Revolutionary waterproofing and construction solutions for modern buildings",
-    
-    // Main sections that would typically be in such content
-    sections: [
-      {
-        id: "products",
-        title: "Kavash Products",
-        items: [
-          "Premium Waterproofing Systems",
-          "Advanced Sealants & Adhesives", 
-          "Structural Repair Solutions",
-          "Weather Protection Coatings"
-        ]
-      },
-      {
-        id: "features",
-        title: "Key Features",
-        items: [
-          "Long-lasting Performance",
-          "Weather Resistant",
-          "Easy Application",
-          "Cost-Effective Solutions"
-        ]
-      },
-      {
-        id: "applications",
-        title: "Applications",
-        items: [
-          "Residential Buildings",
-          "Commercial Complexes",
-          "Industrial Structures",
-          "Infrastructure Projects"
-        ]
-      }
-    ]
+  const toggleSection = (sectionId) => {
+    setExpandedSection(expandedSection === sectionId ? null : sectionId);
   };
 
+  // Solutions by Area data
+  const solutionAreas = [
+    {
+      id: 'tile-laying',
+      title: 'Tile Laying Areas',
+      icon: <Square className="w-6 h-6" />,
+      products: [
+        'BD Tile Fix Power',
+        'BD Tile Fix Bond/Booster',
+        'BD Tile Fix Spacer',
+        'BD Tile Fix Leveller',
+        'BD Tile Joint Sealer/Sealer Plus'
+      ]
+    },
+    {
+      id: 'plastering',
+      title: 'Plastering Areas',
+      icon: <Palette className="w-6 h-6" />,
+      products: [
+        'BD Crack Stop Fibre',
+        'BD Plaster Power'
+      ]
+    },
+    {
+      id: 'basement',
+      title: 'Basement Areas',
+      icon: <Building2 className="w-6 h-6" />,
+      products: [
+        'BD Protect Coat BW500',
+        'BD Termite Stop X',
+        'BD Protect Coat CT 600'
+      ]
+    },
+    {
+      id: 'building-joints',
+      title: 'Building Joints Areas',
+      icon: <Layers className="w-6 h-6" />,
+      products: [
+        'BD Concrete Bond',
+        'BD Nanguram Anchor Fix/Power',
+        'BD Seal Tape EJ',
+        'BD Seal Tape SA',
+        'BD Plaster Bond SBR/Building All Rounder'
+      ]
+    },
+    {
+      id: 'water-storage',
+      title: 'Water Storage Areas',
+      icon: <Waves className="w-6 h-6" />,
+      products: [
+        'BD Aqua Seal Tank Guard',
+        'BD Protect Coat CT 600',
+        'BD Aqua Seal 2K/Nano/All Rounder'
+      ]
+    },
+    {
+      id: 'concrete',
+      title: 'Concrete Areas',
+      icon: <HardHat className="w-6 h-6" />,
+      products: [
+        'BD Concrete Power',
+        'BD Corroshield BR',
+        'BD Corroshield ZR',
+        'BD Crack Stop Mesh',
+        'BD Shuttering Sealer'
+      ]
+    },
+    {
+      id: 'terrace',
+      title: 'Terrace Areas',
+      icon: <Home className="w-6 h-6" />,
+      products: [
+        'BD Aqua Seal Nano',
+        'BD Aqua Seal 2K/All Rounder/Garden Guard'
+      ]
+    },
+    {
+      id: 'wall',
+      title: 'Wall Areas',
+      icon: <Shield className="w-6 h-6" />,
+      products: [
+        'BD Crack Stop/XP',
+        'BD Wallshield'
+      ]
+    }
+  ];
+
+  // Quick stats data
+  const stats = [
+    { number: '50+', label: 'Outlets' },
+    { number: '100+', label: 'Products' },
+    { number: '200+', label: 'Applicators' },
+    { number: '10,000+', label: 'Projects' },
+    { number: '1,00,00,000+', label: 'Sq.ft Protected' }
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-blue-600/20"></div>
+      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-primary">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-black/20"></div>
+          <div className="absolute top-10 right-10 opacity-10">
+            <Shield className="w-64 h-64" />
+          </div>
+          <div className="absolute bottom-10 left-10 opacity-10">
+            <Home className="w-48 h-48" />
+          </div>
+        </div>
+        
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerContainer(0.1)}
-            className="text-center max-w-4xl mx-auto"
+            className="text-center text-white max-w-6xl mx-auto"
           >
+            <motion.div
+              variants={fadeInUp}
+              className="mb-8"
+            >
+              <div className="text-6xl md:text-8xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
+                  KAVASH
+                </span>
+              </div>
+              <div className="text-2xl md:text-3xl font-semibold text-yellow-400 mb-6">
+                Protection for Footing to Finishing
+              </div>
+            </motion.div>
+
             <motion.h1
               variants={fadeInUp}
-              className="text-5xl md:text-7xl font-bold text-gray-900 mb-6"
+              className="text-3xl md:text-5xl font-bold mb-6"
             >
-              <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-                {kavashContent.title}
-              </span>
+              Special Scheme for New Buildings
             </motion.h1>
-            
-            <motion.h2
-              variants={fadeInUp}
-              className="text-2xl md:text-3xl font-semibold text-gray-700 mb-4"
-            >
-              {kavashContent.subtitle}
-            </motion.h2>
-            
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed"
-            >
-              {kavashContent.description}
-            </motion.p>
 
             <motion.div
               variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="space-y-4 mb-8"
+            >
+              <p className="text-lg md:text-xl text-yellow-200 font-medium">
+                உங்கள் புதிய கட்டிடங்களை காலம் கடந்து காத்திடும் எங்களின் அதிர்வின சிகிச்சைகள்..!
+              </p>
+              <p className="text-lg md:text-xl text-blue-100">
+                Protecting your new building for generations with our ultimate solutions!
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
             >
               <Link to="/contact">
-                <button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105">
-                  Get Quote <ArrowRight className="w-5 h-5" />
+                <button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-12 py-4 rounded-lg text-xl font-bold flex items-center gap-3 mx-auto transition-all transform hover:scale-105 shadow-xl">
+                  Get Offer <ArrowRight className="w-6 h-6" />
                 </button>
               </Link>
-              <button className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-lg font-semibold transition-all">
-                Learn More
-              </button>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Content Sections */}
-      <section className="py-16">
+      {/* Quick Stats Section */}
+      <section className="py-16 bg-gradient-to-r from-gray-50 to-blue-50">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {kavashContent.sections.map((section, index) => (
-              <motion.div
-                key={section.id}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-                transition={{ delay: index * 0.2 }}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all"
-              >
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center">
-                    <Sparkles className="w-5 h-5 text-primary" />
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer(0.1)}
+            className="text-center"
+          >
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-8">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all"
+                >
+                  <div className="text-2xl md:text-3xl font-bold text-primary mb-2">
+                    {stat.number}
                   </div>
-                  {section.title}
-                </h3>
-                <ul className="space-y-3">
-                  {section.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
-                      <span className="text-gray-700">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
+                  <div className="text-gray-600 font-medium">
+                    {stat.label}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            
+            <motion.div
+              variants={fadeInUp}
+              className="text-2xl md:text-3xl font-bold text-gray-800"
+            >
+              <span className="bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">
+                "Prevention is Better than Cure"
+              </span>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Image Display Section for WhatsApp Images */}
-      <section className="py-16 bg-white">
+      {/* Solutions by Area Section */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInUp}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Product Information
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+                Protection Solutions by Area
+              </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Detailed specifications and information about our Kavash product range
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Comprehensive building protection solutions for every area of your construction
             </p>
           </motion.div>
 
-          {/* Placeholder for actual image content */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeInLeft}
-              className="bg-gray-100 rounded-xl p-8 min-h-[300px] flex items-center justify-center"
-            >
-              <div className="text-center">
-                <Building2 className="w-16 h-16 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                  Kavash Product Image 1
-                </h3>
-                <p className="text-gray-600">
-                  Content from WhatsApp Image 1 will be displayed here
-                </p>
-              </div>
-            </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
+            {solutionAreas.map((area, index) => (
+              <motion.div
+                key={area.id}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInUp}
+                transition={{ delay: index * 0.1 }}
+                className="bg-gradient-to-br from-white to-gray-50 rounded-xl border-2 border-gray-100 hover:border-primary/30 transition-all shadow-lg hover:shadow-xl"
+              >
+                <button
+                  onClick={() => toggleSection(area.id)}
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 rounded-t-xl transition-colors"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+                      {area.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900">
+                      {area.title}
+                    </h3>
+                  </div>
+                  <div className="text-primary">
+                    {expandedSection === area.id ? (
+                      <ChevronDown className="w-6 h-6" />
+                    ) : (
+                      <ChevronRight className="w-6 h-6" />
+                    )}
+                  </div>
+                </button>
 
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeInRight}
-              className="bg-gray-100 rounded-xl p-8 min-h-[300px] flex items-center justify-center"
-            >
-              <div className="text-center">
-                <Shield className="w-16 h-16 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                  Kavash Product Image 2
-                </h3>
-                <p className="text-gray-600">
-                  Content from WhatsApp Image 2 will be displayed here
-                </p>
-              </div>
-            </motion.div>
+                <AnimatePresence>
+                  {expandedSection === area.id && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6">
+                        <div className="border-t border-gray-200 pt-4">
+                          <ul className="space-y-3">
+                            {area.products.map((product, productIndex) => (
+                              <li key={productIndex} className="flex items-center gap-3">
+                                <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
+                                <span className="text-gray-700 font-medium">{product}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-16 bg-gradient-to-r from-primary to-blue-600">
+      {/* Call-to-Action Section */}
+      <section className="py-20 bg-gradient-to-r from-primary via-blue-600 to-orange-500 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-48 translate-x-48"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full translate-y-48 -translate-x-48"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer(0.1)}
+            className="text-center text-white max-w-4xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="text-4xl md:text-5xl font-bold mb-6"
+            >
+              Protect Your Dream Building with KAVASH
+            </motion.h2>
+            
+            <motion.p
+              variants={fadeInUp}
+              className="text-xl mb-10 opacity-90"
+            >
+              From footing to finishing, we safeguard every corner of your building.
+            </motion.p>
+
+            <motion.div
+              variants={fadeInUp}
+              className="flex flex-col sm:flex-row gap-6 justify-center"
+            >
+              <Link to="/contact">
+                <button className="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-bold flex items-center gap-3 transition-all transform hover:scale-105 shadow-xl">
+                  <Mail className="w-6 h-6" />
+                  Contact Us
+                </button>
+              </Link>
+              <button className="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-lg text-lg font-bold flex items-center gap-3 transition-all transform hover:scale-105">
+                <Phone className="w-6 h-6" />
+                Get Free Consultation
+              </button>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Office Location Section */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer(0.1)}
-            className="text-center text-white"
+            className="text-center"
           >
             <motion.h2
               variants={fadeInUp}
-              className="text-3xl md:text-4xl font-bold mb-4"
+              className="text-3xl md:text-4xl font-bold text-gray-900 mb-8"
             >
-              Ready to Get Started with Kavash?
+              Visit Our Office
             </motion.h2>
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg mb-8 max-w-2xl mx-auto opacity-90"
-            >
-              Contact us today for detailed product information, pricing, and expert consultation
-            </motion.p>
             <motion.div
               variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="bg-white rounded-xl p-8 shadow-lg max-w-2xl mx-auto"
             >
+              <div className="flex items-center gap-4 mb-4">
+                <MapPin className="w-8 h-8 text-primary" />
+                <h3 className="text-2xl font-bold text-gray-900">OM Vinayaga Associates</h3>
+              </div>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Experience KAVASH protection solutions at our office. Our experts are ready to help you choose the right protection system for your building.
+              </p>
               <Link to="/contact">
-                <button className="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold flex items-center gap-2 transition-all transform hover:scale-105">
-                  <Mail className="w-5 h-5" />
-                  Contact Us
+                <button className="mt-6 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 mx-auto transition-all">
+                  Get Directions <ArrowRight className="w-5 h-5" />
                 </button>
               </Link>
-              <a href="tel:+919876543210">
-                <button className="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-3 rounded-lg font-semibold flex items-center gap-2 transition-all">
-                  <Phone className="w-5 h-5" />
-                  Call Now
-                </button>
-              </a>
             </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer Banner */}
+      <section className="py-8 bg-gradient-to-r from-gray-800 to-gray-900">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            className="text-center"
+          >
+            <p className="text-xl md:text-2xl font-semibold text-white">
+              <span className="text-yellow-400">Explore KAVASH</span> – A complete protection system for your building.
+            </p>
           </motion.div>
         </div>
       </section>
