@@ -65,15 +65,15 @@ const KavashPage = () => {
       products: [
         {
           name: "BD CRACK STOP (OR) BD CRACK STOP XP",
-          tamil: "சுவர் கிராக்குகளில் வரும் கிராக்குகளை சரிசெய்ய பயன்படும்"
+          tamil: "சுவரில் ஏற்படும் விரிசல்களை சரிசெய்ய பயன்படும்"
         },
         {
           name: "BD WALLSHIELD - EXTERIOR DECORATIVE COATING", 
-          tamil: "சுவர்களுக்கு அலங்காரிய பூச்சு கலவை"
+          tamil: "வெளிப்புற அலங்கார பூச்சு கலவை"
         },
         {
           name: "BD AQUA SEAL 2K (OR) BD BUILDING ALL ROUNDER (OR) BD GARDEN GUARD",
-          tamil: "நீர் ஒட்டல் மற்றும் பொது உபயோகம்"
+          tamil: "நீர் தாங்கும் பலப்படுத்தும் பூச்சு"
         }
       ],
     },
