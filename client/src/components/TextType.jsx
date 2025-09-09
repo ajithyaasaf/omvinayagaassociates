@@ -88,7 +88,7 @@ const TextType = ({
       if (isDeleting) {
         if (displayedText === '') {
           setIsDeleting(false);
-          if (currentTextIndex === textArray.length - 1 && !loop) {
+          if (!loop && currentTextIndex === textArray.length - 1) {
             return;
           }
 
@@ -113,7 +113,7 @@ const TextType = ({
             },
             variableSpeed ? getRandomSpeed() : typingSpeed
           );
-        } else if (textArray.length > 1) {
+        } else if (loop || textArray.length > 1) {
           timeout = setTimeout(() => {
             setIsDeleting(true);
           }, pauseDuration);
