@@ -250,7 +250,7 @@ const KavashPage = () => {
                   typingSpeed={80}
                   initialDelay={1000}
                   pauseDuration={3000}
-                  loop={false}
+                  loop={true}
                   showCursor={false}
                   startOnVisible={true}
                   className="text-xl md:text-2xl font-medium text-white/90"
