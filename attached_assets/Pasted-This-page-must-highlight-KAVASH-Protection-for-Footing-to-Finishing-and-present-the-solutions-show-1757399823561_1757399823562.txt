@@ -1,0 +1,88 @@
+This page must highlight KAVASH – Protection for Footing to Finishing and present the solutions shown in the brochure.
+
+Page Structure:
+
+Hero Section
+
+Full-width banner with KAVASH logo + tagline: “Protection for Footing to Finishing”
+
+Background: Shield + house image.
+
+Headline: “Special Scheme for New Buildings”
+
+Subheadline:
+
+Tamil: “உங்கள் புதிய கட்டிடங்களை காலம் கடந்து காத்திடும் எங்களின் அதிர்வின சிகிச்சைகள்..!”
+
+English: “Protecting your new building for generations with our ultimate solutions!”
+
+CTA: “Get Offer” (primary button in orange).
+
+Quick Stats Section
+
+Show key metrics with icons:
+
+50+ Outlets
+
+100+ Products
+
+200+ Applicators
+
+10,000+ Projects
+
+100,00,000+ Sq.ft Protected
+
+Tagline below: “Prevention is Better than Cure”
+
+Solutions by Area (Main Content)
+Create expandable or card-style sections for each area:
+
+Tile Laying Areas: BD Tile Fix Power, BD Tile Fix Bond/Booster, BD Tile Fix Spacer, BD Tile Fix Leveller, BD Tile Joint Sealer/Sealer Plus
+
+Plastering Areas: BD Crack Stop Fibre, BD Plaster Power
+
+Basement Areas: BD Protect Coat BW500, BD Termite Stop X, BD Protect Coat CT 600
+
+Building Joints Areas: BD Concrete Bond, BD Nanguram Anchor Fix/Power, BD Seal Tape EJ, BD Seal Tape SA, BD Plaster Bond SBR/Building All Rounder
+
+Water Storage Areas: BD Aqua Seal Tank Guard, BD Protect Coat CT 600, BD Aqua Seal 2K/Nano/All Rounder
+
+Concrete Areas: BD Concrete Power, BD Corroshield BR, BD Corroshield ZR, BD Crack Stop Mesh, BD Shuttering Sealer
+
+Terrace Areas: BD Aqua Seal Nano, BD Aqua Seal 2K/All Rounder/Garden Guard
+
+Wall Areas: BD Crack Stop/XP, BD Wallshield
+
+👉 Each category should have product images + bullet points.
+
+Call-to-Action Section
+
+Heading: “Protect Your Dream Building with KAVASH”
+
+Subtext: “From footing to finishing, we safeguard every corner of your building.”
+
+Buttons: “Contact Us” + “Get Free Consultation”
+
+QR codes:
+
+Office Location
+
+Product Application Videos
+
+Footer
+
+Reuse existing website footer.
+
+Add extra line above footer: “Explore KAVASH – A complete protection system for your building.”
+
+Design Notes:
+
+Use existing brand colors (Orange, White, Grey).
+
+Keep consistent typography with the rest of the site.
+
+Use shield/house imagery for consistency.
+
+Ensure page is responsive and mobile-friendly.
+
+Add SEO tags: KAVASH, Building Protection, Building Doctor, Tile Fix, Waterproofing, Crack Stop, Wallshield, Aqua Seal.
