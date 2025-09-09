@@ -5,32 +5,18 @@ import {
   ArrowRight,
   ChevronDown,
   ChevronRight,
-  Star,
   Shield,
   Home,
-  Hammer,
-  Droplets,
-  Award,
   Phone,
   Mail,
   CheckCircle2,
   Building2,
-  Users,
   MapPin,
-  Wrench,
   Layers,
-  Square,
   Waves,
   HardHat,
-  Palette,
-  TrendingUp,
 } from "lucide-react";
-import {
-  fadeInUp,
-  fadeInLeft,
-  fadeInRight,
-  staggerContainer,
-} from "@/utils/animations";
+import { fadeInUp, staggerContainer } from "@/utils/animations";
 
 const KavashPage = () => {
   const [expandedSection, setExpandedSection] = useState(null);
@@ -39,7 +25,6 @@ const KavashPage = () => {
     document.title =
       "KAVASH - Protection for Footing to Finishing | OM Vinayaga Associates";
 
-    // Add meta description for SEO
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
@@ -55,12 +40,10 @@ const KavashPage = () => {
     }
   }, []);
 
-  // Accordion-style: only one section open at a time for better mobile UX
   const toggleSection = (sectionId) => {
-    setExpandedSection(expandedSection === sectionId ? null : sectionId);
+    setExpandedSection(prev => prev === sectionId ? null : sectionId);
   };
 
-  // Solutions by Area data with corrected Tamil content from the brochure
   const solutionAreas = [
     {
       id: "wall",
@@ -122,8 +105,9 @@ const KavashPage = () => {
             "பீம், காலம்களில் சுவர்கள் இணையும் இடங்களில் விரிசல்களை தடுக்க",
         },
         {
-          name: "SHUTTERING SHEET - ன் வழியாக கான்கிரீட் வழியாமலும் FINISHING நன்கு கிடைக்க BD SHUTTERING SEALER",
-          tamil: "",
+          name: "BD SHUTTERING SEALER",
+          tamil:
+            "SHUTTERING SHEET - ன் வழியாக கான்கிரீட் வழியாமலும் FINISHING நன்கு கிடைக்க",
         },
       ],
     },
@@ -198,7 +182,6 @@ const KavashPage = () => {
     },
   ];
 
-  // Quick stats data
   const stats = [
     { number: "50+", label: "Outlets" },
     { number: "100+", label: "Products" },
@@ -350,11 +333,20 @@ const KavashPage = () => {
                 viewport={{ once: true }}
                 variants={fadeInUp}
                 transition={{ delay: index * 0.1 }}
-                className="bg-gradient-to-br from-white to-gray-50 rounded-xl border-2 border-gray-100 hover:border-primary/30 transition-all shadow-lg hover:shadow-xl"
+                className={`bg-gradient-to-br from-white to-gray-50 rounded-xl border-2 transition-all shadow-lg hover:shadow-xl ${
+                  expandedSection === area.id
+                    ? "border-primary"
+                    : "border-gray-100"
+                }`}
               >
                 <button
-                  onClick={() => toggleSection(area.id)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 rounded-t-xl transition-colors"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleSection(area.id);
+                  }}
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 rounded-t-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  data-testid={`accordion-button-${area.id}`}
                 >
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
@@ -375,7 +367,7 @@ const KavashPage = () => {
                   </div>
                 </button>
 
-                <AnimatePresence>
+                <AnimatePresence mode="wait">
                   {expandedSection === area.id && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
@@ -396,16 +388,13 @@ const KavashPage = () => {
                                   <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                                   <div className="flex-1">
                                     <span className="text-gray-900 font-semibold block">
-                                      {typeof product === "string"
-                                        ? product
-                                        : product.name}
+                                      {product.name}
                                     </span>
-                                    {typeof product === "object" &&
-                                      product.tamil && (
-                                        <span className="text-gray-600 text-sm mt-1 block leading-relaxed">
-                                          {product.tamil}
-                                        </span>
-                                      )}
+                                    {product.tamil && (
+                                      <span className="text-gray-600 text-sm mt-1 block leading-relaxed">
+                                        {product.tamil}
+                                      </span>
+                                    )}
                                   </div>
                                 </div>
                               </li>
