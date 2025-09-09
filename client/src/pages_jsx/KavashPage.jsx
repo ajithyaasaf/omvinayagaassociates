@@ -234,7 +234,7 @@ const KavashPage = () => {
           >
             <motion.div variants={fadeInUp} className="mb-8">
               <div className="text-6xl md:text-8xl font-bold mb-4">
-                <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-yellow-400 via-primary to-blue-600 bg-clip-text text-transparent">
                   KAVASH
                 </span>
               </div>
@@ -278,7 +278,7 @@ const KavashPage = () => {
 
             <motion.div variants={fadeInUp}>
               <Link to="/contact">
-                <button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-12 py-4 rounded-lg text-xl font-bold flex items-center gap-3 mx-auto transition-all transform hover:scale-105 shadow-xl">
+                <button className="bg-gradient-to-r from-primary to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-12 py-4 rounded-lg text-xl font-bold flex items-center gap-3 mx-auto transition-all transform hover:scale-105 shadow-xl">
                   Get Offer <ArrowRight className="w-6 h-6" />
                 </button>
               </Link>
@@ -425,7 +425,7 @@ const KavashPage = () => {
       </section>
 
       {/* Call-to-Action Section */}
-      <section className="py-20 bg-gradient-to-r from-primary via-blue-600 to-orange-500 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-r from-primary via-blue-600 to-blue-700 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-48 translate-x-48"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full translate-y-48 -translate-x-48"></div>
