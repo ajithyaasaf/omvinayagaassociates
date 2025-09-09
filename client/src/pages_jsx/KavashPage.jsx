@@ -56,7 +56,7 @@ const KavashPage = () => {
     setExpandedSection(expandedSection === sectionId ? null : sectionId);
   };
 
-  // Solutions by Area data with proper Tamil content from brochure
+  // Solutions by Area data with only Tamil content
   const solutionAreas = [
     {
       id: "wall",
@@ -84,15 +84,15 @@ const KavashPage = () => {
       products: [
         {
           name: "BD AQUA SEAL NANO",
-          tamil: "காஞ்சிக்ரீட் கல்லங்கள், குமாரி நரன், வேலி போன்ற இடங்களில் பயன்படும்"
+          tamil: "காஞ்சிக்ரீட் கல்லங்கள், தரைகள் போன்ற இடங்களில் பயன்படும்"
         },
         {
-          name: "SUNKEN SLAB மற்றும் கார்திகிம் கலவை கொண்டு தேறும்",
+          name: "SUNKEN SLAB மற்றும் சிறப்பு நீர் தேங்காமல் இருக்க",
           tamil: "BD AQUA SEAL 2K (OR) BD BUILDING ALL ROUNDER (OR) BD GARDEN GUARD"
         },
         {
           name: "BD AQUA SEAL 2K (OR) BD BUILDING ALL ROUNDER (OR) BD GARDEN GUARD",
-          tamil: "சிறியன் நீர் அடைப்புக்கள் மற்றும் நீர் தாங்கல் தருவதற்கு"
+          tamil: "சிறிய நீர் அடைப்புக்கள் மற்றும் நீர் தாங்கல் தருவதற்கு"
         }
       ],
     },
@@ -103,23 +103,23 @@ const KavashPage = () => {
       products: [
         {
           name: "BD CONCRETE POWER",
-          tamil: "ட்ரையட் அலவாயத் பசு வேடிकत் கமோல கேபென் கரிகேடத् தरुकम्"
+          tamil: "சுரமீட் கலவையில் சேர்க்கும் சிமெந்து பவுடர்"
         },
         {
           name: "BD CORROSHIELD CR (OR) COATING BD CORROSHIELD BR",
-          tamil: "RCC லோஹே சாயடோல சேரে राওয়े दुरुபनुकरारि तरुकम्"
+          tamil: "RCC இரும்பு தண்டுகளின் அரிப்பு தடுக்க பயன்படும்"
         },
         {
           name: "BD CORROSHIELD ZR",
-          tamil: "ईसपात उपरम सेरे दुरुपनुकरारि तरुकम्"
+          tamil: "இரும்பு அரிப்பு தடுக்கும் பூச்சு கலவை"
         },
         {
           name: "BD CRACK STOP MESH",
-          tamil: "மேச, आरावमफलो कावरक्रमी शेकतोनुम कमळकेरो"
+          tamil: "மெஷ் வலையால் கிராக்குகள் தடுக்கும் தொழில்நுட்பம்"
         },
         {
           name: "BD SHUTTERING SEALER",
-          tamil: "SHUTTERING SHEET - అత్ వృమార కారీకుత్ వుపావళుమ్ FINISHING నకుమ్ కేరळక్క"
+          tamil: "SHUTTERING SHEET - கட்டிட பணிகளில் பூச்சு முடிப்பு வேலைகளுக்கு"
         }
       ],
     },
@@ -130,15 +130,15 @@ const KavashPage = () => {
       products: [
         {
           name: "BD AQUA SEAL TANK GUARD - EPOXY FOOD GRADE",
-          tamil: "आदुरणी वेदायकळी पार, नीकेरवुत शिरोमानी तरुकत्"
+          tamil: "உணவு பாதுகாப்பான நீர் தொட்டிகளுக்கான எபாக்சி பூச்சு"
         },
         {
           name: "BD PROTECT COAT CT 600", 
-          tamil: "SEPTIC TANK-कळो वेळिरुपटुत तकान्दुम नैर उळने"
+          tamil: "SEPTIC TANK - கழிவு நீர் தொட்டிகளுக்கான பாதுகாப்பு பூச்சு"
         },
         {
           name: "BD AQUA SEAL 2K (OR) BD AQUA SEAL NANO & BD BUILDING ALL ROUNDER",
-          tamil: "शीवुम सळसार नीडुतुक नेदासुकळुम नीकरीवळ तरुकत्"
+          tamil: "சிறு நீர் கசிவுகள் மற்றும் நீர் தாங்கல் தருவதற்கு"
         }
       ],
     },
@@ -149,23 +149,23 @@ const KavashPage = () => {
       products: [
         {
           name: "BD CONCRETE BOND",
-          tamil: "पडुम मडुपुम गरायवा करากुत नीडुपगुळूकत्"
+          tamil: "பழைய மற்றும் புதிய கிராக்குகளுக்கு பயன்படும்"
         },
         {
           name: "BD NANGURAM ANCHOR FIX (OR) BD NANGURAM ANCHOR FIX POWER",
-          tamil: "पळुपुम करากुतकळी परुम सुपुकळी शीडुकत्"
+          tamil: "கற்கள் மற்றும் சுவர்களில் துளைகள் அடைக்க பயன்படும்"
         },
         {
           name: "BD SEAL TAPE EJ",
-          tamil: "EXPANSION JOINT-कळी नीकरवुत वुरावळ तरुकत्"
+          tamil: "EXPANSION JOINT - விரிவடையும் இணைப்புகளுக்கு"
         },
         {
           name: "BD PLASTER BOND SBR (OR) BD BUILDING ALL ROUNDER",
-          tamil: "शीडुपुगकळी गरायवुरे अडीवुम नेवै वुपावळुम येयाक्षेत्र"
+          tamil: "பிளாஸ்டர் பணிகளில் ஒட்டுதல் மற்றும் வலுவூட்டல்"
         },
         {
           name: "BD SEAL TAPE SA",
-          tamil: "ROOFING SHEET मडुपुम सुरी शीडुपगकळी नीकरवुत वुरावळ तरुकत्"
+          tamil: "ROOFING SHEET - மேற்கூரை தகடுகளின் இணைப்புகளுக்கு"
         }
       ],
     },
@@ -176,15 +176,15 @@ const KavashPage = () => {
       products: [
         {
           name: "BD PROTECT COAT BW 500",
-          tamil: "गळी निळुधम शायस कट्टील शकुडी दुकोत्ती, पयुत नीकरत वुट्टी"
+          tamil: "கீழ் மாடி ஈரப்பதம் மற்றும் கசிவு தடுக்க பயன்படும்"
         },
         {
           name: "BD TERMITE STOP X",
-          tamil: "RISING दण्डी तरीकमुळे उझत नळुसुकुडे तरुकत्"
+          tamil: "RISING DAMP - கீழிருந்து வரும் ஈரப்பதம் தடுக்க"
         },
         {
           name: "BD PROTECT COAT CT 600 B",
-          tamil: "ढाळ, आरावमफलो शाही सीडुणुपुम येमकळो"
+          tamil: "சுவர், தரை போன்ற இடங்களில் பாதுகாப்பு பூச்சு"
         }
       ],
     }
