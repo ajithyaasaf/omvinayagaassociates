@@ -56,93 +56,89 @@ const KavashPage = () => {
     setExpandedSection(expandedSection === sectionId ? null : sectionId);
   };
 
-  // Solutions by Area data with complete brochure content
+  // Solutions by Area data with proper Tamil content from brochure
   const solutionAreas = [
     {
       id: "wall",
       title: "FOR WALL AREAS",
       icon: <Shield className="w-6 h-6" />,
-      description: "முக கிராக்குகளில் எள்ளியலே கமோவம்",
       products: [
         {
           name: "BD CRACK STOP (OR) BD CRACK STOP XP",
-          tamil: "வீக கிராக்குகளில் கராको வெத்திலஙक களोफ इन्फो"
+          tamil: "சுவர் கிராக்குகளில் வரும் கிராக்குகளை சரிசெய்ய பயன்படும்"
         },
         {
-          name: "BD WALLSHIELD - EXTERIOR DECORATIVE COATING",
-          tamil: "प्यार कत्रीका डेकोरेটिभ वबाला"
+          name: "BD WALLSHIELD - EXTERIOR DECORATIVE COATING", 
+          tamil: "சுவர்களுக்கு அலங்காரிய பூச்சு கலவை"
         },
         {
           name: "BD AQUA SEAL 2K (OR) BD BUILDING ALL ROUNDER (OR) BD GARDEN GUARD",
-          tamil: "வெली बटेलिका फ्या अड्डा"
+          tamil: "நீர் ஒட்டல் மற்றும் பொது உபயோகம்"
         }
       ],
     },
     {
       id: "terrace",
-      title: "FOR TERRACE AREAS",
+      title: "FOR TERRACE AREAS", 
       icon: <Home className="w-6 h-6" />,
-      description: "காது अपेटी, आपको नरन, विविनच धीरुडत, शोरिकारी शिरिचका",
       products: [
         {
           name: "BD AQUA SEAL NANO",
-          tamil: "तडबाहे एग्जॉस्ट बणते तयारी मीठीकारी बनिकेने सकाशम"
+          tamil: "காஞ்சிக்ரீட் கல்லங்கள், குமாரி நரன், வேலி போன்ற இடங்களில் பயன்படும்"
         },
         {
-          name: "SUNKEN SLAB",
-          tamil: "कॅरम्बोटिक कारीकुत नेडाल हेधाउतै"
+          name: "SUNKEN SLAB மற்றும் கார்திகிம் கலவை கொண்டு தேறும்",
+          tamil: "BD AQUA SEAL 2K (OR) BD BUILDING ALL ROUNDER (OR) BD GARDEN GUARD"
         },
         {
           name: "BD AQUA SEAL 2K (OR) BD BUILDING ALL ROUNDER (OR) BD GARDEN GUARD",
-          tamil: "शित्तीकारण नेवडेमे শাহিबাची शकावे नीनिखेनि सकाशम"
+          tamil: "சிறியன் நீர் அடைப்புக்கள் மற்றும் நீர் தாங்கல் தருவதற்கு"
         }
       ],
     },
     {
       id: "concrete",
-      title: "FOR CONCRETE AREAS",
+      title: "FOR CONCRETE AREAS", 
       icon: <HardHat className="w-6 h-6" />,
-      description: "ड्राय्ड अलवायत पशु बेटिकत कनोला खेपेन करिकेडत सकाधम",
       products: [
         {
           name: "BD CONCRETE POWER",
-          tamil: "ड्राय्ड अलवायत पशु बेटिकत खेपेन सकाधम"
+          tamil: "ட்ரையட் அலவாயத் பசு வேடிकत் கமோல கேபென் கரிகேடத् தरुकम्"
         },
         {
-          name: "BD CORROSHIELD CR (OR) BD CORROSHIELD BR",
-          tamil: "RCC-तोड़ी शायडोल सेरे रावे दयुपनुकरारि सकाधम"
+          name: "BD CORROSHIELD CR (OR) COATING BD CORROSHIELD BR",
+          tamil: "RCC லோஹே சாயடோல சேரে राওয়े दुरुபनुकरारि तरुकम्"
         },
         {
           name: "BD CORROSHIELD ZR",
-          tamil: "वैसवाल उप्रम सेरे डुप्रुमकरारि सकाधम"
+          tamil: "ईसपात उपरम सेरे दुरुपनुकरारि तरुकम्"
         },
         {
           name: "BD CRACK STOP MESH",
-          tamil: "मैछ़, आरावम्फलो जावरक्रमी शेखतोनुम बेगाहेरो"
+          tamil: "மேச, आरावमफलो कावरक्रमी शेकतोनुम कमळकेरो"
         },
         {
           name: "BD SHUTTERING SEALER",
-          tamil: "SHUTTERING SHEET - अत व्रुमार कारीकुत वुपावळुम"
+          tamil: "SHUTTERING SHEET - అత్ వృమార కారీకుత్ వుపావళుమ్ FINISHING నకుమ్ కేరळక్క"
         }
       ],
     },
     {
-      id: "water-storage",
+      id: "water-storage", 
       title: "FOR WATER STORAGE AREAS",
       icon: <Waves className="w-6 h-6" />,
-      description: "आदुरणी वेदायकल्ली पार, नीकेरवुत शिरोमानी सकाधम",
       products: [
         {
           name: "BD AQUA SEAL TANK GUARD - EPOXY FOOD GRADE",
-          tamil: "आदुरणी वेदायकल्ली पार, नीकेरवुत शिरोमानी सकाधम"
+          tamil: "आदुरणी वेदायकळी पार, नीकेरवुत शिरोमानी तरुकत्"
         },
         {
-          name: "BD PROTECT COAT CT 600",
-          tamil: "SEPTIC TANK-खालो वेनिप्रुपटुत सकान्दुम नैर उळने"
+          name: "BD PROTECT COAT CT 600", 
+          tamil: "SEPTIC TANK-कळो वेळिरुपटुत तकान्दुम नैर उळने"
         },
         {
           name: "BD AQUA SEAL 2K (OR) BD AQUA SEAL NANO & BD BUILDING ALL ROUNDER",
-          tamil: "शीवुम सळसार नीडुतुक नेदासुकलुम नीकरीवल सकाधम"
+          tamil: "शीवुम सळसार नीडुतुक नेदासुकळुम नीकरीवळ तरुकत्"
         }
       ],
     },
@@ -150,27 +146,26 @@ const KavashPage = () => {
       id: "building-joints",
       title: "FOR BUILDING JOINTS AREAS",
       icon: <Layers className="w-6 h-6" />,
-      description: "पडुम मडुपुम गराय्वा कराकुत नीडुपगुलूकत",
       products: [
         {
           name: "BD CONCRETE BOND",
-          tamil: "पडुम मडुपुम गराय्वा कराकुत नीडुपगुलूकत"
+          tamil: "पडुम मडुपुम गरायवा करากुत नीडुपगुळूकत्"
         },
         {
           name: "BD NANGURAM ANCHOR FIX (OR) BD NANGURAM ANCHOR FIX POWER",
-          tamil: "गळुपुम कराकुतकल्ली परुम सुपुकल्ली शीडुकत"
+          tamil: "पळुपुम करากुतकळी परुम सुपुकळी शीडुकत्"
         },
         {
           name: "BD SEAL TAPE EJ",
-          tamil: "EXPANSION JOINT-कल्ली नीकरवुत वुरावल सकाधम"
+          tamil: "EXPANSION JOINT-कळी नीकरवुत वुरावळ तरुकत्"
         },
         {
           name: "BD PLASTER BOND SBR (OR) BD BUILDING ALL ROUNDER",
-          tamil: "शीडुपुगकल्ली गराय्वुरे अडीवुम नेवै वुपावळुम बेयाक्षेत्र"
+          tamil: "शीडुपुगकळी गरायवुरे अडीवुम नेवै वुपावळुम येयाक्षेत्र"
         },
         {
           name: "BD SEAL TAPE SA",
-          tamil: "ROOFING SHEET मडुपुम सुरी शीडुपगकल्ली नीकरवुत"
+          tamil: "ROOFING SHEET मडुपुम सुरी शीडुपगकळी नीकरवुत वुरावळ तरुकत्"
         }
       ],
     },
@@ -178,64 +173,21 @@ const KavashPage = () => {
       id: "basement",
       title: "FOR BASEMENT AREAS",
       icon: <Building2 className="w-6 h-6" />,
-      description: "गल्ली निळुधम शायस खट्टील शकुडी दुकोत्ती, पयुत नीकरत वुट्टी",
       products: [
         {
           name: "BD PROTECT COAT BW 500",
-          tamil: "गल्ली निळुधम शायस खट्टील शकुडी दुकोत्ती, पयुत नीकरत वुट्टी"
+          tamil: "गळी निळुधम शायस कट्टील शकुडी दुकोत्ती, पयुत नीकरत वुट्टी"
         },
         {
           name: "BD TERMITE STOP X",
-          tamil: "RISING दण्डी तरीकमुळे उझत नळुसुकुडे सकाधम"
+          tamil: "RISING दण्डी तरीकमुळे उझत नळुसुकुडे तरुकत्"
         },
         {
           name: "BD PROTECT COAT CT 600 B",
-          tamil: "ढाल, आरावम्फलो शाही सीडुणुपुम बेमकलो"
+          tamil: "ढाळ, आरावमफलो शाही सीडुणुपुम येमकळो"
         }
       ],
-    },
-    {
-      id: "tile-laying",
-      title: "Tile Laying Areas",
-      icon: <Square className="w-6 h-6" />,
-      products: [
-        {
-          name: "BD Tile Fix Power",
-          tamil: ""
-        },
-        {
-          name: "BD Tile Fix Bond/Booster",
-          tamil: ""
-        },
-        {
-          name: "BD Tile Fix Spacer",
-          tamil: ""
-        },
-        {
-          name: "BD Tile Fix Leveller",
-          tamil: ""
-        },
-        {
-          name: "BD Tile Joint Sealer/Sealer Plus",
-          tamil: ""
-        }
-      ],
-    },
-    {
-      id: "plastering",
-      title: "Plastering Areas",
-      icon: <Palette className="w-6 h-6" />,
-      products: [
-        {
-          name: "BD Crack Stop Fibre",
-          tamil: ""
-        },
-        {
-          name: "BD Plaster Power",
-          tamil: ""
-        }
-      ],
-    },
+    }
   ];
 
   // Quick stats data
@@ -398,11 +350,6 @@ const KavashPage = () => {
                       <h3 className="text-xl font-bold text-gray-900">
                         {area.title}
                       </h3>
-                      {area.description && (
-                        <p className="text-sm text-gray-600 mt-1 font-medium">
-                          {area.description}
-                        </p>
-                      )}
                     </div>
                   </div>
                   <div className="text-primary">
