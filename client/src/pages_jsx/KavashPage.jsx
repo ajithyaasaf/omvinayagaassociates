@@ -56,84 +56,185 @@ const KavashPage = () => {
     setExpandedSection(expandedSection === sectionId ? null : sectionId);
   };
 
-  // Solutions by Area data
+  // Solutions by Area data with complete brochure content
   const solutionAreas = [
+    {
+      id: "wall",
+      title: "FOR WALL AREAS",
+      icon: <Shield className="w-6 h-6" />,
+      description: "முக கிராக்குகளில் எள்ளியலே கமோவம்",
+      products: [
+        {
+          name: "BD CRACK STOP (OR) BD CRACK STOP XP",
+          tamil: "வீக கிராக்குகளில் கராको வெத்திலஙक களोफ इन्फो"
+        },
+        {
+          name: "BD WALLSHIELD - EXTERIOR DECORATIVE COATING",
+          tamil: "प्यार कत्रीका डेकोरेটिभ वबाला"
+        },
+        {
+          name: "BD AQUA SEAL 2K (OR) BD BUILDING ALL ROUNDER (OR) BD GARDEN GUARD",
+          tamil: "வெली बटेलिका फ्या अड्डा"
+        }
+      ],
+    },
+    {
+      id: "terrace",
+      title: "FOR TERRACE AREAS",
+      icon: <Home className="w-6 h-6" />,
+      description: "காது अपेटी, आपको नरन, विविनच धीरुडत, शोरिकारी शिरिचका",
+      products: [
+        {
+          name: "BD AQUA SEAL NANO",
+          tamil: "तडबाहे एग्जॉस्ट बणते तयारी मीठीकारी बनिकेने सकाशम"
+        },
+        {
+          name: "SUNKEN SLAB",
+          tamil: "कॅरम्बोटिक कारीकुत नेडाल हेधाउतै"
+        },
+        {
+          name: "BD AQUA SEAL 2K (OR) BD BUILDING ALL ROUNDER (OR) BD GARDEN GUARD",
+          tamil: "शित्तीकारण नेवडेमे শাহিबাची शकावे नीनिखेनि सकाशम"
+        }
+      ],
+    },
+    {
+      id: "concrete",
+      title: "FOR CONCRETE AREAS",
+      icon: <HardHat className="w-6 h-6" />,
+      description: "ड्राय्ड अलवायत पशु बेटिकत कनोला खेपेन करिकेडत सकाधम",
+      products: [
+        {
+          name: "BD CONCRETE POWER",
+          tamil: "ड्राय्ड अलवायत पशु बेटिकत खेपेन सकाधम"
+        },
+        {
+          name: "BD CORROSHIELD CR (OR) BD CORROSHIELD BR",
+          tamil: "RCC-तोड़ी शायडोल सेरे रावे दयुपनुकरारि सकाधम"
+        },
+        {
+          name: "BD CORROSHIELD ZR",
+          tamil: "वैसवाल उप्रम सेरे डुप्रुमकरारि सकाधम"
+        },
+        {
+          name: "BD CRACK STOP MESH",
+          tamil: "मैछ़, आरावम्फलो जावरक्रमी शेखतोनुम बेगाहेरो"
+        },
+        {
+          name: "BD SHUTTERING SEALER",
+          tamil: "SHUTTERING SHEET - अत व्रुमार कारीकुत वुपावळुम"
+        }
+      ],
+    },
+    {
+      id: "water-storage",
+      title: "FOR WATER STORAGE AREAS",
+      icon: <Waves className="w-6 h-6" />,
+      description: "आदुरणी वेदायकल्ली पार, नीकेरवुत शिरोमानी सकाधम",
+      products: [
+        {
+          name: "BD AQUA SEAL TANK GUARD - EPOXY FOOD GRADE",
+          tamil: "आदुरणी वेदायकल्ली पार, नीकेरवुत शिरोमानी सकाधम"
+        },
+        {
+          name: "BD PROTECT COAT CT 600",
+          tamil: "SEPTIC TANK-खालो वेनिप्रुपटुत सकान्दुम नैर उळने"
+        },
+        {
+          name: "BD AQUA SEAL 2K (OR) BD AQUA SEAL NANO & BD BUILDING ALL ROUNDER",
+          tamil: "शीवुम सळसार नीडुतुक नेदासुकलुम नीकरीवल सकाधम"
+        }
+      ],
+    },
+    {
+      id: "building-joints",
+      title: "FOR BUILDING JOINTS AREAS",
+      icon: <Layers className="w-6 h-6" />,
+      description: "पडुम मडुपुम गराय्वा कराकुत नीडुपगुलूकत",
+      products: [
+        {
+          name: "BD CONCRETE BOND",
+          tamil: "पडुम मडुपुम गराय्वा कराकुत नीडुपगुलूकत"
+        },
+        {
+          name: "BD NANGURAM ANCHOR FIX (OR) BD NANGURAM ANCHOR FIX POWER",
+          tamil: "गळुपुम कराकुतकल्ली परुम सुपुकल्ली शीडुकत"
+        },
+        {
+          name: "BD SEAL TAPE EJ",
+          tamil: "EXPANSION JOINT-कल्ली नीकरवुत वुरावल सकाधम"
+        },
+        {
+          name: "BD PLASTER BOND SBR (OR) BD BUILDING ALL ROUNDER",
+          tamil: "शीडुपुगकल्ली गराय्वुरे अडीवुम नेवै वुपावळुम बेयाक्षेत्र"
+        },
+        {
+          name: "BD SEAL TAPE SA",
+          tamil: "ROOFING SHEET मडुपुम सुरी शीडुपगकल्ली नीकरवुत"
+        }
+      ],
+    },
+    {
+      id: "basement",
+      title: "FOR BASEMENT AREAS",
+      icon: <Building2 className="w-6 h-6" />,
+      description: "गल्ली निळुधम शायस खट्टील शकुडी दुकोत्ती, पयुत नीकरत वुट्टी",
+      products: [
+        {
+          name: "BD PROTECT COAT BW 500",
+          tamil: "गल्ली निळुधम शायस खट्टील शकुडी दुकोत्ती, पयुत नीकरत वुट्टी"
+        },
+        {
+          name: "BD TERMITE STOP X",
+          tamil: "RISING दण्डी तरीकमुळे उझत नळुसुकुडे सकाधम"
+        },
+        {
+          name: "BD PROTECT COAT CT 600 B",
+          tamil: "ढाल, आरावम्फलो शाही सीडुणुपुम बेमकलो"
+        }
+      ],
+    },
     {
       id: "tile-laying",
       title: "Tile Laying Areas",
       icon: <Square className="w-6 h-6" />,
       products: [
-        "BD Tile Fix Power",
-        "BD Tile Fix Bond/Booster",
-        "BD Tile Fix Spacer",
-        "BD Tile Fix Leveller",
-        "BD Tile Joint Sealer/Sealer Plus",
+        {
+          name: "BD Tile Fix Power",
+          tamil: ""
+        },
+        {
+          name: "BD Tile Fix Bond/Booster",
+          tamil: ""
+        },
+        {
+          name: "BD Tile Fix Spacer",
+          tamil: ""
+        },
+        {
+          name: "BD Tile Fix Leveller",
+          tamil: ""
+        },
+        {
+          name: "BD Tile Joint Sealer/Sealer Plus",
+          tamil: ""
+        }
       ],
     },
     {
       id: "plastering",
       title: "Plastering Areas",
       icon: <Palette className="w-6 h-6" />,
-      products: ["BD Crack Stop Fibre", "BD Plaster Power"],
-    },
-    {
-      id: "basement",
-      title: "Basement Areas",
-      icon: <Building2 className="w-6 h-6" />,
       products: [
-        "BD Protect Coat BW500",
-        "BD Termite Stop X",
-        "BD Protect Coat CT 600",
+        {
+          name: "BD Crack Stop Fibre",
+          tamil: ""
+        },
+        {
+          name: "BD Plaster Power",
+          tamil: ""
+        }
       ],
-    },
-    {
-      id: "building-joints",
-      title: "Building Joints Areas",
-      icon: <Layers className="w-6 h-6" />,
-      products: [
-        "BD Concrete Bond",
-        "BD Nanguram Anchor Fix/Power",
-        "BD Seal Tape EJ",
-        "BD Seal Tape SA",
-        "BD Plaster Bond SBR/Building All Rounder",
-      ],
-    },
-    {
-      id: "water-storage",
-      title: "Water Storage Areas",
-      icon: <Waves className="w-6 h-6" />,
-      products: [
-        "BD Aqua Seal Tank Guard",
-        "BD Protect Coat CT 600",
-        "BD Aqua Seal 2K/Nano/All Rounder",
-      ],
-    },
-    {
-      id: "concrete",
-      title: "Concrete Areas",
-      icon: <HardHat className="w-6 h-6" />,
-      products: [
-        "BD Concrete Power",
-        "BD Corroshield BR",
-        "BD Corroshield ZR",
-        "BD Crack Stop Mesh",
-        "BD Shuttering Sealer",
-      ],
-    },
-    {
-      id: "terrace",
-      title: "Terrace Areas",
-      icon: <Home className="w-6 h-6" />,
-      products: [
-        "BD Aqua Seal Nano",
-        "BD Aqua Seal 2K/All Rounder/Garden Guard",
-      ],
-    },
-    {
-      id: "wall",
-      title: "Wall Areas",
-      icon: <Shield className="w-6 h-6" />,
-      products: ["BD Crack Stop/XP", "BD Wallshield"],
     },
   ];
 
@@ -293,9 +394,16 @@ const KavashPage = () => {
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
                       {area.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900">
-                      {area.title}
-                    </h3>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900">
+                        {area.title}
+                      </h3>
+                      {area.description && (
+                        <p className="text-sm text-gray-600 mt-1 font-medium">
+                          {area.description}
+                        </p>
+                      )}
+                    </div>
                   </div>
                   <div className="text-primary">
                     {expandedSection === area.id ? (
@@ -317,16 +425,25 @@ const KavashPage = () => {
                     >
                       <div className="px-6 pb-6">
                         <div className="border-t border-gray-200 pt-4">
-                          <ul className="space-y-3">
+                          <ul className="space-y-4">
                             {area.products.map((product, productIndex) => (
                               <li
                                 key={productIndex}
-                                className="flex items-center gap-3"
+                                className="border-l-4 border-primary/30 pl-4 py-2"
                               >
-                                <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
-                                <span className="text-gray-700 font-medium">
-                                  {product}
-                                </span>
+                                <div className="flex items-start gap-3">
+                                  <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                                  <div className="flex-1">
+                                    <span className="text-gray-900 font-semibold block">
+                                      {typeof product === 'string' ? product : product.name}
+                                    </span>
+                                    {typeof product === 'object' && product.tamil && (
+                                      <span className="text-gray-600 text-sm mt-1 block leading-relaxed">
+                                        {product.tamil}
+                                      </span>
+                                    )}
+                                  </div>
+                                </div>
                               </li>
                             ))}
                           </ul>
