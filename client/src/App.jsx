@@ -22,6 +22,7 @@ import ContactPage from "./pages_jsx/ContactPage.jsx";
 // Lazy load less critical pages
 const ProductDetailPage = lazy(() => import("./pages_jsx/ProductDetailPage.jsx"));
 const AchievementsPage = lazy(() => import("./pages_jsx/AchievementsPage.jsx"));
+const KavashPage = lazy(() => import("./pages_jsx/KavashPage.jsx"));
 const AdminPage = lazy(() => import("./pages_jsx/AdminPage.jsx"));
 const NotFound = lazy(() => import("./pages/not-found.jsx"));
 
@@ -132,6 +133,11 @@ function App() {
             <Route path="/achievements">
               <PageWrapper>
                 <AchievementsPage />
+              </PageWrapper>
+            </Route>
+            <Route path="/kavash">
+              <PageWrapper>
+                <KavashPage />
               </PageWrapper>
             </Route>
             <Route path="/admin">
