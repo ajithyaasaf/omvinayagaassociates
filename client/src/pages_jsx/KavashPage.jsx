@@ -25,13 +25,19 @@ import {
   Palette,
   TrendingUp,
 } from "lucide-react";
-import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer } from "@/utils/animations";
+import {
+  fadeInUp,
+  fadeInLeft,
+  fadeInRight,
+  staggerContainer,
+} from "@/utils/animations";
 
 const KavashPage = () => {
   const [expandedSection, setExpandedSection] = useState(null);
 
   useEffect(() => {
-    document.title = "KAVASH - Protection for Footing to Finishing | OM Vinayaga Associates";
+    document.title =
+      "KAVASH - Protection for Footing to Finishing | OM Vinayaga Associates";
   }, []);
 
   const toggleSection = (sectionId) => {
@@ -41,97 +47,91 @@ const KavashPage = () => {
   // Solutions by Area data
   const solutionAreas = [
     {
-      id: 'tile-laying',
-      title: 'Tile Laying Areas',
+      id: "tile-laying",
+      title: "Tile Laying Areas",
       icon: <Square className="w-6 h-6" />,
       products: [
-        'BD Tile Fix Power',
-        'BD Tile Fix Bond/Booster',
-        'BD Tile Fix Spacer',
-        'BD Tile Fix Leveller',
-        'BD Tile Joint Sealer/Sealer Plus'
-      ]
+        "BD Tile Fix Power",
+        "BD Tile Fix Bond/Booster",
+        "BD Tile Fix Spacer",
+        "BD Tile Fix Leveller",
+        "BD Tile Joint Sealer/Sealer Plus",
+      ],
     },
     {
-      id: 'plastering',
-      title: 'Plastering Areas',
+      id: "plastering",
+      title: "Plastering Areas",
       icon: <Palette className="w-6 h-6" />,
-      products: [
-        'BD Crack Stop Fibre',
-        'BD Plaster Power'
-      ]
+      products: ["BD Crack Stop Fibre", "BD Plaster Power"],
     },
     {
-      id: 'basement',
-      title: 'Basement Areas',
+      id: "basement",
+      title: "Basement Areas",
       icon: <Building2 className="w-6 h-6" />,
       products: [
-        'BD Protect Coat BW500',
-        'BD Termite Stop X',
-        'BD Protect Coat CT 600'
-      ]
+        "BD Protect Coat BW500",
+        "BD Termite Stop X",
+        "BD Protect Coat CT 600",
+      ],
     },
     {
-      id: 'building-joints',
-      title: 'Building Joints Areas',
+      id: "building-joints",
+      title: "Building Joints Areas",
       icon: <Layers className="w-6 h-6" />,
       products: [
-        'BD Concrete Bond',
-        'BD Nanguram Anchor Fix/Power',
-        'BD Seal Tape EJ',
-        'BD Seal Tape SA',
-        'BD Plaster Bond SBR/Building All Rounder'
-      ]
+        "BD Concrete Bond",
+        "BD Nanguram Anchor Fix/Power",
+        "BD Seal Tape EJ",
+        "BD Seal Tape SA",
+        "BD Plaster Bond SBR/Building All Rounder",
+      ],
     },
     {
-      id: 'water-storage',
-      title: 'Water Storage Areas',
+      id: "water-storage",
+      title: "Water Storage Areas",
       icon: <Waves className="w-6 h-6" />,
       products: [
-        'BD Aqua Seal Tank Guard',
-        'BD Protect Coat CT 600',
-        'BD Aqua Seal 2K/Nano/All Rounder'
-      ]
+        "BD Aqua Seal Tank Guard",
+        "BD Protect Coat CT 600",
+        "BD Aqua Seal 2K/Nano/All Rounder",
+      ],
     },
     {
-      id: 'concrete',
-      title: 'Concrete Areas',
+      id: "concrete",
+      title: "Concrete Areas",
       icon: <HardHat className="w-6 h-6" />,
       products: [
-        'BD Concrete Power',
-        'BD Corroshield BR',
-        'BD Corroshield ZR',
-        'BD Crack Stop Mesh',
-        'BD Shuttering Sealer'
-      ]
+        "BD Concrete Power",
+        "BD Corroshield BR",
+        "BD Corroshield ZR",
+        "BD Crack Stop Mesh",
+        "BD Shuttering Sealer",
+      ],
     },
     {
-      id: 'terrace',
-      title: 'Terrace Areas',
+      id: "terrace",
+      title: "Terrace Areas",
       icon: <Home className="w-6 h-6" />,
       products: [
-        'BD Aqua Seal Nano',
-        'BD Aqua Seal 2K/All Rounder/Garden Guard'
-      ]
+        "BD Aqua Seal Nano",
+        "BD Aqua Seal 2K/All Rounder/Garden Guard",
+      ],
     },
     {
-      id: 'wall',
-      title: 'Wall Areas',
+      id: "wall",
+      title: "Wall Areas",
       icon: <Shield className="w-6 h-6" />,
-      products: [
-        'BD Crack Stop/XP',
-        'BD Wallshield'
-      ]
-    }
+      products: ["BD Crack Stop/XP", "BD Wallshield"],
+    },
   ];
 
   // Quick stats data
   const stats = [
-    { number: '50+', label: 'Outlets' },
-    { number: '100+', label: 'Products' },
-    { number: '200+', label: 'Applicators' },
-    { number: '10,000+', label: 'Projects' },
-    { number: '1,00,00,000+', label: 'Sq.ft Protected' }
+    { number: "50+", label: "Outlets" },
+    { number: "100+", label: "Products" },
+    { number: "200+", label: "Applicators" },
+    { number: "10,000+", label: "Projects" },
+    { number: "1,00,00,000+", label: "Sq.ft Protected" },
   ];
 
   return (
@@ -147,7 +147,7 @@ const KavashPage = () => {
             <Home className="w-48 h-48" />
           </div>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial="hidden"
@@ -155,10 +155,7 @@ const KavashPage = () => {
             variants={staggerContainer(0.1)}
             className="text-center text-white max-w-6xl mx-auto"
           >
-            <motion.div
-              variants={fadeInUp}
-              className="mb-8"
-            >
+            <motion.div variants={fadeInUp} className="mb-8">
               <div className="text-6xl md:text-8xl font-bold mb-4">
                 <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
                   KAVASH
@@ -176,21 +173,18 @@ const KavashPage = () => {
               Special Scheme for New Buildings
             </motion.h1>
 
-            <motion.div
-              variants={fadeInUp}
-              className="space-y-4 mb-8"
-            >
+            <motion.div variants={fadeInUp} className="space-y-4 mb-8">
               <p className="text-lg md:text-xl text-yellow-200 font-medium">
-                உங்கள் புதிய கட்டிடங்களை காலம் கடந்து காத்திடும் எங்களின் அதிர்வின சிகிச்சைகள்..!
+                உங்கள் புதிய கட்டிடங்களை காலம் கடந்து காத்திடும் எங்களின்
+                அதிநவீன சிகிச்சைகள்..!
               </p>
               <p className="text-lg md:text-xl text-blue-100">
-                Protecting your new building for generations with our ultimate solutions!
+                Protecting your new building for generations with our ultimate
+                solutions!
               </p>
             </motion.div>
 
-            <motion.div
-              variants={fadeInUp}
-            >
+            <motion.div variants={fadeInUp}>
               <Link to="/contact">
                 <button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-12 py-4 rounded-lg text-xl font-bold flex items-center gap-3 mx-auto transition-all transform hover:scale-105 shadow-xl">
                   Get Offer <ArrowRight className="w-6 h-6" />
@@ -221,13 +215,11 @@ const KavashPage = () => {
                   <div className="text-2xl md:text-3xl font-bold text-primary mb-2">
                     {stat.number}
                   </div>
-                  <div className="text-gray-600 font-medium">
-                    {stat.label}
-                  </div>
+                  <div className="text-gray-600 font-medium">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
-            
+
             <motion.div
               variants={fadeInUp}
               className="text-2xl md:text-3xl font-bold text-gray-800"
@@ -256,7 +248,8 @@ const KavashPage = () => {
               </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive building protection solutions for every area of your construction
+              Comprehensive building protection solutions for every area of your
+              construction
             </p>
           </motion.div>
 
@@ -305,9 +298,14 @@ const KavashPage = () => {
                         <div className="border-t border-gray-200 pt-4">
                           <ul className="space-y-3">
                             {area.products.map((product, productIndex) => (
-                              <li key={productIndex} className="flex items-center gap-3">
+                              <li
+                                key={productIndex}
+                                className="flex items-center gap-3"
+                              >
                                 <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
-                                <span className="text-gray-700 font-medium">{product}</span>
+                                <span className="text-gray-700 font-medium">
+                                  {product}
+                                </span>
                               </li>
                             ))}
                           </ul>
@@ -328,7 +326,7 @@ const KavashPage = () => {
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-48 translate-x-48"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full translate-y-48 -translate-x-48"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial="hidden"
@@ -343,12 +341,10 @@ const KavashPage = () => {
             >
               Protect Your Dream Building with KAVASH
             </motion.h2>
-            
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl mb-10 opacity-90"
-            >
-              From footing to finishing, we safeguard every corner of your building.
+
+            <motion.p variants={fadeInUp} className="text-xl mb-10 opacity-90">
+              From footing to finishing, we safeguard every corner of your
+              building.
             </motion.p>
 
             <motion.div
@@ -392,10 +388,14 @@ const KavashPage = () => {
             >
               <div className="flex items-center gap-4 mb-4">
                 <MapPin className="w-8 h-8 text-primary" />
-                <h3 className="text-2xl font-bold text-gray-900">OM Vinayaga Associates</h3>
+                <h3 className="text-2xl font-bold text-gray-900">
+                  OM Vinayaga Associates
+                </h3>
               </div>
               <p className="text-gray-600 text-lg leading-relaxed">
-                Experience KAVASH protection solutions at our office. Our experts are ready to help you choose the right protection system for your building.
+                Experience KAVASH protection solutions at our office. Our
+                experts are ready to help you choose the right protection system
+                for your building.
               </p>
               <Link to="/contact">
                 <button className="mt-6 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 mx-auto transition-all">
@@ -418,7 +418,8 @@ const KavashPage = () => {
             className="text-center"
           >
             <p className="text-xl md:text-2xl font-semibold text-white">
-              <span className="text-yellow-400">Explore KAVASH</span> – A complete protection system for your building.
+              <span className="text-yellow-400">Explore KAVASH</span> – A
+              complete protection system for your building.
             </p>
           </motion.div>
         </div>
