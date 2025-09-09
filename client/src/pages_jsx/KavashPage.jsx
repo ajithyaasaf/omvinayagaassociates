@@ -239,10 +239,13 @@ const KavashPage = () => {
               </div>
               <h1
                 id="kavash-hero-title"
-                className="text-2xl md:text-3xl font-semibold text-yellow-400 mb-6"
+                className="text-2xl md:text-3xl font-semibold text-yellow-400 mb-2"
               >
                 Protection for Footing to Finishing
               </h1>
+              <p className="text-xl md:text-2xl font-medium text-white/90 mb-6">
+                "Prevention is Better than Cure"
+              </p>
             </motion.div>
 
             <motion.h2
@@ -302,17 +305,6 @@ const KavashPage = () => {
               ))}
             </div>
 
-            <motion.div
-              variants={fadeInUp}
-              className="text-2xl md:text-3xl font-bold text-gray-800"
-            >
-              <h2
-                id="kavash-stats-title"
-                className="bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent"
-              >
-                "Prevention is Better than Cure"
-              </h2>
-            </motion.div>
           </motion.div>
         </div>
       </section>
