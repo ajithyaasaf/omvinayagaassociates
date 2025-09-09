@@ -38,15 +38,19 @@ const KavashPage = () => {
   useEffect(() => {
     document.title =
       "KAVASH - Protection for Footing to Finishing | OM Vinayaga Associates";
-    
+
     // Add meta description for SEO
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'KAVASH by Building Doctor offers complete building protection solutions – from footing to finishing. Waterproofing, crack solutions, tile fixing, wall protection and more.');
+      metaDescription.setAttribute(
+        "content",
+        "KAVASH by Building Doctor offers complete building protection solutions – from footing to finishing. Waterproofing, crack solutions, tile fixing, wall protection and more.",
+      );
     } else {
-      const meta = document.createElement('meta');
-      meta.name = 'description';
-      meta.content = 'KAVASH by Building Doctor offers complete building protection solutions – from footing to finishing. Waterproofing, crack solutions, tile fixing, wall protection and more.';
+      const meta = document.createElement("meta");
+      meta.name = "description";
+      meta.content =
+        "KAVASH by Building Doctor offers complete building protection solutions – from footing to finishing. Waterproofing, crack solutions, tile fixing, wall protection and more.";
       document.head.appendChild(meta);
     }
   }, []);
@@ -56,7 +60,7 @@ const KavashPage = () => {
     setExpandedSection(expandedSection === sectionId ? null : sectionId);
   };
 
-  // Solutions by Area data with only Tamil content
+  // Solutions by Area data with corrected Tamil content from the brochure
   const solutionAreas = [
     {
       id: "wall",
@@ -65,77 +69,83 @@ const KavashPage = () => {
       products: [
         {
           name: "BD CRACK STOP (OR) BD CRACK STOP XP",
-          tamil: "சுவரில் விரிசல் ஏற்படுவதை தடுக்கும் பொருள்"
+          tamil: "பூச்சு வேலைகளில் விரிசல் வந்தால் சரிசெய்ய",
         },
         {
-          name: "BD WALLSHIELD - EXTERIOR DECORATIVE COATING", 
-          tamil: "வெளிப்புற அலங்கார பூச்சு"
-        }
+          name: "EXTERIOR DECORATIVE COATING BD WALLSHIELD",
+          tamil:
+            "சுவர்களில் நீர்க்கசிவு, மெல்லிய விரிசல்கள் ஏற்படாமல் இருக்க நீங்கள் விரும்பும் வண்ணங்களில் அடிக்கும்",
+        },
       ],
     },
     {
       id: "terrace",
-      title: "FOR TERRACE AREAS", 
+      title: "FOR TERRACE AREAS",
       icon: <Home className="w-6 h-6" />,
       products: [
         {
           name: "BD AQUA SEAL NANO",
-          tamil: "காஞ்சிக்ரீட் கல்லங்கள், தரைகள் போன்ற இடங்களில் பயன்படும்"
+          tamil:
+            "கான்கிரீட் சுவர்கள், இயற்கை கற்கள், எனவேலேஷன் பிரிக்ஸ், டைல்ரூப்கள் என அனைத்தும் நீர்க்கசிவை தடுக்க",
         },
         {
-          name: "SUNKEN SLAB மற்றும் சிறப்பு நீர் தேங்காமல் இருக்க",
-          tamil: "BD AQUA SEAL 2K (OR) BD BUILDING ALL ROUNDER (OR) BD GARDEN GUARD"
+          name: "BD AQUA SEAL 2K (OR) BD BUILDING ALL ROUNDER",
+          tamil:
+            "SUNKEN SLAB மற்றும் கான்கிரீட் தண்ணீர் தொட்டிகளில் நீர்க்கசிவை தடுக்க",
         },
         {
           name: "BD AQUA SEAL 2K (OR) BD BUILDING ALL ROUNDER (OR) BD GARDEN GUARD",
-          tamil: "சிறிய நீர் அடைப்புக்கள் மற்றும் நீர் தாங்கல் தருவதற்கு"
-        }
+          tamil: "மொட்டைமாடி தோட்டம் அமைக்கும் இடங்களில் நீர்க்கசிவை தடுக்க",
+        },
       ],
     },
     {
       id: "concrete",
-      title: "FOR CONCRETE AREAS", 
+      title: "FOR CONCRETE AREAS",
       icon: <HardHat className="w-6 h-6" />,
       products: [
         {
-          name: "BD CONCRETE POWER",
-          tamil: "சுரமீட் கலவையில் சேர்க்கும் சிமெந்து பவுடர்"
+          name: "ADMIXTURE BD CONCRETE POWER",
+          tamil: "தரமான வலிமையான கான்கிரீட் போட கான்கிரீட்டுடன் கலக்க",
         },
         {
-          name: "BD CORROSHIELD CR (OR) COATING BD CORROSHIELD BR",
-          tamil: "RCC இரும்பு தண்டுகளின் அரிப்பு தடுக்க பயன்படும்"
+          name: "ADMIXTURE BD CORROSHIELD CR (OR) COATING BD CORROSHIELD BR",
+          tamil: "RCC-ல் இருக்கும் கம்பி துருப்பிடிக்காமல் இருக்க",
         },
         {
-          name: "BD CORROSHIELD ZR",
-          tamil: "இரும்பு அரிப்பு தடுக்கும் பூச்சு கலவை"
+          name: "BD CORROSHILED ZR",
+          tamil: "நீண்டகாலம் கம்பி துருப்பிடிக்காமல் இருக்க",
         },
         {
           name: "BD CRACK STOP MESH",
-          tamil: "மெஷ் வலையால் கிராக்குகள் தடுக்கும் தொழில்நுட்பம்"
+          tamil:
+            "பீம், காலம்களில் சுவர்கள் இணையும் இடங்களில் விரிசல்களை தடுக்க",
         },
         {
-          name: "BD SHUTTERING SEALER",
-          tamil: "SHUTTERING SHEET - கட்டிட பணிகளில் பூச்சு முடிப்பு வேலைகளுக்கு"
-        }
+          name: "SHUTTERING SHEET - ன் வழியாக கான்கிரீட் வழியாமலும் FINISHING நன்கு கிடைக்க BD SHUTTERING SEALER",
+          tamil: "",
+        },
       ],
     },
     {
-      id: "water-storage", 
+      id: "water-storage",
       title: "FOR WATER STORAGE AREAS",
       icon: <Waves className="w-6 h-6" />,
       products: [
         {
-          name: "BD AQUA SEAL TANK GUARD - EPOXY FOOD GRADE",
-          tamil: "உணவு பாதுகாப்பான நீர் தொட்டிகளுக்கான எபாக்சி பூச்சு"
+          name: "EPOXY FOOD GRADE கோட்டிங் BD AQUA SEAL TANK GUARD",
+          tamil: "தண்ணீர் தொட்டிகளில் பாசி, நீர்க்கசிவு இல்லாமல் இருக்க",
         },
         {
-          name: "BD PROTECT COAT CT 600", 
-          tamil: "SEPTIC TANK - கழிவு நீர் தொட்டிகளுக்கான பாதுகாப்பு பூச்சு"
+          name: "BD PROTECT COAT CT 600",
+          tamil:
+            "SEPTIC TANK-களில் வெளிப்புறத்தில் இருந்து நீர் உள்ளே வராமல் இருக்க",
         },
         {
           name: "BD AQUA SEAL 2K (OR) BD AQUA SEAL NANO & BD BUILDING ALL ROUNDER",
-          tamil: "சிறு நீர் கசிவுகள் மற்றும் நீர் தாங்கல் தருவதற்கு"
-        }
+          tamil:
+            "அனைத்து விதமான நீர்த்தேக்கத் தொட்டிகளிலும் நீர்க்கசிவை தடுக்க",
+        },
       ],
     },
     {
@@ -145,24 +155,25 @@ const KavashPage = () => {
       products: [
         {
           name: "BD CONCRETE BOND",
-          tamil: "பழைய மற்றும் புதிய கிராக்குகளுக்கு பயன்படும்"
+          tamil: "புதிய மற்றும் பழைய கான்கிரீட் இணைப்புகளுக்கு",
         },
         {
           name: "BD NANGURAM ANCHOR FIX (OR) BD NANGURAM ANCHOR FIX POWER",
-          tamil: "கற்கள் மற்றும் சுவர்களில் துளைகள் அடைக்க பயன்படும்"
+          tamil: "பழைய கான்கிரீட்டில் புதிய கம்பிகள் இணைக்க",
         },
         {
           name: "BD SEAL TAPE EJ",
-          tamil: "EXPANSION JOINT - விரிவடையும் இணைப்புகளுக்கு"
+          tamil: "EXPANSION JOINT-ல் நீர்க்கசிவு வராமல் இருக்க",
         },
         {
           name: "BD PLASTER BOND SBR (OR) BD BUILDING ALL ROUNDER",
-          tamil: "பிளாஸ்டர் பணிகளில் ஒட்டுதல் மற்றும் வலுவூட்டல்"
+          tamil: "இணைப்புகளில் பிணைப்பு அதிகம் தேவைப்படும் இடங்களுக்கு",
         },
         {
           name: "BD SEAL TAPE SA",
-          tamil: "ROOFING SHEET - மேற்கூரை தகடுகளின் இணைப்புகளுக்கு"
-        }
+          tamil:
+            "ROOFING SHEET மற்றும் சுவர் இணைப்புகளில் நீர்க்கசிவு வராமல் இருக்க",
+        },
       ],
     },
     {
@@ -172,18 +183,19 @@ const KavashPage = () => {
       products: [
         {
           name: "BD PROTECT COAT BW 500",
-          tamil: "கீழ் மாடி ஈரப்பதம் மற்றும் கசிவு தடுக்க பயன்படும்"
+          tamil: "Basement வழியாக சுவரில் நீர்க்கசிவு வராமல் இருக்க",
         },
         {
           name: "BD TERMITE STOP X",
-          tamil: "RISING DAMP - கீழிருந்து வரும் ஈரப்பதம் தடுக்க"
+          tamil: "கரையான்கள் வராமல் தடுக்க",
         },
         {
           name: "BD PROTECT COAT CT 600 B",
-          tamil: "சுவர், தரை போன்ற இடங்களில் பாதுகாப்பு பூச்சு"
-        }
+          tamil:
+            "அண்டர் கிரவுண்ட் டாங்க்களில் வெளிப்புறத்தில் இருந்து தண்ணீர் உள்ளே வராமல் இருக்க",
+        },
       ],
-    }
+    },
   ];
 
   // Quick stats data
@@ -198,7 +210,7 @@ const KavashPage = () => {
   return (
     <main className="min-h-screen bg-white" role="main">
       {/* Hero Section */}
-      <section 
+      <section
         className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-primary"
         aria-labelledby="kavash-hero-title"
       >
@@ -225,7 +237,10 @@ const KavashPage = () => {
                   KAVASH
                 </span>
               </div>
-              <h1 id="kavash-hero-title" className="text-2xl md:text-3xl font-semibold text-yellow-400 mb-6">
+              <h1
+                id="kavash-hero-title"
+                className="text-2xl md:text-3xl font-semibold text-yellow-400 mb-6"
+              >
                 Protection for Footing to Finishing
               </h1>
             </motion.div>
@@ -260,7 +275,7 @@ const KavashPage = () => {
       </section>
 
       {/* Quick Stats Section */}
-      <section 
+      <section
         className="py-16 bg-gradient-to-r from-gray-50 to-blue-50"
         aria-labelledby="kavash-stats-title"
       >
@@ -291,7 +306,10 @@ const KavashPage = () => {
               variants={fadeInUp}
               className="text-2xl md:text-3xl font-bold text-gray-800"
             >
-              <h2 id="kavash-stats-title" className="bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">
+              <h2
+                id="kavash-stats-title"
+                className="bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent"
+              >
                 "Prevention is Better than Cure"
               </h2>
             </motion.div>
@@ -300,10 +318,7 @@ const KavashPage = () => {
       </section>
 
       {/* Solutions by Area Section */}
-      <section 
-        className="py-20 bg-white"
-        aria-labelledby="solutions-title"
-      >
+      <section className="py-20 bg-white" aria-labelledby="solutions-title">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
@@ -312,7 +327,10 @@ const KavashPage = () => {
             variants={fadeInUp}
             className="text-center mb-16"
           >
-            <h2 id="solutions-title" className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2
+              id="solutions-title"
+              className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            >
               <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
                 Protection Solutions by Area
               </span>
@@ -378,13 +396,16 @@ const KavashPage = () => {
                                   <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                                   <div className="flex-1">
                                     <span className="text-gray-900 font-semibold block">
-                                      {typeof product === 'string' ? product : product.name}
+                                      {typeof product === "string"
+                                        ? product
+                                        : product.name}
                                     </span>
-                                    {typeof product === 'object' && product.tamil && (
-                                      <span className="text-gray-600 text-sm mt-1 block leading-relaxed">
-                                        {product.tamil}
-                                      </span>
-                                    )}
+                                    {typeof product === "object" &&
+                                      product.tamil && (
+                                        <span className="text-gray-600 text-sm mt-1 block leading-relaxed">
+                                          {product.tamil}
+                                        </span>
+                                      )}
                                   </div>
                                 </div>
                               </li>
