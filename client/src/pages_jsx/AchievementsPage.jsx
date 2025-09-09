@@ -21,6 +21,7 @@ import {
   Heart,
 } from "lucide-react";
 // Import award images
+import radioCityFmAudio from "@/assets/radio-city-fm-audio.aac";
 import excellenceAward1 from "@/assets/awards/excellence-award-1-new.png";
 import excellenceAward2 from "@/assets/awards/excellence-award-2-new.png";
 import womenEntrepreneurAward from "@/assets/awards/women-entrepreneur-award-new.png";
@@ -127,6 +128,7 @@ const AchievementsPage = () => {
       platform: "Radio City FM",
       icon: <Megaphone className="w-6 h-6 text-red-500" />,
       image: radioCityFmInterview,
+      audio: radioCityFmAudio,
       featured: true,
     },
     {
@@ -744,6 +746,24 @@ const AchievementsPage = () => {
                               >
                                 Media Coverage
                               </Badge>
+                              
+                              {media.audio && (
+                                <div className="mt-4">
+                                  <div className="flex items-center gap-2 mb-2">
+                                    <PlayCircle className="w-5 h-5 text-red-500" />
+                                    <span className="text-sm font-medium text-gray-700">Listen to Interview</span>
+                                  </div>
+                                  <audio 
+                                    controls 
+                                    className="w-full max-w-md bg-gray-50 rounded-lg"
+                                    preload="metadata"
+                                  >
+                                    <source src={media.audio} type="audio/aac" />
+                                    <source src={media.audio} type="audio/mpeg" />
+                                    Your browser does not support the audio element.
+                                  </audio>
+                                </div>
+                              )}
                             </div>
 
                             {media.image && (
