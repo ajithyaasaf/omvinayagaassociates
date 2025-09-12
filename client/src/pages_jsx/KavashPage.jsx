@@ -358,16 +358,23 @@ const KavashPage = () => {
                 variants={fadeInUp}
                 transition={{ delay: index * 0.1 }}
                 className="bg-gradient-to-br from-white to-gray-50 rounded-xl border-2 border-gray-100 hover:border-primary/30 transition-all shadow-lg hover:shadow-xl"
+                style={{ 
+                  alignSelf: "start",
+                  isolation: "isolate"
+                }}
               >
                 <button
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
+                    e.stopImmediatePropagation();
+                    console.log(`🔘 Clicked section: ${area.id}`);
                     toggleSection(area.id);
                   }}
                   className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 rounded-t-xl transition-colors"
                   aria-expanded={expandedSection === area.id}
                   aria-controls={`solution-${area.id}`}
+                  type="button"
                 >
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
@@ -388,7 +395,7 @@ const KavashPage = () => {
                   </div>
                 </button>
 
-                <AnimatePresence mode="wait">
+                <AnimatePresence>
                   {expandedSection === area.id && (
                     <motion.div
                       key={`solution-${area.id}`}
@@ -396,8 +403,13 @@ const KavashPage = () => {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ 
+                        duration: 0.2,
+                        ease: "easeInOut",
+                        layout: true
+                      }}
                       className="overflow-hidden"
+                      style={{ willChange: "height" }}
                     >
                       <div className="px-6 pb-6">
                         <div className="border-t border-gray-200 pt-4">
