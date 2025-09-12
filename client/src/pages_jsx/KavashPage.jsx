@@ -348,7 +348,7 @@ const KavashPage = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          <div className="columns-1 md:columns-2 gap-6 max-w-6xl mx-auto space-y-6">
             {solutionAreas.map((area, index) => (
               <motion.div
                 key={area.id}
@@ -358,9 +358,7 @@ const KavashPage = () => {
                 viewport={{ once: true }}
                 variants={fadeInUp}
                 transition={{ delay: index * 0.1 }}
-                className={`bg-gradient-to-br from-white to-gray-50 rounded-xl border-2 border-gray-100 hover:border-primary/30 transition-all shadow-lg hover:shadow-xl ${
-                  expandedSection === area.id ? "md:col-span-2" : ""
-                }`}
+                className="bg-gradient-to-br from-white to-gray-50 rounded-xl border-2 border-gray-100 hover:border-primary/30 transition-all shadow-lg hover:shadow-xl break-inside-avoid mb-6"
               >
                 <button
                   onClick={(e) => {
