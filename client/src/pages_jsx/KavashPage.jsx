@@ -352,16 +352,15 @@ const KavashPage = () => {
             {solutionAreas.map((area, index) => (
               <motion.div
                 key={area.id}
+                layout
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeInUp}
                 transition={{ delay: index * 0.1 }}
-                className="bg-gradient-to-br from-white to-gray-50 rounded-xl border-2 border-gray-100 hover:border-primary/30 transition-all shadow-lg hover:shadow-xl"
-                style={{ 
-                  alignSelf: "start",
-                  isolation: "isolate"
-                }}
+                className={`bg-gradient-to-br from-white to-gray-50 rounded-xl border-2 border-gray-100 hover:border-primary/30 transition-all shadow-lg hover:shadow-xl ${
+                  expandedSection === area.id ? "md:col-span-2" : ""
+                }`}
               >
                 <button
                   onClick={(e) => {
@@ -399,16 +398,15 @@ const KavashPage = () => {
                     <motion.div
                       key={`solution-${area.id}`}
                       id={`solution-${area.id}`}
+                      layout
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ 
                         duration: 0.2,
-                        ease: "easeInOut",
-                        layout: true
+                        ease: "easeInOut"
                       }}
                       className="overflow-hidden"
-                      style={{ willChange: "height" }}
                     >
                       <div className="px-6 pb-6">
                         <div className="border-t border-gray-200 pt-4">
