@@ -58,7 +58,13 @@ const KavashPage = () => {
 
   // Accordion-style: only one section open at a time for better mobile UX
   const toggleSection = (sectionId) => {
-    setExpandedSection(expandedSection === sectionId ? null : sectionId);
+    console.log(`🔘 Toggling section: ${sectionId}`);
+    console.log(`🔄 Current expandedSection: ${expandedSection}`);
+    
+    const newExpandedSection = expandedSection === sectionId ? null : sectionId;
+    console.log(`✅ Setting expandedSection to: ${newExpandedSection}`);
+    
+    setExpandedSection(newExpandedSection);
   };
 
   // Solutions by Area data with corrected Tamil content from the brochure
@@ -382,9 +388,10 @@ const KavashPage = () => {
                   </div>
                 </button>
 
-                <AnimatePresence>
+                <AnimatePresence mode="wait">
                   {expandedSection === area.id && (
                     <motion.div
+                      key={`solution-${area.id}`}
                       id={`solution-${area.id}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
