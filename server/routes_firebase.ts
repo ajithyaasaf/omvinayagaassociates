@@ -60,16 +60,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
   
   // Delete a contact submission
-  app.delete("/api/contacts/:id", async (req, res) => {
+  app.delete("/api/contacts", async (req, res) => {
     try {
       console.log(`=== DELETE CONTACT REQUEST ===`);
-      console.log(`Contact ID: ${req.params.id}`);
+      console.log(`Contact ID: ${req.query.id}`);
       console.log(`Request headers:`, req.headers);
       
-      const contactId = parseInt(req.params.id);
+      const contactId = parseInt(req.query.id as string);
       
       if (isNaN(contactId)) {
-        console.log(`Invalid contact ID: ${req.params.id}`);
+        console.log(`Invalid contact ID: ${req.query.id}`);
         return res.status(400).json({
           success: false,
           message: "Invalid contact ID"
@@ -178,16 +178,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
   
   // Delete an inquiry
-  app.delete("/api/inquiries/:id", async (req, res) => {
+  app.delete("/api/inquiries", async (req, res) => {
     try {
       console.log(`=== DELETE INQUIRY REQUEST ===`);
-      console.log(`Inquiry ID: ${req.params.id}`);
+      console.log(`Inquiry ID: ${req.query.id}`);
       console.log(`Request headers:`, req.headers);
       
-      const inquiryId = parseInt(req.params.id);
+      const inquiryId = parseInt(req.query.id as string);
       
       if (isNaN(inquiryId)) {
-        console.log(`Invalid inquiry ID: ${req.params.id}`);
+        console.log(`Invalid inquiry ID: ${req.query.id}`);
         return res.status(400).json({
           success: false,
           message: "Invalid inquiry ID"
@@ -895,16 +895,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
   
   // Delete an intent form submission
-  app.delete("/api/intents/:id", async (req, res) => {
+  app.delete("/api/intents", async (req, res) => {
     try {
       console.log(`=== DELETE INTENT REQUEST ===`);
-      console.log(`Intent ID: ${req.params.id}`);
+      console.log(`Intent ID: ${req.query.id}`);
       console.log(`Request headers:`, req.headers);
       
-      const intentId = parseInt(req.params.id);
+      const intentId = parseInt(req.query.id as string);
       
       if (isNaN(intentId)) {
-        console.log(`Invalid intent ID: ${req.params.id}`);
+        console.log(`Invalid intent ID: ${req.query.id}`);
         return res.status(400).json({
           success: false,
           message: "Invalid intent ID"
