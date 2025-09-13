@@ -628,7 +628,7 @@ const AdminPage = () => {
               Admin Login
             </h1>
             <p className="text-center text-muted-foreground mb-8">
-              {COMPANY_NAME} Admin Dashboard
+              {COMPANY_NAME}
             </p>
 
             <form onSubmit={handleLogin}>
@@ -699,7 +699,7 @@ const AdminPage = () => {
                 <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                   <Shield className="h-6 w-6 text-primary-foreground" />
                 </div>
-                Admin Dashboard
+                Welcome Back!
               </h1>
               <p className="text-muted-foreground text-lg">
                 Comprehensive management of customer inquiries and submissions
