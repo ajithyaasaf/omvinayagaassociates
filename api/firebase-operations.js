@@ -177,7 +177,13 @@ const deleteFromFirebaseTransactional = async (path, id) => {
     const db = getDatabase(firebaseApp);
     const collectionRef = ref(db, path);
     
-    console.log(`Attempting to delete item with ID ${id} from ${path}`);
+    const isDebug = process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true';
+    
+    if (isDebug) {
+      console.log(`=== FIREBASE DELETE OPERATION DEBUG ===`);
+      console.log(`Attempting to delete item with ID ${id} from ${path}`);
+      console.log(`Firebase project: ${process.env.FIREBASE_PROJECT_ID || 'fallback'}`);
+    }
     
     // Get current array data
     const collectionSnapshot = await get(collectionRef);
@@ -188,7 +194,9 @@ const deleteFromFirebaseTransactional = async (path, id) => {
     }
     
     const data = collectionSnapshot.val();
-    console.log(`Current data in ${path}:`, data);
+    if (isDebug) {
+      console.log(`Data type: ${typeof data}, isArray: ${Array.isArray(data)}, itemCount: ${Array.isArray(data) ? data.length : Object.keys(data || {}).length}`);
+    }
     
     // Handle array structure (current Firebase structure)
     if (Array.isArray(data)) {
@@ -197,9 +205,10 @@ const deleteFromFirebaseTransactional = async (path, id) => {
       
       if (targetIndex !== -1) {
         // Use transaction to safely remove from array by setting to null (preserves array structure)
+        if (isDebug) console.log(`Starting array transaction for index ${targetIndex}`);
         const result = await runTransaction(collectionRef, (currentData) => {
           if (!Array.isArray(currentData) || !currentData[targetIndex] || currentData[targetIndex].id !== parseInt(id)) {
-            console.log('Transaction aborted: data structure changed');
+            if (isDebug) console.log('Transaction aborted: data structure changed');
             return undefined; // Abort if structure changed
           }
           
@@ -207,9 +216,16 @@ const deleteFromFirebaseTransactional = async (path, id) => {
           const newData = [...currentData];
           newData[targetIndex] = null;
           
-          console.log(`Setting index ${targetIndex} to null`);
+          if (isDebug) console.log(`Setting index ${targetIndex} to null`);
           return newData;
         });
+        
+        if (isDebug) {
+          console.log(`Array transaction committed: ${result.committed}`);
+          if (!result.committed && result.error) {
+            console.log(`Transaction error:`, result.error);
+          }
+        }
         
         if (result.committed) {
           console.log(`Successfully deleted item with ID ${id} from ${path} (array structure)`);
@@ -236,13 +252,22 @@ const deleteFromFirebaseTransactional = async (path, id) => {
       }
       
       if (targetKey) {
+        if (isDebug) console.log(`Starting object transaction for key: ${targetKey}`);
         const targetRef = ref(db, `${path}/${targetKey}`);
         const result = await runTransaction(targetRef, (currentData) => {
           if (currentData === null) {
+            if (isDebug) console.log('Item already deleted');
             return undefined; // Already deleted
           }
           return null; // Delete the item
         });
+        
+        if (isDebug) {
+          console.log(`Object transaction committed: ${result.committed}`);
+          if (!result.committed && result.error) {
+            console.log(`Object transaction error:`, result.error);
+          }
+        }
         
         if (result.committed) {
           console.log(`Successfully deleted item with ID ${id} from ${path} (object structure)`);

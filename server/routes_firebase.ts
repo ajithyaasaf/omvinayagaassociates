@@ -373,10 +373,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Delete a product endpoint
-  app.delete("/api/products/:id", async (req, res) => {
+  // Delete a product endpoint  
+  app.delete("/api/products", async (req, res) => {
     try {
-      const productId = parseInt(req.params.id);
+      const productId = parseInt(req.query.id as string);
       
       // Delete product from Firebase
       const success = await storage.deleteProduct(productId);
@@ -513,9 +513,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Delete a service
-  app.delete("/api/services/:id", async (req, res) => {
+  app.delete("/api/services", async (req, res) => {
     try {
-      const serviceId = parseInt(req.params.id);
+      const serviceId = parseInt(req.query.id as string);
       
       // Delete service from Firebase
       const success = await storage.deleteService(serviceId);
@@ -661,9 +661,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Delete a testimonial
-  app.delete("/api/testimonials/:id", async (req, res) => {
+  app.delete("/api/testimonials", async (req, res) => {
     try {
-      const testimonialId = parseInt(req.params.id);
+      const testimonialId = parseInt(req.query.id as string);
       
       // Delete testimonial from Firebase
       const success = await storage.deleteTestimonial(testimonialId);
@@ -800,9 +800,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Delete a FAQ
-  app.delete("/api/faqs/:id", async (req, res) => {
+  app.delete("/api/faqs", async (req, res) => {
     try {
-      const faqId = parseInt(req.params.id);
+      const faqId = parseInt(req.query.id as string);
       
       // Delete FAQ from Firebase
       const success = await storage.deleteFaq(faqId);
