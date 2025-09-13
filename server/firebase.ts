@@ -683,7 +683,7 @@ export class FirebaseStorage {
       return Object.keys(intents).map(key => ({
         ...intents[key],
         id: parseInt(key),
-        createdAt: intents[key].createdAt ? new Date(intents[key].createdAt) : null
+        createdAt: intents[key].createdAt || new Date().toISOString()
       }));
     } catch (error) {
       console.error('Firebase getIntents error:', error);
