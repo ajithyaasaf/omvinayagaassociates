@@ -189,28 +189,22 @@ const deleteFromFirebaseTransactional = async (path, id) => {
     
     const isDebug = process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true';
     
-    // Always log in production for debugging
-    console.log(`=== FIREBASE DELETE OPERATION DEBUG ===`);
-    console.log(`Attempting to delete item with ID ${id} from ${path}`);
-    console.log(`Firebase project: ${process.env.FIREBASE_PROJECT_ID || 'fallback'}`);
-    console.log(`Environment: ${process.env.NODE_ENV || 'unknown'}`);
-    console.log(`Database URL: ${process.env.FIREBASE_DATABASE_URL ? 'SET' : 'MISSING'}`);
-    console.log(`Firebase App initialized: ${!!firebaseApp}`);
+    if (isDebug) {
+      console.log(`=== FIREBASE DELETE OPERATION DEBUG ===`);
+      console.log(`Attempting to delete item with ID ${id} from ${path}`);
+    }
     
     // Get current array data
     const collectionSnapshot = await get(collectionRef);
     
     if (!collectionSnapshot.exists()) {
-      console.log(`ERROR: Collection ${path} does not exist in Firebase`);
+      console.log(`Collection ${path} does not exist`);
       return { success: false, message: 'Collection not found' };
     }
     
     const data = collectionSnapshot.val();
-    console.log(`Data exists: ${!!data}`);
-    console.log(`Data type: ${typeof data}, isArray: ${Array.isArray(data)}`);
-    if (data) {
-      console.log(`Item count: ${Array.isArray(data) ? data.length : Object.keys(data).length}`);
-      console.log(`First few keys: ${Array.isArray(data) ? '[array indices]' : Object.keys(data).slice(0, 3).join(', ')}`);
+    if (isDebug) {
+      console.log(`Data type: ${typeof data}, isArray: ${Array.isArray(data)}, itemCount: ${Array.isArray(data) ? data.length : Object.keys(data || {}).length}`);
     }
     
     // Find target key with flexible ID matching (handles both string/number IDs)
@@ -223,7 +217,7 @@ const deleteFromFirebaseTransactional = async (path, id) => {
       if (targetIndex !== -1) {
         targetKey = targetIndex.toString();
       }
-      console.log(`Array structure: looking for ID ${targetId}, found at index:`, targetIndex);
+      if (isDebug) console.log(`Array structure: looking for ID ${targetId}, found at index:`, targetIndex);
     } else {
       // Object structure: find key where ID matches
       for (const [key, value] of Object.entries(data)) {
@@ -232,11 +226,10 @@ const deleteFromFirebaseTransactional = async (path, id) => {
           break;
         }
       }
-      console.log(`Object structure: looking for ID ${targetId}, found key:`, targetKey);
+      if (isDebug) console.log(`Object structure: looking for ID ${targetId}, found key:`, targetKey);
     }
     
     if (!targetKey) {
-      console.log(`ERROR: Item with ID ${targetId} not found in ${path}`);
       return { success: false, message: 'Item not found' };
     }
     
@@ -245,11 +238,10 @@ const deleteFromFirebaseTransactional = async (path, id) => {
       const targetRef = ref(db, `${path}/${targetKey}`);
       await remove(targetRef);
       
-      console.log(`SUCCESS: Deleted item with ID ${targetId} from ${path}/${targetKey}`);
       clearCache(path);
       return { success: true, message: 'Item deleted successfully' };
     } catch (error) {
-      console.log(`ERROR: Failed to delete ${path}/${targetKey}:`, error.message);
+      console.error(`Failed to delete ${path}/${targetKey}:`, error.message);
       return { success: false, message: `Delete operation failed: ${error.message}` };
     }
   });
