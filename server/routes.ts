@@ -7,6 +7,14 @@ import {
   contactSchema, inquirySchema, intentSchema, productSchema, serviceSchema, testimonialSchema, faqSchema,
   type Product, type Contact, type Inquiry, type Intent, type Service, type Testimonial, type FAQ
 } from "@shared/firebase-schema";
+import { 
+  getDataFromFirebase,
+  getPaginatedDataFromFirebase,
+  deleteFromFirebase,
+  createDataInFirebase,
+  withRetry,
+  clearCache
+} from "../api/firebase-operations";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API routes - prefix all routes with /api
@@ -15,12 +23,33 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // CONTACT ENDPOINTS
   // ======================
   
-  // Get all contacts
+  // Get all contacts with enterprise-grade operations
   app.get("/api/contacts", async (req, res) => {
     try {
-      const contacts = await storage.getContacts();
-      res.status(200).json(contacts);
+      // Support pagination for better performance
+      const page = parseInt(req.query.page as string) || undefined;
+      const limit = parseInt(req.query.limit as string) || undefined;
+      
+      if (page || limit) {
+        const paginationOptions = {
+          page: page || 1,
+          limit: limit || 50,
+          sortBy: req.query.sortBy as string || 'createdAt',
+          sortOrder: req.query.sortOrder as string || 'desc'
+        };
+        
+        const result = await getPaginatedDataFromFirebase('contacts', paginationOptions);
+        res.status(200).json({
+          success: true,
+          data: result.data,
+          pagination: result.pagination
+        });
+      } else {
+        const contacts = await getDataFromFirebase('contacts');
+        res.status(200).json(contacts);
+      }
     } catch (error) {
+      console.error('Error fetching contacts:', error);
       res.status(500).json({
         success: false,
         message: "Failed to fetch contacts"
@@ -28,19 +57,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
   
-  // Contact form endpoint
+  // Contact form endpoint with enterprise-grade operations
   app.post("/api/contacts", async (req, res) => {
     try {
       const parsedData = contactSchema.parse(req.body);
       
-      // Create contact in Firebase
-      const newContact = await storage.createContact(parsedData);
+      // Create contact using transactional Firebase operations
+      const result = await createDataInFirebase('contacts', parsedData);
       
-      res.status(200).json({
-        success: true,
-        message: "Contact form submitted successfully",
-        contact: newContact
-      });
+      if (result.success) {
+        clearCache('contacts'); // Clear cache for immediate consistency
+        res.status(200).json({
+          success: true,
+          message: "Contact form submitted successfully",
+          contact: result.data
+        });
+      } else {
+        throw new Error(result.message);
+      }
     } catch (error) {
       if (error instanceof z.ZodError) {
         res.status(400).json({

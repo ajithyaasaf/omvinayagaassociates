@@ -1,207 +1,17 @@
-// Firebase data endpoints for Vercel
-import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, get, remove, set } from 'firebase/database';
+// Enterprise-grade Firebase data endpoints for Vercel
+import { 
+  getDataFromFirebase,
+  getPaginatedDataFromFirebase, 
+  deleteFromFirebase,
+  createDataInFirebase,
+  createBackup,
+  scheduleBackups
+} from './firebase-operations.js';
 
-// Get Firebase config
-const getFirebaseConfig = () => {
-  return {
-    apiKey: process.env.FIREBASE_API_KEY,
-    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-    databaseURL: process.env.FIREBASE_DATABASE_URL,
-    projectId: process.env.FIREBASE_PROJECT_ID,
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.FIREBASE_APP_ID,
-    measurementId: process.env.FIREBASE_MEASUREMENT_ID,
-  };
-};
+// Start automated backup scheduling
+scheduleBackups();
 
-// Initialize Firebase app
-let firebaseApp;
-try {
-  const firebaseConfig = getFirebaseConfig();
-  firebaseApp = initializeApp(firebaseConfig);
-} catch (error) {
-  console.error('Error initializing Firebase:', error);
-}
-
-// Get data from Firebase based on path
-const getDataFromFirebase = async (path) => {
-  try {
-    const db = getDatabase(firebaseApp);
-    const dataRef = ref(db, path);
-    const snapshot = await get(dataRef);
-    
-    if (snapshot.exists()) {
-      const data = snapshot.val();
-      
-      // Convert object to array if it's not already one
-      if (data && typeof data === 'object' && !Array.isArray(data)) {
-        return Object.values(data);
-      }
-      
-      // Ensure we return an array
-      return Array.isArray(data) ? data : [];
-    } else {
-      return [];
-    }
-  } catch (error) {
-    console.error(`Error fetching ${path} from Firebase:`, error);
-    return [];
-  }
-};
-
-// Delete data from Firebase
-const deleteFromFirebase = async (path, id) => {
-  try {
-    const db = getDatabase(firebaseApp);
-    // Get all items first to find the item with matching id
-    const dataRef = ref(db, path);
-    const snapshot = await get(dataRef);
-    
-    if (!snapshot.exists()) {
-      return { success: false, message: 'No data found' };
-    }
-
-    const data = snapshot.val();
-    
-    // If data is an array, find the index with matching id
-    if (Array.isArray(data)) {
-      const index = data.findIndex(item => item && item.id === parseInt(id));
-      if (index === -1) {
-        return { success: false, message: 'Item not found' };
-      }
-      
-      // Create new array without the deleted item, filtering out null/undefined values
-      const updatedData = data
-        .filter(item => item !== null && item !== undefined && item.id !== parseInt(id));
-      
-      await remove(dataRef); // Remove all data
-      
-      // If there are remaining items, set them back
-      if (updatedData.length > 0) {
-        // Clean the data to ensure no undefined values
-        const cleanData = updatedData.map(item => {
-          if (item && typeof item === 'object') {
-            const cleaned = {};
-            Object.keys(item).forEach(key => {
-              if (item[key] !== undefined) {
-                cleaned[key] = item[key];
-              }
-            });
-            return cleaned;
-          }
-          return item;
-        });
-        
-        await set(dataRef, cleanData);
-      }
-      
-      return { success: true };
-    } 
-    // If data is an object with keys
-    else if (data && typeof data === 'object') {
-      // Find the key that has an object with matching id
-      let targetKey = null;
-      for (const key in data) {
-        if (data[key] && data[key].id === parseInt(id)) {
-          targetKey = key;
-          break;
-        }
-      }
-      
-      // Also check if the key itself matches the ID (since we now store by ID as key)
-      if (!targetKey && data[id]) {
-        targetKey = id;
-      }
-      
-      if (!targetKey) {
-        console.log(`Item with ID ${id} not found in data:`, Object.keys(data));
-        return { success: false, message: 'Item not found' };
-      }
-      
-      console.log(`Deleting item with key ${targetKey} from path ${path}/${targetKey}`);
-      
-      // Remove the specific item
-      const itemRef = ref(db, `${path}/${targetKey}`);
-      await remove(itemRef);
-      
-      console.log(`Successfully deleted item with ID ${id} from ${path}`);
-      return { success: true };
-    }
-    
-    return { success: false, message: 'Invalid data structure' };
-  } catch (error) {
-    console.error(`Error deleting from ${path}:`, error);
-    return { success: false, message: error.message };
-  }
-};
-
-// Create data in Firebase
-const createDataInFirebase = async (path, data) => {
-  try {
-    const db = getDatabase(firebaseApp);
-    const dataRef = ref(db, path);
-    
-    // First, get existing data
-    const snapshot = await get(dataRef);
-    let newId = 1;
-    
-    if (snapshot.exists()) {
-      const current = snapshot.val();
-      let existingIds = [];
-      
-      // Handle both array and object structures, filtering out null values
-      if (Array.isArray(current)) {
-        existingIds = current
-          .filter(item => item !== null && item !== undefined && typeof item === 'object' && 'id' in item)
-          .map(item => item.id)
-          .filter(id => !isNaN(parseInt(id)))
-          .map(id => parseInt(id));
-      } else if (current && typeof current === 'object') {
-        existingIds = Object.keys(current)
-          .filter(key => !isNaN(parseInt(key)) && current[key] !== null)
-          .map(key => parseInt(key));
-      }
-      
-      if (existingIds.length > 0) {
-        newId = Math.max(...existingIds) + 1;
-      }
-    }
-    
-    // Clean the data to ensure no undefined values
-    const cleanData = {
-      name: data.name || "",
-      email: data.email || null,
-      phone: data.phone || "",
-      issueType: data.issueType || "",
-      message: data.message || null,
-      address: data.address || null,
-      id: newId,
-      createdAt: new Date().toISOString()
-    };
-    
-    // Remove any undefined values completely
-    Object.keys(cleanData).forEach(key => {
-      if (cleanData[key] === undefined) {
-        delete cleanData[key];
-      }
-    });
-    
-    console.log('Creating data with clean object:', cleanData);
-    
-    // Save directly to the specific ID path to avoid array structure issues
-    const itemRef = ref(db, `${path}/${newId}`);
-    await set(itemRef, cleanData);
-    
-    return { success: true, data: cleanData };
-  } catch (error) {
-    console.error(`Error creating data in ${path}:`, error);
-    return { success: false, message: error.message };
-  }
-};
-
-// Handler for API routes
+// Handler for API routes with enhanced enterprise features
 export default async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -214,7 +24,7 @@ export default async function handler(req, res) {
   }
   
   // Extract the path from the URL
-  const { url } = req;
+  const { url, query } = req;
   const pathMatch = url.match(/\/api\/([a-zA-Z]+)(\/(\d+))?$/);
   
   if (!pathMatch || !pathMatch[1]) {
@@ -248,82 +58,201 @@ export default async function handler(req, res) {
     case 'faqs':
       firebasePath = 'faqs';
       break;
+    case 'backup':
+      // Special endpoint for manual backups
+      if (req.method === 'POST') {
+        try {
+          const backup = await createBackup();
+          return res.status(200).json({
+            success: true,
+            message: 'Backup created successfully',
+            backup
+          });
+        } catch (error) {
+          console.error('Manual backup failed:', error);
+          return res.status(500).json({
+            success: false,
+            message: 'Backup creation failed',
+            error: process.env.NODE_ENV === 'development' ? error.message : undefined
+          });
+        }
+      }
+      return res.status(405).json({ error: 'Method not allowed for backup endpoint' });
     default:
       return res.status(404).json({ error: 'Data type not found' });
   }
   
   try {
-    // Handle GET requests
+    // Handle GET requests with pagination support
     if (req.method === 'GET') {
-      // Get data from Firebase
-      let data = await getDataFromFirebase(firebasePath);
+      // Check if pagination is requested
+      const page = parseInt(query.page) || 1;
+      const limit = parseInt(query.limit) || 50;
+      const usePagination = query.page || query.limit;
       
-      // Special handling for products to match API format
-      if (dataType === 'products') {
+      if (usePagination) {
+        // Use paginated API for better performance
+        const paginationOptions = {
+          page,
+          limit,
+          sortBy: query.sortBy || 'createdAt',
+          sortOrder: query.sortOrder || 'desc',
+          startDate: query.startDate || null,
+          endDate: query.endDate || null
+        };
+        
+        const result = await getPaginatedDataFromFirebase(firebasePath, paginationOptions);
+        
+        // Special handling for products to match existing API format
+        if (dataType === 'products') {
+          return res.status(200).json({
+            success: true,
+            products: result.data,
+            pagination: result.pagination
+          });
+        }
+        
         return res.status(200).json({
           success: true,
-          products: Array.isArray(data) ? data : []
+          data: result.data,
+          pagination: result.pagination
         });
+      } else {
+        // Use regular API for backwards compatibility
+        let data = await getDataFromFirebase(firebasePath);
+        
+        // Special handling for products to match existing API format
+        if (dataType === 'products') {
+          return res.status(200).json({
+            success: true,
+            products: Array.isArray(data) ? data : []
+          });
+        }
+        
+        // For all other endpoints, return array directly
+        if (data && typeof data === 'object' && !Array.isArray(data)) {
+          const arrayData = Object.values(data).filter(item => item !== null && item !== undefined);
+          return res.status(200).json(arrayData);
+        }
+        return res.status(200).json(Array.isArray(data) ? data.filter(item => item !== null) : []);
       }
-      
-      // For all other endpoints, return array directly
-      // Handle object structure - convert to array and filter out null values
-      if (data && typeof data === 'object' && !Array.isArray(data)) {
-        const arrayData = Object.values(data).filter(item => item !== null && item !== undefined);
-        return res.status(200).json(arrayData);
-      }
-      return res.status(200).json(Array.isArray(data) ? data.filter(item => item !== null) : []);
     }
     
-    // Handle POST requests - for form submissions
+    // Handle POST requests - for form submissions with improved validation
     if (req.method === 'POST') {
-      // Parse the request body
       const formData = req.body;
       
       if (!formData) {
-        return res.status(400).json({ error: 'Request body is required' });
+        return res.status(400).json({ 
+          success: false,
+          error: 'Request body is required' 
+        });
       }
       
-      // Create data in Firebase
+      // Enhanced validation based on data type
+      const validationResult = validateFormData(dataType, formData);
+      if (!validationResult.isValid) {
+        return res.status(400).json({
+          success: false,
+          error: 'Invalid form data',
+          details: validationResult.errors
+        });
+      }
+      
+      console.log(`Creating ${dataType} with data:`, formData);
+      
+      // Create data using transactional operation
       const result = await createDataInFirebase(firebasePath, formData);
       
       if (result.success) {
-        return res.status(200).json({ 
-          success: true, 
-          message: `${dataType.slice(0, -1)} submitted successfully`,
-          data: result.data 
+        return res.status(200).json({
+          success: true,
+          message: `${dataType.slice(0, -1)} created successfully`,
+          data: result.data
         });
       } else {
-        return res.status(500).json({ error: result.message || 'Submission failed' });
+        throw new Error(result.message);
       }
     }
     
-    // Handle DELETE requests
-    if (req.method === 'DELETE') {
-      // We need an ID for delete operations
-      if (!id) {
-        return res.status(400).json({ error: 'ID is required for DELETE operations' });
-      }
+    // Handle DELETE requests for individual items
+    if (req.method === 'DELETE' && id) {
+      console.log(`Deleting ${dataType} with ID: ${id}`);
       
+      // Use transactional delete operation
       const result = await deleteFromFirebase(firebasePath, id);
       
       if (result.success) {
-        return res.status(200).json({ success: true, message: `${dataType.slice(0, -1)} deleted successfully` });
+        return res.status(200).json({
+          success: true,
+          message: `${dataType.slice(0, -1)} deleted successfully`
+        });
       } else {
-        return res.status(404).json({ error: result.message || 'Delete operation failed' });
+        return res.status(404).json({
+          success: false,
+          message: result.message || 'Item not found'
+        });
       }
     }
     
     // If we get here, the method is not supported
     return res.status(405).json({ error: 'Method not allowed' });
+    
   } catch (error) {
-    console.error(`Error in API handler for ${dataType}:`, error);
+    console.error(`Error in ${dataType} API handler:`, error);
     return res.status(500).json({ 
+      success: false,
       error: 'Internal server error',
       details: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
 }
 
-// Export the helper functions for use in other API routes
-export { getDataFromFirebase, deleteFromFirebase, createDataInFirebase };
+// Enhanced form validation function
+function validateFormData(dataType, data) {
+  const errors = [];
+  
+  // Common validations
+  if (!data.name || data.name.trim().length < 1) {
+    errors.push('Name is required');
+  }
+  
+  if (!data.phone || data.phone.trim().length < 5) {
+    errors.push('Valid phone number is required');
+  }
+  
+  // Type-specific validations
+  switch (dataType) {
+    case 'contacts':
+      if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+        errors.push('Valid email address is required');
+      }
+      if (!data.service || data.service.trim().length < 1) {
+        errors.push('Service selection is required');
+      }
+      if (!data.message || data.message.trim().length < 5) {
+        errors.push('Message must be at least 5 characters');
+      }
+      if (data.consent !== true) {
+        errors.push('Consent agreement is required');
+      }
+      break;
+      
+    case 'inquiries':
+      if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+        errors.push('Invalid email address format');
+      }
+      break;
+      
+    case 'intents':
+      if (data.consent !== undefined && data.consent !== true) {
+        errors.push('Consent agreement is required');
+      }
+      break;
+  }
+  
+  return {
+    isValid: errors.length === 0,
+    errors
+  };
+}
