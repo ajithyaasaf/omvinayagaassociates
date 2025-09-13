@@ -5,8 +5,15 @@ import {
   query, orderByChild, limitToLast, limitToFirst, startAt, endAt
 } from 'firebase/database';
 
-// Get Firebase config
+// Get Firebase config with validation
 const getFirebaseConfig = () => {
+  const requiredVars = ['FIREBASE_API_KEY', 'FIREBASE_DATABASE_URL', 'FIREBASE_PROJECT_ID'];
+  const missing = requiredVars.filter(varName => !process.env[varName]);
+  
+  if (missing.length > 0) {
+    throw new Error(`Firebase configuration missing: ${missing.join(', ')} must be set in environment variables`);
+  }
+  
   return {
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
@@ -19,13 +26,16 @@ const getFirebaseConfig = () => {
   };
 };
 
-// Initialize Firebase app
+// Initialize Firebase app with better error handling
 let firebaseApp;
 try {
   const firebaseConfig = getFirebaseConfig();
+  console.log('Initializing Firebase with project:', firebaseConfig.projectId);
   firebaseApp = initializeApp(firebaseConfig);
+  console.log('Firebase initialized successfully');
 } catch (error) {
-  console.error('Error initializing Firebase:', error);
+  console.error('Critical: Firebase initialization failed:', error.message);
+  throw error; // This will cause serverless functions to fail fast instead of silently
 }
 
 // Retry mechanism for Firebase operations

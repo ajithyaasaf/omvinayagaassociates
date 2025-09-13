@@ -43,7 +43,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       if (error instanceof z.ZodError) {
         console.log('Contact form validation error:', JSON.stringify(error.errors, null, 2));
-        console.log('Contact form data received:', JSON.stringify(req.body, null, 2));
+        if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
+          console.log('Contact form data received (masked for production)');
+        }
         res.status(400).json({
           success: false,
           message: "Invalid form data",
@@ -64,7 +66,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       console.log(`=== DELETE CONTACT REQUEST ===`);
       console.log(`Contact ID: ${req.query.id}`);
-      console.log(`Request headers:`, req.headers);
+      if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
+        console.log('Contact DELETE request received');
+      }
       
       const contactId = parseInt(req.query.id as string);
       
@@ -124,13 +128,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/inquiries", async (req, res) => {
     try {
       console.log('=== INQUIRY FORM SUBMISSION ===');
-      console.log('Raw request body:', JSON.stringify(req.body, null, 2));
-      console.log('Request headers:', JSON.stringify(req.headers, null, 2));
+      if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
+        console.log('Inquiry POST request received (body/headers masked for production)');
+      }
       console.log('Content-Type:', req.get('Content-Type'));
       
       // Validate the request body
       const parsedData = inquirySchema.parse(req.body);
-      console.log('Inquiry form parsed successfully:', JSON.stringify(parsedData, null, 2));
+      if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
+        console.log('Inquiry form parsed successfully (data masked for production)');
+      }
       
       // Prepare data for Firebase with proper null handling
       const inquiryDataForFirebase = {
@@ -142,11 +149,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
         address: parsedData.address || null
       };
       
-      console.log('Data prepared for Firebase:', JSON.stringify(inquiryDataForFirebase, null, 2));
+      if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
+        console.log('Data prepared for Firebase (masked in production)');
+      }
       
       // Create inquiry in Firebase
       const newInquiry = await storage.createInquiry(inquiryDataForFirebase);
-      console.log('Inquiry created successfully in Firebase:', JSON.stringify(newInquiry, null, 2));
+      if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
+        console.log('Inquiry created successfully in Firebase');
+      }
       
       res.status(200).json({
         success: true,
@@ -157,7 +168,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (error instanceof z.ZodError) {
         console.error('=== INQUIRY VALIDATION ERROR ===');
         console.error('Validation errors:', JSON.stringify(error.errors, null, 2));
-        console.error('Request body that failed validation:', JSON.stringify(req.body, null, 2));
+        if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
+          console.error('Request body that failed validation (masked for production)');
+        }
         res.status(400).json({
           success: false,
           message: "Invalid inquiry data",
@@ -182,7 +195,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       console.log(`=== DELETE INQUIRY REQUEST ===`);
       console.log(`Inquiry ID: ${req.query.id}`);
-      console.log(`Request headers:`, req.headers);
+      if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
+        console.log('Inquiry DELETE request received');
+      }
       
       const inquiryId = parseInt(req.query.id as string);
       
@@ -899,7 +914,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       console.log(`=== DELETE INTENT REQUEST ===`);
       console.log(`Intent ID: ${req.query.id}`);
-      console.log(`Request headers:`, req.headers);
+      if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
+        console.log('Intent DELETE request received');
+      }
       
       const intentId = parseInt(req.query.id as string);
       
@@ -987,12 +1004,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Test inquiry endpoint with detailed logging for production debugging
-  app.post("/api/debug/inquiry-test", async (req, res) => {
+  // Only available in development or when DEBUG is enabled
+  if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
+    app.post("/api/debug/inquiry-test", async (req, res) => {
     try {
       console.log('=== DEBUG INQUIRY TEST ===');
       console.log('Environment:', process.env.NODE_ENV);
-      console.log('Request body:', JSON.stringify(req.body, null, 2));
-      console.log('Request headers:', JSON.stringify(req.headers, null, 2));
+      if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
+        console.log('Debug inquiry test endpoint called (body/headers masked for production)');
+      }
       
       // Test the same logic as the real inquiry endpoint
       const testData = {
@@ -1033,7 +1053,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         stack: (error as Error).stack
       });
     }
-  });
+    });
+  } else {
+    // Return 404 for debug endpoint in production
+    app.post("/api/debug/inquiry-test", (_req, res) => {
+      res.status(404).json({ message: 'Debug endpoint not available in production' });
+    });
+  }
 
   // Set up authentication if needed
   // setupAuth(app);
