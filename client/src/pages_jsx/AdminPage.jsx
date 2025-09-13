@@ -831,37 +831,18 @@ const AdminPage = () => {
                           </span>
                         </span>
                       ) : (
-                        "Advanced Filters"
+                        "Date Filter"
                       )}
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-md">
                     <DialogHeader>
-                      <DialogTitle>Filter Data</DialogTitle>
+                      <DialogTitle>Date Range Filter</DialogTitle>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
-                      <div className="space-y-1">
-                        <label
-                          htmlFor="advanced-search"
-                          className="text-sm font-medium text-foreground"
-                        >
-                          Search
-                        </label>
-                        <Input
-                          id="advanced-search"
-                          placeholder="Search anything..."
-                          value={searchTerm}
-                          onChange={(e) => setSearchTerm(e.target.value)}
-                          className="mt-1"
-                        />
-                        <p className="text-xs text-muted-foreground mt-1">
-                          Searches across all fields (name, phone, email, etc.)
-                        </p>
-                      </div>
-
-                      <div className="pt-2 border-t">
-                        <h4 className="text-sm font-medium mb-2 text-foreground">
-                          Date Range
+                      <div>
+                        <h4 className="text-sm font-medium mb-3 text-foreground">
+                          Select Date Range
                         </h4>
                         <div className="grid grid-cols-2 gap-4">
                           <div className="space-y-1">
@@ -893,42 +874,9 @@ const AdminPage = () => {
                             />
                           </div>
                         </div>
-                      </div>
-
-                      <div className="pt-2 border-t">
-                        <h4 className="text-sm font-medium mb-2 text-foreground">
-                          Sort Order
-                        </h4>
-                        <div className="grid grid-cols-2 gap-2">
-                          <Button
-                            variant={
-                              sortOrder === "desc" ? "default" : "outline"
-                            }
-                            size="sm"
-                            onClick={() => setSortOrder("desc")}
-                            className={
-                              sortOrder === "desc"
-                                ? "bg-primary hover:bg-primary/90 text-primary-foreground"
-                                : "text-foreground"
-                            }
-                          >
-                            Newest First
-                          </Button>
-                          <Button
-                            variant={
-                              sortOrder === "asc" ? "default" : "outline"
-                            }
-                            size="sm"
-                            onClick={() => setSortOrder("asc")}
-                            className={
-                              sortOrder === "asc"
-                                ? "bg-primary hover:bg-primary/90 text-primary-foreground"
-                                : "text-foreground"
-                            }
-                          >
-                            Oldest First
-                          </Button>
-                        </div>
+                        <p className="text-xs text-muted-foreground mt-2">
+                          Filter data by submission date range
+                        </p>
                       </div>
                     </div>
                     <DialogFooter>
@@ -937,18 +885,16 @@ const AdminPage = () => {
                         onClick={() => {
                           setStartDate("");
                           setEndDate("");
-                          setSearchTerm("");
-                          setSortOrder("desc");
                         }}
                         className="text-foreground"
                       >
-                        Reset All
+                        Clear Dates
                       </Button>
                       <Button
                         onClick={() => setIsFilterDialogOpen(false)}
                         className="bg-primary hover:bg-primary/90 text-primary-foreground"
                       >
-                        Apply Filters
+                        Apply Filter
                       </Button>
                     </DialogFooter>
                   </DialogContent>
