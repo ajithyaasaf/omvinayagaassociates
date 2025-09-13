@@ -5,19 +5,19 @@
   "public": true,
   "routes": [
     {
-      "src": "/api/products(.*)",
-      "dest": "/api/firebase-data.js"
-    },
-    {
       "src": "/api/inquiries(.*)",
-      "dest": "/api/firebase-data.js"
+      "dest": "/api/inquiries.js"
     },
     {
       "src": "/api/contacts(.*)",
-      "dest": "/api/firebase-data.js"
+      "dest": "/api/contacts.js"
     },
     {
       "src": "/api/intents(.*)",
+      "dest": "/api/intents.js"
+    },
+    {
+      "src": "/api/products(.*)",
       "dest": "/api/firebase-data.js"
     },
     {
@@ -37,16 +37,8 @@
       "dest": "/api/visitors.js"
     },
     {
-      "src": "/api/debug-firebase",
-      "dest": "/api/debug-firebase.js"
-    },
-    {
-      "src": "/api/test-visitors",
-      "dest": "/api/test-visitors.js"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/server.js"
+      "src": "/api/firebase-config",
+      "dest": "/api/firebase-config.js"
     },
     {
       "handle": "filesystem"

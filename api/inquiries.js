@@ -1,5 +1,5 @@
 // Vercel API route for inquiries (GET all inquiries, DELETE specific inquiry)
-import { getDataFromFirebase, deleteFromFirebaseTransactional } from './firebase-data.js';
+import { getDataFromFirebase, deleteFromFirebaseTransactional } from './firebase-operations.js';
 
 export default async function handler(req, res) {
   // Set CORS headers

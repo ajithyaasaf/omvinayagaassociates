@@ -1,5 +1,5 @@
 // Vercel API route for contacts (GET all contacts, DELETE specific contact)
-import { getDataFromFirebase, deleteFromFirebaseTransactional } from './firebase-data.js';
+import { getDataFromFirebase, deleteFromFirebaseTransactional } from './firebase-operations.js';
 
 export default async function handler(req, res) {
   // Set CORS headers
