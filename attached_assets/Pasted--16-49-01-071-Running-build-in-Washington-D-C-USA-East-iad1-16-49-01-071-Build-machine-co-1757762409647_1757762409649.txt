@@ -1,0 +1,86 @@
+[16:49:01.071] Running build in Washington, D.C., USA (East) – iad1
+[16:49:01.071] Build machine configuration: 2 cores, 8 GB
+[16:49:01.108] Cloning github.com/ajithyaasaf/omvinayagaassociates (Branch: main, Commit: fe88b24)
+[16:49:05.737] Cloning completed: 4.629s
+[16:49:06.811] Found .vercelignore
+[16:49:06.848] Removed 167 ignored files defined in .vercelignore
+[16:49:06.848]   /.git/config
+[16:49:06.849]   /.git/description
+[16:49:06.849]   /.git/FETCH_HEAD
+[16:49:06.849]   /.git/HEAD
+[16:49:06.849]   /.git/hooks/applypatch-msg.sample
+[16:49:06.849]   /.git/hooks/commit-msg.sample
+[16:49:06.849]   /.git/hooks/fsmonitor-watchman.sample
+[16:49:06.849]   /.git/hooks/post-update.sample
+[16:49:06.849]   /.git/hooks/pre-applypatch.sample
+[16:49:06.850]   /.git/hooks/pre-commit.sample
+[16:49:06.909] Restored build cache from previous deployment (97w828U4H1FCaF8Ze4yCwHsTQ1Sq)
+[16:49:07.491] Running "vercel build"
+[16:49:07.890] Vercel CLI 47.1.1
+[16:49:08.864] Installing dependencies...
+[16:49:10.272] 
+[16:49:10.273] up to date in 1s
+[16:49:10.274] 
+[16:49:10.274] 60 packages are looking for funding
+[16:49:10.274]   run `npm fund` for details
+[16:49:10.671] [36mvite v5.4.20 [32mbuilding for production...[36m[39m
+[16:49:10.744] transforming...
+[16:49:11.068] Browserslist: browsers data (caniuse-lite) is 11 months old. Please run:
+[16:49:11.068]   npx update-browserslist-db@latest
+[16:49:11.068]   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[16:49:17.790] [32m✓[39m 2149 modules transformed.
+[16:49:18.125] rendering chunks...
+[16:49:18.475] computing gzip size...
+[16:49:18.690] [2m../dist/public/[22m[32mindex.html                                          [39m[1m[2m    2.28 kB[22m[1m[22m[2m │ gzip:   0.92 kB[22m
+[16:49:18.691] [2m../dist/public/[22m[2massets/[22m[32mdr_kamaleeswari-DXK1yygq.jpg                 [39m[1m[2m   18.79 kB[22m[1m[22m
+[16:49:18.691] [2m../dist/public/[22m[2massets/[22m[32mLogo-BxddjAXc.png                            [39m[1m[2m   24.10 kB[22m[1m[22m
+[16:49:18.691] [2m../dist/public/[22m[2massets/[22m[32mjeyaram-5UpTAgzC.jpg                         [39m[1m[2m   45.78 kB[22m[1m[22m
+[16:49:18.692] [2m../dist/public/[22m[2massets/[22m[32mterrace_after-D6BZjtZh.jpg                   [39m[1m[2m   55.54 kB[22m[1m[22m
+[16:49:18.692] [2m../dist/public/[22m[2massets/[22m[32mterrace_before-DjlSeFM3.jpg                  [39m[1m[2m   58.90 kB[22m[1m[22m
+[16:49:18.692] [2m../dist/public/[22m[2massets/[22m[32mafter_repair-BMfjjUuD.jpg                    [39m[1m[2m  120.84 kB[22m[1m[22m
+[16:49:18.692] [2m../dist/public/[22m[2massets/[22m[32mnew-DySerBed.jpg                             [39m[1m[2m  135.36 kB[22m[1m[22m
+[16:49:18.692] [2m../dist/public/[22m[2massets/[22m[32mbuilding-doctor-icon-BoVDC8BN.png            [39m[1m[2m  145.67 kB[22m[1m[22m
+[16:49:18.693] [2m../dist/public/[22m[2massets/[22m[32mbefore_repair-CymHiO7N.jpg                   [39m[1m[2m  180.96 kB[22m[1m[22m
+[16:49:18.693] [2m../dist/public/[22m[2massets/[22m[32mexcellence-award-2-new-XUbNNqLC.png          [39m[1m[2m  201.95 kB[22m[1m[22m
+[16:49:18.693] [2m../dist/public/[22m[2massets/[22m[32mexcellence-award-1-new-Caqf9O5r.png          [39m[1m[2m  241.10 kB[22m[1m[22m
+[16:49:18.697] [2m../dist/public/[22m[2massets/[22m[32mamce-pongal-celebration-B4Cc6At4.png         [39m[1m[2m  285.46 kB[22m[1m[22m
+[16:49:18.697] [2m../dist/public/[22m[2massets/[22m[32msealants-BhV9toIN.png                        [39m[1m[2m  325.49 kB[22m[1m[22m
+[16:49:18.697] [2m../dist/public/[22m[2massets/[22m[32mthermal-DhP24P2x.png                         [39m[1m[2m  376.67 kB[22m[1m[22m
+[16:49:18.697] [2m../dist/public/[22m[2massets/[22m[32mTile-Aids-CQw6-Ylx.png                       [39m[1m[2m  390.71 kB[22m[1m[22m
+[16:49:18.698] [2m../dist/public/[22m[2massets/[22m[32mcidc-waterproofing-certificate-C0S8jo0u.png  [39m[1m[2m  481.59 kB[22m[1m[22m
+[16:49:18.698] [2m../dist/public/[22m[2massets/[22m[32mmadurai-iconic-award-B9YlqXas.png            [39m[1m[2m  674.83 kB[22m[1m[22m
+[16:49:18.698] [2m../dist/public/[22m[2massets/[22m[32mimg1-C_SXjb03.png                            [39m[1m[2m  754.45 kB[22m[1m[22m
+[16:49:18.698] [2m../dist/public/[22m[2massets/[22m[32mmohamed-sathak-college-BImnD7nc.png          [39m[1m[2m1,176.12 kB[22m[1m[22m
+[16:49:18.699] [2m../dist/public/[22m[2massets/[22m[32mfatima-college-JTSOklT4.png                  [39m[1m[2m1,455.47 kB[22m[1m[22m
+[16:49:18.699] [2m../dist/public/[22m[2massets/[22m[32mradio-city-fm-audio-DMNmg50f.aac             [39m[1m[2m1,484.74 kB[22m[1m[22m
+[16:49:18.699] [2m../dist/public/[22m[2massets/[22m[32mwomen-entrepreneur-award-new-D9hSWMjU.png    [39m[1m[2m1,759.43 kB[22m[1m[22m
+[16:49:18.699] [2m../dist/public/[22m[2massets/[22m[32mnmssvn-college-B08YEhB7.png                  [39m[1m[2m1,860.26 kB[22m[1m[22m
+[16:49:18.699] [2m../dist/public/[22m[2massets/[22m[32mmcube-mou-partnership-xTyBH8BW.png           [39m[1m[2m2,352.41 kB[22m[1m[22m
+[16:49:18.699] [2m../dist/public/[22m[2massets/[22m[32mradio-city-fm-interview-BexbpnWy.png         [39m[1m[2m2,566.64 kB[22m[1m[22m
+[16:49:18.699] [2m../dist/public/[22m[2massets/[22m[32mvelammal-college-award-CDlCZjbA.png          [39m[1m[2m2,860.80 kB[22m[1m[22m
+[16:49:18.699] [2m../dist/public/[22m[2massets/[22m[32mkakkaipadiniyar-school-rBU26RRo.png          [39m[1m[2m2,946.18 kB[22m[1m[22m
+[16:49:18.700] [2m../dist/public/[22m[2massets/[22m[32mvelammal-college-lecture-Chb24yv0.png        [39m[1m[2m3,400.26 kB[22m[1m[22m
+[16:49:18.700] [2m../dist/public/[22m[2massets/[22m[32mdiwali-celebrations-CjAREzTd.png             [39m[1m[2m5,494.58 kB[22m[1m[22m
+[16:49:18.700] [2m../dist/public/[22m[2massets/[22m[32mteam-achievement-DV4aWtWd.png                [39m[1m[2m6,552.60 kB[22m[1m[22m
+[16:49:18.700] [2m../dist/public/[22m[2massets/[22m[32mpudhuyugam-tv-program-TYVbb1aF.png           [39m[1m[2m7,254.92 kB[22m[1m[22m
+[16:49:18.700] [2m../dist/public/[22m[2massets/[22m[35mindex-0kzXWAfK.css                           [39m[1m[2m  128.97 kB[22m[1m[22m[2m │ gzip:  19.08 kB[22m
+[16:49:18.700] [2m../dist/public/[22m[2massets/[22m[36mnot-found-B_b8wt0n.js                        [39m[1m[2m    0.68 kB[22m[1m[22m[2m │ gzip:   0.39 kB[22m
+[16:49:18.700] [2m../dist/public/[22m[2massets/[22m[36mcard-DOKHlveb.js                             [39m[1m[2m    0.99 kB[22m[1m[22m[2m │ gzip:   0.37 kB[22m
+[16:49:18.701] [2m../dist/public/[22m[2massets/[22m[36mAchievementsPage-r7Z-EO1j.js                 [39m[1m[2m   32.43 kB[22m[1m[22m[2m │ gzip:   6.14 kB[22m
+[16:49:18.701] [2m../dist/public/[22m[2massets/[22m[36mProductDetailPage-Bh01Ixo_.js                [39m[1m[2m   35.40 kB[22m[1m[22m[2m │ gzip:   9.90 kB[22m
+[16:49:18.701] [2m../dist/public/[22m[2massets/[22m[36mAdminPage-B4oATvST.js                        [39m[1m[2m   58.79 kB[22m[1m[22m[2m │ gzip:  12.13 kB[22m
+[16:49:18.701] [2m../dist/public/[22m[2massets/[22m[36mKavashPage-DrCOFK6z.js                       [39m[1m[2m   86.51 kB[22m[1m[22m[2m │ gzip:  33.31 kB[22m
+[16:49:18.701] [2m../dist/public/[22m[2massets/[22m[36mindex-C6t3NcoT.js                            [39m[1m[33m  774.13 kB[39m[22m[2m │ gzip: 227.48 kB[22m
+[16:49:18.702] [33m
+[16:49:18.702] (!) Some chunks are larger than 500 kB after minification. Consider:
+[16:49:18.702] - Using dynamic import() to code-split the application
+[16:49:18.702] - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+[16:49:18.702] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+[16:49:18.703] [32m✓ built in 8.00s[39m
+[16:49:18.771] 
+[16:49:18.778]   dist/index.js  60.8kb
+[16:49:18.778] 
+[16:49:18.778] ⚡ Done in 14ms
+[16:49:24.631] Build Completed in /vercel/output [16s]
+[16:49:24.897] Deploying outputs...
+[16:49:26.689] Error: No more than 12 Serverless Functions can be added to a Deployment on the Hobby plan. Create a team (Pro plan) to deploy more. Learn More: https://vercel.link/function-count-limit
