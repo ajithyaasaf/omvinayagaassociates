@@ -693,13 +693,19 @@ export class FirebaseStorage {
 
   async createIntent(intent: Omit<Intent, 'id' | 'createdAt'>): Promise<Intent> {
     try {
+      console.log('=== INTENT FORM SUBMISSION ===');
+      console.log('Raw intent data:', intent);
+      
       // Generate a new ID
       let id = 1;
 
       // Get the highest existing ID
       const snapshot = await get(ref(database, 'intents'));
+      console.log('Current intents snapshot exists:', snapshot.exists());
+      
       if (snapshot.exists() && snapshot.val() !== null) {
         const intents = snapshot.val();
+        console.log('Existing intents in database:', intents);
         // Make sure intents is not null and has keys
         if (intents && Object.keys(intents).length > 0) {
           // Filter out non-numeric keys and convert to numbers
@@ -719,6 +725,8 @@ export class FirebaseStorage {
         console.warn('ID calculation resulted in NaN, defaulting to 1');
       }
 
+      console.log('Generated ID for new intent:', id);
+
       const createdAt = new Date().toISOString();
       const newIntent: Intent = { 
         ...intent,
@@ -726,16 +734,24 @@ export class FirebaseStorage {
         createdAt
       };
       
+      console.log('Data prepared for Firebase:', newIntent);
+      
       // Extra validation to ensure we're not using NaN as an ID
       if (isNaN(newIntent.id)) {
         throw new Error('Cannot create intent with invalid ID (NaN)');
       }
+      
+      console.log('Creating intent with clean data:', {
+        ...newIntent,
+        createdAt: createdAt
+      });
       
       await set(ref(database, `intents/${id}`), {
         ...newIntent,
         createdAt: createdAt // Already in ISO string format
       });
       
+      console.log('Intent created successfully in Firebase:', newIntent);
       return newIntent;
     } catch (error) {
       console.error('Intent creation error:', error);
