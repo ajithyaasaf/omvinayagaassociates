@@ -216,8 +216,9 @@ const deleteFromFirebaseTransactional = async (path, id) => {
           clearCache(path);
           return { success: true };
         } else {
-          console.log('Transaction failed to commit');
-          return { success: false, message: 'Transaction failed' };
+          console.log('Transaction failed to commit - likely Firebase rules blocking delete operation');
+          console.log('Error details:', result.error || 'No error details available');
+          return { success: false, message: 'Transaction failed - Firebase rules may be blocking delete operations' };
         }
       } else {
         console.log(`Item with ID ${id} not found in array`);
@@ -247,6 +248,10 @@ const deleteFromFirebaseTransactional = async (path, id) => {
           console.log(`Successfully deleted item with ID ${id} from ${path} (object structure)`);
           clearCache(path);
           return { success: true };
+        } else {
+          console.log('Transaction failed to commit for object structure - likely Firebase rules blocking delete operation');
+          console.log('Error details:', result.error || 'No error details available');
+          return { success: false, message: 'Transaction failed - Firebase rules may be blocking delete operations' };
         }
       }
     }
