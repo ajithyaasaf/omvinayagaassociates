@@ -709,7 +709,7 @@ const AdminPage = () => {
               <Button
                 variant="outline"
                 onClick={handleLogout}
-                className="flex items-center gap-2 bg-card/80 backdrop-blur-sm border-border text-foreground hover:bg-destructive/10 hover:text-destructive hover:border-destructive transition-all duration-200"
+                className="flex items-center gap-2 bg-card  border-border text-foreground hover:bg-destructive/10 hover:text-destructive hover:border-destructive transition-all duration-200"
               >
                 <LogOut className="h-4 w-4" />
                 Logout
@@ -719,7 +719,7 @@ const AdminPage = () => {
 
           {/* Statistics Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <div className="bg-card/80 backdrop-blur-sm rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-all duration-200">
+            <div className="bg-card  rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-all duration-200">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Total Inquiries</p>
@@ -740,11 +740,11 @@ const AdminPage = () => {
               </div>
             </div>
 
-            <div className="bg-card/80 backdrop-blur-sm rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-all duration-200">
+            <div className="bg-card  rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-all duration-200">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Contact Forms</p>
-                  <p className="text-3xl font-bold text-secondary">
+                  <p className="text-3xl font-bold text-primary">
                     {Array.isArray(contactSubmissions) ? contactSubmissions.length : 0}
                   </p>
                   <p className="text-xs text-muted-foreground mt-1">
@@ -755,17 +755,17 @@ const AdminPage = () => {
                     }).length} today
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
-                  <MessageSquare className="h-6 w-6 text-secondary" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <MessageSquare className="h-6 w-6 text-primary" />
                 </div>
               </div>
             </div>
 
-            <div className="bg-card/80 backdrop-blur-sm rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-all duration-200">
+            <div className="bg-card  rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-all duration-200">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Exit Intents</p>
-                  <p className="text-3xl font-bold text-accent">
+                  <p className="text-3xl font-bold text-primary">
                     {Array.isArray(intentSubmissions) ? intentSubmissions.length : 0}
                   </p>
                   <p className="text-xs text-muted-foreground mt-1">
@@ -776,18 +776,18 @@ const AdminPage = () => {
                     }).length} today
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                  <AlertCircle className="h-6 w-6 text-accent" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <AlertCircle className="h-6 w-6 text-primary" />
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg border border-border overflow-hidden mb-8">
+        <div className="bg-card  rounded-2xl shadow-lg border border-border overflow-hidden mb-8">
           <div className="p-8">
             {/* Enhanced Search and Filter Section */}
-            <div className="bg-muted/80 backdrop-blur-sm rounded-xl p-6 mb-8 border border-border">
+            <div className="bg-muted  rounded-xl p-6 mb-8 border border-border">
               <div className="flex flex-col lg:flex-row gap-4">
                 <div className="relative flex-1">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
@@ -796,7 +796,7 @@ const AdminPage = () => {
                   <Input
                     type="text"
                     placeholder="Search across all data - name, phone, email, issue, message..."
-                    className="pl-12 h-12 text-base border-border bg-card/80 backdrop-blur-sm focus:bg-card focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200"
+                    className="pl-12 h-12 text-base border-border bg-card  focus:bg-card focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
@@ -822,7 +822,7 @@ const AdminPage = () => {
                       className={`flex items-center gap-2 h-12 px-6 ${
                         startDate || endDate
                           ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg"
-                          : "bg-card/80 backdrop-blur-sm border-border text-foreground hover:bg-muted hover:text-foreground"
+                          : "bg-card  border-border text-foreground hover:bg-muted hover:text-foreground"
                       } transition-all duration-200`}
                     >
                       <Filter className="h-4 w-4" />
@@ -962,7 +962,7 @@ const AdminPage = () => {
                   onClick={() =>
                     setSortOrder(sortOrder === "desc" ? "asc" : "desc")
                   }
-                  className="flex items-center gap-2 h-12 px-6 bg-card/80 backdrop-blur-sm border-border text-foreground hover:bg-muted hover:text-foreground hover:border-border transition-all duration-200"
+                  className="flex items-center gap-2 h-12 px-6 bg-card  border-border text-foreground hover:bg-muted hover:text-foreground hover:border-border transition-all duration-200"
                 >
                   <ArrowUpDown className="h-4 w-4" />
                   <span className="hidden sm:inline">
@@ -1004,10 +1004,10 @@ const AdminPage = () => {
                 if (value === "intents") refetchIntents();
               }}
             >
-              <TabsList className="grid w-full grid-cols-3 mb-8 h-16 p-2 bg-muted/80 backdrop-blur-sm rounded-2xl border border-border">
+              <TabsList className="grid w-full grid-cols-3 mb-8 h-14 bg-muted rounded-xl border border-border">
                 <TabsTrigger
                   value="inquiries"
-                  className="flex items-center justify-center gap-3 h-12 rounded-xl text-sm font-medium transition-all duration-300 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-card/60 data-[state=inactive]:hover:text-foreground"
+                  className="flex items-center justify-center gap-3 h-full rounded-lg text-sm font-medium transition-all duration-300 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground  data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-primary/10 data-[state=inactive]:hover:text-foreground"
                   onClick={() => handleTabChange("inquiries")}
                 >
                   <div className="relative flex items-center gap-3">
@@ -1026,81 +1026,54 @@ const AdminPage = () => {
                         {Array.isArray(inquiries) ? inquiries.length : 0} total
                       </span>
                     </div>
-                    {Array.isArray(inquiries) && inquiries.length > 0 && (
-                      <span className={`ml-2 text-xs px-2.5 py-1 rounded-full font-medium ${
-                        activeTab === "inquiries" 
-                          ? "bg-primary-foreground/20 text-primary-foreground" 
-                          : "bg-primary/10 text-primary"
-                      }`}>
-                        {inquiries.length}
-                      </span>
-                    )}
 
                   </div>
                 </TabsTrigger>
                 <TabsTrigger
                   value="contacts"
-                  className="flex items-center justify-center gap-3 h-12 rounded-xl text-sm font-medium transition-all duration-300 data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-card/60 data-[state=inactive]:hover:text-foreground"
+                  className="flex items-center justify-center gap-3 h-full rounded-lg text-sm font-medium transition-all duration-300 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground  data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-primary/10 data-[state=inactive]:hover:text-foreground"
                   onClick={() => handleTabChange("contacts")}
                 >
                   <div className="relative flex items-center gap-3">
                     <div className={`p-1.5 rounded-lg transition-colors duration-300 ${
                       activeTab === "contacts" 
                         ? "bg-white/20" 
-                        : "bg-secondary/10 text-secondary"
+                        : "bg-primary/10 text-primary"
                     }`}>
                       <MessageSquare className="h-4 w-4" />
                     </div>
                     <div className="flex flex-col items-start">
                       <span className="font-semibold">Contacts</span>
                       <span className={`text-xs ${
-                        activeTab === "contacts" ? "text-secondary-foreground/80" : "text-muted-foreground"
+                        activeTab === "contacts" ? "text-primary-foreground/80" : "text-muted-foreground"
                       }`}>
                         {Array.isArray(contactSubmissions) ? contactSubmissions.length : 0} total
                       </span>
                     </div>
-                    {Array.isArray(contactSubmissions) && contactSubmissions.length > 0 && (
-                      <span className={`ml-2 text-xs px-2.5 py-1 rounded-full font-medium ${
-                        activeTab === "contacts" 
-                          ? "bg-secondary-foreground/20 text-secondary-foreground" 
-                          : "bg-secondary/10 text-secondary"
-                      }`}>
-                        {contactSubmissions.length}
-                      </span>
-                    )}
 
                   </div>
                 </TabsTrigger>
                 <TabsTrigger
                   value="intents"
-                  className="flex items-center justify-center gap-3 h-12 rounded-xl text-sm font-medium transition-all duration-300 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-card/60 data-[state=inactive]:hover:text-foreground"
+                  className="flex items-center justify-center gap-3 h-full rounded-lg text-sm font-medium transition-all duration-300 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground  data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-primary/10 data-[state=inactive]:hover:text-foreground"
                   onClick={() => handleTabChange("intents")}
                 >
                   <div className="relative flex items-center gap-3">
                     <div className={`p-1.5 rounded-lg transition-colors duration-300 ${
                       activeTab === "intents" 
                         ? "bg-white/20" 
-                        : "bg-accent/10 text-accent"
+                        : "bg-primary/10 text-primary"
                     }`}>
                       <AlertCircle className="h-4 w-4" />
                     </div>
                     <div className="flex flex-col items-start">
                       <span className="font-semibold">Exit Intent</span>
                       <span className={`text-xs ${
-                        activeTab === "intents" ? "text-accent-foreground/80" : "text-muted-foreground"
+                        activeTab === "intents" ? "text-primary-foreground/80" : "text-muted-foreground"
                       }`}>
                         {Array.isArray(intentSubmissions) ? intentSubmissions.length : 0} total
                       </span>
                     </div>
-                    {Array.isArray(intentSubmissions) && intentSubmissions.length > 0 && (
-                      <span className={`ml-2 text-xs px-2.5 py-1 rounded-full font-medium ${
-                        activeTab === "intents" 
-                          ? "bg-accent-foreground/20 text-accent-foreground" 
-                          : "bg-accent/10 text-accent"
-                      }`}>
-                        {intentSubmissions.length}
-                      </span>
-                    )}
 
                   </div>
                 </TabsTrigger>
@@ -1139,7 +1112,7 @@ const AdminPage = () => {
 
                   {!isLoading && !isError && filteredInquiries.length > 0 && (
                     <div className="flex flex-col sm:flex-row gap-3">
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground bg-card/60 backdrop-blur-sm rounded-lg px-3 py-2">
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground bg-card  rounded-lg px-3 py-2">
                         <Eye className="h-4 w-4" />
                         Showing {getPaginatedData(sortByDate(filterByDateRange(filteredInquiries, startDate, endDate), sortOrder), currentPage, itemsPerPage).length} of {filterByDateRange(filteredInquiries, startDate, endDate).length}
                       </div>
@@ -1173,7 +1146,7 @@ const AdminPage = () => {
                 </div>
 
                 {/* Enhanced Data Display */}
-                <div className="bg-card/80 backdrop-blur-sm rounded-xl border border-border shadow-sm overflow-hidden">
+                <div className="bg-card  rounded-xl border border-border shadow-sm overflow-hidden">
                   {isLoading ? (
                     <div className="text-center py-16">
                       <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
@@ -1528,7 +1501,7 @@ const AdminPage = () => {
                     !isIntentsError &&
                     filteredIntents.length > 0 && (
                       <div className="flex flex-col sm:flex-row gap-3">
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground bg-card/60 backdrop-blur-sm rounded-lg px-3 py-2">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground bg-card  rounded-lg px-3 py-2">
                           <Eye className="h-4 w-4" />
                           Showing {getPaginatedData(sortByDate(filterByDateRange(filteredIntents, startDate, endDate), sortOrder), currentPage, itemsPerPage).length} of {filterByDateRange(filteredIntents, startDate, endDate).length}
                         </div>
@@ -1553,7 +1526,7 @@ const AdminPage = () => {
                           filename={`exit-intents-${startDate || "all"}-to-${
                             endDate || "all"
                           }.csv`}
-                          className="flex items-center gap-2 px-4 py-2 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-all duration-200 shadow-lg hover:shadow-xl"
+                          className="flex items-center gap-2 px-4 py-2 bg-accent text-primary-foreground rounded-lg hover:bg-accent/90 transition-all duration-200 shadow-lg hover:shadow-xl"
                         >
                           <Download className="h-4 w-4" />
                           Export Data
@@ -1621,7 +1594,7 @@ const AdminPage = () => {
                         ).map((intent, index) => (
                           <tr
                             key={intent._uniqueKey}
-                            className="hover:bg-muted/50"
+                            className="hover:bg-muted"
                           >
                             <td className="border border-border px-4 py-2">
                               <div className="flex items-center gap-2">
@@ -2015,7 +1988,7 @@ const AdminPage = () => {
                         ).map((contact, index) => (
                           <tr
                             key={contact._uniqueKey}
-                            className="hover:bg-muted/50"
+                            className="hover:bg-muted"
                           >
                             <td className="border border-border px-4 py-2">
                               <div className="flex items-center gap-2">
