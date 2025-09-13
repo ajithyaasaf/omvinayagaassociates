@@ -845,7 +845,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
   
   // Intent form submission endpoint
-  app.post("/api/intent", async (req, res) => {
+  app.post("/api/intents", async (req, res) => {
     try {
       const parsedData = intentSchema.parse(req.body);
       

@@ -140,9 +140,15 @@ export default async function handler(req, res) {
     
     // Handle POST requests - for form submissions with improved validation
     if (req.method === 'POST') {
+      console.log('=== API FIREBASE-DATA POST REQUEST ===');
+      console.log('Data type:', dataType);
+      console.log('Firebase path:', firebasePath);
+      console.log('Raw request body:', req.body);
+      
       const formData = req.body;
       
       if (!formData) {
+        console.log('ERROR: No form data received');
         return res.status(400).json({ 
           success: false,
           error: 'Request body is required' 
@@ -150,8 +156,12 @@ export default async function handler(req, res) {
       }
       
       // Enhanced validation based on data type
+      console.log('Starting validation for:', dataType);
       const validationResult = validateFormData(dataType, formData);
+      console.log('Validation result:', validationResult);
+      
       if (!validationResult.isValid) {
+        console.log('VALIDATION FAILED:', validationResult.errors);
         return res.status(400).json({
           success: false,
           error: 'Invalid form data',
@@ -159,18 +169,22 @@ export default async function handler(req, res) {
         });
       }
       
+      console.log('Validation passed! Creating data...');
       console.log(`Creating ${dataType} with data:`, formData);
       
       // Create data using transactional operation
       const result = await createDataInFirebase(firebasePath, formData);
+      console.log('Firebase creation result:', result);
       
       if (result.success) {
+        console.log('SUCCESS: Data created successfully');
         return res.status(200).json({
           success: true,
           message: `${dataType.slice(0, -1)} created successfully`,
           data: result.data
         });
       } else {
+        console.log('ERROR: Firebase creation failed:', result.message);
         throw new Error(result.message);
       }
     }
