@@ -1,10 +1,10 @@
-// Vercel API route for intents (GET all intents, DELETE specific intent)
-import { getDataFromFirebase, deleteFromFirebaseTransactional } from './firebase-operations.js';
+// Vercel API route for intents (GET all intents, POST new intent, DELETE specific intent)
+import { getDataFromFirebase, deleteFromFirebaseTransactional, createDataInFirebaseTransactional } from './firebase-operations.js';
 
 export default async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   
   // Handle preflight requests
@@ -20,6 +20,39 @@ export default async function handler(req, res) {
       
       console.log(`Found ${intents.length} intents`);
       return res.status(200).json(intents);
+    }
+    
+    // Handle POST requests (form submissions)
+    if (req.method === 'POST') {
+      console.log('Creating new intent:', req.body);
+      const formData = req.body;
+      
+      if (!formData) {
+        return res.status(400).json({ 
+          success: false,
+          error: 'Request body is required' 
+        });
+      }
+      
+      // Basic validation
+      if (!formData.name || !formData.phone) {
+        return res.status(400).json({
+          success: false,
+          error: 'Name and phone are required'
+        });
+      }
+      
+      const result = await createDataInFirebaseTransactional('intents', formData);
+      
+      if (result.success) {
+        return res.status(200).json({
+          success: true,
+          message: 'Intent created successfully',
+          data: result.data
+        });
+      } else {
+        throw new Error(result.message);
+      }
     }
     
     // Handle DELETE requests
