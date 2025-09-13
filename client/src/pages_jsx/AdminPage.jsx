@@ -560,7 +560,7 @@ const AdminPage = () => {
                   size="sm"
                   onClick={() => goToPage(page)}
                   className={`h-8 w-8 p-0 mx-1 ${
-                    currentPage === page ? "bg-primary hover:bg-secondary" : ""
+                    currentPage === page ? "bg-primary hover:bg-primary/90" : ""
                   }`}
                 >
                   {page}
@@ -665,7 +665,7 @@ const AdminPage = () => {
 
               <Button
                 type="submit"
-                className="w-full mt-6 bg-primary hover:bg-secondary text-primary-foreground"
+                className="w-full mt-6 bg-primary hover:bg-primary/90 text-primary-foreground"
               >
                 Login
               </Button>
@@ -911,7 +911,7 @@ const AdminPage = () => {
                             onClick={() => setSortOrder("desc")}
                             className={
                               sortOrder === "desc"
-                                ? "bg-primary hover:bg-secondary text-primary-foreground"
+                                ? "bg-primary hover:bg-primary/90 text-primary-foreground"
                                 : "text-foreground"
                             }
                           >
@@ -925,7 +925,7 @@ const AdminPage = () => {
                             onClick={() => setSortOrder("asc")}
                             className={
                               sortOrder === "asc"
-                                ? "bg-primary hover:bg-secondary text-primary-foreground"
+                                ? "bg-primary hover:bg-primary/90 text-primary-foreground"
                                 : "text-foreground"
                             }
                           >
@@ -949,7 +949,7 @@ const AdminPage = () => {
                       </Button>
                       <Button
                         onClick={() => setIsFilterDialogOpen(false)}
-                        className="bg-primary hover:bg-secondary text-primary-foreground"
+                        className="bg-primary hover:bg-primary/90 text-primary-foreground"
                       >
                         Apply Filters
                       </Button>
@@ -1925,7 +1925,7 @@ const AdminPage = () => {
                         filename={`contacts-${startDate || "all"}-to-${
                           endDate || "all"
                         }.csv`}
-                        className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-secondary"
+                        className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
                       >
                         <Download className="h-4 w-4" />
                         Export CSV
