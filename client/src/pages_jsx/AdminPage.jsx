@@ -615,7 +615,7 @@ const AdminPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white p-8 rounded-xl shadow-lg border border-gray-100"
+            className="bg-card p-8 rounded-xl shadow-lg border border-border"
           >
             <div className="flex justify-center mb-6">
               <div className="h-16 w-16 bg-muted rounded-full flex items-center justify-center">
@@ -1163,7 +1163,7 @@ const AdminPage = () => {
                         filename={`inquiries-${startDate || "all"}-to-${
                           endDate || "all"
                         }.csv`}
-                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+                        className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-200 shadow-lg hover:shadow-xl"
                       >
                         <Download className="h-4 w-4" />
                         Export Data
@@ -1173,11 +1173,11 @@ const AdminPage = () => {
                 </div>
 
                 {/* Enhanced Data Display */}
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                <div className="bg-card/80 backdrop-blur-sm rounded-xl border border-border shadow-sm overflow-hidden">
                   {isLoading ? (
                     <div className="text-center py-16">
-                      <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full mb-4">
-                        <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"></div>
+                      <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
+                        <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent"></div>
                       </div>
                       <p className="text-lg font-medium text-foreground mb-1">Loading inquiries</p>
                       <p className="text-muted-foreground">Fetching latest customer inquiries...</p>
@@ -1207,7 +1207,7 @@ const AdminPage = () => {
                   ) : (
                     <div className="overflow-auto">
                       <table className="w-full">
-                        <thead className="bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
+                        <thead className="bg-gradient-to-r from-muted/30 to-muted/50 border-b border-border">
                           <tr>
                             <th className="px-6 py-4 text-left text-xs font-semibold text-foreground uppercase tracking-wide">
                               Customer Info
@@ -1245,12 +1245,12 @@ const AdminPage = () => {
                         ).map((inquiry, index) => (
                           <tr
                             key={`inquiry-${inquiry.id || index}`}
-                            className="border-b border-gray-100 hover:bg-primary/10/50 transition-colors duration-200"
+                            className="border-b border-border hover:bg-primary/10 transition-colors duration-200"
                           >
                             {/* Customer Info */}
                             <td className="px-6 py-4">
                               <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                                   <span className="font-semibold text-primary text-sm">
                                     {inquiry.name.charAt(0).toUpperCase()}
                                   </span>
@@ -1317,7 +1317,7 @@ const AdminPage = () => {
                                   <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
                                     <DialogHeader>
                                       <DialogTitle className="flex items-center gap-3">
-                                        <div className="w-8 h-8 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center">
+                                        <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                                           <span className="font-bold text-primary text-sm">
                                             {inquiry.name.charAt(0).toUpperCase()}
                                           </span>
@@ -1431,7 +1431,7 @@ const AdminPage = () => {
                                     <Button
                                       variant="outline"
                                       size="sm"
-                                      className="text-destructive border-red-200 hover:bg-red-50 hover:border-red-300 transition-colors duration-200"
+                                      className="text-destructive border-destructive/30 hover:bg-destructive/10 hover:border-destructive/40 transition-colors duration-200"
                                     >
                                       <Trash2 className="h-3 w-3" />
                                     </Button>
@@ -1497,10 +1497,10 @@ const AdminPage = () => {
 
               <TabsContent value="intents" className="mt-0 space-y-6">
                 {/* Enhanced Tab Header */}
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 p-6 bg-gradient-to-r from-orange-50 via-red-50 to-pink-50 rounded-xl border border-orange-200">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 p-6 bg-accent/5 rounded-xl border border-accent/20">
                   <div className="space-y-1">
                     <h2 className="text-2xl font-bold text-foreground flex items-center gap-3">
-                      <div className="w-8 h-8 bg-gradient-to-br from-orange-600 to-red-600 rounded-lg flex items-center justify-center">
+                      <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
                         <AlertCircle className="h-4 w-4 text-white" />
                       </div>
                       Exit Intent & Appointments
@@ -1553,7 +1553,7 @@ const AdminPage = () => {
                           filename={`exit-intents-${startDate || "all"}-to-${
                             endDate || "all"
                           }.csv`}
-                          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-lg hover:from-orange-700 hover:to-red-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+                          className="flex items-center gap-2 px-4 py-2 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-all duration-200 shadow-lg hover:shadow-xl"
                         >
                           <Download className="h-4 w-4" />
                           Export Data
@@ -1585,25 +1585,25 @@ const AdminPage = () => {
                     <table className="w-full border-collapse">
                       <thead>
                         <tr className="bg-muted">
-                          <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
+                          <th className="border border-border px-4 py-2 text-left text-foreground">
                             Name
                           </th>
-                          <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
+                          <th className="border border-border px-4 py-2 text-left text-foreground">
                             Phone
                           </th>
-                          <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
+                          <th className="border border-border px-4 py-2 text-left text-foreground">
                             Service
                           </th>
-                          <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
+                          <th className="border border-border px-4 py-2 text-left text-foreground">
                             Issue/Location
                           </th>
-                          <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
+                          <th className="border border-border px-4 py-2 text-left text-foreground">
                             Time
                           </th>
-                          <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
+                          <th className="border border-border px-4 py-2 text-left text-foreground">
                             Date
                           </th>
-                          <th className="border border-gray-200 px-4 py-2 text-center text-foreground">
+                          <th className="border border-border px-4 py-2 text-center text-foreground">
                             Actions
                           </th>
                         </tr>
@@ -1623,7 +1623,7 @@ const AdminPage = () => {
                             key={intent._uniqueKey}
                             className="hover:bg-muted/50"
                           >
-                            <td className="border border-gray-200 px-4 py-2">
+                            <td className="border border-border px-4 py-2">
                               <div className="flex items-center gap-2">
                                 <div className="w-8 h-8 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
                                   <span className="font-semibold text-muted-foreground text-xs">
@@ -1633,15 +1633,15 @@ const AdminPage = () => {
                                 <span>{intent.name}</span>
                               </div>
                             </td>
-                            <td className="border border-gray-200 px-4 py-2">
+                            <td className="border border-border px-4 py-2">
                               {intent.phone}
                             </td>
-                            <td className="border border-gray-200 px-4 py-2">
+                            <td className="border border-border px-4 py-2">
                               <span className="inline-block px-2 py-1 bg-muted text-muted-foreground text-xs rounded-full">
                                 {intent.service || "Urgent Consultation"}
                               </span>
                             </td>
-                            <td className="border border-gray-200 px-4 py-2 text-sm">
+                            <td className="border border-border px-4 py-2 text-sm">
                               {intent.issueType || intent.location ? (
                                 <div className="space-y-1">
                                   {intent.issueType && (
@@ -1659,15 +1659,15 @@ const AdminPage = () => {
                                 <span className="text-muted-foreground">-</span>
                               )}
                             </td>
-                            <td className="border border-gray-200 px-4 py-2 text-sm text-foreground">
+                            <td className="border border-border px-4 py-2 text-sm text-foreground">
                               {intent.timePreference || "-"}
                             </td>
-                            <td className="border border-gray-200 px-4 py-2 text-sm text-foreground">
+                            <td className="border border-border px-4 py-2 text-sm text-foreground">
                               {intent.createdAt
                                 ? formatDate(intent.createdAt)
                                 : "Recent"}
                             </td>
-                            <td className="border border-gray-200 px-4 py-2">
+                            <td className="border border-border px-4 py-2">
                               <div className="flex justify-center gap-2">
                                 <Button
                                   variant="outline"
@@ -1846,7 +1846,7 @@ const AdminPage = () => {
                               <h3 className="font-semibold mb-2 text-foreground">
                                 Appointment Details
                               </h3>
-                              <div className="bg-muted/50 p-4 rounded-lg border border-gray-200 space-y-3">
+                              <div className="bg-muted/50 p-4 rounded-lg border border-border space-y-3">
                                 {intentSubmissions.find(
                                   (i) => `intent-${i.id}` === expandedItem
                                 ).location && (
@@ -1883,7 +1883,7 @@ const AdminPage = () => {
                               <h3 className="font-semibold mb-2 text-foreground">
                                 Additional Message
                               </h3>
-                              <div className="bg-muted/50 p-4 rounded-lg border border-gray-200">
+                              <div className="bg-muted/50 p-4 rounded-lg border border-border">
                                 {
                                   intentSubmissions.find(
                                     (i) => `intent-${i.id}` === expandedItem
@@ -1982,22 +1982,22 @@ const AdminPage = () => {
                     <table className="w-full border-collapse">
                       <thead>
                         <tr className="bg-muted">
-                          <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
+                          <th className="border border-border px-4 py-2 text-left text-foreground">
                             Name
                           </th>
-                          <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
+                          <th className="border border-border px-4 py-2 text-left text-foreground">
                             Email
                           </th>
-                          <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
+                          <th className="border border-border px-4 py-2 text-left text-foreground">
                             Phone
                           </th>
-                          <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
+                          <th className="border border-border px-4 py-2 text-left text-foreground">
                             Service
                           </th>
-                          <th className="border border-gray-200 px-4 py-2 text-left text-foreground">
+                          <th className="border border-border px-4 py-2 text-left text-foreground">
                             Date
                           </th>
-                          <th className="border border-gray-200 px-4 py-2 text-center text-foreground">
+                          <th className="border border-border px-4 py-2 text-center text-foreground">
                             Actions
                           </th>
                         </tr>
@@ -2017,7 +2017,7 @@ const AdminPage = () => {
                             key={contact._uniqueKey}
                             className="hover:bg-muted/50"
                           >
-                            <td className="border border-gray-200 px-4 py-2">
+                            <td className="border border-border px-4 py-2">
                               <div className="flex items-center gap-2">
                                 <div className="w-8 h-8 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
                                   <span className="font-semibold text-muted-foreground text-xs">
@@ -2027,23 +2027,23 @@ const AdminPage = () => {
                                 <span>{contact.name}</span>
                               </div>
                             </td>
-                            <td className="border border-gray-200 px-4 py-2">
+                            <td className="border border-border px-4 py-2">
                               {contact.email}
                             </td>
-                            <td className="border border-gray-200 px-4 py-2">
+                            <td className="border border-border px-4 py-2">
                               {contact.phone}
                             </td>
-                            <td className="border border-gray-200 px-4 py-2">
+                            <td className="border border-border px-4 py-2">
                               <span className="inline-block px-2 py-1 bg-muted text-muted-foreground text-xs rounded-full">
                                 {contact.service || "Contact Request"}
                               </span>
                             </td>
-                            <td className="border border-gray-200 px-4 py-2 text-sm text-foreground">
+                            <td className="border border-border px-4 py-2 text-sm text-foreground">
                               {contact.createdAt
                                 ? formatDate(contact.createdAt)
                                 : "Recent"}
                             </td>
-                            <td className="border border-gray-200 px-4 py-2">
+                            <td className="border border-border px-4 py-2">
                               <div className="flex justify-center gap-2">
                                 <Button
                                   variant="outline"
@@ -2231,7 +2231,7 @@ const AdminPage = () => {
                               <h3 className="font-semibold mb-2 text-foreground">
                                 Message
                               </h3>
-                              <div className="bg-muted/50 p-4 rounded-lg border border-gray-200">
+                              <div className="bg-muted/50 p-4 rounded-lg border border-border">
                                 {
                                   contactSubmissions.find(
                                     (c) => `contact-${c.id}` === expandedItem
