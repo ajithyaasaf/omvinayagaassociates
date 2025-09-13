@@ -1180,7 +1180,7 @@ const AdminPage = () => {
                   ) : (
                     <div className="overflow-auto">
                       <table className="w-full">
-                        <thead className="bg-gradient-to-r from-muted/30 to-muted/50 border-b border-border">
+                        <thead className="bg-muted border-b border-border">
                           <tr>
                             <th className="px-6 py-4 text-left text-xs font-semibold text-foreground uppercase tracking-wide">
                               Customer Info
@@ -1470,10 +1470,10 @@ const AdminPage = () => {
 
               <TabsContent value="intents" className="mt-0 space-y-6">
                 {/* Enhanced Tab Header */}
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 p-6 bg-accent/5 rounded-xl border border-accent/20">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 p-6 bg-primary/5 rounded-xl border border-primary/20">
                   <div className="space-y-1">
                     <h2 className="text-2xl font-bold text-foreground flex items-center gap-3">
-                      <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+                      <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                         <AlertCircle className="h-4 w-4 text-white" />
                       </div>
                       Exit Intent & Appointments
@@ -1483,7 +1483,7 @@ const AdminPage = () => {
                     </p>
                     <div className="flex items-center gap-4 text-sm text-muted-foreground mt-2">
                       <span className="flex items-center gap-1">
-                        <span className="w-2 h-2 bg-accent rounded-full"></span>
+                        <span className="w-2 h-2 bg-primary rounded-full"></span>
                         Total: {Array.isArray(intentSubmissions) ? intentSubmissions.length : 0}
                       </span>
                       <span className="flex items-center gap-1">
@@ -1526,7 +1526,7 @@ const AdminPage = () => {
                           filename={`exit-intents-${startDate || "all"}-to-${
                             endDate || "all"
                           }.csv`}
-                          className="flex items-center gap-2 px-4 py-2 bg-accent text-primary-foreground rounded-lg hover:bg-accent/90 transition-all duration-200 shadow-lg hover:shadow-xl"
+                          className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-200 shadow-lg hover:shadow-xl"
                         >
                           <Download className="h-4 w-4" />
                           Export Data
@@ -1819,7 +1819,7 @@ const AdminPage = () => {
                               <h3 className="font-semibold mb-2 text-foreground">
                                 Appointment Details
                               </h3>
-                              <div className="bg-muted/50 p-4 rounded-lg border border-border space-y-3">
+                              <div className="bg-muted p-4 rounded-lg border border-border space-y-3">
                                 {intentSubmissions.find(
                                   (i) => `intent-${i.id}` === expandedItem
                                 ).location && (
@@ -1856,7 +1856,7 @@ const AdminPage = () => {
                               <h3 className="font-semibold mb-2 text-foreground">
                                 Additional Message
                               </h3>
-                              <div className="bg-muted/50 p-4 rounded-lg border border-border">
+                              <div className="bg-muted p-4 rounded-lg border border-border">
                                 {
                                   intentSubmissions.find(
                                     (i) => `intent-${i.id}` === expandedItem
@@ -2204,7 +2204,7 @@ const AdminPage = () => {
                               <h3 className="font-semibold mb-2 text-foreground">
                                 Message
                               </h3>
-                              <div className="bg-muted/50 p-4 rounded-lg border border-border">
+                              <div className="bg-muted p-4 rounded-lg border border-border">
                                 {
                                   contactSubmissions.find(
                                     (c) => `contact-${c.id}` === expandedItem
