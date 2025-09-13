@@ -688,19 +688,19 @@ const AdminPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 pt-28 pb-12">
+    <div className="min-h-screen bg-background pt-28 pb-12">
       <div className="container mx-auto px-4">
         {/* Enhanced Header with Statistics */}
         <div className="mb-8">
           <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 mb-6">
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                  <Shield className="h-6 w-6 text-white" />
+              <h1 className="text-3xl font-bold text-foreground flex items-center gap-3">
+                <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                  <Shield className="h-6 w-6 text-primary-foreground" />
                 </div>
                 Admin Dashboard
               </h1>
-              <p className="text-gray-600 text-lg">
+              <p className="text-muted-foreground text-lg">
                 Comprehensive management of customer inquiries and submissions
               </p>
             </div>
@@ -709,7 +709,7 @@ const AdminPage = () => {
               <Button
                 variant="outline"
                 onClick={handleLogout}
-                className="flex items-center gap-2 bg-white/80 backdrop-blur-sm border-gray-300 text-gray-700 hover:bg-red-50 hover:text-red-600 hover:border-red-300 transition-all duration-200"
+                className="flex items-center gap-2 bg-card/80 backdrop-blur-sm border-border text-foreground hover:bg-destructive/10 hover:text-destructive hover:border-destructive transition-all duration-200"
               >
                 <LogOut className="h-4 w-4" />
                 Logout
@@ -719,14 +719,14 @@ const AdminPage = () => {
 
           {/* Statistics Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200">
+            <div className="bg-card/80 backdrop-blur-sm rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-all duration-200">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Total Inquiries</p>
-                  <p className="text-3xl font-bold text-blue-600">
+                  <p className="text-sm font-medium text-muted-foreground">Total Inquiries</p>
+                  <p className="text-3xl font-bold text-primary">
                     {Array.isArray(inquiries) ? inquiries.length : 0}
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-muted-foreground mt-1">
                     {Array.isArray(inquiries) && inquiries.filter(i => {
                       const today = new Date();
                       const itemDate = new Date(i.createdAt);
@@ -734,20 +734,20 @@ const AdminPage = () => {
                     }).length} today
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <ClipboardList className="h-6 w-6 text-blue-600" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <ClipboardList className="h-6 w-6 text-primary" />
                 </div>
               </div>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200">
+            <div className="bg-card/80 backdrop-blur-sm rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-all duration-200">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Contact Forms</p>
-                  <p className="text-3xl font-bold text-green-600">
+                  <p className="text-sm font-medium text-muted-foreground">Contact Forms</p>
+                  <p className="text-3xl font-bold text-secondary">
                     {Array.isArray(contactSubmissions) ? contactSubmissions.length : 0}
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-muted-foreground mt-1">
                     {Array.isArray(contactSubmissions) && contactSubmissions.filter(c => {
                       const today = new Date();
                       const itemDate = new Date(c.createdAt);
@@ -755,20 +755,20 @@ const AdminPage = () => {
                     }).length} today
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                  <MessageSquare className="h-6 w-6 text-green-600" />
+                <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
+                  <MessageSquare className="h-6 w-6 text-secondary" />
                 </div>
               </div>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200">
+            <div className="bg-card/80 backdrop-blur-sm rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-all duration-200">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Exit Intents</p>
-                  <p className="text-3xl font-bold text-orange-600">
+                  <p className="text-sm font-medium text-muted-foreground">Exit Intents</p>
+                  <p className="text-3xl font-bold text-accent">
                     {Array.isArray(intentSubmissions) ? intentSubmissions.length : 0}
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-muted-foreground mt-1">
                     {Array.isArray(intentSubmissions) && intentSubmissions.filter(i => {
                       const today = new Date();
                       const itemDate = new Date(i.createdAt);
@@ -776,27 +776,27 @@ const AdminPage = () => {
                     }).length} today
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <AlertCircle className="h-6 w-6 text-orange-600" />
+                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
+                  <AlertCircle className="h-6 w-6 text-accent" />
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 overflow-hidden mb-8">
+        <div className="bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg border border-border overflow-hidden mb-8">
           <div className="p-8">
             {/* Enhanced Search and Filter Section */}
-            <div className="bg-gray-50/80 backdrop-blur-sm rounded-xl p-6 mb-8 border border-gray-100">
+            <div className="bg-muted/80 backdrop-blur-sm rounded-xl p-6 mb-8 border border-border">
               <div className="flex flex-col lg:flex-row gap-4">
                 <div className="relative flex-1">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
-                    <Search className="h-5 w-5 text-gray-400" />
+                    <Search className="h-5 w-5 text-muted-foreground" />
                   </div>
                   <Input
                     type="text"
                     placeholder="Search across all data - name, phone, email, issue, message..."
-                    className="pl-12 h-12 text-base border-gray-300 bg-white/80 backdrop-blur-sm focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200"
+                    className="pl-12 h-12 text-base border-border bg-card/80 backdrop-blur-sm focus:bg-card focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
@@ -804,7 +804,7 @@ const AdminPage = () => {
                     <div className="absolute inset-y-0 right-0 flex items-center pr-4">
                       <button
                         onClick={() => setSearchTerm("")}
-                        className="text-gray-400 hover:text-gray-600 transition-colors"
+                        className="text-muted-foreground hover:text-foreground transition-colors"
                       >
                         <X className="h-4 w-4" />
                       </button>
@@ -821,15 +821,15 @@ const AdminPage = () => {
                       variant={startDate || endDate ? "default" : "outline"}
                       className={`flex items-center gap-2 h-12 px-6 ${
                         startDate || endDate
-                          ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg"
-                          : "bg-white/80 backdrop-blur-sm border-gray-300 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg"
+                          : "bg-card/80 backdrop-blur-sm border-border text-foreground hover:bg-muted hover:text-foreground"
                       } transition-all duration-200`}
                     >
                       <Filter className="h-4 w-4" />
                       {startDate || endDate ? (
                         <span className="flex items-center gap-1">
                           <span>Filters Active</span>
-                          <span className="bg-white/20 rounded-full px-2 py-0.5 text-xs">
+                          <span className="bg-primary-foreground/20 rounded-full px-2 py-0.5 text-xs">
                             {[startDate, endDate].filter(Boolean).length}
                           </span>
                         </span>
@@ -962,7 +962,7 @@ const AdminPage = () => {
                   onClick={() =>
                     setSortOrder(sortOrder === "desc" ? "asc" : "desc")
                   }
-                  className="flex items-center gap-2 h-12 px-6 bg-white/80 backdrop-blur-sm border-gray-300 text-gray-700 hover:bg-gray-100 hover:text-gray-900 hover:border-gray-400 transition-all duration-200"
+                  className="flex items-center gap-2 h-12 px-6 bg-card/80 backdrop-blur-sm border-border text-foreground hover:bg-muted hover:text-foreground hover:border-border transition-all duration-200"
                 >
                   <ArrowUpDown className="h-4 w-4" />
                   <span className="hidden sm:inline">
@@ -981,7 +981,7 @@ const AdminPage = () => {
                       setEndDate("");
                       setSortOrder("desc");
                     }}
-                    className="flex items-center gap-2 h-12 px-4 text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-all duration-200"
+                    className="flex items-center gap-2 h-12 px-4 text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-200"
                   >
                     <X className="h-4 w-4" />
                     Reset
@@ -1004,24 +1004,24 @@ const AdminPage = () => {
                 if (value === "intents") refetchIntents();
               }}
             >
-              <TabsList className="grid w-full grid-cols-3 mb-8 h-16 p-2 bg-gray-100/80 backdrop-blur-sm rounded-2xl border border-gray-200">
+              <TabsList className="grid w-full grid-cols-3 mb-8 h-16 p-2 bg-muted/80 backdrop-blur-sm rounded-2xl border border-border">
                 <TabsTrigger
                   value="inquiries"
-                  className="flex items-center justify-center gap-3 h-12 rounded-xl text-sm font-medium transition-all duration-300 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-purple-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-white/60 data-[state=inactive]:hover:text-gray-800"
+                  className="flex items-center justify-center gap-3 h-12 rounded-xl text-sm font-medium transition-all duration-300 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-card/60 data-[state=inactive]:hover:text-foreground"
                   onClick={() => handleTabChange("inquiries")}
                 >
                   <div className="relative flex items-center gap-3">
                     <div className={`p-1.5 rounded-lg transition-colors duration-300 ${
                       activeTab === "inquiries" 
                         ? "bg-white/20" 
-                        : "bg-blue-100 text-blue-600"
+                        : "bg-primary/10 text-primary"
                     }`}>
                       <ClipboardList className="h-4 w-4" />
                     </div>
                     <div className="flex flex-col items-start">
                       <span className="font-semibold">Inquiries</span>
                       <span className={`text-xs ${
-                        activeTab === "inquiries" ? "text-white/80" : "text-gray-500"
+                        activeTab === "inquiries" ? "text-primary-foreground/80" : "text-muted-foreground"
                       }`}>
                         {Array.isArray(inquiries) ? inquiries.length : 0} total
                       </span>
@@ -1029,8 +1029,8 @@ const AdminPage = () => {
                     {Array.isArray(inquiries) && inquiries.length > 0 && (
                       <span className={`ml-2 text-xs px-2.5 py-1 rounded-full font-medium ${
                         activeTab === "inquiries" 
-                          ? "bg-white/20 text-white" 
-                          : "bg-blue-100 text-blue-700"
+                          ? "bg-primary-foreground/20 text-primary-foreground" 
+                          : "bg-primary/10 text-primary"
                       }`}>
                         {inquiries.length}
                       </span>
@@ -1040,21 +1040,21 @@ const AdminPage = () => {
                 </TabsTrigger>
                 <TabsTrigger
                   value="contacts"
-                  className="flex items-center justify-center gap-3 h-12 rounded-xl text-sm font-medium transition-all duration-300 data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-600 data-[state=active]:to-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-white/60 data-[state=inactive]:hover:text-gray-800"
+                  className="flex items-center justify-center gap-3 h-12 rounded-xl text-sm font-medium transition-all duration-300 data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-card/60 data-[state=inactive]:hover:text-foreground"
                   onClick={() => handleTabChange("contacts")}
                 >
                   <div className="relative flex items-center gap-3">
                     <div className={`p-1.5 rounded-lg transition-colors duration-300 ${
                       activeTab === "contacts" 
                         ? "bg-white/20" 
-                        : "bg-green-100 text-green-600"
+                        : "bg-secondary/10 text-secondary"
                     }`}>
                       <MessageSquare className="h-4 w-4" />
                     </div>
                     <div className="flex flex-col items-start">
                       <span className="font-semibold">Contacts</span>
                       <span className={`text-xs ${
-                        activeTab === "contacts" ? "text-white/80" : "text-gray-500"
+                        activeTab === "contacts" ? "text-secondary-foreground/80" : "text-muted-foreground"
                       }`}>
                         {Array.isArray(contactSubmissions) ? contactSubmissions.length : 0} total
                       </span>
@@ -1062,8 +1062,8 @@ const AdminPage = () => {
                     {Array.isArray(contactSubmissions) && contactSubmissions.length > 0 && (
                       <span className={`ml-2 text-xs px-2.5 py-1 rounded-full font-medium ${
                         activeTab === "contacts" 
-                          ? "bg-white/20 text-white" 
-                          : "bg-green-100 text-green-700"
+                          ? "bg-secondary-foreground/20 text-secondary-foreground" 
+                          : "bg-secondary/10 text-secondary"
                       }`}>
                         {contactSubmissions.length}
                       </span>
@@ -1073,21 +1073,21 @@ const AdminPage = () => {
                 </TabsTrigger>
                 <TabsTrigger
                   value="intents"
-                  className="flex items-center justify-center gap-3 h-12 rounded-xl text-sm font-medium transition-all duration-300 data-[state=active]:bg-gradient-to-r data-[state=active]:from-orange-600 data-[state=active]:to-red-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-white/60 data-[state=inactive]:hover:text-gray-800"
+                  className="flex items-center justify-center gap-3 h-12 rounded-xl text-sm font-medium transition-all duration-300 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground data-[state=active]:shadow-lg data-[state=active]:scale-105 data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-card/60 data-[state=inactive]:hover:text-foreground"
                   onClick={() => handleTabChange("intents")}
                 >
                   <div className="relative flex items-center gap-3">
                     <div className={`p-1.5 rounded-lg transition-colors duration-300 ${
                       activeTab === "intents" 
                         ? "bg-white/20" 
-                        : "bg-orange-100 text-orange-600"
+                        : "bg-accent/10 text-accent"
                     }`}>
                       <AlertCircle className="h-4 w-4" />
                     </div>
                     <div className="flex flex-col items-start">
                       <span className="font-semibold">Exit Intent</span>
                       <span className={`text-xs ${
-                        activeTab === "intents" ? "text-white/80" : "text-gray-500"
+                        activeTab === "intents" ? "text-accent-foreground/80" : "text-muted-foreground"
                       }`}>
                         {Array.isArray(intentSubmissions) ? intentSubmissions.length : 0} total
                       </span>
@@ -1095,8 +1095,8 @@ const AdminPage = () => {
                     {Array.isArray(intentSubmissions) && intentSubmissions.length > 0 && (
                       <span className={`ml-2 text-xs px-2.5 py-1 rounded-full font-medium ${
                         activeTab === "intents" 
-                          ? "bg-white/20 text-white" 
-                          : "bg-orange-100 text-orange-700"
+                          ? "bg-accent-foreground/20 text-accent-foreground" 
+                          : "bg-accent/10 text-accent"
                       }`}>
                         {intentSubmissions.length}
                       </span>
@@ -1110,24 +1110,24 @@ const AdminPage = () => {
 
               <TabsContent value="inquiries" className="mt-0 space-y-6">
                 {/* Enhanced Tab Header */}
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 p-6 bg-gradient-to-r from-blue-50 via-purple-50 to-indigo-50 rounded-xl border border-blue-200">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 p-6 bg-primary/5 rounded-xl border border-primary/20">
                   <div className="space-y-1">
-                    <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
-                      <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                        <ClipboardList className="h-4 w-4 text-white" />
+                    <h2 className="text-2xl font-bold text-foreground flex items-center gap-3">
+                      <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                        <ClipboardList className="h-4 w-4 text-primary-foreground" />
                       </div>
                       Quick Inquiries
                     </h2>
-                    <p className="text-gray-600">
+                    <p className="text-muted-foreground">
                       Customer inquiries from modal popup forms and quick contact requests
                     </p>
-                    <div className="flex items-center gap-4 text-sm text-gray-500 mt-2">
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground mt-2">
                       <span className="flex items-center gap-1">
-                        <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                        <span className="w-2 h-2 bg-primary rounded-full"></span>
                         Total: {Array.isArray(inquiries) ? inquiries.length : 0}
                       </span>
                       <span className="flex items-center gap-1">
-                        <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                        <span className="w-2 h-2 bg-secondary rounded-full"></span>
                         Today: {Array.isArray(inquiries) && inquiries.filter(i => {
                           const today = new Date();
                           const itemDate = new Date(i.createdAt);
@@ -1139,7 +1139,7 @@ const AdminPage = () => {
 
                   {!isLoading && !isError && filteredInquiries.length > 0 && (
                     <div className="flex flex-col sm:flex-row gap-3">
-                      <div className="flex items-center gap-2 text-sm text-gray-600 bg-white/60 backdrop-blur-sm rounded-lg px-3 py-2">
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground bg-card/60 backdrop-blur-sm rounded-lg px-3 py-2">
                         <Eye className="h-4 w-4" />
                         Showing {getPaginatedData(sortByDate(filterByDateRange(filteredInquiries, startDate, endDate), sortOrder), currentPage, itemsPerPage).length} of {filterByDateRange(filteredInquiries, startDate, endDate).length}
                       </div>
@@ -1179,26 +1179,26 @@ const AdminPage = () => {
                       <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full mb-4">
                         <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"></div>
                       </div>
-                      <p className="text-lg font-medium text-gray-900 mb-1">Loading inquiries</p>
-                      <p className="text-gray-500">Fetching latest customer inquiries...</p>
+                      <p className="text-lg font-medium text-foreground mb-1">Loading inquiries</p>
+                      <p className="text-muted-foreground">Fetching latest customer inquiries...</p>
                     </div>
                   ) : isError ? (
                     <div className="text-center py-16">
-                      <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
-                        <AlertCircle className="h-8 w-8 text-red-600" />
+                      <div className="inline-flex items-center justify-center w-16 h-16 bg-destructive/10 rounded-full mb-4">
+                        <AlertCircle className="h-8 w-8 text-destructive" />
                       </div>
-                      <p className="text-lg font-medium text-red-900 mb-1">Error loading data</p>
-                      <p className="text-red-600">Please refresh the page and try again.</p>
+                      <p className="text-lg font-medium text-destructive mb-1">Error loading data</p>
+                      <p className="text-destructive">Please refresh the page and try again.</p>
                     </div>
                   ) : filteredInquiries.length === 0 ? (
                     <div className="text-center py-16">
-                      <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-4">
-                        <ClipboardList className="h-8 w-8 text-gray-400" />
+                      <div className="inline-flex items-center justify-center w-16 h-16 bg-muted rounded-full mb-4">
+                        <ClipboardList className="h-8 w-8 text-muted-foreground" />
                       </div>
-                      <p className="text-lg font-medium text-gray-900 mb-1">
+                      <p className="text-lg font-medium text-foreground mb-1">
                         {searchTerm ? "No matches found" : "No inquiries yet"}
                       </p>
-                      <p className="text-gray-500">
+                      <p className="text-muted-foreground">
                         {searchTerm
                           ? "Try adjusting your search terms or filters."
                           : "Customer inquiries will appear here once submitted."}
@@ -1209,25 +1209,25 @@ const AdminPage = () => {
                       <table className="w-full">
                         <thead className="bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
                           <tr>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wide">
+                            <th className="px-6 py-4 text-left text-xs font-semibold text-foreground uppercase tracking-wide">
                               Customer Info
                             </th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wide">
+                            <th className="px-6 py-4 text-left text-xs font-semibold text-foreground uppercase tracking-wide">
                               Contact Details
                             </th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wide">
+                            <th className="px-6 py-4 text-left text-xs font-semibold text-foreground uppercase tracking-wide">
                               Issue Details
                             </th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wide">
+                            <th className="px-6 py-4 text-left text-xs font-semibold text-foreground uppercase tracking-wide">
                               Location
                             </th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wide">
+                            <th className="px-6 py-4 text-left text-xs font-semibold text-foreground uppercase tracking-wide">
                               Message
                             </th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wide">
+                            <th className="px-6 py-4 text-left text-xs font-semibold text-foreground uppercase tracking-wide">
                               Date & Time
                             </th>
-                            <th className="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wide">
+                            <th className="px-6 py-4 text-center text-xs font-semibold text-foreground uppercase tracking-wide">
                               Actions
                             </th>
                           </tr>
@@ -1245,19 +1245,19 @@ const AdminPage = () => {
                         ).map((inquiry, index) => (
                           <tr
                             key={`inquiry-${inquiry.id || index}`}
-                            className="border-b border-gray-100 hover:bg-blue-50/50 transition-colors duration-200"
+                            className="border-b border-gray-100 hover:bg-primary/10/50 transition-colors duration-200"
                           >
                             {/* Customer Info */}
                             <td className="px-6 py-4">
                               <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                  <span className="font-semibold text-blue-700 text-sm">
+                                  <span className="font-semibold text-primary text-sm">
                                     {inquiry.name.charAt(0).toUpperCase()}
                                   </span>
                                 </div>
                                 <div>
-                                  <div className="font-semibold text-gray-900">{inquiry.name}</div>
-                                  <div className="text-sm text-gray-500">Customer</div>
+                                  <div className="font-semibold text-foreground">{inquiry.name}</div>
+                                  <div className="text-sm text-muted-foreground">Customer</div>
                                 </div>
                               </div>
                             </td>
@@ -1265,39 +1265,39 @@ const AdminPage = () => {
                             {/* Contact Details */}
                             <td className="px-6 py-4">
                               <div className="space-y-1">
-                                <div className="font-medium text-gray-900">{inquiry.phone}</div>
-                                <div className="text-sm text-gray-500">{inquiry.email || "No email provided"}</div>
+                                <div className="font-medium text-foreground">{inquiry.phone}</div>
+                                <div className="text-sm text-muted-foreground">{inquiry.email || "No email provided"}</div>
                               </div>
                             </td>
                             
                             {/* Issue Details */}
                             <td className="px-6 py-4">
-                              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
                                 {inquiry.issueType || "General Inquiry"}
                               </span>
                             </td>
                             
                             {/* Location */}
                             <td className="px-6 py-4">
-                              <div className="max-w-32 text-sm text-gray-900 truncate" title={inquiry.address || ""}>
+                              <div className="max-w-32 text-sm text-foreground truncate" title={inquiry.address || ""}>
                                 {inquiry.address || (
-                                  <span className="text-gray-400 italic">No address</span>
+                                  <span className="text-muted-foreground italic">No address</span>
                                 )}
                               </div>
                             </td>
                             
                             {/* Message */}
                             <td className="px-6 py-4">
-                              <div className="max-w-40 text-sm text-gray-900 truncate" title={inquiry.message || ""}>
+                              <div className="max-w-40 text-sm text-foreground truncate" title={inquiry.message || ""}>
                                 {inquiry.message || (
-                                  <span className="text-gray-400 italic">No message</span>
+                                  <span className="text-muted-foreground italic">No message</span>
                                 )}
                               </div>
                             </td>
                             
                             {/* Date & Time */}
                             <td className="px-6 py-4">
-                              <div className="text-sm text-gray-900">
+                              <div className="text-sm text-foreground">
                                 {inquiry.createdAt
                                   ? formatDate(inquiry.createdAt)
                                   : "Recent"}
@@ -1309,7 +1309,7 @@ const AdminPage = () => {
                               <div className="flex justify-center gap-2">
                                 <Dialog>
                                   <DialogTrigger asChild>
-                                    <button className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-200">
+                                    <button className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-primary bg-primary/10 rounded-lg hover:bg-primary/10 transition-colors duration-200">
                                       <Eye className="h-3 w-3" />
                                       View
                                     </button>
@@ -1318,7 +1318,7 @@ const AdminPage = () => {
                                     <DialogHeader>
                                       <DialogTitle className="flex items-center gap-3">
                                         <div className="w-8 h-8 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center">
-                                          <span className="font-bold text-blue-700 text-sm">
+                                          <span className="font-bold text-primary text-sm">
                                             {inquiry.name.charAt(0).toUpperCase()}
                                           </span>
                                         </div>
@@ -1329,37 +1329,37 @@ const AdminPage = () => {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
                                       <div className="space-y-4">
                                         <div>
-                                          <label className="text-sm font-medium text-gray-700 mb-1 block">
+                                          <label className="text-sm font-medium text-foreground mb-1 block">
                                             Customer Name
                                           </label>
-                                          <p className="text-gray-900 bg-gray-50 p-3 rounded-lg">
+                                          <p className="text-foreground bg-muted p-3 rounded-lg">
                                             {inquiry.name}
                                           </p>
                                         </div>
                                         
                                         <div>
-                                          <label className="text-sm font-medium text-gray-700 mb-1 block">
+                                          <label className="text-sm font-medium text-foreground mb-1 block">
                                             Phone Number
                                           </label>
-                                          <p className="text-gray-900 bg-gray-50 p-3 rounded-lg">
+                                          <p className="text-foreground bg-muted p-3 rounded-lg">
                                             {inquiry.phone}
                                           </p>
                                         </div>
                                         
                                         <div>
-                                          <label className="text-sm font-medium text-gray-700 mb-1 block">
+                                          <label className="text-sm font-medium text-foreground mb-1 block">
                                             Email Address
                                           </label>
-                                          <p className="text-gray-900 bg-gray-50 p-3 rounded-lg">
+                                          <p className="text-foreground bg-muted p-3 rounded-lg">
                                             {inquiry.email || "No email provided"}
                                           </p>
                                         </div>
                                         
                                         <div>
-                                          <label className="text-sm font-medium text-gray-700 mb-1 block">
+                                          <label className="text-sm font-medium text-foreground mb-1 block">
                                             Issue Type
                                           </label>
-                                          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                                          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">
                                             {inquiry.issueType || "General Inquiry"}
                                           </span>
                                         </div>
@@ -1367,28 +1367,28 @@ const AdminPage = () => {
 
                                       <div className="space-y-4">
                                         <div>
-                                          <label className="text-sm font-medium text-gray-700 mb-1 block">
+                                          <label className="text-sm font-medium text-foreground mb-1 block">
                                             Location/Address
                                           </label>
-                                          <p className="text-gray-900 bg-gray-50 p-3 rounded-lg min-h-[3rem]">
+                                          <p className="text-foreground bg-muted p-3 rounded-lg min-h-[3rem]">
                                             {inquiry.address || "No address provided"}
                                           </p>
                                         </div>
                                         
                                         <div>
-                                          <label className="text-sm font-medium text-gray-700 mb-1 block">
+                                          <label className="text-sm font-medium text-foreground mb-1 block">
                                             Message/Details
                                           </label>
-                                          <p className="text-gray-900 bg-gray-50 p-3 rounded-lg min-h-[6rem]">
+                                          <p className="text-foreground bg-muted p-3 rounded-lg min-h-[6rem]">
                                             {inquiry.message || "No message provided"}
                                           </p>
                                         </div>
                                         
                                         <div>
-                                          <label className="text-sm font-medium text-gray-700 mb-1 block">
+                                          <label className="text-sm font-medium text-foreground mb-1 block">
                                             Submission Date
                                           </label>
-                                          <p className="text-gray-900 bg-gray-50 p-3 rounded-lg">
+                                          <p className="text-foreground bg-muted p-3 rounded-lg">
                                             {inquiry.createdAt ? formatDate(inquiry.createdAt) : "Recent"}
                                           </p>
                                         </div>
@@ -1431,7 +1431,7 @@ const AdminPage = () => {
                                     <Button
                                       variant="outline"
                                       size="sm"
-                                      className="text-red-600 border-red-200 hover:bg-red-50 hover:border-red-300 transition-colors duration-200"
+                                      className="text-destructive border-red-200 hover:bg-red-50 hover:border-red-300 transition-colors duration-200"
                                     >
                                       <Trash2 className="h-3 w-3" />
                                     </Button>
@@ -1499,22 +1499,22 @@ const AdminPage = () => {
                 {/* Enhanced Tab Header */}
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 p-6 bg-gradient-to-r from-orange-50 via-red-50 to-pink-50 rounded-xl border border-orange-200">
                   <div className="space-y-1">
-                    <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-foreground flex items-center gap-3">
                       <div className="w-8 h-8 bg-gradient-to-br from-orange-600 to-red-600 rounded-lg flex items-center justify-center">
                         <AlertCircle className="h-4 w-4 text-white" />
                       </div>
                       Exit Intent & Appointments
                     </h2>
-                    <p className="text-gray-600">
+                    <p className="text-muted-foreground">
                       Exit popup submissions and chatbot appointment requests from customers
                     </p>
-                    <div className="flex items-center gap-4 text-sm text-gray-500 mt-2">
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground mt-2">
                       <span className="flex items-center gap-1">
-                        <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+                        <span className="w-2 h-2 bg-accent rounded-full"></span>
                         Total: {Array.isArray(intentSubmissions) ? intentSubmissions.length : 0}
                       </span>
                       <span className="flex items-center gap-1">
-                        <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                        <span className="w-2 h-2 bg-secondary rounded-full"></span>
                         Today: {Array.isArray(intentSubmissions) && intentSubmissions.filter(i => {
                           const today = new Date();
                           const itemDate = new Date(i.createdAt);
@@ -1528,7 +1528,7 @@ const AdminPage = () => {
                     !isIntentsError &&
                     filteredIntents.length > 0 && (
                       <div className="flex flex-col sm:flex-row gap-3">
-                        <div className="flex items-center gap-2 text-sm text-gray-600 bg-white/60 backdrop-blur-sm rounded-lg px-3 py-2">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground bg-card/60 backdrop-blur-sm rounded-lg px-3 py-2">
                           <Eye className="h-4 w-4" />
                           Showing {getPaginatedData(sortByDate(filterByDateRange(filteredIntents, startDate, endDate), sortOrder), currentPage, itemsPerPage).length} of {filterByDateRange(filteredIntents, startDate, endDate).length}
                         </div>
