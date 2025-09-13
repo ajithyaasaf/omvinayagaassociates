@@ -1020,11 +1020,6 @@ const AdminPage = () => {
                     </div>
                     <div className="flex flex-col items-start">
                       <span className="font-semibold">Inquiries</span>
-                      <span className={`text-xs ${
-                        activeTab === "inquiries" ? "text-primary-foreground/80" : "text-muted-foreground"
-                      }`}>
-                        {Array.isArray(inquiries) ? inquiries.length : 0} total
-                      </span>
                     </div>
 
                   </div>
@@ -1044,11 +1039,6 @@ const AdminPage = () => {
                     </div>
                     <div className="flex flex-col items-start">
                       <span className="font-semibold">Contacts</span>
-                      <span className={`text-xs ${
-                        activeTab === "contacts" ? "text-primary-foreground/80" : "text-muted-foreground"
-                      }`}>
-                        {Array.isArray(contactSubmissions) ? contactSubmissions.length : 0} total
-                      </span>
                     </div>
 
                   </div>
@@ -1068,11 +1058,6 @@ const AdminPage = () => {
                     </div>
                     <div className="flex flex-col items-start">
                       <span className="font-semibold">Exit Intent</span>
-                      <span className={`text-xs ${
-                        activeTab === "intents" ? "text-primary-foreground/80" : "text-muted-foreground"
-                      }`}>
-                        {Array.isArray(intentSubmissions) ? intentSubmissions.length : 0} total
-                      </span>
                     </div>
 
                   </div>
