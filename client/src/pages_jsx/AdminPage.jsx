@@ -83,7 +83,6 @@ const AdminPage = () => {
     }
   }, []);
 
-
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -175,7 +174,6 @@ const AdminPage = () => {
     refetchInterval: 2000, // Poll every 2 seconds for instant updates
   });
 
-
   const deleteInquiryMutation = useMutation({
     mutationFn: async (id) => {
       if (id === null || id === undefined) {
@@ -195,7 +193,7 @@ const AdminPage = () => {
 
       const response = await apiRequest(
         "DELETE",
-        `/api/inquiries?id=${inquiryId}`
+        `/api/inquiries?id=${inquiryId}`,
       );
       return { id: inquiryId, response };
     },
@@ -244,7 +242,10 @@ const AdminPage = () => {
         throw new Error("Invalid contact ID");
       }
 
-      const response = await apiRequest("DELETE", `/api/contacts?id=${contactId}`);
+      const response = await apiRequest(
+        "DELETE",
+        `/api/contacts?id=${contactId}`,
+      );
       return { id: contactId, response };
     },
     onSuccess: (data) => {
@@ -293,7 +294,10 @@ const AdminPage = () => {
         throw new Error("Invalid intent ID");
       }
 
-      const response = await apiRequest("DELETE", `/api/intents?id=${intentId}`);
+      const response = await apiRequest(
+        "DELETE",
+        `/api/intents?id=${intentId}`,
+      );
       return { id: intentId, response };
     },
     onSuccess: (data) => {
@@ -566,7 +570,7 @@ const AdminPage = () => {
                 <span key={index} className="mx-1">
                   ...
                 </span>
-              )
+              ),
             )}
           </div>
 
@@ -719,16 +723,20 @@ const AdminPage = () => {
             <div className="bg-card  rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-all duration-200">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Total Inquiries</p>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    Total Inquiries
+                  </p>
                   <p className="text-3xl font-bold text-primary">
                     {Array.isArray(inquiries) ? inquiries.length : 0}
                   </p>
                   <p className="text-xs text-muted-foreground mt-1">
-                    {Array.isArray(inquiries) && inquiries.filter(i => {
-                      const today = new Date();
-                      const itemDate = new Date(i.createdAt);
-                      return itemDate.toDateString() === today.toDateString();
-                    }).length} today
+                    {Array.isArray(inquiries) &&
+                      inquiries.filter((i) => {
+                        const today = new Date();
+                        const itemDate = new Date(i.createdAt);
+                        return itemDate.toDateString() === today.toDateString();
+                      }).length}{" "}
+                    today
                   </p>
                 </div>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
@@ -740,16 +748,22 @@ const AdminPage = () => {
             <div className="bg-card  rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-all duration-200">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Contact Forms</p>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    Contact Forms
+                  </p>
                   <p className="text-3xl font-bold text-primary">
-                    {Array.isArray(contactSubmissions) ? contactSubmissions.length : 0}
+                    {Array.isArray(contactSubmissions)
+                      ? contactSubmissions.length
+                      : 0}
                   </p>
                   <p className="text-xs text-muted-foreground mt-1">
-                    {Array.isArray(contactSubmissions) && contactSubmissions.filter(c => {
-                      const today = new Date();
-                      const itemDate = new Date(c.createdAt);
-                      return itemDate.toDateString() === today.toDateString();
-                    }).length} today
+                    {Array.isArray(contactSubmissions) &&
+                      contactSubmissions.filter((c) => {
+                        const today = new Date();
+                        const itemDate = new Date(c.createdAt);
+                        return itemDate.toDateString() === today.toDateString();
+                      }).length}{" "}
+                    today
                   </p>
                 </div>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
@@ -761,16 +775,22 @@ const AdminPage = () => {
             <div className="bg-card  rounded-xl p-6 border border-border shadow-sm hover:shadow-md transition-all duration-200">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Exit Intents</p>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    Exit Intents
+                  </p>
                   <p className="text-3xl font-bold text-primary">
-                    {Array.isArray(intentSubmissions) ? intentSubmissions.length : 0}
+                    {Array.isArray(intentSubmissions)
+                      ? intentSubmissions.length
+                      : 0}
                   </p>
                   <p className="text-xs text-muted-foreground mt-1">
-                    {Array.isArray(intentSubmissions) && intentSubmissions.filter(i => {
-                      const today = new Date();
-                      const itemDate = new Date(i.createdAt);
-                      return itemDate.toDateString() === today.toDateString();
-                    }).length} today
+                    {Array.isArray(intentSubmissions) &&
+                      intentSubmissions.filter((i) => {
+                        const today = new Date();
+                        const itemDate = new Date(i.createdAt);
+                        return itemDate.toDateString() === today.toDateString();
+                      }).length}{" "}
+                    today
                   </p>
                 </div>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
@@ -809,127 +829,130 @@ const AdminPage = () => {
                   )}
                 </div>
                 <div className="flex flex-wrap gap-3">
-                <Dialog
-                  open={isFilterDialogOpen}
-                  onOpenChange={setIsFilterDialogOpen}
-                >
-                  <DialogTrigger asChild>
-                    <Button
-                      variant={startDate || endDate ? "default" : "outline"}
-                      className={`flex items-center gap-2 h-12 px-6 ${
-                        startDate || endDate
-                          ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg"
-                          : "bg-card  border-border text-foreground hover:bg-muted hover:text-foreground"
-                      } transition-all duration-200`}
-                    >
-                      <Filter className="h-4 w-4" />
-                      {startDate || endDate ? (
-                        <span className="flex items-center gap-1">
-                          <span>Filters Active</span>
-                          <span className="bg-primary-foreground/20 rounded-full px-2 py-0.5 text-xs">
-                            {[startDate, endDate].filter(Boolean).length}
-                          </span>
-                        </span>
-                      ) : (
-                        "Date Filter"
-                      )}
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-md">
-                    <DialogHeader>
-                      <DialogTitle>Date Range Filter</DialogTitle>
-                    </DialogHeader>
-                    <div className="grid gap-4 py-4">
-                      <div>
-                        <h4 className="text-sm font-medium mb-3 text-foreground">
-                          Select Date Range
-                        </h4>
-                        <div className="grid grid-cols-2 gap-4">
-                          <div className="space-y-1">
-                            <label
-                              htmlFor="start-date"
-                              className="text-xs text-muted-foreground"
-                            >
-                              Start Date
-                            </label>
-                            <Input
-                              id="start-date"
-                              type="date"
-                              value={startDate}
-                              onChange={(e) => setStartDate(e.target.value)}
-                            />
-                          </div>
-                          <div className="space-y-1">
-                            <label
-                              htmlFor="end-date"
-                              className="text-xs text-muted-foreground"
-                            >
-                              End Date
-                            </label>
-                            <Input
-                              id="end-date"
-                              type="date"
-                              value={endDate}
-                              onChange={(e) => setEndDate(e.target.value)}
-                            />
-                          </div>
-                        </div>
-                        <p className="text-xs text-muted-foreground mt-2">
-                          Filter data by submission date range
-                        </p>
-                      </div>
-                    </div>
-                    <DialogFooter>
-                      <Button
-                        variant="outline"
-                        onClick={() => {
-                          setStartDate("");
-                          setEndDate("");
-                        }}
-                        className="text-foreground"
-                      >
-                        Clear Dates
-                      </Button>
-                      <Button
-                        onClick={() => setIsFilterDialogOpen(false)}
-                        className="bg-primary hover:bg-primary/90 text-primary-foreground"
-                      >
-                        Apply Filter
-                      </Button>
-                    </DialogFooter>
-                  </DialogContent>
-                </Dialog>
-
-                <Button
-                  variant="outline"
-                  onClick={() =>
-                    setSortOrder(sortOrder === "desc" ? "asc" : "desc")
-                  }
-                  className="flex items-center gap-2 h-12 px-6 bg-card  border-border text-foreground hover:bg-muted hover:text-foreground hover:border-border transition-all duration-200"
-                >
-                  <ArrowUpDown className="h-4 w-4" />
-                  <span className="hidden sm:inline">
-                    {sortOrder === "desc" ? "Newest First" : "Oldest First"}
-                  </span>
-                  <span className="sm:hidden">Sort</span>
-                </Button>
-                
-                {/* Quick Reset Button */}
-                {(searchTerm || startDate || endDate || sortOrder !== "desc") && (
-                  <Button
-                    variant="ghost"
-                    onClick={() => {
-                      setSearchTerm("");
-                      setStartDate("");
-                      setEndDate("");
-                      setSortOrder("desc");
-                    }}
-                    className="flex items-center gap-2 h-12 px-4 text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-200"
+                  <Dialog
+                    open={isFilterDialogOpen}
+                    onOpenChange={setIsFilterDialogOpen}
                   >
-                    <X className="h-4 w-4" />
-                    Reset
+                    <DialogTrigger asChild>
+                      <Button
+                        variant={startDate || endDate ? "default" : "outline"}
+                        className={`flex items-center gap-2 h-12 px-6 ${
+                          startDate || endDate
+                            ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg"
+                            : "bg-card  border-border text-foreground hover:bg-muted hover:text-foreground"
+                        } transition-all duration-200`}
+                      >
+                        <Filter className="h-4 w-4" />
+                        {startDate || endDate ? (
+                          <span className="flex items-center gap-1">
+                            <span>Filters Active</span>
+                            <span className="bg-primary-foreground/20 rounded-full px-2 py-0.5 text-xs">
+                              {[startDate, endDate].filter(Boolean).length}
+                            </span>
+                          </span>
+                        ) : (
+                          "Date Filter"
+                        )}
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-md">
+                      <DialogHeader>
+                        <DialogTitle>Date Range Filter</DialogTitle>
+                      </DialogHeader>
+                      <div className="grid gap-4 py-4">
+                        <div>
+                          <h4 className="text-sm font-medium mb-3 text-foreground">
+                            Select Date Range
+                          </h4>
+                          <div className="grid grid-cols-2 gap-4">
+                            <div className="space-y-1">
+                              <label
+                                htmlFor="start-date"
+                                className="text-xs text-muted-foreground"
+                              >
+                                Start Date
+                              </label>
+                              <Input
+                                id="start-date"
+                                type="date"
+                                value={startDate}
+                                onChange={(e) => setStartDate(e.target.value)}
+                              />
+                            </div>
+                            <div className="space-y-1">
+                              <label
+                                htmlFor="end-date"
+                                className="text-xs text-muted-foreground"
+                              >
+                                End Date
+                              </label>
+                              <Input
+                                id="end-date"
+                                type="date"
+                                value={endDate}
+                                onChange={(e) => setEndDate(e.target.value)}
+                              />
+                            </div>
+                          </div>
+                          <p className="text-xs text-muted-foreground mt-2">
+                            Filter data by submission date range
+                          </p>
+                        </div>
+                      </div>
+                      <DialogFooter>
+                        <Button
+                          variant="outline"
+                          onClick={() => {
+                            setStartDate("");
+                            setEndDate("");
+                          }}
+                          className="text-foreground"
+                        >
+                          Clear Dates
+                        </Button>
+                        <Button
+                          onClick={() => setIsFilterDialogOpen(false)}
+                          className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                        >
+                          Apply Filter
+                        </Button>
+                      </DialogFooter>
+                    </DialogContent>
+                  </Dialog>
+
+                  <Button
+                    variant="outline"
+                    onClick={() =>
+                      setSortOrder(sortOrder === "desc" ? "asc" : "desc")
+                    }
+                    className="flex items-center gap-2 h-12 px-6 bg-card  border-border text-foreground hover:bg-muted hover:text-foreground hover:border-border transition-all duration-200"
+                  >
+                    <ArrowUpDown className="h-4 w-4" />
+                    <span className="hidden sm:inline">
+                      {sortOrder === "desc" ? "Newest First" : "Oldest First"}
+                    </span>
+                    <span className="sm:hidden">Sort</span>
                   </Button>
-                )}
+
+                  {/* Quick Reset Button */}
+                  {(searchTerm ||
+                    startDate ||
+                    endDate ||
+                    sortOrder !== "desc") && (
+                    <Button
+                      variant="ghost"
+                      onClick={() => {
+                        setSearchTerm("");
+                        setStartDate("");
+                        setEndDate("");
+                        setSortOrder("desc");
+                      }}
+                      className="flex items-center gap-2 h-12 px-4 text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-200"
+                    >
+                      <X className="h-4 w-4" />
+                      Reset
+                    </Button>
+                  )}
                 </div>
               </div>
             </div>
@@ -954,17 +977,18 @@ const AdminPage = () => {
                   onClick={() => handleTabChange("inquiries")}
                 >
                   <div className="relative flex items-center gap-3">
-                    <div className={`p-1.5 rounded-lg transition-colors duration-300 ${
-                      activeTab === "inquiries" 
-                        ? "bg-white/20" 
-                        : "bg-primary/10 text-primary"
-                    }`}>
+                    <div
+                      className={`p-1.5 rounded-lg transition-colors duration-300 ${
+                        activeTab === "inquiries"
+                          ? "bg-white/20"
+                          : "bg-primary/10 text-primary"
+                      }`}
+                    >
                       <ClipboardList className="h-4 w-4" />
                     </div>
                     <div className="flex flex-col items-start">
                       <span className="font-semibold">Inquiries</span>
                     </div>
-
                   </div>
                 </TabsTrigger>
                 <TabsTrigger
@@ -973,17 +997,18 @@ const AdminPage = () => {
                   onClick={() => handleTabChange("contacts")}
                 >
                   <div className="relative flex items-center gap-3">
-                    <div className={`p-1.5 rounded-lg transition-colors duration-300 ${
-                      activeTab === "contacts" 
-                        ? "bg-white/20" 
-                        : "bg-primary/10 text-primary"
-                    }`}>
+                    <div
+                      className={`p-1.5 rounded-lg transition-colors duration-300 ${
+                        activeTab === "contacts"
+                          ? "bg-white/20"
+                          : "bg-primary/10 text-primary"
+                      }`}
+                    >
                       <MessageSquare className="h-4 w-4" />
                     </div>
                     <div className="flex flex-col items-start">
                       <span className="font-semibold">Contacts</span>
                     </div>
-
                   </div>
                 </TabsTrigger>
                 <TabsTrigger
@@ -992,22 +1017,21 @@ const AdminPage = () => {
                   onClick={() => handleTabChange("intents")}
                 >
                   <div className="relative flex items-center gap-3">
-                    <div className={`p-1.5 rounded-lg transition-colors duration-300 ${
-                      activeTab === "intents" 
-                        ? "bg-white/20" 
-                        : "bg-primary/10 text-primary"
-                    }`}>
+                    <div
+                      className={`p-1.5 rounded-lg transition-colors duration-300 ${
+                        activeTab === "intents"
+                          ? "bg-white/20"
+                          : "bg-primary/10 text-primary"
+                      }`}
+                    >
                       <AlertCircle className="h-4 w-4" />
                     </div>
                     <div className="flex flex-col items-start">
                       <span className="font-semibold">Exit Intent</span>
                     </div>
-
                   </div>
                 </TabsTrigger>
               </TabsList>
-
-
 
               <TabsContent value="inquiries" className="mt-0 space-y-6">
                 {/* Enhanced Tab Header */}
@@ -1020,7 +1044,8 @@ const AdminPage = () => {
                       Quick Inquiries
                     </h2>
                     <p className="text-muted-foreground">
-                      Customer inquiries from modal popup forms and quick contact requests
+                      Customer inquiries from modal popup forms and quick
+                      contact requests
                     </p>
                     <div className="flex items-center gap-4 text-sm text-muted-foreground mt-2">
                       <span className="flex items-center gap-1">
@@ -1029,11 +1054,15 @@ const AdminPage = () => {
                       </span>
                       <span className="flex items-center gap-1">
                         <span className="w-2 h-2 bg-secondary rounded-full"></span>
-                        Today: {Array.isArray(inquiries) && inquiries.filter(i => {
-                          const today = new Date();
-                          const itemDate = new Date(i.createdAt);
-                          return itemDate.toDateString() === today.toDateString();
-                        }).length}
+                        Today:{" "}
+                        {Array.isArray(inquiries) &&
+                          inquiries.filter((i) => {
+                            const today = new Date();
+                            const itemDate = new Date(i.createdAt);
+                            return (
+                              itemDate.toDateString() === today.toDateString()
+                            );
+                          }).length}
                       </span>
                     </div>
                   </div>
@@ -1042,13 +1071,35 @@ const AdminPage = () => {
                     <div className="flex flex-col sm:flex-row gap-3">
                       <div className="flex items-center gap-2 text-sm text-muted-foreground bg-card  rounded-lg px-3 py-2">
                         <Eye className="h-4 w-4" />
-                        Showing {getPaginatedData(sortByDate(filterByDateRange(filteredInquiries, startDate, endDate), sortOrder), currentPage, itemsPerPage).length} of {filterByDateRange(filteredInquiries, startDate, endDate).length}
+                        Showing{" "}
+                        {
+                          getPaginatedData(
+                            sortByDate(
+                              filterByDateRange(
+                                filteredInquiries,
+                                startDate,
+                                endDate,
+                              ),
+                              sortOrder,
+                            ),
+                            currentPage,
+                            itemsPerPage,
+                          ).length
+                        }{" "}
+                        of{" "}
+                        {
+                          filterByDateRange(
+                            filteredInquiries,
+                            startDate,
+                            endDate,
+                          ).length
+                        }
                       </div>
                       <CSVLink
                         data={filterByDateRange(
                           filteredInquiries,
                           startDate,
-                          endDate
+                          endDate,
                         ).map((inquiry) => ({
                           ID: inquiry.id,
                           Name: inquiry.name,
@@ -1080,16 +1131,24 @@ const AdminPage = () => {
                       <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
                         <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent"></div>
                       </div>
-                      <p className="text-lg font-medium text-foreground mb-1">Loading inquiries</p>
-                      <p className="text-muted-foreground">Fetching latest customer inquiries...</p>
+                      <p className="text-lg font-medium text-foreground mb-1">
+                        Loading inquiries
+                      </p>
+                      <p className="text-muted-foreground">
+                        Fetching latest customer inquiries...
+                      </p>
                     </div>
                   ) : isError ? (
                     <div className="text-center py-16">
                       <div className="inline-flex items-center justify-center w-16 h-16 bg-destructive/10 rounded-full mb-4">
                         <AlertCircle className="h-8 w-8 text-destructive" />
                       </div>
-                      <p className="text-lg font-medium text-destructive mb-1">Error loading data</p>
-                      <p className="text-destructive">Please refresh the page and try again.</p>
+                      <p className="text-lg font-medium text-destructive mb-1">
+                        Error loading data
+                      </p>
+                      <p className="text-destructive">
+                        Please refresh the page and try again.
+                      </p>
                     </div>
                   ) : filteredInquiries.length === 0 ? (
                     <div className="text-center py-16">
@@ -1133,249 +1192,285 @@ const AdminPage = () => {
                             </th>
                           </tr>
                         </thead>
-                      <tbody>
-                        {getPaginatedData(
-                          sortByDate(
-                            filterByDateRange(
-                              filteredInquiries,
-                              startDate,
-                              endDate
+                        <tbody>
+                          {getPaginatedData(
+                            sortByDate(
+                              filterByDateRange(
+                                filteredInquiries,
+                                startDate,
+                                endDate,
+                              ),
+                              sortOrder,
                             ),
-                            sortOrder
-                          )
-                        ).map((inquiry, index) => (
-                          <tr
-                            key={`inquiry-${inquiry.id || index}`}
-                            className="border-b border-border hover:bg-primary/5 transition-colors duration-200"
-                          >
-                            {/* Customer Info */}
-                            <td className="px-6 py-4">
-                              <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                                  <span className="font-semibold text-primary text-sm">
-                                    {inquiry.name.charAt(0).toUpperCase()}
-                                  </span>
-                                </div>
-                                <div>
-                                  <div className="font-semibold text-foreground">{inquiry.name}</div>
-                                  <div className="text-sm text-muted-foreground">Customer</div>
-                                </div>
-                              </div>
-                            </td>
-                            
-                            {/* Contact Details */}
-                            <td className="px-6 py-4">
-                              <div className="space-y-1">
-                                <div className="font-medium text-foreground">{inquiry.phone}</div>
-                                <div className="text-sm text-muted-foreground">{inquiry.email || "No email provided"}</div>
-                              </div>
-                            </td>
-                            
-                            {/* Issue Details */}
-                            <td className="px-6 py-4">
-                              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
-                                {inquiry.issueType || "General Inquiry"}
-                              </span>
-                            </td>
-                            
-                            {/* Location */}
-                            <td className="px-6 py-4">
-                              <div className="max-w-32 text-sm text-foreground truncate" title={inquiry.address || ""}>
-                                {inquiry.address || (
-                                  <span className="text-muted-foreground italic">No address</span>
-                                )}
-                              </div>
-                            </td>
-                            
-                            {/* Message */}
-                            <td className="px-6 py-4">
-                              <div className="max-w-40 text-sm text-foreground truncate" title={inquiry.message || ""}>
-                                {inquiry.message || (
-                                  <span className="text-muted-foreground italic">No message</span>
-                                )}
-                              </div>
-                            </td>
-                            
-                            {/* Date & Time */}
-                            <td className="px-6 py-4">
-                              <div className="text-sm text-foreground">
-                                {inquiry.createdAt
-                                  ? formatDate(inquiry.createdAt)
-                                  : "Recent"}
-                              </div>
-                            </td>
-                            
-                            {/* Actions */}
-                            <td className="px-6 py-4">
-                              <div className="flex justify-center gap-2">
-                                <Dialog>
-                                  <DialogTrigger asChild>
-                                    <button className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-primary bg-primary/10 rounded-lg hover:bg-primary/10 transition-colors duration-200">
-                                      <Eye className="h-3 w-3" />
-                                      View
-                                    </button>
-                                  </DialogTrigger>
-                                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-                                    <DialogHeader>
-                                      <DialogTitle className="flex items-center gap-3">
-                                        <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                                          <span className="font-bold text-primary text-sm">
-                                            {inquiry.name.charAt(0).toUpperCase()}
-                                          </span>
-                                        </div>
-                                        Inquiry Details - {inquiry.name}
-                                      </DialogTitle>
-                                    </DialogHeader>
-                                    
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-                                      <div className="space-y-4">
-                                        <div>
-                                          <label className="text-sm font-medium text-foreground mb-1 block">
-                                            Customer Name
-                                          </label>
-                                          <p className="text-foreground bg-muted p-3 rounded-lg">
-                                            {inquiry.name}
-                                          </p>
-                                        </div>
-                                        
-                                        <div>
-                                          <label className="text-sm font-medium text-foreground mb-1 block">
-                                            Phone Number
-                                          </label>
-                                          <p className="text-foreground bg-muted p-3 rounded-lg">
-                                            {inquiry.phone}
-                                          </p>
-                                        </div>
-                                        
-                                        <div>
-                                          <label className="text-sm font-medium text-foreground mb-1 block">
-                                            Email Address
-                                          </label>
-                                          <p className="text-foreground bg-muted p-3 rounded-lg">
-                                            {inquiry.email || "No email provided"}
-                                          </p>
-                                        </div>
-                                        
-                                        <div>
-                                          <label className="text-sm font-medium text-foreground mb-1 block">
-                                            Issue Type
-                                          </label>
-                                          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">
-                                            {inquiry.issueType || "General Inquiry"}
-                                          </span>
-                                        </div>
-                                      </div>
-
-                                      <div className="space-y-4">
-                                        <div>
-                                          <label className="text-sm font-medium text-foreground mb-1 block">
-                                            Location/Address
-                                          </label>
-                                          <p className="text-foreground bg-muted p-3 rounded-lg min-h-[3rem]">
-                                            {inquiry.address || "No address provided"}
-                                          </p>
-                                        </div>
-                                        
-                                        <div>
-                                          <label className="text-sm font-medium text-foreground mb-1 block">
-                                            Message/Details
-                                          </label>
-                                          <p className="text-foreground bg-muted p-3 rounded-lg min-h-[6rem]">
-                                            {inquiry.message || "No message provided"}
-                                          </p>
-                                        </div>
-                                        
-                                        <div>
-                                          <label className="text-sm font-medium text-foreground mb-1 block">
-                                            Submission Date
-                                          </label>
-                                          <p className="text-foreground bg-muted p-3 rounded-lg">
-                                            {inquiry.createdAt ? formatDate(inquiry.createdAt) : "Recent"}
-                                          </p>
-                                        </div>
-                                      </div>
+                          ).map((inquiry, index) => (
+                            <tr
+                              key={`inquiry-${inquiry.id || index}`}
+                              className="border-b border-border hover:bg-primary/5 transition-colors duration-200"
+                            >
+                              {/* Customer Info */}
+                              <td className="px-6 py-4">
+                                <div className="flex items-center gap-3">
+                                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <span className="font-semibold text-primary text-sm">
+                                      {inquiry.name.charAt(0).toUpperCase()}
+                                    </span>
+                                  </div>
+                                  <div>
+                                    <div className="font-semibold text-foreground">
+                                      {inquiry.name}
                                     </div>
+                                    <div className="text-sm text-muted-foreground">
+                                      Customer
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
 
-                                    <DialogFooter className="flex gap-3 mt-6">
-                                      <AlertDialog>
-                                        <AlertDialogTrigger asChild>
-                                          <Button variant="destructive" className="px-6">
-                                            <Trash2 className="h-4 w-4 mr-2" />
-                                            Delete Inquiry
-                                          </Button>
-                                        </AlertDialogTrigger>
-                                        <AlertDialogContent>
-                                          <AlertDialogHeader>
-                                            <AlertDialogTitle>Delete Inquiry</AlertDialogTitle>
-                                            <AlertDialogDescription>
-                                              Are you sure you want to delete this inquiry from {inquiry.name}? This action cannot be undone.
-                                            </AlertDialogDescription>
-                                          </AlertDialogHeader>
-                                          <AlertDialogFooter>
-                                            <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                            <AlertDialogAction
-                                              onClick={() => {
-                                                deleteInquiryMutation.mutate(inquiry.id);
-                                              }}
-                                              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                              {/* Contact Details */}
+                              <td className="px-6 py-4">
+                                <div className="space-y-1">
+                                  <div className="font-medium text-foreground">
+                                    {inquiry.phone}
+                                  </div>
+                                  <div className="text-sm text-muted-foreground">
+                                    {inquiry.email || "No email provided"}
+                                  </div>
+                                </div>
+                              </td>
+
+                              {/* Issue Details */}
+                              <td className="px-6 py-4">
+                                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
+                                  {inquiry.issueType || "General Inquiry"}
+                                </span>
+                              </td>
+
+                              {/* Location */}
+                              <td className="px-6 py-4">
+                                <div
+                                  className="max-w-32 text-sm text-foreground truncate"
+                                  title={inquiry.address || ""}
+                                >
+                                  {inquiry.address || (
+                                    <span className="text-muted-foreground italic">
+                                      No address
+                                    </span>
+                                  )}
+                                </div>
+                              </td>
+
+                              {/* Message */}
+                              <td className="px-6 py-4">
+                                <div
+                                  className="max-w-40 text-sm text-foreground truncate"
+                                  title={inquiry.message || ""}
+                                >
+                                  {inquiry.message || (
+                                    <span className="text-muted-foreground italic">
+                                      No message
+                                    </span>
+                                  )}
+                                </div>
+                              </td>
+
+                              {/* Date & Time */}
+                              <td className="px-6 py-4">
+                                <div className="text-sm text-foreground">
+                                  {inquiry.createdAt
+                                    ? formatDate(inquiry.createdAt)
+                                    : "Recent"}
+                                </div>
+                              </td>
+
+                              {/* Actions */}
+                              <td className="px-6 py-4">
+                                <div className="flex justify-center gap-2">
+                                  <Dialog>
+                                    <DialogTrigger asChild>
+                                      <button className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-primary bg-primary/10 rounded-lg hover:bg-primary/10 transition-colors duration-200">
+                                        <Eye className="h-3 w-3" />
+                                        View
+                                      </button>
+                                    </DialogTrigger>
+                                    <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                                      <DialogHeader>
+                                        <DialogTitle className="flex items-center gap-3">
+                                          <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                                            <span className="font-bold text-primary text-sm">
+                                              {inquiry.name
+                                                .charAt(0)
+                                                .toUpperCase()}
+                                            </span>
+                                          </div>
+                                          Inquiry Details - {inquiry.name}
+                                        </DialogTitle>
+                                      </DialogHeader>
+
+                                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                                        <div className="space-y-4">
+                                          <div>
+                                            <label className="text-sm font-medium text-foreground mb-1 block">
+                                              Customer Name
+                                            </label>
+                                            <p className="text-foreground bg-muted p-3 rounded-lg">
+                                              {inquiry.name}
+                                            </p>
+                                          </div>
+
+                                          <div>
+                                            <label className="text-sm font-medium text-foreground mb-1 block">
+                                              Phone Number
+                                            </label>
+                                            <p className="text-foreground bg-muted p-3 rounded-lg">
+                                              {inquiry.phone}
+                                            </p>
+                                          </div>
+
+                                          <div>
+                                            <label className="text-sm font-medium text-foreground mb-1 block">
+                                              Email Address
+                                            </label>
+                                            <p className="text-foreground bg-muted p-3 rounded-lg">
+                                              {inquiry.email ||
+                                                "No email provided"}
+                                            </p>
+                                          </div>
+
+                                          <div>
+                                            <label className="text-sm font-medium text-foreground mb-1 block">
+                                              Issue Type
+                                            </label>
+                                            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">
+                                              {inquiry.issueType ||
+                                                "General Inquiry"}
+                                            </span>
+                                          </div>
+                                        </div>
+
+                                        <div className="space-y-4">
+                                          <div>
+                                            <label className="text-sm font-medium text-foreground mb-1 block">
+                                              Location/Address
+                                            </label>
+                                            <p className="text-foreground bg-muted p-3 rounded-lg min-h-[3rem]">
+                                              {inquiry.address ||
+                                                "No address provided"}
+                                            </p>
+                                          </div>
+
+                                          <div>
+                                            <label className="text-sm font-medium text-foreground mb-1 block">
+                                              Message/Details
+                                            </label>
+                                            <p className="text-foreground bg-muted p-3 rounded-lg min-h-[6rem]">
+                                              {inquiry.message ||
+                                                "No message provided"}
+                                            </p>
+                                          </div>
+
+                                          <div>
+                                            <label className="text-sm font-medium text-foreground mb-1 block">
+                                              Submission Date
+                                            </label>
+                                            <p className="text-foreground bg-muted p-3 rounded-lg">
+                                              {inquiry.createdAt
+                                                ? formatDate(inquiry.createdAt)
+                                                : "Recent"}
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <DialogFooter className="flex gap-3 mt-6">
+                                        <AlertDialog>
+                                          <AlertDialogTrigger asChild>
+                                            <Button
+                                              variant="destructive"
+                                              className="px-6"
                                             >
-                                              Delete
-                                            </AlertDialogAction>
-                                          </AlertDialogFooter>
-                                        </AlertDialogContent>
-                                      </AlertDialog>
-                                    </DialogFooter>
-                                  </DialogContent>
-                                </Dialog>
-                                <AlertDialog>
-                                  <AlertDialogTrigger asChild>
-                                    <Button
-                                      variant="outline"
-                                      size="sm"
-                                      className="text-destructive border-destructive/30 hover:bg-destructive/10 hover:border-destructive/40 transition-colors duration-200"
-                                    >
-                                      <Trash2 className="h-3 w-3" />
-                                    </Button>
-                                  </AlertDialogTrigger>
-                                  <AlertDialogContent>
-                                    <AlertDialogHeader>
-                                      <AlertDialogTitle>
-                                        Are you sure you want to delete this
-                                        inquiry?
-                                      </AlertDialogTitle>
-                                      <AlertDialogDescription>
-                                        This action cannot be undone. This will
-                                        permanently delete the inquiry from{" "}
-                                        {COMPANY_NAME}'s database.
-                                      </AlertDialogDescription>
-                                    </AlertDialogHeader>
-                                    <AlertDialogFooter>
-                                      <AlertDialogCancel>
-                                        Cancel
-                                      </AlertDialogCancel>
-                                      <AlertDialogAction
-                                        onClick={() =>
-                                          deleteInquiryMutation.mutate(
-                                            inquiry.id
-                                          )
-                                        }
-                                        className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                                              <Trash2 className="h-4 w-4 mr-2" />
+                                              Delete Inquiry
+                                            </Button>
+                                          </AlertDialogTrigger>
+                                          <AlertDialogContent>
+                                            <AlertDialogHeader>
+                                              <AlertDialogTitle>
+                                                Delete Inquiry
+                                              </AlertDialogTitle>
+                                              <AlertDialogDescription>
+                                                Are you sure you want to delete
+                                                this inquiry from {inquiry.name}
+                                                ? This action cannot be undone.
+                                              </AlertDialogDescription>
+                                            </AlertDialogHeader>
+                                            <AlertDialogFooter>
+                                              <AlertDialogCancel>
+                                                Cancel
+                                              </AlertDialogCancel>
+                                              <AlertDialogAction
+                                                onClick={() => {
+                                                  deleteInquiryMutation.mutate(
+                                                    inquiry.id,
+                                                  );
+                                                }}
+                                                className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                                              >
+                                                Delete
+                                              </AlertDialogAction>
+                                            </AlertDialogFooter>
+                                          </AlertDialogContent>
+                                        </AlertDialog>
+                                      </DialogFooter>
+                                    </DialogContent>
+                                  </Dialog>
+                                  <AlertDialog>
+                                    <AlertDialogTrigger asChild>
+                                      <Button
+                                        variant="outline"
+                                        size="sm"
+                                        className="text-destructive border-destructive/30 hover:bg-destructive/10 hover:border-destructive/40 transition-colors duration-200"
                                       >
-                                        Delete
-                                      </AlertDialogAction>
-                                    </AlertDialogFooter>
-                                  </AlertDialogContent>
-                                </AlertDialog>
-                              </div>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
+                                        <Trash2 className="h-3 w-3" />
+                                      </Button>
+                                    </AlertDialogTrigger>
+                                    <AlertDialogContent>
+                                      <AlertDialogHeader>
+                                        <AlertDialogTitle>
+                                          Are you sure you want to delete this
+                                          inquiry?
+                                        </AlertDialogTitle>
+                                        <AlertDialogDescription>
+                                          This action cannot be undone. This
+                                          will permanently delete the inquiry
+                                          from {COMPANY_NAME}'s database.
+                                        </AlertDialogDescription>
+                                      </AlertDialogHeader>
+                                      <AlertDialogFooter>
+                                        <AlertDialogCancel>
+                                          Cancel
+                                        </AlertDialogCancel>
+                                        <AlertDialogAction
+                                          onClick={() =>
+                                            deleteInquiryMutation.mutate(
+                                              inquiry.id,
+                                            )
+                                          }
+                                          className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                                        >
+                                          Delete
+                                        </AlertDialogAction>
+                                      </AlertDialogFooter>
+                                    </AlertDialogContent>
+                                  </AlertDialog>
+                                </div>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   )}
                 </div>
-
 
                 {/* Enhanced Pagination */}
                 {filteredInquiries.length > itemsPerPage && (
@@ -1386,9 +1481,9 @@ const AdminPage = () => {
                           filterByDateRange(
                             filteredInquiries,
                             startDate,
-                            endDate
+                            endDate,
                           ),
-                          sortOrder
+                          sortOrder,
                         ).length
                       }
                     />
@@ -1407,20 +1502,28 @@ const AdminPage = () => {
                       Exit Intent & Appointments
                     </h2>
                     <p className="text-muted-foreground">
-                      Exit popup submissions and chatbot appointment requests from customers
+                      Exit popup submissions and chatbot appointment requests
+                      from customers
                     </p>
                     <div className="flex items-center gap-4 text-sm text-muted-foreground mt-2">
                       <span className="flex items-center gap-1">
                         <span className="w-2 h-2 bg-primary rounded-full"></span>
-                        Total: {Array.isArray(intentSubmissions) ? intentSubmissions.length : 0}
+                        Total:{" "}
+                        {Array.isArray(intentSubmissions)
+                          ? intentSubmissions.length
+                          : 0}
                       </span>
                       <span className="flex items-center gap-1">
                         <span className="w-2 h-2 bg-secondary rounded-full"></span>
-                        Today: {Array.isArray(intentSubmissions) && intentSubmissions.filter(i => {
-                          const today = new Date();
-                          const itemDate = new Date(i.createdAt);
-                          return itemDate.toDateString() === today.toDateString();
-                        }).length}
+                        Today:{" "}
+                        {Array.isArray(intentSubmissions) &&
+                          intentSubmissions.filter((i) => {
+                            const today = new Date();
+                            const itemDate = new Date(i.createdAt);
+                            return (
+                              itemDate.toDateString() === today.toDateString()
+                            );
+                          }).length}
                       </span>
                     </div>
                   </div>
@@ -1431,13 +1534,35 @@ const AdminPage = () => {
                       <div className="flex flex-col sm:flex-row gap-3">
                         <div className="flex items-center gap-2 text-sm text-muted-foreground bg-card  rounded-lg px-3 py-2">
                           <Eye className="h-4 w-4" />
-                          Showing {getPaginatedData(sortByDate(filterByDateRange(filteredIntents, startDate, endDate), sortOrder), currentPage, itemsPerPage).length} of {filterByDateRange(filteredIntents, startDate, endDate).length}
+                          Showing{" "}
+                          {
+                            getPaginatedData(
+                              sortByDate(
+                                filterByDateRange(
+                                  filteredIntents,
+                                  startDate,
+                                  endDate,
+                                ),
+                                sortOrder,
+                              ),
+                              currentPage,
+                              itemsPerPage,
+                            ).length
+                          }{" "}
+                          of{" "}
+                          {
+                            filterByDateRange(
+                              filteredIntents,
+                              startDate,
+                              endDate,
+                            ).length
+                          }
                         </div>
                         <CSVLink
                           data={filterByDateRange(
                             filteredIntents,
                             startDate,
-                            endDate
+                            endDate,
                           ).map((intent) => ({
                             ID: intent.id,
                             Name: intent.name,
@@ -1515,10 +1640,10 @@ const AdminPage = () => {
                             filterByDateRange(
                               filteredIntents,
                               startDate,
-                              endDate
+                              endDate,
                             ),
-                            sortOrder
-                          )
+                            sortOrder,
+                          ),
                         ).map((intent, index) => (
                           <tr
                             key={intent._uniqueKey}
@@ -1547,12 +1672,18 @@ const AdminPage = () => {
                                 <div className="space-y-1">
                                   {intent.issueType && (
                                     <div className="text-foreground">
-                                      <span className="font-medium">Issue:</span> {intent.issueType}
+                                      <span className="font-medium">
+                                        Issue:
+                                      </span>{" "}
+                                      {intent.issueType}
                                     </div>
                                   )}
                                   {intent.location && (
                                     <div className="text-muted-foreground">
-                                      <span className="font-medium">Location:</span> {intent.location}
+                                      <span className="font-medium">
+                                        Location:
+                                      </span>{" "}
+                                      {intent.location}
                                     </div>
                                   )}
                                 </div>
@@ -1630,9 +1761,9 @@ const AdminPage = () => {
                           filterByDateRange(
                             filteredIntents,
                             startDate,
-                            endDate
+                            endDate,
                           ),
-                          sortOrder
+                          sortOrder,
                         ).length
                       }
                     />
@@ -1653,7 +1784,7 @@ const AdminPage = () => {
                       </DialogHeader>
 
                       {intentSubmissions.find(
-                        (i) => `intent-${i.id}` === expandedItem
+                        (i) => `intent-${i.id}` === expandedItem,
                       ) && (
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
                           <div>
@@ -1668,7 +1799,7 @@ const AdminPage = () => {
                                 <span>
                                   {
                                     intentSubmissions.find(
-                                      (i) => `intent-${i.id}` === expandedItem
+                                      (i) => `intent-${i.id}` === expandedItem,
                                     ).name
                                   }
                                 </span>
@@ -1680,7 +1811,7 @@ const AdminPage = () => {
                                 <span>
                                   {
                                     intentSubmissions.find(
-                                      (i) => `intent-${i.id}` === expandedItem
+                                      (i) => `intent-${i.id}` === expandedItem,
                                     ).phone
                                   }
                                 </span>
@@ -1699,21 +1830,24 @@ const AdminPage = () => {
                                 </span>
                                 <span className="inline-block px-2 py-1 bg-muted text-muted-foreground text-xs rounded-full">
                                   {intentSubmissions.find(
-                                    (i) => `intent-${i.id}` === expandedItem
+                                    (i) => `intent-${i.id}` === expandedItem,
                                   ).service || "Urgent Consultation"}
                                 </span>
                               </div>
                               {intentSubmissions.find(
-                                (i) => `intent-${i.id}` === expandedItem
+                                (i) => `intent-${i.id}` === expandedItem,
                               ).timePreference && (
                                 <div className="flex items-center gap-2">
                                   <span className="font-medium text-foreground">
                                     Time:
                                   </span>
                                   <span>
-                                    {intentSubmissions.find(
-                                      (i) => `intent-${i.id}` === expandedItem
-                                    ).timePreference}
+                                    {
+                                      intentSubmissions.find(
+                                        (i) =>
+                                          `intent-${i.id}` === expandedItem,
+                                      ).timePreference
+                                    }
                                   </span>
                                 </div>
                               )}
@@ -1723,13 +1857,13 @@ const AdminPage = () => {
                                 </span>
                                 <span>
                                   {intentSubmissions.find(
-                                    (i) => `intent-${i.id}` === expandedItem
+                                    (i) => `intent-${i.id}` === expandedItem,
                                   ).createdAt
                                     ? formatDate(
                                         intentSubmissions.find(
                                           (i) =>
-                                            `intent-${i.id}` === expandedItem
-                                        ).createdAt
+                                            `intent-${i.id}` === expandedItem,
+                                        ).createdAt,
                                       )
                                     : "Recent"}
                                 </span>
@@ -1739,36 +1873,47 @@ const AdminPage = () => {
 
                           {/* Appointment Details Section */}
                           {(intentSubmissions.find(
-                            (i) => `intent-${i.id}` === expandedItem
-                          ).location || intentSubmissions.find(
-                            (i) => `intent-${i.id}` === expandedItem
-                          ).issueType) && (
+                            (i) => `intent-${i.id}` === expandedItem,
+                          ).location ||
+                            intentSubmissions.find(
+                              (i) => `intent-${i.id}` === expandedItem,
+                            ).issueType) && (
                             <div className="col-span-1 md:col-span-2">
                               <h3 className="font-semibold mb-2 text-foreground">
                                 Appointment Details
                               </h3>
                               <div className="bg-muted p-4 rounded-lg border border-border space-y-3">
                                 {intentSubmissions.find(
-                                  (i) => `intent-${i.id}` === expandedItem
+                                  (i) => `intent-${i.id}` === expandedItem,
                                 ).location && (
                                   <div>
-                                    <span className="font-medium text-foreground">Location:</span>
+                                    <span className="font-medium text-foreground">
+                                      Location:
+                                    </span>
                                     <p className="text-muted-foreground mt-1">
-                                      {intentSubmissions.find(
-                                        (i) => `intent-${i.id}` === expandedItem
-                                      ).location}
+                                      {
+                                        intentSubmissions.find(
+                                          (i) =>
+                                            `intent-${i.id}` === expandedItem,
+                                        ).location
+                                      }
                                     </p>
                                   </div>
                                 )}
                                 {intentSubmissions.find(
-                                  (i) => `intent-${i.id}` === expandedItem
+                                  (i) => `intent-${i.id}` === expandedItem,
                                 ).issueType && (
                                   <div>
-                                    <span className="font-medium text-foreground">Issue Description:</span>
+                                    <span className="font-medium text-foreground">
+                                      Issue Description:
+                                    </span>
                                     <p className="text-muted-foreground mt-1">
-                                      {intentSubmissions.find(
-                                        (i) => `intent-${i.id}` === expandedItem
-                                      ).issueType}
+                                      {
+                                        intentSubmissions.find(
+                                          (i) =>
+                                            `intent-${i.id}` === expandedItem,
+                                        ).issueType
+                                      }
                                     </p>
                                   </div>
                                 )}
@@ -1778,7 +1923,7 @@ const AdminPage = () => {
 
                           {/* Message Section */}
                           {intentSubmissions.find(
-                            (i) => `intent-${i.id}` === expandedItem
+                            (i) => `intent-${i.id}` === expandedItem,
                           ).message && (
                             <div className="col-span-1 md:col-span-2">
                               <h3 className="font-semibold mb-2 text-foreground">
@@ -1787,7 +1932,7 @@ const AdminPage = () => {
                               <div className="bg-muted p-4 rounded-lg border border-border">
                                 {
                                   intentSubmissions.find(
-                                    (i) => `intent-${i.id}` === expandedItem
+                                    (i) => `intent-${i.id}` === expandedItem,
                                   ).message
                                 }
                               </div>
@@ -1801,7 +1946,7 @@ const AdminPage = () => {
                           variant="destructive"
                           onClick={() => {
                             const id = parseInt(
-                              expandedItem.replace("intent-", "")
+                              expandedItem.replace("intent-", ""),
                             );
                             setExpandedItem(null);
                             deleteIntentMutation.mutate(id);
@@ -1837,7 +1982,7 @@ const AdminPage = () => {
                         data={filterByDateRange(
                           filteredContacts,
                           startDate,
-                          endDate
+                          endDate,
                         ).map((contact) => ({
                           ID: contact.id,
                           Name: contact.name,
@@ -1909,10 +2054,10 @@ const AdminPage = () => {
                             filterByDateRange(
                               filteredContacts,
                               startDate,
-                              endDate
+                              endDate,
                             ),
-                            sortOrder
-                          )
+                            sortOrder,
+                          ),
                         ).map((contact, index) => (
                           <tr
                             key={contact._uniqueKey}
@@ -1985,7 +2130,7 @@ const AdminPage = () => {
                                       <AlertDialogAction
                                         onClick={() =>
                                           deleteContactMutation.mutate(
-                                            contact.id
+                                            contact.id,
                                           )
                                         }
                                         className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
@@ -2008,9 +2153,9 @@ const AdminPage = () => {
                           filterByDateRange(
                             filteredContacts,
                             startDate,
-                            endDate
+                            endDate,
                           ),
-                          sortOrder
+                          sortOrder,
                         ).length
                       }
                     />
@@ -2031,7 +2176,7 @@ const AdminPage = () => {
                       </DialogHeader>
 
                       {contactSubmissions.find(
-                        (c) => `contact-${c.id}` === expandedItem
+                        (c) => `contact-${c.id}` === expandedItem,
                       ) && (
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
                           <div>
@@ -2046,7 +2191,7 @@ const AdminPage = () => {
                                 <span>
                                   {
                                     contactSubmissions.find(
-                                      (c) => `contact-${c.id}` === expandedItem
+                                      (c) => `contact-${c.id}` === expandedItem,
                                     ).name
                                   }
                                 </span>
@@ -2058,7 +2203,7 @@ const AdminPage = () => {
                                 <span>
                                   {
                                     contactSubmissions.find(
-                                      (c) => `contact-${c.id}` === expandedItem
+                                      (c) => `contact-${c.id}` === expandedItem,
                                     ).phone
                                   }
                                 </span>
@@ -2070,7 +2215,7 @@ const AdminPage = () => {
                                 <span>
                                   {
                                     contactSubmissions.find(
-                                      (c) => `contact-${c.id}` === expandedItem
+                                      (c) => `contact-${c.id}` === expandedItem,
                                     ).email
                                   }
                                 </span>
@@ -2089,7 +2234,7 @@ const AdminPage = () => {
                                 </span>
                                 <span className="inline-block px-2 py-1 bg-muted text-muted-foreground text-xs rounded-full">
                                   {contactSubmissions.find(
-                                    (c) => `contact-${c.id}` === expandedItem
+                                    (c) => `contact-${c.id}` === expandedItem,
                                   ).service || "Contact Request"}
                                 </span>
                               </div>
@@ -2099,13 +2244,13 @@ const AdminPage = () => {
                                 </span>
                                 <span>
                                   {contactSubmissions.find(
-                                    (c) => `contact-${c.id}` === expandedItem
+                                    (c) => `contact-${c.id}` === expandedItem,
                                   ).createdAt
                                     ? formatDate(
                                         contactSubmissions.find(
                                           (c) =>
-                                            `contact-${c.id}` === expandedItem
-                                        ).createdAt
+                                            `contact-${c.id}` === expandedItem,
+                                        ).createdAt,
                                       )
                                     : "Recent"}
                                 </span>
@@ -2116,7 +2261,7 @@ const AdminPage = () => {
                                 </span>
                                 <span>
                                   {contactSubmissions.find(
-                                    (c) => `contact-${c.id}` === expandedItem
+                                    (c) => `contact-${c.id}` === expandedItem,
                                   ).consent
                                     ? "Yes"
                                     : "No"}
@@ -2126,7 +2271,7 @@ const AdminPage = () => {
                           </div>
 
                           {contactSubmissions.find(
-                            (c) => `contact-${c.id}` === expandedItem
+                            (c) => `contact-${c.id}` === expandedItem,
                           ).message && (
                             <div className="col-span-1 md:col-span-2">
                               <h3 className="font-semibold mb-2 text-foreground">
@@ -2135,7 +2280,7 @@ const AdminPage = () => {
                               <div className="bg-muted p-4 rounded-lg border border-border">
                                 {
                                   contactSubmissions.find(
-                                    (c) => `contact-${c.id}` === expandedItem
+                                    (c) => `contact-${c.id}` === expandedItem,
                                   ).message
                                 }
                               </div>
@@ -2149,7 +2294,7 @@ const AdminPage = () => {
                           variant="destructive"
                           onClick={() => {
                             const id = parseInt(
-                              expandedItem.replace("contact-", "")
+                              expandedItem.replace("contact-", ""),
                             );
                             setExpandedItem(null);
                             deleteContactMutation.mutate(id);
