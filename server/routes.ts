@@ -847,21 +847,32 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Modify the DELETE endpoints to broadcast data changes
   
   // Update endpoints for broadcast instead of overriding method
-  // Define inquiry delete endpoint 
+  // Define inquiry delete endpoint with enterprise-grade operations
   app.delete('/api/inquiries/:id', async (req, res) => {
+    console.log('=== DELETE INQUIRY REQUEST ===');
+    console.log('Inquiry ID:', req.params.id);
+    console.log('Request headers:', req.headers);
+    
     try {
       const inquiryId = parseInt(req.params.id);
-      const success = await storage.deleteInquiry(inquiryId);
+      console.log('Attempting to delete inquiry with ID:', inquiryId);
       
-      if (!success) {
+      // Use enterprise-grade Firebase operations
+      const result = await deleteFromFirebase('inquiries', inquiryId);
+      
+      if (!result.success) {
+        console.log(`Inquiry ${inquiryId} not found in database`);
         return res.status(404).json({
           success: false,
-          message: "Inquiry not found"
+          message: result.message || "Inquiry not found"
         });
       }
       
-      // After successful deletion, broadcast update
-      const inquiries = await storage.getInquiries();
+      console.log(`Inquiry ${inquiryId} deleted successfully`);
+      
+      // Clear cache and get updated data
+      clearCache('inquiries');
+      const inquiries = await getDataFromFirebase('inquiries');
       broadcastData('inquiries_updated', inquiries);
       
       res.status(200).json({
@@ -877,21 +888,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
   
-  // Modify contact delete endpoint
+  // Contact delete endpoint with enterprise-grade operations
   app.delete('/api/contacts/:id', async (req, res) => {
     try {
       const contactId = parseInt(req.params.id);
-      const success = await storage.deleteContact(contactId);
       
-      if (!success) {
+      // Use enterprise-grade Firebase operations
+      const result = await deleteFromFirebase('contacts', contactId);
+      
+      if (!result.success) {
         return res.status(404).json({
           success: false,
-          message: "Contact not found"
+          message: result.message || "Contact not found"
         });
       }
       
-      // After successful deletion, broadcast update
-      const contacts = await storage.getContacts();
+      // Clear cache and get updated data
+      clearCache('contacts');
+      const contacts = await getDataFromFirebase('contacts');
       broadcastData('contacts_updated', contacts);
       
       res.status(200).json({
@@ -907,21 +921,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
   
-  // Modify intent delete endpoint
+  // Intent delete endpoint with enterprise-grade operations
   app.delete('/api/intents/:id', async (req, res) => {
     try {
       const intentId = parseInt(req.params.id);
-      const success = await storage.deleteIntent(intentId);
       
-      if (!success) {
+      // Use enterprise-grade Firebase operations
+      const result = await deleteFromFirebase('intents', intentId);
+      
+      
+      if (!result.success) {
         return res.status(404).json({
           success: false,
-          message: "Intent form not found"
+          message: result.message || "Intent form not found"
         });
       }
       
-      // After successful deletion, broadcast update
-      const intents = await storage.getIntents();
+      // Clear cache and get updated data
+      clearCache('intents');
+      const intents = await getDataFromFirebase('intents');
       broadcastData('intents_updated', intents);
       
       res.status(200).json({

@@ -171,30 +171,93 @@ const clearCache = (path) => {
   }
 };
 
-// Transactional delete from Firebase (fixes race conditions)
+// Backward-compatible transactional delete from Firebase
 const deleteFromFirebaseTransactional = async (path, id) => {
   return withRetry(async () => {
     const db = getDatabase(firebaseApp);
-    const itemRef = ref(db, `${path}/${id}`);
     
-    // Check if item exists and delete atomically using transaction
-    const result = await runTransaction(itemRef, (currentData) => {
-      if (currentData === null) {
-        // Item doesn't exist
-        return undefined; // Abort transaction
+    // First, try direct path deletion (new structure)
+    const itemRef = ref(db, `${path}/${id}`);
+    const directSnapshot = await get(itemRef);
+    
+    if (directSnapshot.exists()) {
+      // Direct path exists, use transaction to delete
+      const result = await runTransaction(itemRef, (currentData) => {
+        if (currentData === null) {
+          return undefined; // Abort transaction
+        }
+        return null; // Delete the item
+      });
+      
+      if (result.committed) {
+        console.log(`Successfully deleted item with ID ${id} from ${path} (direct path)`);
+        clearCache(path);
+        return { success: true };
+      }
+    }
+    
+    // If direct path doesn't exist, search in array/object structure (backward compatibility)
+    console.log(`Direct path ${path}/${id} not found, searching in collection...`);
+    const collectionRef = ref(db, path);
+    const collectionSnapshot = await get(collectionRef);
+    
+    if (!collectionSnapshot.exists()) {
+      return { success: false, message: 'Collection not found' };
+    }
+    
+    const data = collectionSnapshot.val();
+    let targetKey = null;
+    let targetIndex = null;
+    
+    // Handle array structure
+    if (Array.isArray(data)) {
+      targetIndex = data.findIndex(item => item && item.id === parseInt(id));
+      if (targetIndex !== -1) {
+        // Use transaction to safely remove from array
+        const result = await runTransaction(collectionRef, (currentData) => {
+          if (!Array.isArray(currentData) || !currentData[targetIndex]) {
+            return undefined; // Abort if structure changed
+          }
+          
+          // Create new array without the deleted item (avoid holes)
+          const newData = [...currentData.slice(0, targetIndex), ...currentData.slice(targetIndex + 1)];
+          return newData.length > 0 ? newData : null;
+        });
+        
+        if (result.committed) {
+          console.log(`Successfully deleted item with ID ${id} from ${path} (array structure)`);
+          clearCache(path);
+          return { success: true };
+        }
+      }
+    }
+    // Handle object structure
+    else if (data && typeof data === 'object') {
+      for (const key in data) {
+        if (data[key] && data[key].id === parseInt(id)) {
+          targetKey = key;
+          break;
+        }
       }
       
-      // Delete the item by returning null
-      return null;
-    });
-    
-    if (result.committed) {
-      console.log(`Successfully deleted item with ID ${id} from ${path}`);
-      clearCache(path); // Clear cache after successful deletion
-      return { success: true };
-    } else {
-      return { success: false, message: 'Item not found or already deleted' };
+      if (targetKey) {
+        const targetRef = ref(db, `${path}/${targetKey}`);
+        const result = await runTransaction(targetRef, (currentData) => {
+          if (currentData === null) {
+            return undefined; // Already deleted
+          }
+          return null; // Delete the item
+        });
+        
+        if (result.committed) {
+          console.log(`Successfully deleted item with ID ${id} from ${path} (object structure)`);
+          clearCache(path);
+          return { success: true };
+        }
+      }
     }
+    
+    return { success: false, message: `Item with ID ${id} not found in ${path}` };
   });
 };
 
