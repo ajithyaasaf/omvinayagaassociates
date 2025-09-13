@@ -1,10 +1,10 @@
-// Vercel API route for intents (GET all intents)
-import { getDataFromFirebase } from './firebase-data.js';
+// Vercel API route for intents (GET all intents, DELETE specific intent)
+import { getDataFromFirebase, deleteFromFirebaseTransactional } from './firebase-data.js';
 
 export default async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, DELETE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   
   // Handle preflight requests
@@ -20,6 +20,33 @@ export default async function handler(req, res) {
       
       console.log(`Found ${intents.length} intents`);
       return res.status(200).json(intents);
+    }
+    
+    // Handle DELETE requests
+    if (req.method === 'DELETE') {
+      const { id } = req.query;
+      
+      if (!id || isNaN(parseInt(id))) {
+        return res.status(400).json({
+          success: false,
+          error: 'Valid intent ID is required'
+        });
+      }
+      
+      console.log('Deleting intent with ID:', id);
+      const result = await deleteFromFirebaseTransactional('intents', id);
+      
+      if (result.success) {
+        return res.status(200).json({
+          success: true,
+          message: 'Intent deleted successfully'
+        });
+      } else {
+        return res.status(404).json({
+          success: false,
+          message: result.message || 'Intent not found'
+        });
+      }
     }
     
     // If we get here, the method is not supported

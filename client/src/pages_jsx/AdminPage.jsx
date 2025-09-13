@@ -195,7 +195,7 @@ const AdminPage = () => {
 
       const response = await apiRequest(
         "DELETE",
-        `/api/inquiries/${inquiryId}`
+        `/api/inquiries?id=${inquiryId}`
       );
       return { id: inquiryId, response };
     },
@@ -244,7 +244,7 @@ const AdminPage = () => {
         throw new Error("Invalid contact ID");
       }
 
-      const response = await apiRequest("DELETE", `/api/contacts/${contactId}`);
+      const response = await apiRequest("DELETE", `/api/contacts?id=${contactId}`);
       return { id: contactId, response };
     },
     onSuccess: (data) => {
@@ -293,7 +293,7 @@ const AdminPage = () => {
         throw new Error("Invalid intent ID");
       }
 
-      const response = await apiRequest("DELETE", `/api/intents/${intentId}`);
+      const response = await apiRequest("DELETE", `/api/intents?id=${intentId}`);
       return { id: intentId, response };
     },
     onSuccess: (data) => {
