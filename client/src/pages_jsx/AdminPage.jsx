@@ -144,8 +144,7 @@ const AdminPage = () => {
   } = useQuery({
     queryKey: ["inquiries"],
     queryFn: fetchTabData("inquiries"),
-    enabled:
-      isAuthenticated && (activeTab === "inquiries" || activeTab === "all"),
+    enabled: isAuthenticated, // Always fetch when authenticated
     staleTime: 0, // Always fetch fresh data
     refetchInterval: 2000, // Poll every 2 seconds for instant updates
   });
@@ -158,8 +157,7 @@ const AdminPage = () => {
   } = useQuery({
     queryKey: ["intents"],
     queryFn: fetchTabData("intents"),
-    enabled:
-      isAuthenticated && (activeTab === "intents" || activeTab === "all"),
+    enabled: isAuthenticated, // Always fetch when authenticated
     staleTime: 0, // Always fetch fresh data
     refetchInterval: 2000, // Poll every 2 seconds for instant updates
   });
@@ -172,8 +170,7 @@ const AdminPage = () => {
   } = useQuery({
     queryKey: ["contacts"],
     queryFn: fetchTabData("contacts"),
-    enabled:
-      isAuthenticated && (activeTab === "contacts" || activeTab === "all"),
+    enabled: isAuthenticated, // Always fetch when authenticated
     staleTime: 0, // Always fetch fresh data
     refetchInterval: 2000, // Poll every 2 seconds for instant updates
   });
