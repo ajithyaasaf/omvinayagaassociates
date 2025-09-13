@@ -1,0 +1,78 @@
+requests.js:1  DELETE https://www.omvinayagaassociates.com/api/contacts?id=1 404 (Not Found)
+_$initInterceptor.s.fetch @ requests.js:1
+(anonymous) @ traffic.js:1
+fetch @ traffic.js:1
+ja @ index-C4bKvRe_.js:332
+mutationFn @ AdminPage-BE7Cg7w_.js:44
+fn @ index-C4bKvRe_.js:292
+x @ index-C4bKvRe_.js:292
+start @ index-C4bKvRe_.js:292
+execute @ index-C4bKvRe_.js:292
+await in execute
+mutate @ index-C4bKvRe_.js:292
+(anonymous) @ index-C4bKvRe_.js:292
+onClick @ AdminPage-BE7Cg7w_.js:44
+(anonymous) @ index-C4bKvRe_.js:49
+dk @ index-C4bKvRe_.js:38
+pk @ index-C4bKvRe_.js:38
+mk @ index-C4bKvRe_.js:38
+Fg @ index-C4bKvRe_.js:38
+tw @ index-C4bKvRe_.js:38
+(anonymous) @ index-C4bKvRe_.js:38
+Im @ index-C4bKvRe_.js:41
+k0 @ index-C4bKvRe_.js:38
+od @ index-C4bKvRe_.js:38
+um @ index-C4bKvRe_.js:38
+Rk @ index-C4bKvRe_.js:38Understand this error
+AdminPage-BE7Cg7w_.js:44 Error deleting contact: Error: 404: {"success":false,"message":"Transaction failed - Firebase rules may be blocking delete operations"}
+    at HN (index-C4bKvRe_.js:332:34210)
+    at async ja (index-C4bKvRe_.js:332:34411)
+    at async Object.mutationFn (AdminPage-BE7Cg7w_.js:44:4804)
+onError @ AdminPage-BE7Cg7w_.js:44
+execute @ index-C4bKvRe_.js:292
+await in execute
+mutate @ index-C4bKvRe_.js:292
+(anonymous) @ index-C4bKvRe_.js:292
+onClick @ AdminPage-BE7Cg7w_.js:44
+(anonymous) @ index-C4bKvRe_.js:49
+dk @ index-C4bKvRe_.js:38
+pk @ index-C4bKvRe_.js:38
+mk @ index-C4bKvRe_.js:38
+Fg @ index-C4bKvRe_.js:38
+tw @ index-C4bKvRe_.js:38
+(anonymous) @ index-C4bKvRe_.js:38
+Im @ index-C4bKvRe_.js:41
+k0 @ index-C4bKvRe_.js:38
+od @ index-C4bKvRe_.js:38
+um @ index-C4bKvRe_.js:38
+Rk @ index-C4bKvRe_.js:38Understand this error
+requests.js:1  DELETE https://www.omvinayagaassociates.com/api/contacts?id=2 404 (Not Found)
+_$initInterceptor.s.fetch @ requests.js:1
+(anonymous) @ traffic.js:1
+fetch @ traffic.js:1
+ja @ index-C4bKvRe_.js:332
+mutationFn @ AdminPage-BE7Cg7w_.js:44
+fn @ index-C4bKvRe_.js:292
+x @ index-C4bKvRe_.js:292
+start @ index-C4bKvRe_.js:292
+execute @ index-C4bKvRe_.js:292
+await in execute
+mutate @ index-C4bKvRe_.js:292
+(anonymous) @ index-C4bKvRe_.js:292
+onClick @ AdminPage-BE7Cg7w_.js:44
+(anonymous) @ index-C4bKvRe_.js:49
+dk @ index-C4bKvRe_.js:38
+pk @ index-C4bKvRe_.js:38
+mk @ index-C4bKvRe_.js:38
+Fg @ index-C4bKvRe_.js:38
+tw @ index-C4bKvRe_.js:38
+(anonymous) @ index-C4bKvRe_.js:38
+Im @ index-C4bKvRe_.js:41
+k0 @ index-C4bKvRe_.js:38
+od @ index-C4bKvRe_.js:38
+um @ index-C4bKvRe_.js:38
+Rk @ index-C4bKvRe_.js:38Understand this error
+AdminPage-BE7Cg7w_.js:44 Error deleting contact: Error: 404: {"success":false,"message":"Transaction failed - Firebase rules may be blocking delete operations"}
+    at HN (index-C4bKvRe_.js:332:34210)
+    at async ja (index-C4bKvRe_.js:332:34411)
+    at async Object.mutationFn (AdminPage-BE7Cg7w_.js:44:4804)

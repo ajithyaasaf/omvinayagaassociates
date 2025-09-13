@@ -213,91 +213,45 @@ const deleteFromFirebaseTransactional = async (path, id) => {
       console.log(`First few keys: ${Array.isArray(data) ? '[array indices]' : Object.keys(data).slice(0, 3).join(', ')}`);
     }
     
-    // Handle array structure (current Firebase structure)
+    // Find target key with flexible ID matching (handles both string/number IDs)
+    let targetKey = null;
+    const targetId = Number(id);
+    
     if (Array.isArray(data)) {
-      const targetIndex = data.findIndex(item => item && item.id === parseInt(id));
-      console.log(`Looking for item with ID ${id}, found at index:`, targetIndex);
-      
+      // Array structure: find index where ID matches
+      const targetIndex = data.findIndex(item => item && Number(item?.id ?? -1) === targetId);
       if (targetIndex !== -1) {
-        // Use transaction to safely remove from array by setting to null (preserves array structure)
-        if (isDebug) console.log(`Starting array transaction for index ${targetIndex}`);
-        const result = await runTransaction(collectionRef, (currentData) => {
-          if (!Array.isArray(currentData) || !currentData[targetIndex] || currentData[targetIndex].id !== parseInt(id)) {
-            if (isDebug) console.log('Transaction aborted: data structure changed');
-            return undefined; // Abort if structure changed
-          }
-          
-          // Set item to null to preserve array indices (Firebase pattern)
-          const newData = [...currentData];
-          newData[targetIndex] = null;
-          
-          if (isDebug) console.log(`Setting index ${targetIndex} to null`);
-          return newData;
-        });
-        
-        if (isDebug) {
-          console.log(`Array transaction committed: ${result.committed}`);
-          if (!result.committed && result.error) {
-            console.log(`Transaction error:`, result.error);
-          }
-        }
-        
-        if (result.committed) {
-          console.log(`Successfully deleted item with ID ${id} from ${path} (array structure)`);
-          clearCache(path);
-          return { success: true };
-        } else {
-          console.log('Transaction failed to commit - likely Firebase rules blocking delete operation');
-          console.log('Error details:', result.error || 'No error details available');
-          return { success: false, message: 'Transaction failed - Firebase rules may be blocking delete operations' };
-        }
-      } else {
-        console.log(`Item with ID ${id} not found in array`);
-        return { success: false, message: `Item with ID ${id} not found` };
+        targetKey = targetIndex.toString();
       }
-    }
-    // Handle object structure (fallback)
-    else if (data && typeof data === 'object') {
-      let targetKey = null;
-      for (const key in data) {
-        if (data[key] && data[key].id === parseInt(id)) {
+      console.log(`Array structure: looking for ID ${targetId}, found at index:`, targetIndex);
+    } else {
+      // Object structure: find key where ID matches
+      for (const [key, value] of Object.entries(data)) {
+        if (value && Number(value?.id ?? key) === targetId) {
           targetKey = key;
           break;
         }
       }
-      
-      if (targetKey) {
-        if (isDebug) console.log(`Starting object transaction for key: ${targetKey}`);
-        const targetRef = ref(db, `${path}/${targetKey}`);
-        const result = await runTransaction(targetRef, (currentData) => {
-          if (currentData === null) {
-            if (isDebug) console.log('Item already deleted');
-            return undefined; // Already deleted
-          }
-          return null; // Delete the item
-        });
-        
-        if (isDebug) {
-          console.log(`Object transaction committed: ${result.committed}`);
-          if (!result.committed && result.error) {
-            console.log(`Object transaction error:`, result.error);
-          }
-        }
-        
-        if (result.committed) {
-          console.log(`Successfully deleted item with ID ${id} from ${path} (object structure)`);
-          clearCache(path);
-          return { success: true };
-        } else {
-          console.log('Transaction failed to commit for object structure - likely Firebase rules blocking delete operation');
-          console.log('Error details:', result.error || 'No error details available');
-          return { success: false, message: 'Transaction failed - Firebase rules may be blocking delete operations' };
-        }
-      }
+      console.log(`Object structure: looking for ID ${targetId}, found key:`, targetKey);
     }
     
-    console.log(`No deletion strategy worked for ID ${id} in ${path}`);
-    return { success: false, message: `Item with ID ${id} not found in ${path}` };
+    if (!targetKey) {
+      console.log(`ERROR: Item with ID ${targetId} not found in ${path}`);
+      return { success: false, message: 'Item not found' };
+    }
+    
+    // Simple child-level delete (no complex transactions)
+    try {
+      const targetRef = ref(db, `${path}/${targetKey}`);
+      await remove(targetRef);
+      
+      console.log(`SUCCESS: Deleted item with ID ${targetId} from ${path}/${targetKey}`);
+      clearCache(path);
+      return { success: true, message: 'Item deleted successfully' };
+    } catch (error) {
+      console.log(`ERROR: Failed to delete ${path}/${targetKey}:`, error.message);
+      return { success: false, message: `Delete operation failed: ${error.message}` };
+    }
   });
 };
 
