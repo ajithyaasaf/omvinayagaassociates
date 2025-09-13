@@ -171,68 +171,62 @@ const clearCache = (path) => {
   }
 };
 
-// Backward-compatible transactional delete from Firebase
+// Array-optimized transactional delete from Firebase (handles current data structure)
 const deleteFromFirebaseTransactional = async (path, id) => {
   return withRetry(async () => {
     const db = getDatabase(firebaseApp);
-    
-    // First, try direct path deletion (new structure)
-    const itemRef = ref(db, `${path}/${id}`);
-    const directSnapshot = await get(itemRef);
-    
-    if (directSnapshot.exists()) {
-      // Direct path exists, use transaction to delete
-      const result = await runTransaction(itemRef, (currentData) => {
-        if (currentData === null) {
-          return undefined; // Abort transaction
-        }
-        return null; // Delete the item
-      });
-      
-      if (result.committed) {
-        console.log(`Successfully deleted item with ID ${id} from ${path} (direct path)`);
-        clearCache(path);
-        return { success: true };
-      }
-    }
-    
-    // If direct path doesn't exist, search in array/object structure (backward compatibility)
-    console.log(`Direct path ${path}/${id} not found, searching in collection...`);
     const collectionRef = ref(db, path);
+    
+    console.log(`Attempting to delete item with ID ${id} from ${path}`);
+    
+    // Get current array data
     const collectionSnapshot = await get(collectionRef);
     
     if (!collectionSnapshot.exists()) {
+      console.log(`Collection ${path} does not exist`);
       return { success: false, message: 'Collection not found' };
     }
     
     const data = collectionSnapshot.val();
-    let targetKey = null;
-    let targetIndex = null;
+    console.log(`Current data in ${path}:`, data);
     
-    // Handle array structure
+    // Handle array structure (current Firebase structure)
     if (Array.isArray(data)) {
-      targetIndex = data.findIndex(item => item && item.id === parseInt(id));
+      const targetIndex = data.findIndex(item => item && item.id === parseInt(id));
+      console.log(`Looking for item with ID ${id}, found at index:`, targetIndex);
+      
       if (targetIndex !== -1) {
-        // Use transaction to safely remove from array
+        // Use transaction to safely remove from array by setting to null (preserves array structure)
         const result = await runTransaction(collectionRef, (currentData) => {
-          if (!Array.isArray(currentData) || !currentData[targetIndex]) {
+          if (!Array.isArray(currentData) || !currentData[targetIndex] || currentData[targetIndex].id !== parseInt(id)) {
+            console.log('Transaction aborted: data structure changed');
             return undefined; // Abort if structure changed
           }
           
-          // Create new array without the deleted item (avoid holes)
-          const newData = [...currentData.slice(0, targetIndex), ...currentData.slice(targetIndex + 1)];
-          return newData.length > 0 ? newData : null;
+          // Set item to null to preserve array indices (Firebase pattern)
+          const newData = [...currentData];
+          newData[targetIndex] = null;
+          
+          console.log(`Setting index ${targetIndex} to null`);
+          return newData;
         });
         
         if (result.committed) {
           console.log(`Successfully deleted item with ID ${id} from ${path} (array structure)`);
           clearCache(path);
           return { success: true };
+        } else {
+          console.log('Transaction failed to commit');
+          return { success: false, message: 'Transaction failed' };
         }
+      } else {
+        console.log(`Item with ID ${id} not found in array`);
+        return { success: false, message: `Item with ID ${id} not found` };
       }
     }
-    // Handle object structure
+    // Handle object structure (fallback)
     else if (data && typeof data === 'object') {
+      let targetKey = null;
       for (const key in data) {
         if (data[key] && data[key].id === parseInt(id)) {
           targetKey = key;
@@ -257,6 +251,7 @@ const deleteFromFirebaseTransactional = async (path, id) => {
       }
     }
     
+    console.log(`No deletion strategy worked for ID ${id} in ${path}`);
     return { success: false, message: `Item with ID ${id} not found in ${path}` };
   });
 };

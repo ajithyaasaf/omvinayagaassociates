@@ -14,7 +14,7 @@ import {
   createDataInFirebase,
   withRetry,
   clearCache
-} from "../api/firebase-operations";
+} from "../api/firebase-operations.js";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API routes - prefix all routes with /api
