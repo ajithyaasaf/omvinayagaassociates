@@ -849,17 +849,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const parsedData = intentSchema.parse(req.body);
       
-      // Ensure all required fields are provided
+      // Ensure all required fields are provided and filter out undefined values
       const intentData = {
         name: parsedData.name,
         phone: parsedData.phone,
         service: parsedData.service || "Urgent Consultation",
         message: parsedData.message || "Building repair inquiry",
-        location: parsedData.location,
-        issueType: parsedData.issueType,
-        timePreference: parsedData.timePreference,
         consent: parsedData.consent
       };
+
+      // Only add optional fields if they have values (Firebase doesn't accept undefined)
+      if (parsedData.location) {
+        intentData.location = parsedData.location;
+      }
+      if (parsedData.issueType) {
+        intentData.issueType = parsedData.issueType;
+      }
+      if (parsedData.timePreference) {
+        intentData.timePreference = parsedData.timePreference;
+      }
       
       // Create intent in Firebase
       const newIntent = await storage.createIntent(intentData);
