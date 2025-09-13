@@ -1218,7 +1218,7 @@ const AdminPage = () => {
                         ).map((inquiry, index) => (
                           <tr
                             key={`inquiry-${inquiry.id || index}`}
-                            className="border-b border-border hover:bg-primary/10 transition-colors duration-200"
+                            className="border-b border-border hover:bg-primary/5 transition-colors duration-200"
                           >
                             {/* Customer Info */}
                             <td className="px-6 py-4">
@@ -1594,7 +1594,7 @@ const AdminPage = () => {
                         ).map((intent, index) => (
                           <tr
                             key={intent._uniqueKey}
-                            className="hover:bg-muted"
+                            className="hover:bg-primary/5"
                           >
                             <td className="border border-border px-4 py-2">
                               <div className="flex items-center gap-2">
@@ -1648,7 +1648,7 @@ const AdminPage = () => {
                                   onClick={() =>
                                     toggleExpand(intent.id, "intent")
                                   }
-                                  className="text-foreground border-foreground hover:bg-muted hover:text-primary"
+                                  className="text-foreground border-foreground hover:bg-primary/10 hover:text-primary"
                                 >
                                   <Eye className="h-4 w-4" />
                                 </Button>
@@ -1988,7 +1988,7 @@ const AdminPage = () => {
                         ).map((contact, index) => (
                           <tr
                             key={contact._uniqueKey}
-                            className="hover:bg-muted"
+                            className="hover:bg-primary/5"
                           >
                             <td className="border border-border px-4 py-2">
                               <div className="flex items-center gap-2">
@@ -2024,7 +2024,7 @@ const AdminPage = () => {
                                   onClick={() =>
                                     toggleExpand(`contact-${contact.id}`)
                                   }
-                                  className="text-foreground border-foreground hover:bg-muted hover:text-primary"
+                                  className="text-foreground border-foreground hover:bg-primary/10 hover:text-primary"
                                 >
                                   <Eye className="h-4 w-4" />
                                 </Button>
