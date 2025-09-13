@@ -771,7 +771,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Exit intent form endpoint
   app.post("/api/intents", async (req, res) => {
     try {
+      console.log('=== EXIT INTENT FORM SUBMISSION ===');
+      console.log('Raw request body:', req.body);
+      console.log('Request headers:', req.headers);
+      console.log('Content-Type:', req.headers['content-type']);
+      
       const parsedData = intentSchema.parse(req.body);
+      console.log('Intent form parsed successfully:', parsedData);
+      
+      console.log('Data prepared for Firebase:', {
+        name: parsedData.name,
+        phone: parsedData.phone,
+        service: parsedData.service || "Urgent Consultation",
+        message: parsedData.message || "Building repair inquiry",
+        consent: parsedData.consent
+      });
       
       // Create intent in Firebase
       const newIntent = await storage.createIntent({
@@ -782,6 +796,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         consent: parsedData.consent
       });
       
+      console.log('Intent created successfully in Firebase:', newIntent);
+      
       res.status(200).json({
         success: true,
         message: "Exit intent form submitted successfully",
@@ -789,6 +805,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     } catch (error) {
       if (error instanceof z.ZodError) {
+        console.log('Zod validation error:', error.errors);
         res.status(400).json({
           success: false,
           message: "Invalid form data",
