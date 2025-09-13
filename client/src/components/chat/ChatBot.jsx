@@ -821,24 +821,24 @@ const ChatBot = () => {
 
         // Problem-specific quick replies
         case "leaking_roof":
-          botResponse = RESPONSES.leaking_roof;
-          quickReplies = PROBLEM_QUICK_REPLIES;
+          botResponse = RESPONSES.leaking_roof + "\n\nWould you like to schedule a diagnosis for this issue or explore other services?";
+          quickReplies = QUICK_REPLIES;
           break;
         case "bathroom_waterproofing":
-          botResponse = RESPONSES.bathroom_waterproofing;
-          quickReplies = PROBLEM_QUICK_REPLIES;
+          botResponse = RESPONSES.bathroom_waterproofing + "\n\nWould you like to schedule a diagnosis for this issue or explore other services?";
+          quickReplies = QUICK_REPLIES;
           break;
         case "dampness":
-          botResponse = RESPONSES.dampness;
-          quickReplies = PROBLEM_QUICK_REPLIES;
+          botResponse = RESPONSES.dampness + "\n\nWould you like to schedule a diagnosis for this issue or explore other services?";
+          quickReplies = QUICK_REPLIES;
           break;
         case "cracks":
-          botResponse = RESPONSES.cracks;
-          quickReplies = PROBLEM_QUICK_REPLIES;
+          botResponse = RESPONSES.cracks + "\n\nWould you like to schedule a diagnosis for this issue or explore other services?";
+          quickReplies = QUICK_REPLIES;
           break;
         case "structural":
-          botResponse = RESPONSES.structural;
-          quickReplies = PROBLEM_QUICK_REPLIES;
+          botResponse = RESPONSES.structural + "\n\nWould you like to schedule a diagnosis for this issue or explore other services?";
+          quickReplies = QUICK_REPLIES;
           break;
 
         // Maintenance quick replies
