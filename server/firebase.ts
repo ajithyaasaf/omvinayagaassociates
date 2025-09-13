@@ -8,16 +8,26 @@ import {
   collection, addDoc, deleteDoc, getDocs, serverTimestamp 
 } from 'firebase/firestore';
 import { 
-  type User, 
-  type InsertUser, 
-  type Product, 
-  type Service, 
-  type Testimonial,
-  type Faq,
   type Contact,
   type Inquiry,
-  type Intent
-} from "@shared/schema";
+  type Intent,
+  type Product,
+  type Service,
+  type Testimonial,
+  type FAQ
+} from "@shared/firebase-schema";
+
+// User types for admin authentication (Firebase-only)
+interface User {
+  id: number;
+  username: string;
+  password: string;
+}
+
+interface InsertUser {
+  username: string;
+  password: string;
+}
 import MemStoreSession from 'memorystore';
 import session from 'express-session';
 import { getFirebaseConfig } from './firebase.config';
@@ -351,7 +361,7 @@ export class FirebaseStorage {
   // ===============================
   // FAQ Methods
   // ===============================
-  async getFaqs(): Promise<Faq[]> {
+  async getFaqs(): Promise<FAQ[]> {
     try {
       const snapshot = await get(ref(database, 'faqs'));
       if (!snapshot.exists()) return [];
@@ -367,7 +377,7 @@ export class FirebaseStorage {
     }
   }
 
-  async getFaq(id: number): Promise<Faq | undefined> {
+  async getFaq(id: number): Promise<FAQ | undefined> {
     try {
       const snapshot = await get(ref(database, `faqs/${id}`));
       return snapshot.exists() ? { ...snapshot.val(), id } : undefined;
@@ -377,7 +387,7 @@ export class FirebaseStorage {
     }
   }
 
-  async createFaq(faq: Omit<Faq, 'id'>): Promise<Faq> {
+  async createFaq(faq: Omit<FAQ, 'id'>): Promise<FAQ> {
     try {
       // Generate a new ID
       let id = 1;
@@ -392,7 +402,7 @@ export class FirebaseStorage {
         }
       }
 
-      const newFaq: Faq = { ...faq, id };
+      const newFaq: FAQ = { ...faq, id };
       await set(ref(database, `faqs/${id}`), newFaq);
       return newFaq;
     } catch (error) {
@@ -401,7 +411,7 @@ export class FirebaseStorage {
     }
   }
 
-  async updateFaq(id: number, faq: Partial<Faq>): Promise<Faq | undefined> {
+  async updateFaq(id: number, faq: Partial<FAQ>): Promise<FAQ | undefined> {
     try {
       const snapshot = await get(ref(database, `faqs/${id}`));
       if (!snapshot.exists()) return undefined;
@@ -441,7 +451,7 @@ export class FirebaseStorage {
       return Object.keys(contacts).map(key => ({
         ...contacts[key],
         id: parseInt(key),
-        createdAt: new Date(contacts[key].createdAt)
+        createdAt: contacts[key].createdAt
       }));
     } catch (error) {
       console.error('Firebase getContacts error:', error);
@@ -477,7 +487,7 @@ export class FirebaseStorage {
         console.warn('ID calculation resulted in NaN, defaulting to 1');
       }
 
-      const createdAt = new Date();
+      const createdAt = new Date().toISOString();
       const newContact: Contact = { 
         ...contact, 
         id, 
@@ -491,7 +501,7 @@ export class FirebaseStorage {
       
       await set(ref(database, `contacts/${id}`), {
         ...newContact,
-        createdAt: createdAt.toISOString() // Store as string in Firebase
+        createdAt: createdAt // Already in ISO string format
       });
       
       return newContact;
@@ -596,7 +606,7 @@ export class FirebaseStorage {
         console.warn('ID calculation resulted in invalid value, defaulting to 1');
       }
 
-      const createdAt = new Date();
+      const createdAt = new Date().toISOString();
       const newInquiry: Inquiry = { 
         ...inquiry, 
         id, 
@@ -617,7 +627,7 @@ export class FirebaseStorage {
         message: newInquiry.message || null,
         address: newInquiry.address || null,
         id: newInquiry.id,
-        createdAt: createdAt.toISOString()
+        createdAt: createdAt
       };
       
       // Remove any undefined values completely
@@ -709,7 +719,7 @@ export class FirebaseStorage {
         console.warn('ID calculation resulted in NaN, defaulting to 1');
       }
 
-      const createdAt = new Date();
+      const createdAt = new Date().toISOString();
       const newIntent: Intent = { 
         ...intent,
         id,
@@ -723,7 +733,7 @@ export class FirebaseStorage {
       
       await set(ref(database, `intents/${id}`), {
         ...newIntent,
-        createdAt: createdAt.toISOString() // Store as string in Firebase
+        createdAt: createdAt // Already in ISO string format
       });
       
       return newIntent;

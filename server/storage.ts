@@ -1,14 +1,24 @@
 import { 
-  type User, 
-  type InsertUser, 
   type Product, 
   type Service, 
   type Testimonial,
-  type Faq,
+  type FAQ,
   type Contact,
   type Inquiry,
   type Intent
-} from "@shared/schema";
+} from "@shared/firebase-schema";
+
+// User types for admin authentication (Firebase-only)
+interface User {
+  id: number;
+  username: string;
+  password: string;
+}
+
+interface InsertUser {
+  username: string;
+  password: string;
+}
 
 import { firebaseStorage, sessionStore } from './firebase';
 
@@ -40,10 +50,10 @@ export interface IStorage {
   deleteTestimonial(id: number): Promise<boolean>;
   
   // FAQ methods
-  getFaqs(): Promise<Faq[]>;
-  getFaq(id: number): Promise<Faq | undefined>;
-  createFaq(faq: Omit<Faq, 'id'>): Promise<Faq>;
-  updateFaq(id: number, faq: Partial<Faq>): Promise<Faq | undefined>;
+  getFaqs(): Promise<FAQ[]>;
+  getFaq(id: number): Promise<FAQ | undefined>;
+  createFaq(faq: Omit<FAQ, 'id'>): Promise<FAQ>;
+  updateFaq(id: number, faq: Partial<FAQ>): Promise<FAQ | undefined>;
   deleteFaq(id: number): Promise<boolean>;
   
   // Contact methods

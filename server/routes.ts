@@ -4,9 +4,9 @@ import { WebSocketServer, WebSocket } from 'ws';
 import { storage } from "./storage";
 import { z } from "zod";
 import { 
-  contactSchema, productSchema, inquirySchema, intentSchema, serviceSchema, testimonialSchema, faqSchema,
-  type Product, type Contact, type Inquiry, type Intent, type Service, type Testimonial, type Faq
-} from "@shared/schema";
+  contactSchema, inquirySchema, intentSchema, productSchema, serviceSchema, testimonialSchema, faqSchema,
+  type Product, type Contact, type Inquiry, type Intent, type Service, type Testimonial, type FAQ
+} from "@shared/firebase-schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API routes - prefix all routes with /api
@@ -83,11 +83,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Create inquiry in Firebase
       const newInquiry = await storage.createInquiry({
         name: parsedData.name,
-        email: parsedData.email || null,
+        email: parsedData.email || undefined,
         phone: parsedData.phone,
         issueType: parsedData.issueType || "",
-        message: parsedData.message || null,
-        address: parsedData.address || null
+        message: parsedData.message || undefined,
+        address: parsedData.address || undefined
       });
       
       res.status(200).json({
@@ -480,6 +480,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Create testimonial in Firebase
       const newTestimonial = await storage.createTestimonial({
         ...parsedData,
+        date: parsedData.date || new Date().toISOString(),
         hasVideo: parsedData.hasVideo || false
       });
       
