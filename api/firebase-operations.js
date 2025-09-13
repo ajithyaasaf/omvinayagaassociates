@@ -189,23 +189,28 @@ const deleteFromFirebaseTransactional = async (path, id) => {
     
     const isDebug = process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true';
     
-    if (isDebug) {
-      console.log(`=== FIREBASE DELETE OPERATION DEBUG ===`);
-      console.log(`Attempting to delete item with ID ${id} from ${path}`);
-      console.log(`Firebase project: ${process.env.FIREBASE_PROJECT_ID || 'fallback'}`);
-    }
+    // Always log in production for debugging
+    console.log(`=== FIREBASE DELETE OPERATION DEBUG ===`);
+    console.log(`Attempting to delete item with ID ${id} from ${path}`);
+    console.log(`Firebase project: ${process.env.FIREBASE_PROJECT_ID || 'fallback'}`);
+    console.log(`Environment: ${process.env.NODE_ENV || 'unknown'}`);
+    console.log(`Database URL: ${process.env.FIREBASE_DATABASE_URL ? 'SET' : 'MISSING'}`);
+    console.log(`Firebase App initialized: ${!!firebaseApp}`);
     
     // Get current array data
     const collectionSnapshot = await get(collectionRef);
     
     if (!collectionSnapshot.exists()) {
-      console.log(`Collection ${path} does not exist`);
+      console.log(`ERROR: Collection ${path} does not exist in Firebase`);
       return { success: false, message: 'Collection not found' };
     }
     
     const data = collectionSnapshot.val();
-    if (isDebug) {
-      console.log(`Data type: ${typeof data}, isArray: ${Array.isArray(data)}, itemCount: ${Array.isArray(data) ? data.length : Object.keys(data || {}).length}`);
+    console.log(`Data exists: ${!!data}`);
+    console.log(`Data type: ${typeof data}, isArray: ${Array.isArray(data)}`);
+    if (data) {
+      console.log(`Item count: ${Array.isArray(data) ? data.length : Object.keys(data).length}`);
+      console.log(`First few keys: ${Array.isArray(data) ? '[array indices]' : Object.keys(data).slice(0, 3).join(', ')}`);
     }
     
     // Handle array structure (current Firebase structure)
