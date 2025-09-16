@@ -801,10 +801,10 @@ const AdminPage = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl ring-1 ring-border/50 border border-border overflow-hidden mb-8">
-          <div className="p-8">
+        <div className="mb-8">
+          <div className="">
             {/* Enhanced Search and Filter Section */}
-            <div className="bg-muted  rounded-xl p-6 mb-8 border border-border">
+            <div className="bg-white/50 backdrop-blur-sm rounded-xl p-4 mb-6">
               <div className="flex flex-col lg:flex-row gap-4">
                 <div className="relative flex-1">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
@@ -813,7 +813,7 @@ const AdminPage = () => {
                   <Input
                     type="text"
                     placeholder="Search across all data - name, phone, email, issue, message..."
-                    className="pl-12 h-12 text-base border-border bg-card  focus:bg-card focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200"
+                    className="pl-12 h-12 text-base border-gray-200/60 bg-white/60 backdrop-blur-sm focus:bg-white focus:border-primary/60 focus:ring-2 focus:ring-primary/10 transition-all duration-200"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
@@ -839,7 +839,7 @@ const AdminPage = () => {
                         className={`flex items-center gap-2 h-12 px-6 ${
                           startDate || endDate
                             ? "bg-primary hover:bg-primary/90 text-primary-foreground"
-                            : "bg-card  border-border text-foreground hover:bg-muted hover:text-foreground"
+                            : "bg-white/60 border-gray-200/60 text-foreground hover:bg-white/80 hover:text-foreground"
                         } transition-all duration-200`}
                       >
                         <Filter className="h-4 w-4" />
@@ -1125,7 +1125,7 @@ const AdminPage = () => {
                 </div>
 
                 {/* Enhanced Data Display */}
-                <div className="bg-white rounded-xl border border-border ring-1 ring-border/50 overflow-hidden">
+                <div className="bg-white/80 backdrop-blur-sm rounded-xl border border-gray-200/60 overflow-hidden">
                   {isLoading ? (
                     <div className="text-center py-16">
                       <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
