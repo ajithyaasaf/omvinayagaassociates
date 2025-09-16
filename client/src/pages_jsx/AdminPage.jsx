@@ -616,7 +616,7 @@ const AdminPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-card p-8 rounded-xl shadow-sm ring-1 ring-border/50 border border-border"
+            className="bg-white p-8 rounded-xl shadow-sm ring-1 ring-border/50 border border-border"
           >
             <div className="flex justify-center mb-6">
               <div className="h-16 w-16 bg-muted rounded-full flex items-center justify-center">
@@ -720,7 +720,7 @@ const AdminPage = () => {
 
           {/* Statistics Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <div className="bg-card  rounded-xl p-6 border border-border ring-1 ring-border/50 hover:bg-muted/30 transition-all duration-200">
+            <div className="bg-white rounded-xl p-6 border border-border ring-1 ring-border/50 hover:bg-gray-50 transition-all duration-200">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">
@@ -745,7 +745,7 @@ const AdminPage = () => {
               </div>
             </div>
 
-            <div className="bg-card  rounded-xl p-6 border border-border ring-1 ring-border/50 hover:bg-muted/30 transition-all duration-200">
+            <div className="bg-white rounded-xl p-6 border border-border ring-1 ring-border/50 hover:bg-gray-50 transition-all duration-200">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">
@@ -772,7 +772,7 @@ const AdminPage = () => {
               </div>
             </div>
 
-            <div className="bg-card  rounded-xl p-6 border border-border ring-1 ring-border/50 hover:bg-muted/30 transition-all duration-200">
+            <div className="bg-white rounded-xl p-6 border border-border ring-1 ring-border/50 hover:bg-gray-50 transition-all duration-200">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">
@@ -801,7 +801,7 @@ const AdminPage = () => {
           </div>
         </div>
 
-        <div className="bg-card  rounded-2xl ring-1 ring-border/50 border border-border overflow-hidden mb-8">
+        <div className="bg-white rounded-2xl ring-1 ring-border/50 border border-border overflow-hidden mb-8">
           <div className="p-8">
             {/* Enhanced Search and Filter Section */}
             <div className="bg-muted  rounded-xl p-6 mb-8 border border-border">
@@ -1125,7 +1125,7 @@ const AdminPage = () => {
                 </div>
 
                 {/* Enhanced Data Display */}
-                <div className="bg-card  rounded-xl border border-border ring-1 ring-border/50 overflow-hidden">
+                <div className="bg-white rounded-xl border border-border ring-1 ring-border/50 overflow-hidden">
                   {isLoading ? (
                     <div className="text-center py-16">
                       <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
