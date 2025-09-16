@@ -616,7 +616,7 @@ const AdminPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-card p-8 rounded-xl shadow-lg border border-border"
+            className="bg-card p-8 rounded-xl shadow-sm ring-1 ring-border/50 border border-border"
           >
             <div className="flex justify-center mb-6">
               <div className="h-16 w-16 bg-muted rounded-full flex items-center justify-center">
@@ -801,7 +801,7 @@ const AdminPage = () => {
           </div>
         </div>
 
-        <div className="bg-card  rounded-2xl shadow-lg border border-border overflow-hidden mb-8">
+        <div className="bg-card  rounded-2xl shadow ring-1 ring-border/50 border border-border overflow-hidden mb-8">
           <div className="p-8">
             {/* Enhanced Search and Filter Section */}
             <div className="bg-muted  rounded-xl p-6 mb-8 border border-border">
@@ -838,7 +838,7 @@ const AdminPage = () => {
                         variant={startDate || endDate ? "default" : "outline"}
                         className={`flex items-center gap-2 h-12 px-6 ${
                           startDate || endDate
-                            ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg"
+                            ? "bg-primary hover:bg-primary/90 text-primary-foreground"
                             : "bg-card  border-border text-foreground hover:bg-muted hover:text-foreground"
                         } transition-all duration-200`}
                       >
@@ -1115,7 +1115,7 @@ const AdminPage = () => {
                         filename={`inquiries-${startDate || "all"}-to-${
                           endDate || "all"
                         }.csv`}
-                        className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-200 shadow-lg hover:shadow-xl"
+                        className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-200 shadow-none"
                       >
                         <Download className="h-4 w-4" />
                         Export Data
@@ -1579,7 +1579,7 @@ const AdminPage = () => {
                           filename={`exit-intents-${startDate || "all"}-to-${
                             endDate || "all"
                           }.csv`}
-                          className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-200 shadow-lg hover:shadow-xl"
+                          className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-200 shadow-none"
                         >
                           <Download className="h-4 w-4" />
                           Export Data
