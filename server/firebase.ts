@@ -35,10 +35,18 @@ import { getFirebaseConfig } from './firebase.config';
 // Get Firebase config from environment variables or fallback
 const firebaseConfig = getFirebaseConfig();
 
-// Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig);
-const database = getDatabase(firebaseApp);
-const firestore = getFirestore(firebaseApp);
+// Initialize Firebase only if configured
+let firebaseApp: any = null;
+let database: any = null;
+let firestore: any = null;
+
+if (firebaseConfig.isConfigured) {
+  firebaseApp = initializeApp(firebaseConfig);
+  database = getDatabase(firebaseApp);
+  firestore = getFirestore(firebaseApp);
+} else {
+  console.warn('Firebase is not configured. Set FIREBASE_API_KEY, FIREBASE_DATABASE_URL, and FIREBASE_PROJECT_ID environment variables to enable Firebase features.');
+}
 
 // In-memory session store
 const MemoryStore = MemStoreSession(session);
