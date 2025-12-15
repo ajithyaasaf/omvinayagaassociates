@@ -223,7 +223,7 @@ const BeforeAfterSlider = memo(({ beforeImage, afterImage, title }) => {
   return (
     <div
       ref={sliderRef}
-      className="relative h-72 md:h-80 overflow-hidden rounded-lg cursor-pointer select-none"
+      className="relative aspect-video overflow-hidden rounded-lg cursor-pointer select-none"
       onClick={handleClick}
       role="slider"
       aria-label={`Compare before and after ${title}`}

@@ -94,6 +94,8 @@ const ClientAvatar = memo(({ img, index }) => (
       className="w-full h-full object-cover"
       loading="lazy"
       decoding="async"
+      width="40"
+      height="40"
     />
   </div>
 ));
@@ -321,14 +323,16 @@ const Hero = () => {
               className="relative"
             >
               {/* Main image with fancy border */}
-              <div className="relative z-20 overflow-hidden rounded-2xl shadow-2xl border-4 border-white/10 bg-gradient-to-br from-primary/40 to-primary/20 backdrop-blur-sm">
+              <div className="relative z-20 overflow-hidden rounded-2xl shadow-2xl border-4 border-white/10 bg-gradient-to-br from-primary/40 to-primary/20 backdrop-blur-sm aspect-[4/5]">
                 <img
                   src={img2}
                   alt="Building Doctor Professional"
-                  className="w-full object-cover h-[500px]"
+                  className="w-full h-full object-cover"
                   loading="eager"
                   fetchpriority="high"
                   decoding="async"
+                  width="400"
+                  height="500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
 
@@ -389,6 +393,8 @@ const Hero = () => {
                   className="w-full h-full object-cover"
                   loading="lazy"
                   decoding="async"
+                  width="144"
+                  height="144"
                 />
               </motion.div>
 
@@ -404,6 +410,8 @@ const Hero = () => {
                   className="w-full h-full object-cover"
                   loading="lazy"
                   decoding="async"
+                  width="160"
+                  height="160"
                 />
               </motion.div>
 
