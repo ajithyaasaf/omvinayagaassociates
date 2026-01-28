@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Phone } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { CONTACT } from "@/lib/constants";
 
 const Cta = () => {
@@ -40,7 +41,7 @@ const Cta = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i className="fab fa-whatsapp text-xl mr-2"></i> Connect on
+              <FaWhatsapp className="text-xl mr-2" /> Connect on
               WhatsApp
             </a>
           </div>

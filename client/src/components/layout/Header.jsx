@@ -126,13 +126,13 @@ const Header = () => {
           {/* Logo */}
           <Link to="/">
             <motion.div
-              className="flex flex-col cursor-pointer"
+              className="flex flex-col cursor-pointer flex-shrink-0"
               variants={fadeIn(0.1, 0.5)}
             >
               <img
                 src={logo}
                 alt="Company Logo"
-                className="h-14 md:h-16 w-[140px] md:w-[160px]"
+                className="h-14 md:h-16 w-auto object-contain"
                 width="160"
                 height="64"
               />

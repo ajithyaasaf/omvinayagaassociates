@@ -6,8 +6,8 @@ import {
   Clock,
   Facebook,
   Instagram,
-  MessageCircle,
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import {
   COMPANY_NAME,
   COMPANY_TITLE,
@@ -57,10 +57,10 @@ const Footer = () => {
                 href={CONTACT.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-secondary hover:text-primary transition-colors"
+                className="text-secondary hover:text-green-500 transition-colors"
                 aria-label="WhatsApp"
               >
-                <MessageCircle size={20} strokeWidth={2} />
+                <FaWhatsapp size={22} />
               </a>
             </div>
           </div>

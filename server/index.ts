@@ -12,29 +12,31 @@ app.use((req, res, next) => {
     'https://omvinayagaassociates.com',
     'http://localhost:5000',
     'http://localhost:3000',
-    'http://127.0.0.1:5000'
+    'http://localhost:8000',
+    'http://127.0.0.1:5000',
+    'http://127.0.0.1:8000'
   ];
-  
+
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin as string)) {
     res.setHeader('Access-Control-Allow-Origin', origin as string);
   }
-  
+
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
-  
+
   // Handle preflight requests
   if (req.method === 'OPTIONS') {
     res.status(200).end();
     return;
   }
-  
+
   next();
 });
 
 // Add body parsing middleware with size limits and error handling
-app.use(express.json({ 
+app.use(express.json({
   limit: '10mb'
 }));
 app.use(express.urlencoded({ extended: false, limit: '10mb' }));
@@ -89,14 +91,13 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on port 5000
+  // ALWAYS serve the app on port 8000
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
-  const port = 5000;
+  const port = 8000;
   server.listen({
     port,
-    host: "0.0.0.0",
-    reusePort: true,
+    host: "127.0.0.1",
   }, () => {
     log(`serving on port ${port}`);
   });
