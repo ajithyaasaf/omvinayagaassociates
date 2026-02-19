@@ -322,13 +322,8 @@ const Hero = () => {
 
           {/* Right side image collage */}
           <div className="lg:col-span-6 relative">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="relative"
-            >
-              {/* Main image with fancy border */}
+            {/* Main image with fancy border - Removed animation for LCP optimization */}
+            <div className="relative">
               <div className="relative z-20 overflow-hidden rounded-2xl shadow-2xl border-4 border-white/10 bg-gradient-to-br from-primary/40 to-primary/20 backdrop-blur-sm aspect-[4/5]">
                 <img
                   src={img2}
@@ -336,7 +331,7 @@ const Hero = () => {
                   className="w-full h-full object-cover"
                   loading="eager"
                   fetchpriority="high"
-                  decoding="async"
+                  decoding="sync"
                   width="400"
                   height="500"
                 />
@@ -431,7 +426,7 @@ const Hero = () => {
                 <span className="text-xl font-bold mr-1">10+</span>
                 <span className="text-sm font-medium">Years Experience</span>
               </motion.div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

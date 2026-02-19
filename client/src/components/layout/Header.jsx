@@ -138,6 +138,7 @@ const Header = () => {
                 className="h-14 md:h-16 w-auto object-contain"
                 width="160"
                 height="64"
+                style={{ aspectRatio: "160/64" }}
               />
             </motion.div>
           </Link>
