@@ -11,6 +11,7 @@ import {
   X,
 } from "lucide-react";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
+import SEO from "@/components/layout/SEO";
 
 // Real Building Doctor Products based on website data
 export const PRODUCTS = [
@@ -124,7 +125,7 @@ export const PRODUCTS = [
     ],
     applications: [
       "Can be used in plastering",
-      "Concrete", 
+      "Concrete",
       "Chips Screeding compound etc."
     ],
     fullDescription: "BD CRACKSTOP FIBRE is a high performance micro polypropylene fibre developed as a crack controlling additive for cementitious materials. It is available as monofilament 6mm in length for plaster and mortar",
@@ -317,7 +318,7 @@ export const PRODUCTS = [
     ],
     applications: [
       "Roof applications",
-      "Sunshades", 
+      "Sunshades",
       "Terrace waterproofing",
       "Water tanks",
       "Ceiling beam and columns"
@@ -353,7 +354,7 @@ export const PRODUCTS = [
     ],
     applications: [
       "Column anchoring",
-      "Beam fixing", 
+      "Beam fixing",
       "Roof applications"
     ],
     fullDescription: "NANGURAM ANCHORFIX is two components, high strength, fast cure, polyester resin anchoring grout.",
@@ -452,7 +453,7 @@ export const PRODUCTS = [
     ],
     applications: [
       "Interior tiled floors",
-      "Exterior tiled floors", 
+      "Exterior tiled floors",
       "Ceramic tiled walls",
       "Cement film residue removal",
       "Efflorescence treatment",
@@ -481,7 +482,7 @@ export const PRODUCTS = [
     coverage: "20 sq.m/litre (Varies depending on paint thickness)",
     features: [
       "Quick Action formula",
-      "Effortless results", 
+      "Effortless results",
       "Penetrates deeply",
       "Removing several layers at once",
       "Reduced labour",
@@ -491,10 +492,10 @@ export const PRODUCTS = [
     ],
     applications: [
       "Construction sites",
-      "Wooden surfaces", 
+      "Wooden surfaces",
       "Metal surfaces",
       "Automotive",
-      "Industrial", 
+      "Industrial",
       "Marine",
       "DIY projects"
     ],
@@ -585,7 +586,7 @@ export const PRODUCTS = [
       "Low viscosity allowing for high penetration",
       "Non staining",
       "Reduces water and chloride intrusion",
-      "Increases freeze thaw resistance", 
+      "Increases freeze thaw resistance",
       "Minimizes efflorescence",
       "Penetrates deeply into wet brick masonry walls"
     ],
@@ -597,7 +598,7 @@ export const PRODUCTS = [
     ],
     applicationMethod: [
       "Remove skirting or floor board and plaster till the 1st and 2nd layer of brick exposes",
-      "Drifting method may vary little depending upon type of brick", 
+      "Drifting method may vary little depending upon type of brick",
       "12 mm or 14 mm holes are to be drilled at 1st and 2nd brick at 45° angle to center of the wall",
       "Insert the tube in drilled hole and Drip tubes are inserted in the holes of brick previously made and drip rates are so adjusted that hole made in the wall always remain full without overflowing",
       "Inject by Pressure Grouting on the holes till the 2 layer of brick is fully saturated with BD DAMP STOP XW",
@@ -618,14 +619,14 @@ export const PRODUCTS = [
     applicationTools: ["Pressure Grouting Machine", "Bucket", "Measuring Jar"],
     specifications: {
       "Self Life": "12 Month",
-      "Pot Life": "4 to 5 Hours", 
+      "Pot Life": "4 to 5 Hours",
       "Analysis": "No Dilution with water",
       "Available Package": "5 kg, 20 Lit",
       "Coverage": "Depend upon the penetration and porosity"
     },
     benefits: [
       "Permanently stops rising dampness",
-      "Works effectively on wet walls", 
+      "Works effectively on wet walls",
       "Deep penetration into masonry",
       "Non-staining application",
       "Increases structural durability",
@@ -1007,7 +1008,7 @@ export const PRODUCTS = [
     ],
     applications: [
       "Column",
-      "Roof", 
+      "Roof",
       "Beam",
       "All types of steel Surfaces"
     ],
@@ -1440,7 +1441,7 @@ const ProductsPage = () => {
                     "Products"
                   )}
                 </h2>
-                
+
                 <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
                   {/* Simple Search Bar */}
                   <div className="relative">
@@ -1467,7 +1468,7 @@ const ProductsPage = () => {
                       </button>
                     )}
                   </div>
-                  
+
                   {/* Sort Dropdown */}
                   <div className="flex items-center gap-2">
                     <span className="text-sm text-gray-500">Sort by:</span>

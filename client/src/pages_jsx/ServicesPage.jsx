@@ -8,14 +8,11 @@ import { FaYoutube, FaArrowRight } from "react-icons/fa";
 import sealantsImage from "../assets/sealants.png";
 import tileAidsImage from "../assets/Tile-Aids.png";
 import thermalImage from "../assets/thermal.png";
+import SEO from "@/components/layout/SEO";
 
 const ServicesPage = () => {
   const [activeVideoUrl, setActiveVideoUrl] = useState("");
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-
-  useEffect(() => {
-    document.title = "Our Services | OM Vinayaga Associates";
-  }, []);
 
   const openVideoModal = (videoUrl) => {
     setActiveVideoUrl(videoUrl);
@@ -40,10 +37,14 @@ const ServicesPage = () => {
 
   return (
     <div className="pt-24">
+      <SEO
+        title="Our Services"
+        description="Expert building repair services including waterproofing, crack filling, tile grouting, and thermal insulation."
+      />
       <section className="bg-[#2b4c7e] py-20 relative">
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="container mx-auto px-4 relative z-10">
-          <motion.div 
+          <motion.div
             initial="hidden"
             animate="visible"
             variants={fadeInUp(0.3)}
@@ -59,7 +60,7 @@ const ServicesPage = () => {
 
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <motion.div 
+          <motion.div
             initial="hidden"
             animate="visible"
             variants={fadeInUp(0.4)}
@@ -73,13 +74,13 @@ const ServicesPage = () => {
 
           <div className="space-y-24">
             {SERVICES.map((service, index) => (
-              <motion.div 
+              <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={fadeInUp(0.2)}
-                key={service.id} 
-                id={service.slug} 
+                key={service.id}
+                id={service.slug}
                 className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center scroll-mt-24"
               >
                 <div className={`order-2 ${service.id % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
@@ -87,23 +88,23 @@ const ServicesPage = () => {
                     {/* Use custom images for specific services, otherwise use the service image */}
                     {service.image || service.title.includes('Sealant') || service.title.toLowerCase().includes('tile') || service.title.toLowerCase().includes('thermal') || service.title.toLowerCase().includes('waterproof') ? (
                       <>
-                        <img 
+                        <img
                           src={
-                            service.title.includes('Sealant') ? sealantsImage : 
-                            service.title.toLowerCase().includes('tile') ? tileAidsImage : 
-                            service.title.toLowerCase().includes('thermal') || service.title.toLowerCase().includes('waterproof') ? thermalImage :
-                            service.image
-                          } 
-                          alt={service.title} 
+                            service.title.includes('Sealant') ? sealantsImage :
+                              service.title.toLowerCase().includes('tile') ? tileAidsImage :
+                                service.title.toLowerCase().includes('thermal') || service.title.toLowerCase().includes('waterproof') ? thermalImage :
+                                  service.image
+                          }
+                          alt={service.title}
                           className="h-96 object-cover w-full transition-transform duration-500 group-hover:scale-105"
                         />
                         {service.videoUrl && (
-                          <div 
+                          <div
                             className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
                             onClick={() => openVideoModal(service.videoUrl)}
                             style={{
-                              backgroundImage: service.title.toLowerCase().includes('tile') ? `url(${tileAidsImage})` : 
-                                              service.title.toLowerCase().includes('thermal') || service.title.toLowerCase().includes('waterproof') ? `url(${thermalImage})` : 'none',
+                              backgroundImage: service.title.toLowerCase().includes('tile') ? `url(${tileAidsImage})` :
+                                service.title.toLowerCase().includes('thermal') || service.title.toLowerCase().includes('waterproof') ? `url(${thermalImage})` : 'none',
                               backgroundSize: 'cover',
                               backgroundPosition: 'center',
                               backdropFilter: 'blur(2px)'
@@ -111,7 +112,7 @@ const ServicesPage = () => {
                           >
                             {/* Semi-transparent overlay for better visibility of play button */}
                             <div className="absolute inset-0 bg-black opacity-50"></div>
-                            
+
                             <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center z-10 shadow-lg hover:scale-105 transition-transform">
                               <FaYoutube className="text-red-600 text-3xl" />
                             </div>
@@ -131,7 +132,7 @@ const ServicesPage = () => {
                   </div>
                   <h2 className="font-montserrat font-bold text-3xl mb-4">{service.title}</h2>
                   <p className="text-gray-600 mb-6">{service.description}</p>
-                  
+
                   {service.features && service.features.length > 0 && (
                     <div className="space-y-3 mb-6">
                       {service.features.slice(0, 4).map((feature, index) => (
@@ -144,7 +145,7 @@ const ServicesPage = () => {
                       ))}
                     </div>
                   )}
-                  
+
                   {service.applications && service.applications.length > 0 && (
                     <div className="mt-8 mb-8">
                       <h3 className="font-semibold text-lg mb-4">Applications</h3>
@@ -157,7 +158,7 @@ const ServicesPage = () => {
                       </div>
                     </div>
                   )}
-                  
+
                   <div className="flex flex-wrap gap-3">
                     <Link href="/contact">
                       <Button className="bg-primary hover:bg-primary/90">
@@ -165,8 +166,8 @@ const ServicesPage = () => {
                       </Button>
                     </Link>
                     {service.videoUrl && (
-                      <Button 
-                        variant="outline" 
+                      <Button
+                        variant="outline"
                         className="border-primary text-primary hover:bg-primary/10"
                         onClick={() => openVideoModal(service.videoUrl)}
                       >
@@ -218,14 +219,14 @@ const ServicesPage = () => {
       {isVideoModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4">
           <div className="relative w-full max-w-4xl">
-            <button 
+            <button
               className="absolute -top-10 right-0 text-white hover:text-gray-300"
               onClick={closeVideoModal}
             >
               <span className="text-2xl">×</span> Close
             </button>
             <div className="relative pb-[56.25%] h-0">
-              <iframe 
+              <iframe
                 className="absolute top-0 left-0 w-full h-full rounded-lg"
                 src={getYoutubeEmbedUrl(activeVideoUrl)}
                 title="YouTube video player"

@@ -1,5 +1,6 @@
 import { useEffect, useState, Suspense, lazy } from "react";
 import Hero from "@/components/home/Hero";
+import SEO from "@/components/layout/SEO";
 import Benefits from "@/components/home/Benefits";
 
 // Lazy load below-the-fold components
@@ -25,7 +26,6 @@ const SectionLoader = () => (
 const HomePage = () => {
   const [showForm, setShowForm] = useState(false);
   useEffect(() => {
-    document.title = "OM Vinayaga Associates | Building Doctor Franchise";
     // Show the form after a delay when the page loads
     // Increased delay to 10s to prioritize LCP and mobile performance
     const timer = setTimeout(() => {
@@ -35,6 +35,11 @@ const HomePage = () => {
   }, []);
   return (
     <div className="w-full overflow-hidden">
+      <SEO
+        title="Home"
+        description="Official Building Doctor Franchise in Madurai. Expert waterproofing, crack filling, and structural repair services."
+        keywords="building doctor, waterproofing, crack filling, madurai, construction chemicals"
+      />
       <Hero />
       <Benefits />
 
