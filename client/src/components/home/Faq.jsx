@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { FAQS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { FaPlus } from "react-icons/fa";
 
 const FaqItem = ({ faq }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,12 +17,12 @@ const FaqItem = ({ faq }) => {
         <h3 className="font-montserrat font-semibold text-lg">
           {faq.question}
         </h3>
-        <i
+        <FaPlus
           className={cn(
-            "fas fa-plus text-primary transition-transform",
+            "text-primary transition-transform duration-300",
             isOpen && "transform rotate-45"
           )}
-        ></i>
+        />
       </button>
       <div
         className={cn(

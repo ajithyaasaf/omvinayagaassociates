@@ -1,6 +1,16 @@
 import { Link } from "wouter";
 import { CONTACT } from "@/lib/constants";
 import directorImage from "@/assets/jeyaram.jpg";
+import {
+  FaCheck,
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaHardHat,
+  FaTools,
+  FaUserTie,
+  FaHeadset
+} from "react-icons/fa";
 
 const About = () => {
   return (
@@ -30,7 +40,7 @@ const About = () => {
             <div className="space-y-4 mb-8 ">
               <div className="flex items-start">
                 <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                  <i className="fas fa-check text-primary"></i>
+                  <FaCheck className="text-primary" />
                 </div>
                 <div>
                   <h3 className="font-montserrat font-semibold text-lg mb-1">
@@ -45,7 +55,7 @@ const About = () => {
               </div>
               <div className="flex items-start">
                 <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                  <i className="fas fa-check text-primary"></i>
+                  <FaCheck className="text-primary" />
                 </div>
                 <div>
                   <h3 className="font-montserrat font-semibold text-lg mb-1">
@@ -156,21 +166,21 @@ const About = () => {
                         className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary/90 transition"
                         aria-label="Facebook"
                       >
-                        <i className="fab fa-facebook-f text-white"></i>
+                        <FaFacebookF className="text-white" />
                       </a>
                       <a
                         href={`https://twitter.com/${CONTACT.social.twitter}`}
                         className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary/90 transition"
                         aria-label="Twitter"
                       >
-                        <i className="fab fa-twitter text-white"></i>
+                        <FaTwitter className="text-white" />
                       </a>
                       <a
                         href={`https://www.linkedin.com/in/${CONTACT.director.toLowerCase().replace(/\s+/g, "-")}`}
                         className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary/90 transition"
                         aria-label="LinkedIn"
                       >
-                        <i className="fab fa-linkedin-in text-white"></i>
+                        <FaLinkedinIn className="text-white" />
                       </a>
                     </div>
                   </div>
@@ -190,7 +200,7 @@ const About = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="flex items-start">
                       <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white mr-4 flex-shrink-0">
-                        <i className="fas fa-hard-hat text-white"></i>
+                        <FaHardHat className="text-white" />
                       </div>
                       <div>
                         <h4 className="font-montserrat font-semibold text-gray-800 mb-1">
@@ -205,7 +215,7 @@ const About = () => {
 
                     <div className="flex items-start">
                       <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white mr-4 flex-shrink-0">
-                        <i className="fas fa-tools text-white"></i>
+                        <FaTools className="text-white" />
                       </div>
                       <div>
                         <h4 className="font-montserrat font-semibold text-gray-800 mb-1">
@@ -220,7 +230,7 @@ const About = () => {
 
                     <div className="flex items-start">
                       <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white mr-4 flex-shrink-0">
-                        <i className="fas fa-user-tie text-white"></i>
+                        <FaUserTie className="text-white" />
                       </div>
                       <div>
                         <h4 className="font-montserrat font-semibold text-gray-800 mb-1">
@@ -235,7 +245,7 @@ const About = () => {
 
                     <div className="flex items-start">
                       <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white mr-4 flex-shrink-0">
-                        <i className="fas fa-headset text-white"></i>
+                        <FaHeadset className="text-white" />
                       </div>
                       <div>
                         <h4 className="font-montserrat font-semibold text-gray-800 mb-1">

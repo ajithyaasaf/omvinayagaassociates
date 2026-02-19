@@ -9,6 +9,15 @@ import { getVideoConfig, hasVideo } from "@/data/productVideos";
 // Import PRODUCTS array from ProductsPage for direct access
 // This ensures we can access product details without API calls
 import { PRODUCTS } from "./ProductsPage"; // All products hardcoded in ProductsPage
+import {
+  FaStar,
+  FaCheck,
+  FaInfoCircle,
+  FaArrowRight,
+  FaTools,
+  FaCheckCircle,
+  FaYoutube
+} from "react-icons/fa";
 
 const ProductDetailPage = () => {
   const [, params] = useRoute("/products/:id");
@@ -30,7 +39,7 @@ const ProductDetailPage = () => {
       const timer = setTimeout(() => {
         setShowVideoPopup(true);
       }, 3000);
-      
+
       return () => clearTimeout(timer);
     }
   }, [product]);
@@ -39,21 +48,21 @@ const ProductDetailPage = () => {
     // Using hardcoded data instead of API call
     const loadProductDetails = () => {
       if (!productId) return;
-      
+
       setIsLoading(true);
-      
+
       try {
         // Find product by ID in our local PRODUCTS array
         const foundProduct = PRODUCTS.find(p => p.id === parseInt(productId));
-        
+
         if (foundProduct) {
           setProduct(foundProduct);
-          
+
           // Find related products from the same category
           const related = PRODUCTS
             .filter(p => p.category === foundProduct.category && p.id !== parseInt(productId))
             .slice(0, 4);
-          
+
           setRelatedProducts(related);
         } else {
           toast({
@@ -130,8 +139,8 @@ const ProductDetailPage = () => {
           {/* Product Image */}
           <div className="flex justify-center items-start">
             <div className="relative bg-white rounded-lg shadow-lg p-4 w-full max-w-sm">
-              <img 
-                src={product.image} 
+              <img
+                src={product.image}
                 alt={product.name}
                 className="w-full h-auto object-contain"
               />
@@ -154,10 +163,10 @@ const ProductDetailPage = () => {
                 <div className="flex items-center ml-4">
                   <div className="flex">
                     {[...Array(5)].map((_, i) => (
-                      <i 
+                      <FaStar
                         key={i}
-                        className={`fas fa-star ${i < Math.floor(product.rating) ? 'text-yellow-400' : 'text-gray-300'}`}
-                      ></i>
+                        className={`${i < Math.floor(product.rating) ? 'text-yellow-400' : 'text-gray-300'}`}
+                      />
                     ))}
                   </div>
                   <span className="ml-2 text-sm text-gray-600">{product.rating.toFixed(1)}</span>
@@ -197,7 +206,7 @@ const ProductDetailPage = () => {
                 {product.features ? product.features.map((feature, index) => (
                   <div key={index} className="flex items-start">
                     <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
-                      <i className="fas fa-check text-primary text-sm"></i>
+                      <FaCheck className="text-primary text-sm" />
                     </div>
                     <p className="text-gray-700">{feature}</p>
                   </div>
@@ -205,25 +214,25 @@ const ProductDetailPage = () => {
                   <>
                     <div className="flex items-start">
                       <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
-                        <i className="fas fa-check text-primary text-sm"></i>
+                        <FaCheck className="text-primary text-sm" />
                       </div>
                       <p className="text-gray-700">Effectively prevents water leakage</p>
                     </div>
                     <div className="flex items-start">
                       <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
-                        <i className="fas fa-check text-primary text-sm"></i>
+                        <FaCheck className="text-primary text-sm" />
                       </div>
                       <p className="text-gray-700">Superior bonding and durability</p>
                     </div>
                     <div className="flex items-start">
                       <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
-                        <i className="fas fa-check text-primary text-sm"></i>
+                        <FaCheck className="text-primary text-sm" />
                       </div>
                       <p className="text-gray-700">Easy application with brush or roller</p>
                     </div>
                     <div className="flex items-start">
                       <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
-                        <i className="fas fa-check text-primary text-sm"></i>
+                        <FaCheck className="text-primary text-sm" />
                       </div>
                       <p className="text-gray-700">UV resistant and weatherproof</p>
                     </div>
@@ -250,12 +259,12 @@ const ProductDetailPage = () => {
 
             <div className="bg-gray-50 p-4 rounded-lg">
               <div className="flex items-center mb-2">
-                <i className="fas fa-info-circle text-primary mr-2"></i>
+                <FaInfoCircle className="text-primary mr-2" />
                 <h4 className="font-semibold">Need technical assistance?</h4>
               </div>
               <p className="text-sm text-gray-600 mb-3">Our experts can help you select the right product and provide application guidance.</p>
-              <Link href="/contact" className="text-primary font-medium text-sm hover:underline">
-                Contact our technical team <i className="fas fa-arrow-right ml-1"></i>
+              <Link href="/contact" className="text-primary font-medium text-sm hover:underline flex items-center">
+                Contact our technical team <FaArrowRight className="ml-1" />
               </Link>
             </div>
           </div>
@@ -265,19 +274,19 @@ const ProductDetailPage = () => {
         <div className="mt-16">
           <div className="border-b border-gray-200 mb-6">
             <div className="flex overflow-x-auto scrollbar-hide">
-              <button 
+              <button
                 onClick={() => setActiveTab('description')}
                 className={`py-3 px-4 md:px-6 border-b-2 font-medium text-sm md:text-base whitespace-nowrap flex-shrink-0 ${activeTab === 'description' ? 'border-primary text-primary' : 'border-transparent text-gray-600 hover:text-gray-800'}`}
               >
                 Description
               </button>
-              <button 
+              <button
                 onClick={() => setActiveTab('specifications')}
                 className={`py-3 px-4 md:px-6 border-b-2 font-medium text-sm md:text-base whitespace-nowrap flex-shrink-0 ${activeTab === 'specifications' ? 'border-primary text-primary' : 'border-transparent text-gray-600 hover:text-gray-800'}`}
               >
                 Specifications
               </button>
-              <button 
+              <button
                 onClick={() => setActiveTab('application')}
                 className={`py-3 px-4 md:px-6 border-b-2 font-medium text-sm md:text-base whitespace-nowrap flex-shrink-0 ${activeTab === 'application' ? 'border-primary text-primary' : 'border-transparent text-gray-600 hover:text-gray-800'}`}
               >
@@ -293,7 +302,7 @@ const ProductDetailPage = () => {
                 <p className="bg-blue-50 p-4 rounded-lg border-l-4 border-primary">
                   <strong>Description:</strong> {product.fullDescription || product.description}
                 </p>
-                
+
                 {product.name.includes('Paint Remover') && (
                   <>
                     <h3 className="text-primary mt-6">🏗️ Key Benefits in Renovation Projects</h3>
@@ -331,7 +340,7 @@ const ProductDetailPage = () => {
                     </div>
                   </>
                 )}
-                
+
                 {product.applications && (
                   <>
                     <h3 className="text-primary mt-6">🏗️ Application Areas</h3>
@@ -340,12 +349,12 @@ const ProductDetailPage = () => {
                     </p>
                   </>
                 )}
-                
+
                 {!product.applications && !product.name.includes('Paint Remover') && (
                   <>
                     <h3 className="text-primary mt-6">📋 Application Areas</h3>
                     <p className="bg-blue-50 p-4 rounded-lg border-l-4 border-primary">
-                      <strong>Suitable for:</strong> Terraces, water tanks, sunken slabs, balconies, swimming pools, podiums, 
+                      <strong>Suitable for:</strong> Terraces, water tanks, sunken slabs, balconies, swimming pools, podiums,
                       concrete structures, natural stones, and all types of surfaces requiring waterproof protection.
                     </p>
                   </>
@@ -356,7 +365,7 @@ const ProductDetailPage = () => {
             {activeTab === 'specifications' && (
               <>
                 <h3 className="text-primary">📦 Technical Specifications</h3>
-                
+
                 {product.packageSizes && (
                   <div className="bg-gray-50 p-4 rounded-lg mb-4">
                     <h4 className="font-semibold text-gray-800 mb-2">Package Sizes & Rates</h4>
@@ -368,7 +377,7 @@ const ProductDetailPage = () => {
                     ))}
                   </div>
                 )}
-                
+
                 {product.coverage && (
                   <div className="bg-green-50 p-4 rounded-lg mb-4">
                     <h4 className="font-semibold text-green-800">Coverage Area</h4>
@@ -408,7 +417,7 @@ const ProductDetailPage = () => {
                     <ul className="space-y-1">
                       {product.applicationTools.map((tool, index) => (
                         <li key={index} className="flex items-center">
-                          <i className="fas fa-tools text-purple-600 text-sm mr-2"></i>
+                          <FaTools className="text-purple-600 text-sm mr-2" />
                           {tool}
                         </li>
                       ))}
@@ -423,7 +432,7 @@ const ProductDetailPage = () => {
                     <ul className="space-y-1">
                       {product.benefits.map((benefit, index) => (
                         <li key={index} className="flex items-start">
-                          <i className="fas fa-check-circle text-green-600 text-sm mr-2 mt-0.5"></i>
+                          <FaCheckCircle className="text-green-600 text-sm mr-2 mt-0.5" />
                           {benefit}
                         </li>
                       ))}
@@ -438,7 +447,7 @@ const ProductDetailPage = () => {
                     <ul className="space-y-1">
                       {product.tamilBenefits.map((benefit, index) => (
                         <li key={index} className="flex items-start">
-                          <i className="fas fa-star text-yellow-600 text-sm mr-2 mt-0.5"></i>
+                          <FaStar className="text-yellow-600 text-sm mr-2 mt-0.5" />
                           {benefit}
                         </li>
                       ))}
@@ -451,7 +460,7 @@ const ProductDetailPage = () => {
             {activeTab === 'application' && (
               <>
                 <h3 className="text-primary">🔧 Application Method</h3>
-                
+
                 {/* Custom Application Method for specific products */}
                 {product.applicationMethod ? (
                   <div className="bg-gray-50 p-4 rounded-lg mb-4">
@@ -525,11 +534,11 @@ const ProductDetailPage = () => {
                   <div className="mt-8 p-6 bg-gradient-to-r from-primary/10 to-blue-50 rounded-lg border-l-4 border-primary">
                     <h4 className="font-semibold text-primary mb-2">🎥 Watch Application Video</h4>
                     <p className="text-gray-700 mb-3">See step-by-step application process and professional tips for best results.</p>
-                    <button 
+                    <button
                       onClick={() => setShowVideoPopup(true)}
                       className="inline-flex items-center text-primary font-medium hover:underline"
                     >
-                      <i className="fab fa-youtube mr-2"></i>
+                      <FaYoutube className="mr-2" />
                       View Product Application Video
                     </button>
                   </div>
@@ -547,8 +556,8 @@ const ProductDetailPage = () => {
               {relatedProducts.map((relProduct) => (
                 <div key={relProduct.id} className="bg-white rounded-xl shadow-lg overflow-hidden group">
                   <div className="relative h-64 overflow-hidden">
-                    <img 
-                      src={relProduct.image} 
+                    <img
+                      src={relProduct.image}
                       alt={relProduct.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
@@ -563,7 +572,7 @@ const ProductDetailPage = () => {
                     <div className="flex justify-between items-start mb-2">
                       <h3 className="font-montserrat font-semibold text-lg">{relProduct.name}</h3>
                       <div className="flex items-center">
-                        <i className="fas fa-star text-yellow-400 text-xs"></i>
+                        <FaStar className="text-yellow-400 text-xs" />
                         <span className="text-sm ml-1">{relProduct.rating.toFixed(1)}</span>
                       </div>
                     </div>

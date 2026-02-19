@@ -12,14 +12,12 @@ import LoadingSpinner from "./components/ui/LoadingSpinner";
 
 import { pageTransition } from "./utils/animations";
 
-// Pre-load critical pages for faster navigation
-import HomePage from "./pages_jsx/HomePage.jsx";
-import AboutPage from "./pages_jsx/AboutPage.jsx";
-import ServicesPage from "./pages_jsx/ServicesPage.jsx";
-import ProductsPage from "./pages_jsx/ProductsPage.jsx";
-import ContactPage from "./pages_jsx/ContactPage.jsx";
-
-// Lazy load less critical pages
+// Lazy load all pages for better code splitting and initial load performance
+const HomePage = lazy(() => import("./pages_jsx/HomePage.jsx"));
+const AboutPage = lazy(() => import("./pages_jsx/AboutPage.jsx"));
+const ServicesPage = lazy(() => import("./pages_jsx/ServicesPage.jsx"));
+const ProductsPage = lazy(() => import("./pages_jsx/ProductsPage.jsx"));
+const ContactPage = lazy(() => import("./pages_jsx/ContactPage.jsx"));
 const ProductDetailPage = lazy(() => import("./pages_jsx/ProductDetailPage.jsx"));
 const AchievementsPage = lazy(() => import("./pages_jsx/AchievementsPage.jsx"));
 const KavashPage = lazy(() => import("./pages_jsx/KavashPage.jsx"));
@@ -34,26 +32,8 @@ function App() {
     window.scrollTo(0, 0);
   }, [location]);
 
-  // Create a PageWrapper component for animations with 1-second minimum loading time
+  // PageWrapper for animations
   const PageWrapper = ({ children }) => {
-    const [showSpinner, setShowSpinner] = useState(true);
-    const [isReady, setIsReady] = useState(false);
-
-    useEffect(() => {
-      // Minimum 1-second loading time
-      const timer = setTimeout(() => {
-        setIsReady(true);
-      }, 1000);
-
-      return () => clearTimeout(timer);
-    }, []);
-
-    useEffect(() => {
-      if (isReady) {
-        setShowSpinner(false);
-      }
-    }, [isReady]);
-
     return (
       <motion.div
         initial="initial"
@@ -62,32 +42,16 @@ function App() {
         variants={pageTransition}
         className="w-full"
       >
-        {showSpinner ? (
+        <Suspense fallback={
           <div className="fixed inset-0 bg-white/80 backdrop-blur-sm z-[60] flex items-center justify-center">
             <LoadingSpinner size="large" showText={true} variant="logo" />
           </div>
-        ) : (
-          <Suspense fallback={
-            <div className="fixed inset-0 bg-white/80 backdrop-blur-sm z-[60] flex items-center justify-center">
-              <LoadingSpinner size="large" showText={true} variant="logo" />
-            </div>
-          }>
-            {children}
-          </Suspense>
-        )}
+        }>
+          {children}
+        </Suspense>
       </motion.div>
     );
   };
-
-  // Import the new professional loading spinner
-  const BrandedLoadingSpinner = () => (
-    <div 
-      className="fixed inset-0 bg-white flex flex-col items-center justify-center" 
-      style={{zIndex: 9999, position: 'fixed', top: 0, left: 0, right: 0, bottom: 0}}
-    >
-      <LoadingSpinner size="large" showText={true} variant="logo" />
-    </div>
-  );
 
   // Show the popup form only on the homepage
   const showPopupForm = location === "/";

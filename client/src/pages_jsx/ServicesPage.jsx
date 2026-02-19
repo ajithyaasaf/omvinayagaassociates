@@ -4,7 +4,7 @@ import { SERVICES } from "../data/services";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { fadeIn, fadeInUp } from "../utils/animations";
-import { FaYoutube, FaArrowRight } from "react-icons/fa";
+import { FaYoutube, FaArrowRight, FaCheck } from "react-icons/fa";
 import sealantsImage from "../assets/sealants.png";
 import tileAidsImage from "../assets/Tile-Aids.png";
 import thermalImage from "../assets/thermal.png";
@@ -138,7 +138,7 @@ const ServicesPage = () => {
                       {service.features.slice(0, 4).map((feature, index) => (
                         <div key={index} className="flex items-start">
                           <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
-                            <i className="fas fa-check text-primary text-sm"></i>
+                            <FaCheck className="text-primary text-sm" />
                           </div>
                           <p>{feature}</p>
                         </div>

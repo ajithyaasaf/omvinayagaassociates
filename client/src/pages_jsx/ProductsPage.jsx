@@ -9,6 +9,8 @@ import {
   ChevronLeft,
   ChevronRight,
   X,
+  Check,
+  Download,
 } from "lucide-react";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import SEO from "@/components/layout/SEO";
@@ -1406,7 +1408,7 @@ const ProductsPage = () => {
                     >
                       {category.name}
                       {activeCategory === category.id && (
-                        <i className="fas fa-check ml-2"></i>
+                        <Check className="ml-2 w-4 h-4" />
                       )}
                     </button>
                   ))}
@@ -1684,7 +1686,7 @@ const ProductsPage = () => {
                   href="#download-catalog" 
                   className="inline-flex items-center bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-md font-medium transition"
                 >
-                  <i className="fas fa-download mr-2"></i> Download Catalog
+                  <Download className="mr-2 h-4 w-4" /> Download Catalog
                 </a>
               </div>
               <div className="md:col-span-2 relative h-60 md:h-auto">

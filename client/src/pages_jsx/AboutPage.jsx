@@ -4,6 +4,15 @@ import { CONTACT, STATS, DIRECTORS } from "@/lib/constants";
 import directorImage from "@/assets/jeyaram.jpg";
 import drKamaleeswariImage from "@/assets/dr_kamaleeswari.jpg";
 import buildingDoctorIcon from "@/assets/building-doctor-icon.png";
+import {
+  FaSearch,
+  FaClipboardList,
+  FaTools,
+  FaAward,
+  FaEnvelope,
+  FaDraftingCompass,
+  FaHeadset
+} from "react-icons/fa";
 
 const AboutPage = () => {
   useEffect(() => {
@@ -102,7 +111,7 @@ const AboutPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-search text-primary text-xl"></i>
+                <FaSearch className="text-primary text-xl" />
               </div>
               <h3 className="font-montserrat font-semibold text-xl mb-3">
                 1. Thorough Assessment
@@ -116,7 +125,7 @@ const AboutPage = () => {
 
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-clipboard-list text-primary text-xl"></i>
+                <FaClipboardList className="text-primary text-xl" />
               </div>
               <h3 className="font-montserrat font-semibold text-xl mb-3">
                 2. Customized Solutions
@@ -130,7 +139,7 @@ const AboutPage = () => {
 
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-tools text-primary text-xl"></i>
+                <FaTools className="text-primary text-xl" />
               </div>
               <h3 className="font-montserrat font-semibold text-xl mb-3">
                 3. Quality Implementation
@@ -231,7 +240,7 @@ const AboutPage = () => {
                         <ul className="text-gray-600 text-xs space-y-1">
                           {director.awards.slice(0, 3).map((award, i) => (
                             <li key={i} className="flex items-start">
-                              <i className="fas fa-award text-primary mr-2 mt-1 text-xs"></i>
+                              <FaAward className="text-primary mr-2 mt-1 text-xs" />
                               {award}
                             </li>
                           ))}
@@ -249,7 +258,7 @@ const AboutPage = () => {
                 to="/contact"
                 className="inline-flex items-center bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-lg transition-colors"
               >
-                <i className="fas fa-envelope mr-2"></i> Get in Touch with Our
+                <FaEnvelope className="mr-2" /> Get in Touch with Our
                 Team
               </Link>
             </div>
@@ -258,7 +267,7 @@ const AboutPage = () => {
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white p-6 rounded-xl shadow-lg">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
-                  <i className="fas fa-tools text-2xl"></i>
+                  <FaTools className="text-2xl" />
                 </div>
                 <h3 className="font-montserrat font-semibold text-xl mb-2">
                   Technical Specialists
@@ -272,7 +281,7 @@ const AboutPage = () => {
 
               <div className="bg-white p-6 rounded-xl shadow-lg">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
-                  <i className="fas fa-drafting-compass text-2xl"></i>
+                  <FaDraftingCompass className="text-2xl" />
                 </div>
                 <h3 className="font-montserrat font-semibold text-xl mb-2">
                   Repair Consultants
@@ -285,7 +294,7 @@ const AboutPage = () => {
 
               <div className="bg-white p-6 rounded-xl shadow-lg">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
-                  <i className="fas fa-headset text-2xl"></i>
+                  <FaHeadset className="text-2xl" />
                 </div>
                 <h3 className="font-montserrat font-semibold text-xl mb-2">
                   Customer Support
