@@ -5,7 +5,7 @@ import { Suspense, lazy, useEffect, useState } from "react";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import WhatsappButton from "./components/WhatsappButton";
-import HomePageForm from "./components/HomePageForm";
+
 import ExitIntentPopup from "./components/ExitIntentPopup";
 import ChatBot from "./components/chat/ChatBot";
 import LoadingSpinner from "./components/ui/LoadingSpinner";
@@ -53,8 +53,7 @@ function App() {
     );
   };
 
-  // Show the popup form only on the homepage
-  const showPopupForm = location === "/";
+
 
   return (
     <div className="flex flex-col min-h-screen overflow-x-hidden w-full">
@@ -119,7 +118,6 @@ function App() {
       </main>
       <Footer />
       <WhatsappButton />
-      {showPopupForm && <HomePageForm />}
       <ExitIntentPopup />
       <ChatBot />
 

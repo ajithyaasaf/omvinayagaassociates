@@ -3,9 +3,10 @@ import Hero from "@/components/home/Hero";
 import SEO from "@/components/layout/SEO";
 import Benefits from "@/components/home/Benefits";
 
+import Services from "@/components/home/Services";
+import VideoSection from "@/components/home/VideoSection";
+
 // Lazy load below-the-fold components
-const Services = lazy(() => import("@/components/home/Services"));
-const VideoSection = lazy(() => import("@/components/home/VideoSection"));
 const BeforeAfter = lazy(() => import("@/components/home/BeforeAfter"));
 const Products = lazy(() => import("@/components/home/Products"));
 const Testimonials = lazy(() => import("@/components/home/Testimonials"));
@@ -43,13 +44,9 @@ const HomePage = () => {
       <Hero />
       <Benefits />
 
-      <Suspense fallback={<SectionLoader />}>
-        <Services />
-      </Suspense>
+      <Services />
 
-      <Suspense fallback={<SectionLoader />}>
-        <VideoSection />
-      </Suspense>
+      <VideoSection />
 
       <Suspense fallback={<SectionLoader />}>
         <BeforeAfter />
