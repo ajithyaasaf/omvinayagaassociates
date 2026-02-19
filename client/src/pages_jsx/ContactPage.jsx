@@ -354,6 +354,7 @@ const ContactPage = () => {
                       : 'text-gray-600 hover:text-primary hover:bg-gray-50'
                       }`}
                     onClick={() => setSelectedLocation(location.id)}
+                    aria-pressed={selectedLocation === location.id}
                   >
                     <div className="text-center">
                       <div className="font-semibold">{location.area}</div>

@@ -118,6 +118,7 @@ const Services = () => {
                         openVideoModal(service.videoUrl);
                       }}
                       className="flex items-center justify-center space-x-1 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-white text-xs hover:bg-white/30 transition-colors border border-white/20"
+                      aria-label={`Play video for ${service.title}`}
                     >
                       <FaPlay className="w-3 h-3" />
                       <span>Play</span>
@@ -164,7 +165,10 @@ const Services = () => {
                   )}
 
                 <Link href={`/services#${service.slug}`}>
-                  <span className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition cursor-pointer text-sm group/link">
+                  <span
+                    className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition cursor-pointer text-sm group/link"
+                    aria-label={`Learn more about ${service.title}`}
+                  >
                     Learn more
                     <span className="relative ml-2 overflow-hidden inline-flex">
                       <FaArrowRight className="transition-all duration-300 transform group-hover/link:translate-x-6" />

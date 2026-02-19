@@ -99,7 +99,7 @@ const Testimonials = () => {
 
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    
+
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
@@ -149,7 +149,7 @@ const Testimonials = () => {
           <div
             ref={sliderRef}
             className="transition-transform duration-500 ease-in-out flex"
-            style={{ 
+            style={{
               transform: `translateX(-${(currentIndex * 100) / itemsPerView}%)`,
               touchAction: 'pan-y pinch-zoom'
             }}
@@ -170,40 +170,39 @@ const Testimonials = () => {
                       <User className="text-primary" size={20} />
                     </div>
                     <div>
-                      <h4 className="font-montserrat font-semibold text-gray-900">
+                      <h3 className="font-montserrat font-semibold text-gray-900 text-lg">
                         {testimonial.name}
-                      </h4>
+                      </h3>
                       <p className="text-sm text-gray-600">
                         {testimonial.location}
                       </p>
                     </div>
                   </div>
-                  
+
                   {/* Star Rating */}
                   <div className="mb-4" role="img" aria-label={`Rating: ${testimonial.rating} out of 5 stars`}>
                     {[1, 2, 3, 4, 5].map((star) => (
                       <span
                         key={star}
-                        className={`inline-block w-4 h-4 mr-1 ${
-                          star <= Math.floor(testimonial.rating)
+                        className={`inline-block w-4 h-4 mr-1 ${star <= Math.floor(testimonial.rating)
                             ? "text-yellow-400"
                             : star === Math.ceil(testimonial.rating) && testimonial.rating % 1 !== 0
-                            ? "text-yellow-400"
-                            : "text-gray-300"
-                        }`}
+                              ? "text-yellow-400"
+                              : "text-gray-300"
+                          }`}
                       >
-                        {star <= Math.floor(testimonial.rating) ? "★" : 
-                         star === Math.ceil(testimonial.rating) && testimonial.rating % 1 !== 0 ? "★" : "☆"}
+                        {star <= Math.floor(testimonial.rating) ? "★" :
+                          star === Math.ceil(testimonial.rating) && testimonial.rating % 1 !== 0 ? "★" : "☆"}
                       </span>
                     ))}
                   </div>
-                  
+
                   <p className="text-gray-600 mb-4 flex-grow leading-relaxed">
                     "{testimonial.content}"
                   </p>
-                  
+
                   {testimonial.hasVideo && (
-                    <div 
+                    <div
                       className="text-primary font-medium text-sm cursor-pointer hover:text-primary/80 transition-colors flex items-center"
                       onClick={() => handleVideoClick(testimonial.videoUrl)}
                       role="button"
@@ -251,20 +250,24 @@ const Testimonials = () => {
 
         {/* Pagination Dots */}
         {maxIndex > 0 && (
-          <div className="flex justify-center mt-8 space-x-2" role="tablist" aria-label="Testimonial navigation">
+          <div className="flex justify-center mt-8 space-x-1" role="tablist" aria-label="Testimonial navigation">
             {Array.from({ length: maxIndex + 1 }, (_, index) => (
               <button
                 key={index}
-                className={cn(
-                  "w-3 h-3 rounded-full transition-all duration-200 hover:scale-110",
-                  index === currentIndex ? "bg-primary" : "bg-gray-300 hover:bg-gray-400"
-                )}
+                className="p-2 group focus:outline-none" // Increased touch target
                 onClick={() => goToSlide(index)}
                 aria-label={`Go to testimonial group ${index + 1}`}
                 role="tab"
                 aria-selected={index === currentIndex}
                 tabIndex={0}
-              />
+              >
+                <div
+                  className={cn(
+                    "w-3 h-3 rounded-full transition-all duration-200 group-hover:scale-110",
+                    index === currentIndex ? "bg-primary" : "bg-gray-300 group-hover:bg-gray-400"
+                  )}
+                />
+              </button>
             ))}
           </div>
         )}
@@ -277,7 +280,7 @@ const Testimonials = () => {
         </div>
 
         {/* Video Modal */}
-        <TestimonialVideoModal 
+        <TestimonialVideoModal
           isOpen={isVideoModalOpen}
           onClose={closeVideoModal}
           videoUrl={selectedVideoUrl}

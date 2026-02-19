@@ -23,7 +23,7 @@ const VideoSection = () => {
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-32 h-32 bg-primary/5 rounded-full -ml-16 -mt-16"></div>
       <div className="absolute bottom-0 right-0 w-48 h-48 bg-primary/5 rounded-full -mr-24 -mb-24"></div>
-      
+
       <div className="container mx-auto px-4">
         <motion.div
           initial="hidden"
@@ -36,7 +36,7 @@ const VideoSection = () => {
             <Calendar className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-primary">Latest Milestone</span>
           </div>
-          
+
           <h2 className="font-montserrat font-bold text-3xl md:text-5xl mb-6">
             Our New{" "}
             <span className="text-primary relative">
@@ -45,7 +45,7 @@ const VideoSection = () => {
             </span>{" "}
             Inauguration
           </h2>
-          
+
           <p className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-8">
             Witness the grand opening of our latest sales point in Madurai, expanding our reach to serve you better with premium building solutions.
           </p>
@@ -65,23 +65,24 @@ const VideoSection = () => {
                 <div className="relative">
                   {/* Video Thumbnail */}
                   <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center relative">
-                    <img 
+                    <img
                       src="https://img.youtube.com/vi/SNKboUDhr_w/maxresdefault.jpg"
                       alt="Sales Point Inauguration"
                       className="absolute inset-0 w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-black/30"></div>
-                    
+
                     {/* Play Button */}
                     <motion.button
                       onClick={handlePlayClick}
                       className="relative z-10 w-20 h-20 bg-primary rounded-full flex items-center justify-center shadow-lg hover:bg-primary/90 transition-all duration-300 group"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
+                      aria-label="Play video"
                     >
                       <Play className="text-white ml-1" size={32} strokeWidth={2} fill="currentColor" />
                     </motion.button>
-                    
+
                     {/* Video Title Overlay */}
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                       <div className="flex items-center gap-2 text-white mb-2">
@@ -130,7 +131,7 @@ const VideoSection = () => {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <Users className="text-primary" size={20} strokeWidth={2.5} />
@@ -144,7 +145,7 @@ const VideoSection = () => {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <Calendar className="text-primary" size={20} strokeWidth={2.5} />

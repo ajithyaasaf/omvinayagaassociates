@@ -1081,55 +1081,7 @@ const AchievementsPage = () => {
                 </div>
 
                 {/* Other Community Activities Section */}
-                <div className="bg-white rounded-2xl shadow-lg p-8">
-                  <div className="text-center mb-8">
-                    <h2 className="font-montserrat font-bold text-2xl md:text-3xl lg:text-4xl mb-4 leading-tight">
-                      Community{" "}
-                      <span className="text-primary relative">
-                        Activities
-                        <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
-                      </span>
-                    </h2>
-                    <p className="text-gray-600 text-lg">
-                      Additional community engagement and social responsibility
-                      initiatives
-                    </p>
-                  </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {communityImpact
-                      .filter((impact) => !impact.featured)
-                      .map((impact, index) => (
-                        <motion.div key={index} variants={itemVariants}>
-                          <Card className="bg-gradient-to-r from-cyan-50 to-white hover:shadow-xl transition-all duration-300 border-2 border-accent h-full">
-                            <CardHeader>
-                              <div className="flex items-start space-x-4">
-                                <div className="bg-accent/20 p-3 rounded-full flex-shrink-0">
-                                  {impact.icon}
-                                </div>
-                                <div className="flex-1">
-                                  <CardTitle className="text-lg text-gray-900 mb-2">
-                                    {impact.title}
-                                  </CardTitle>
-                                  <Badge
-                                    variant="outline"
-                                    className="bg-white/80 border-accent"
-                                  >
-                                    {impact.category}
-                                  </Badge>
-                                </div>
-                              </div>
-                            </CardHeader>
-                            <CardContent>
-                              <p className="text-gray-700 leading-relaxed">
-                                {impact.description}
-                              </p>
-                            </CardContent>
-                          </Card>
-                        </motion.div>
-                      ))}
-                  </div>
-                </div>
               </motion.div>
             </TabsContent>
           </Tabs>

@@ -154,18 +154,21 @@ const About = () => {
                       <a
                         href={`https://www.facebook.com/${CONTACT.social.facebook}`}
                         className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary/90 transition"
+                        aria-label="Facebook"
                       >
                         <i className="fab fa-facebook-f text-white"></i>
                       </a>
                       <a
                         href={`https://twitter.com/${CONTACT.social.twitter}`}
                         className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary/90 transition"
+                        aria-label="Twitter"
                       >
                         <i className="fab fa-twitter text-white"></i>
                       </a>
                       <a
                         href={`https://www.linkedin.com/in/${CONTACT.director.toLowerCase().replace(/\s+/g, "-")}`}
                         className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary/90 transition"
+                        aria-label="LinkedIn"
                       >
                         <i className="fab fa-linkedin-in text-white"></i>
                       </a>

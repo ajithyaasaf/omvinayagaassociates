@@ -2,6 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '../../lib/queryClient';
 import { Loader2, Plus, Pencil, Trash2 } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const ProductManager = () => {
   const queryClient = useQueryClient();
@@ -77,9 +86,9 @@ const ProductManager = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (selectedProduct) {
-      updateProductMutation.mutate({ 
-        id: selectedProduct.id, 
-        productData: formData 
+      updateProductMutation.mutate({
+        id: selectedProduct.id,
+        productData: formData
       });
     } else {
       addProductMutation.mutate(formData);
@@ -124,6 +133,14 @@ const ProductManager = () => {
     resetForm();
     setSelectedProduct(null);
     setIsModalOpen(true);
+  };
+
+  const handleOpenChange = (open) => {
+    setIsModalOpen(open);
+    if (!open) {
+      resetForm();
+      setSelectedProduct(null);
+    }
   };
 
   if (isLoading) {
@@ -172,9 +189,9 @@ const ProductManager = () => {
                 <tr key={product.id}>
                   <td className="px-6 py-4 whitespace-nowrap">
                     {product.image ? (
-                      <img 
-                        src={product.image} 
-                        alt={product.name} 
+                      <img
+                        src={product.image}
+                        alt={product.name}
                         className="h-10 w-10 object-cover rounded"
                       />
                     ) : (
@@ -216,154 +233,152 @@ const ProductManager = () => {
       </div>
 
       {/* Add/Edit Product Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg shadow-lg w-full max-w-md">
-            <div className="p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">
-                {selectedProduct ? 'Edit Product' : 'Add New Product'}
-              </h3>
-              <form onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Description
-                    </label>
-                    <textarea
-                      name="description"
-                      value={formData.description}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                      rows={3}
-                      required
-                    ></textarea>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Price
-                    </label>
-                    <input
-                      type="number"
-                      name="price"
-                      value={formData.price}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                      step="0.01"
-                      min="0"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Image URL
-                    </label>
-                    <input
-                      type="text"
-                      name="image"
-                      value={formData.image}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Category
-                    </label>
-                    <input
-                      type="text"
-                      name="category"
-                      value={formData.category}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Rating (1-5)
-                    </label>
-                    <input
-                      type="number"
-                      name="rating"
-                      value={formData.rating}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                      step="0.1"
-                      min="1"
-                      max="5"
-                      required
-                    />
-                  </div>
-                  <div className="flex space-x-4">
-                    <div className="flex items-center">
-                      <input
-                        type="checkbox"
-                        id="isBestseller"
-                        name="isBestseller"
-                        checked={formData.isBestseller}
-                        onChange={handleInputChange}
-                        className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
-                      />
-                      <label htmlFor="isBestseller" className="ml-2 block text-sm text-gray-700">
-                        Bestseller
-                      </label>
-                    </div>
-                    <div className="flex items-center">
-                      <input
-                        type="checkbox"
-                        id="isNew"
-                        name="isNew"
-                        checked={formData.isNew}
-                        onChange={handleInputChange}
-                        className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
-                      />
-                      <label htmlFor="isNew" className="ml-2 block text-sm text-gray-700">
-                        New Product
-                      </label>
-                    </div>
-                  </div>
+      <Dialog open={isModalOpen} onOpenChange={handleOpenChange}>
+        <DialogContent className="max-w-md w-full bg-white rounded-lg shadow-lg">
+          <DialogHeader>
+            <DialogTitle>
+              {selectedProduct ? 'Edit Product' : 'Add New Product'}
+            </DialogTitle>
+          </DialogHeader>
+          <form onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 gap-4 py-4">
+              <div>
+                <label htmlFor="product-name" className="block text-sm font-medium text-gray-700 mb-1">
+                  Name
+                </label>
+                <Input
+                  id="product-name"
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="product-description" className="block text-sm font-medium text-gray-700 mb-1">
+                  Description
+                </label>
+                <Textarea
+                  id="product-description"
+                  name="description"
+                  value={formData.description}
+                  onChange={handleInputChange}
+                  rows={3}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="product-price" className="block text-sm font-medium text-gray-700 mb-1">
+                  Price
+                </label>
+                <Input
+                  id="product-price"
+                  type="number"
+                  name="price"
+                  value={formData.price}
+                  onChange={handleInputChange}
+                  step="0.01"
+                  min="0"
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="product-image" className="block text-sm font-medium text-gray-700 mb-1">
+                  Image URL
+                </label>
+                <Input
+                  id="product-image"
+                  type="text"
+                  name="image"
+                  value={formData.image}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="product-category" className="block text-sm font-medium text-gray-700 mb-1">
+                  Category
+                </label>
+                <Input
+                  id="product-category"
+                  type="text"
+                  name="category"
+                  value={formData.category}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="product-rating" className="block text-sm font-medium text-gray-700 mb-1">
+                  Rating (1-5)
+                </label>
+                <Input
+                  id="product-rating"
+                  type="number"
+                  name="rating"
+                  value={formData.rating}
+                  onChange={handleInputChange}
+                  step="0.1"
+                  min="1"
+                  max="5"
+                  required
+                />
+              </div>
+              <div className="flex space-x-4">
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="isBestseller"
+                    name="isBestseller"
+                    checked={formData.isBestseller}
+                    onChange={handleInputChange}
+                    className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+                  />
+                  <label htmlFor="isBestseller" className="ml-2 block text-sm text-gray-700">
+                    Bestseller
+                  </label>
                 </div>
-                <div className="mt-6 flex justify-end space-x-3">
-                  <button
-                    type="button"
-                    onClick={() => setIsModalOpen(false)}
-                    className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="px-4 py-2 bg-primary border border-transparent rounded-md text-sm font-medium text-white hover:bg-primary/90"
-                    disabled={addProductMutation.isPending || updateProductMutation.isPending}
-                  >
-                    {(addProductMutation.isPending || updateProductMutation.isPending) ? (
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                    ) : selectedProduct ? (
-                      'Update Product'
-                    ) : (
-                      'Add Product'
-                    )}
-                  </button>
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="isNew"
+                    name="isNew"
+                    checked={formData.isNew}
+                    onChange={handleInputChange}
+                    className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+                  />
+                  <label htmlFor="isNew" className="ml-2 block text-sm text-gray-700">
+                    New Product
+                  </label>
                 </div>
-              </form>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+            <div className="flex justify-end space-x-3">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => handleOpenChange(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                className="bg-primary text-white hover:bg-primary/90"
+                disabled={addProductMutation.isPending || updateProductMutation.isPending}
+              >
+                {(addProductMutation.isPending || updateProductMutation.isPending) ? (
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                ) : selectedProduct ? (
+                  'Update Product'
+                ) : (
+                  'Add Product'
+                )}
+              </Button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

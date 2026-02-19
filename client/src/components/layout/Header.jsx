@@ -17,6 +17,13 @@ import { COMPANY_TITLE } from "../../data/company";
 import { cn } from "../../utils/utils";
 import { fadeIn, fadeInDown, fadeInRight } from "../../utils/animations";
 import logo from "@/assets/Logo.png";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,10 +38,6 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
 
   const navLinks = [
     {
@@ -144,7 +147,7 @@ const Header = () => {
             className="hidden md:flex items-center space-x-6"
             variants={fadeIn(0.2, 0.5)}
           >
-            {navLinks.map((link, index) => (
+            {navLinks.map((link) => (
               <Link key={link.path} to={link.path}>
                 <span
                   className={cn(
@@ -162,62 +165,48 @@ const Header = () => {
           </motion.div>
 
           {/* Mobile menu button */}
-          <motion.button
-            variants={fadeIn(0.3, 0.5)}
-            onClick={toggleMenu}
-            className="md:hidden text-foreground hover:text-primary focus:outline-none group"
-            aria-expanded={isOpen}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? (
-              <X
-                size={24}
-                className="text-foreground group-hover:text-primary transition-colors"
-              />
-            ) : (
-              <Menu
-                size={24}
-                className="text-foreground group-hover:text-primary transition-colors"
-              />
-            )}
-          </motion.button>
-        </nav>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden pt-4 pb-2 absolute left-0 right-0 bg-background px-4"
-          >
-            <div className="flex flex-col space-y-1 bg-background rounded-lg p-3 shadow-lg">
-              {navLinks.map((link, index) => (
-                <motion.div
-                  key={link.path}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 * index, duration: 0.3 }}
+          <div className="md:hidden">
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <button
+                  className="text-foreground hover:text-primary focus:outline-none group p-2"
+                  aria-label="Toggle menu"
                 >
-                  <Link to={link.path}>
-                    <span
-                      className={cn(
-                        "text-sm flex items-center gap-2 py-2.5 px-4 rounded-md font-medium transition-colors cursor-pointer hover:bg-muted hover:text-primary group",
-                        location === link.path
-                          ? "bg-muted text-primary"
-                          : "text-foreground"
-                      )}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {link.icon}
-                      {link.name}
-                    </span>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        )}
+                  <Menu
+                    size={24}
+                    className="text-foreground group-hover:text-primary transition-colors"
+                  />
+                </button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <SheetHeader>
+                  <SheetTitle className="text-left flex items-center gap-2">
+                    <img src={logo} alt="Om Vinayaga Logo" className="h-8 w-auto" />
+                    <span className="sr-only">Mobile Navigation Protocol</span>
+                  </SheetTitle>
+                </SheetHeader>
+                <div className="flex flex-col space-y-2 mt-6">
+                  {navLinks.map((link, index) => (
+                    <Link key={link.path} to={link.path}>
+                      <span
+                        className={cn(
+                          "text-base flex items-center gap-3 py-3 px-4 rounded-md font-medium transition-colors cursor-pointer hover:bg-muted hover:text-primary group",
+                          location === link.path
+                            ? "bg-muted text-primary"
+                            : "text-foreground"
+                        )}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {link.icon}
+                        {link.name}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </nav>
       </div>
     </motion.header>
   );

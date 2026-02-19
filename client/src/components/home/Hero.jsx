@@ -1,6 +1,6 @@
 import { useState, useEffect, memo, useMemo } from "react";
 import { Link } from "wouter";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
   Hammer,
   Droplets,
@@ -103,9 +103,9 @@ const ClientAvatar = memo(({ img, index }) => (
 
 // Memoized star rating component
 const StarRating = memo(() => (
-  <div className="text-yellow-300 flex gap-0.5">
+  <div className="text-yellow-300 flex gap-0.5" aria-label="Rated 5 out of 5 stars" role="img">
     {STAR_RATINGS.map((_, i) => (
-      <Star key={i} size={14} fill="currentColor" />
+      <Star key={i} size={14} fill="currentColor" aria-hidden="true" />
     ))}
   </div>
 ));
@@ -130,8 +130,13 @@ const Hero = () => {
     visible: { opacity: 1, y: 0 },
   };
 
+  // Check for reduced motion preference
+  const shouldReduceMotion = useReducedMotion();
+
   // Problem rotation effect
   useEffect(() => {
+    if (shouldReduceMotion) return;
+
     const interval = setInterval(() => {
       setCurrentProblem((prev) => (prev + 1) % BUILDING_PROBLEMS.length);
       setShowDiagnosis(false);
@@ -149,7 +154,7 @@ const Hero = () => {
       clearInterval(interval);
       clearTimeout(initialTimer);
     };
-  }, []);
+  }, [shouldReduceMotion]);
 
   return (
     <section
