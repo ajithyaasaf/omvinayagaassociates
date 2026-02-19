@@ -136,6 +136,9 @@ const Header = () => {
                 src={logo}
                 alt="Company Logo"
                 className="h-14 md:h-16 w-auto object-contain"
+                width="1080"
+                height="189"
+                style={{ aspectRatio: "1080/189" }}
               />
             </motion.div>
           </Link>
@@ -179,7 +182,14 @@ const Header = () => {
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <SheetHeader>
                   <SheetTitle className="text-left flex items-center gap-2">
-                    <img src={logo} alt="Om Vinayaga Logo" className="h-8 w-auto" />
+                    <img
+                      src={logo}
+                      alt="Om Vinayaga Logo"
+                      className="h-8 w-auto"
+                      width="1080"
+                      height="189"
+                      style={{ aspectRatio: "1080/189" }}
+                    />
                     <span className="sr-only">Mobile Navigation Protocol</span>
                   </SheetTitle>
                 </SheetHeader>
