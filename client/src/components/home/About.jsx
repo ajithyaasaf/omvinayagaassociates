@@ -82,6 +82,9 @@ const About = () => {
                 src={directorImage}
                 alt={CONTACT.director}
                 className="w-full h-[400px] rounded-lg object-cover object-top"
+                loading="lazy"
+                width="400"
+                height="400"
               />
             </div>
             <div className="absolute top-8 -right-8 w-72 h-72 bg-primary rounded-full opacity-10 -z-10"></div>

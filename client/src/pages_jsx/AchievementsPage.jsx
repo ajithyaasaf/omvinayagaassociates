@@ -38,7 +38,7 @@ import nmssvnCollege from "@/assets/awards/nmssvn-college.png";
 import mcubeMouPartnership from "@/assets/awards/mcube-mou-partnership.png";
 import amcePongalCelebration from "@/assets/awards/amce-pongal-celebration.png";
 import diwaliCelebrations from "@/assets/awards/diwali-celebrations.png";
-import teamAchievement from "@/assets/team-achievement.png";
+import teamAchievement from "@/assets/team-achievement.webp";
 
 const AchievementsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("awards");
@@ -436,6 +436,9 @@ const AchievementsPage = () => {
                                         src={award.images[0]}
                                         alt={`${award.title} - Part 1`}
                                         className="w-48 h-64 object-cover hover:scale-105 transition-transform duration-300 cursor-pointer"
+                                        loading="lazy"
+                                        width="192"
+                                        height="256"
                                       />
                                     </DialogTrigger>
                                     <DialogContent className="max-w-[95vw] max-h-[95vh] w-full h-full p-2 sm:p-4">
@@ -474,6 +477,9 @@ const AchievementsPage = () => {
                                         src={award.image}
                                         alt={award.title}
                                         className="w-80 h-64 object-cover hover:scale-105 transition-transform duration-300"
+                                        loading="lazy"
+                                        width="320"
+                                        height="256"
                                       />
                                     </div>
                                   </DialogTrigger>
@@ -556,6 +562,9 @@ const AchievementsPage = () => {
                                         src={cert.image}
                                         alt={cert.title}
                                         className="w-80 h-64 object-cover hover:scale-105 transition-transform duration-300"
+                                        loading="lazy"
+                                        width="320"
+                                        height="256"
                                       />
                                     </div>
                                   </DialogTrigger>
@@ -746,15 +755,15 @@ const AchievementsPage = () => {
                               >
                                 Media Coverage
                               </Badge>
-                              
+
                               {media.audio && (
                                 <div className="mt-4">
                                   <div className="flex items-center gap-2 mb-2">
                                     <PlayCircle className="w-5 h-5 text-red-500" />
                                     <span className="text-sm font-medium text-gray-700">Listen to Interview</span>
                                   </div>
-                                  <audio 
-                                    controls 
+                                  <audio
+                                    controls
                                     className="w-full max-w-md bg-gray-50 rounded-lg"
                                     preload="metadata"
                                   >
@@ -775,6 +784,9 @@ const AchievementsPage = () => {
                                         src={media.image}
                                         alt={media.title}
                                         className="w-80 h-64 object-cover hover:scale-105 transition-transform duration-300"
+                                        loading="lazy"
+                                        width="320"
+                                        height="256"
                                       />
                                     </div>
                                   </DialogTrigger>
@@ -903,6 +915,9 @@ const AchievementsPage = () => {
                                         src={edu.image}
                                         alt={edu.institution}
                                         className="w-80 h-64 object-cover hover:scale-105 transition-transform duration-300"
+                                        loading="lazy"
+                                        width="320"
+                                        height="256"
                                       />
                                     </div>
                                   </DialogTrigger>
@@ -1043,6 +1058,9 @@ const AchievementsPage = () => {
                                         src={impact.image}
                                         alt={impact.title}
                                         className="w-80 h-64 object-cover hover:scale-105 transition-transform duration-300"
+                                        loading="lazy"
+                                        width="320"
+                                        height="256"
                                       />
                                     </div>
                                   </DialogTrigger>

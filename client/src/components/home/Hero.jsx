@@ -13,10 +13,11 @@ import {
 } from "lucide-react";
 
 // Preload images for faster rendering
-import img2 from "../../assets/new.jpg";
-import thermalImage from "../../assets/thermal.png";
-import sealantsImage from "../../assets/sealants.png";
-import img1 from "../../assets/img1.png";
+// Preload images for faster rendering
+import img2 from "../../assets/new.jpg"; // Keep hero jpg high quality
+import thermalImage from "../../assets/thermal.webp";
+import sealantsImage from "../../assets/sealants.webp";
+import img1 from "../../assets/img1.webp";
 
 // Static data defined outside component to prevent re-creation on renders
 const BUILDING_PROBLEMS = [
@@ -161,7 +162,7 @@ const Hero = () => {
 
         {/* Use transform: translateZ(0) for hardware acceleration */}
         <motion.div
-          className="absolute top-10 right-10 w-96 h-96 rounded-full bg-primary/20 blur-3xl will-change-transform"
+          className="hidden md:block absolute top-10 right-10 w-96 h-96 rounded-full bg-primary/20 blur-3xl will-change-transform"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.2, 0.3],
@@ -175,7 +176,7 @@ const Hero = () => {
           style={{ transform: "translateZ(0)" }}
         />
         <motion.div
-          className="absolute bottom-10 left-10 w-80 h-80 rounded-full bg-primary/20 blur-3xl will-change-transform"
+          className="hidden md:block absolute bottom-10 left-10 w-80 h-80 rounded-full bg-primary/20 blur-3xl will-change-transform"
           animate={{
             scale: [1, 1.1, 1],
             opacity: [0.2, 0.3, 0.2],

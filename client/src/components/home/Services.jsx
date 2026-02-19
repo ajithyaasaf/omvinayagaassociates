@@ -11,11 +11,11 @@ import sealantsImage from "../../assets/sealants.png";
 const Services = () => {
   // Get top 6 services for homepage display
   const featuredServices = SERVICES.slice(0, 6);
-  
+
   // State for video modal
   const [videoOpen, setVideoOpen] = useState(false);
   const [currentVideo, setCurrentVideo] = useState("");
-  
+
   // Function to open video modal
   const openVideoModal = (videoUrl) => {
     setCurrentVideo(videoUrl);
@@ -41,7 +41,7 @@ const Services = () => {
             </svg>
             <span className="text-sm font-medium text-primary">Our Expertise</span>
           </div>
-          
+
           <h2 className="font-montserrat font-bold text-3xl md:text-5xl mb-6">
             Comprehensive Building{" "}
             <span className="text-primary relative">
@@ -49,7 +49,7 @@ const Services = () => {
               <span className="absolute bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
             </span>
           </h2>
-          
+
           <p className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
             From waterproofing to structural repairs, we offer specialized
             services to address all your building maintenance and repair needs.
@@ -71,26 +71,28 @@ const Services = () => {
                 {service.image || service.title.includes('Sealant') ? (
                   <img
                     src={
-                      service.title.includes('Sealant') ? sealantsImage : 
-                      service.image
+                      service.title.includes('Sealant') ? sealantsImage :
+                        service.image
                     }
                     alt={service.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    width="400"
+                    height="224"
                   />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/10 transition-transform duration-700 group-hover:scale-110"></div>
                 )}
                 {/* Enhanced gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-70"></div>
-                
+
                 {/* Service badge */}
                 <div className="absolute top-4 left-4 px-3 py-1 bg-primary/80 backdrop-blur-sm rounded-full border border-white/20">
                   <span className="text-xs font-medium text-white">{service.category || 'Building Repair'}</span>
                 </div>
-                
+
                 {/* YouTube video button */}
                 {service.videoUrl && (
-                  <button 
+                  <button
                     onClick={(e) => {
                       e.preventDefault();
                       openVideoModal(service.videoUrl);
@@ -102,12 +104,12 @@ const Services = () => {
                     <span className="absolute -bottom-8 right-0 text-white text-xs bg-black/70 px-2 py-1 rounded-md opacity-0 group-hover/yt:opacity-100 transition-opacity duration-300">Watch Video</span>
                   </button>
                 )}
-                
+
                 <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center">
                   <h3 className="text-white font-montserrat font-bold text-xl drop-shadow-sm">
                     {service.title}
                   </h3>
-                  
+
                   {/* Play button for services with video */}
                   {service.videoUrl && (
                     <button
@@ -163,7 +165,7 @@ const Services = () => {
 
                 <Link href={`/services#${service.slug}`}>
                   <span className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition cursor-pointer text-sm group/link">
-                    Learn more 
+                    Learn more
                     <span className="relative ml-2 overflow-hidden inline-flex">
                       <FaArrowRight className="transition-all duration-300 transform group-hover/link:translate-x-6" />
                       <FaArrowRight className="absolute transition-all duration-300 transform -translate-x-6 group-hover/link:translate-x-0" />
@@ -207,11 +209,11 @@ const Services = () => {
           {/* Background gradient effect */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#2b4c7e] to-[#1a365d] opacity-100"></div>
           <div className="absolute inset-0 bg-[url('https://buildingdoctor.org/assets/images/texture-pattern.png')] opacity-10 mix-blend-overlay"></div>
-          
+
           {/* Decorative elements */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-x-16 -translate-y-32 blur-3xl group-hover/cta:opacity-70 transition-opacity duration-700"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/20 rounded-full translate-x-8 translate-y-24 blur-3xl opacity-50 group-hover/cta:opacity-70 transition-opacity duration-700"></div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-12 relative z-10">
             <div className="md:col-span-7 p-8 md:p-12 lg:p-16">
               {/* Badge */}
@@ -221,17 +223,17 @@ const Services = () => {
                 </svg>
                 <span className="text-sm font-medium text-white">Expert Consultation</span>
               </div>
-              
+
               <h2 className="font-montserrat font-bold text-3xl md:text-4xl text-white mb-6 leading-tight">
                 Not sure which service <br className="hidden md:block" /> you need?
               </h2>
-              
+
               <p className="text-blue-100 mb-8 text-lg leading-relaxed max-w-lg">
                 Our experts will assess your building's condition and recommend
                 the most effective solutions for your specific requirements, ensuring
                 long-lasting results.
               </p>
-              
+
               {/* Feature points */}
               <div className="space-y-4 mb-8">
                 {["Free Assessment", "Detailed Report", "No Obligation"].map((feature, i) => (
@@ -245,7 +247,7 @@ const Services = () => {
                   </div>
                 ))}
               </div>
-              
+
               <Link href="/contact">
                 <span className="inline-flex items-center bg-white hover:bg-white/90 text-[#2b4c7e] px-8 py-4 rounded-full font-medium transition shadow-xl hover:shadow-2xl shadow-blue-900/20 group/link">
                   Request Free Consultation
@@ -255,7 +257,7 @@ const Services = () => {
                 </span>
               </Link>
             </div>
-            
+
             <div className="md:col-span-5 relative h-60 md:h-auto overflow-hidden">
               <img
                 src={workerImage}
@@ -263,7 +265,7 @@ const Services = () => {
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/cta:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-l from-[#2b4c7e]/90 via-[#2b4c7e]/50 to-transparent mix-blend-multiply"></div>
-              
+
               {/* Badge overlay */}
               <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-lg shadow-lg">
                 <p className="text-sm font-bold text-[#2b4c7e]">100% Satisfaction Guaranteed</p>
@@ -272,15 +274,15 @@ const Services = () => {
           </div>
         </motion.div>
       </div>
-      
+
       {/* Video Modal */}
       <Dialog open={videoOpen} onOpenChange={setVideoOpen}>
         <DialogContent className="sm:max-w-4xl max-h-[90vh] p-0 bg-black border-none overflow-hidden rounded-xl">
           <div className="relative w-full pb-[56.25%] h-0">
             {currentVideo && (
               <iframe
-                src={`${currentVideo.includes('youtube.com') 
-                  ? currentVideo.replace('watch?v=', 'embed/').split('&')[0] 
+                src={`${currentVideo.includes('youtube.com')
+                  ? currentVideo.replace('watch?v=', 'embed/').split('&')[0]
                   : currentVideo.includes('youtu.be')
                     ? `https://www.youtube.com/embed/${currentVideo.split('/').pop().split('?')[0]}`
                     : currentVideo.split('?')[0]}?autoplay=1&rel=0`}
@@ -290,9 +292,9 @@ const Services = () => {
                 allowFullScreen
               ></iframe>
             )}
-            
-            <button 
-              onClick={() => setVideoOpen(false)} 
+
+            <button
+              onClick={() => setVideoOpen(false)}
               className="absolute top-4 right-4 z-50 bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-black hover:scale-105 transition-all"
               aria-label="Close video"
             >

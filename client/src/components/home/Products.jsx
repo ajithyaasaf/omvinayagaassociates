@@ -14,8 +14,8 @@ const Products = () => {
     activeCategory === "all"
       ? featuredProducts
       : featuredProducts.filter(
-          (product) => product.category === activeCategory
-        );
+        (product) => product.category === activeCategory
+      );
 
   // Variables for state (no longer needed with hardcoded data)
   const isLoading = false;
@@ -33,6 +33,8 @@ const Products = () => {
             src={product.image}
             alt={product.name}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            width="300"
+            height="256"
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/10 transition-transform duration-500 group-hover:scale-110"></div>
