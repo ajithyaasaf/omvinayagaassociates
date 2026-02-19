@@ -263,7 +263,7 @@ const Footer = () => {
                 </a>
               </p>
             </div>
-            <div className="mt-2 md:mt-0 mr-4 md:mr-8">
+            <div className="mt-2 md:mt-0 mr-4 md:mr-40">
               <VisitorCounter />
             </div>
             {/*  <div className="mt-3 md:mt-0">
