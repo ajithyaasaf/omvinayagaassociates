@@ -186,3 +186,28 @@ export interface Service {
 }
 
 export type ServiceForm = z.infer<typeof serviceSchema>;
+
+// Gallery schema for Firebase
+export const gallerySchema = z.object({
+  id: z.number().optional(),
+  title: z.string().min(1, "Title is required"),
+  description: z.string().optional().default(""),
+  mediaUrl: z.string().url("Must be a valid URL"),
+  type: z.enum(["image", "video"]),
+  category: z.string().optional().default("General"),
+  order: z.number().optional().default(0),
+  createdAt: z.string().optional()
+});
+
+export interface GalleryItem {
+  id: number;
+  title: string;
+  description: string;
+  mediaUrl: string;
+  type: 'image' | 'video';
+  category: string;
+  order: number;
+  createdAt: string;
+}
+
+export type GalleryForm = z.infer<typeof gallerySchema>;

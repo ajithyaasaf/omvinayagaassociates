@@ -11,6 +11,7 @@ import {
   Lock,
   Trophy,
   Sparkles,
+  Image as ImageIcon,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { COMPANY_TITLE } from "../../data/company";
@@ -95,6 +96,16 @@ const Header = () => {
       path: "/achievements",
       icon: (
         <Trophy
+          size={16}
+          className="text-primary group-hover:text-secondary transition-colors"
+        />
+      ),
+    },
+    {
+      name: "Gallery",
+      path: "/gallery",
+      icon: (
+        <ImageIcon
           size={16}
           className="text-primary group-hover:text-secondary transition-colors"
         />

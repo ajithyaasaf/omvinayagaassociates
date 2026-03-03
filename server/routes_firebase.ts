@@ -2,10 +2,20 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
-import { 
-  contactSchema, productSchema, inquirySchema, serviceSchema, testimonialSchema, faqSchema, intentSchema,
-  type Product, type Contact, type Inquiry, type Service, type Testimonial, type FAQ, type Intent
+import {
+  contactSchema, productSchema, inquirySchema, serviceSchema, testimonialSchema, faqSchema, intentSchema, gallerySchema,
+  type Product, type Contact, type Inquiry, type Service, type Testimonial, type FAQ, type Intent, type GalleryItem
 } from "@shared/firebase-schema";
+import multer from "multer";
+import { uploadToCloudinary, deleteFromCloudinary } from "./cloudinary";
+
+// Configure multer to store files in memory for direct Cloudinary upload
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 10 * 1024 * 1024 // 10MB limit
+  }
+});
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API routes - prefix all routes with /api
@@ -13,7 +23,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // ======================
   // CONTACT ENDPOINTS
   // ======================
-  
+
   // Get all contacts
   app.get("/api/contacts", async (req, res) => {
     try {
@@ -26,15 +36,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     }
   });
-  
+
   // Contact form endpoint
   app.post("/api/contacts", async (req, res) => {
     try {
       const parsedData = contactSchema.parse(req.body);
-      
+
       // Create contact in Firebase
       const newContact = await storage.createContact(parsedData);
-      
+
       res.status(200).json({
         success: true,
         message: "Contact form submitted successfully",
@@ -60,7 +70,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
     }
   });
-  
+
   // Delete a contact submission
   app.delete("/api/contacts", async (req, res) => {
     try {
@@ -69,9 +79,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
         console.log('Contact DELETE request received');
       }
-      
+
       const contactId = parseInt(req.query.id as string);
-      
+
       if (isNaN(contactId)) {
         console.log(`Invalid contact ID: ${req.query.id}`);
         return res.status(400).json({
@@ -79,10 +89,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
           message: "Invalid contact ID"
         });
       }
-      
+
       // Delete contact from Firebase
       const success = await storage.deleteContact(contactId);
-      
+
       if (!success) {
         console.log(`Contact ${contactId} not found in database`);
         return res.status(404).json({
@@ -90,7 +100,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           message: "Contact submission not found"
         });
       }
-      
+
       console.log(`Contact ${contactId} deleted successfully`);
       res.status(200).json({
         success: true,
@@ -106,11 +116,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     }
   });
-  
+
   // ======================
   // INQUIRY ENDPOINTS
   // ======================
-  
+
   // Get all inquiries
   app.get("/api/inquiries", async (req, res) => {
     try {
@@ -123,7 +133,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     }
   });
-  
+
   // Inquiries from popup form endpoint
   app.post("/api/inquiries", async (req, res) => {
     try {
@@ -132,13 +142,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         console.log('Inquiry POST request received (body/headers masked for production)');
       }
       console.log('Content-Type:', req.get('Content-Type'));
-      
+
       // Validate the request body
       const parsedData = inquirySchema.parse(req.body);
       if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
         console.log('Inquiry form parsed successfully (data masked for production)');
       }
-      
+
       // Prepare data for Firebase with proper null handling
       const inquiryDataForFirebase = {
         name: parsedData.name,
@@ -148,17 +158,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
         message: parsedData.message || null,
         address: parsedData.address || null
       };
-      
+
       if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
         console.log('Data prepared for Firebase (masked in production)');
       }
-      
+
       // Create inquiry in Firebase
       const newInquiry = await storage.createInquiry(inquiryDataForFirebase);
       if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
         console.log('Inquiry created successfully in Firebase');
       }
-      
+
       res.status(200).json({
         success: true,
         message: "Inquiry submitted successfully",
@@ -189,7 +199,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
     }
   });
-  
+
   // Delete an inquiry
   app.delete("/api/inquiries", async (req, res) => {
     try {
@@ -198,9 +208,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
         console.log('Inquiry DELETE request received');
       }
-      
+
       const inquiryId = parseInt(req.query.id as string);
-      
+
       if (isNaN(inquiryId)) {
         console.log(`Invalid inquiry ID: ${req.query.id}`);
         return res.status(400).json({
@@ -208,10 +218,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
           message: "Invalid inquiry ID"
         });
       }
-      
+
       // Delete inquiry from Firebase
       const success = await storage.deleteInquiry(inquiryId);
-      
+
       if (!success) {
         console.log(`Inquiry ${inquiryId} not found in database`);
         return res.status(404).json({
@@ -219,7 +229,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           message: "Inquiry not found"
         });
       }
-      
+
       console.log(`Inquiry ${inquiryId} deleted successfully`);
       res.status(200).json({
         success: true,
@@ -235,35 +245,35 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     }
   });
-  
+
   // ======================
   // PRODUCT ENDPOINTS
   // ======================
-  
+
   // Get all products endpoint (with optional filtering)
   app.get("/api/products", async (req, res) => {
     try {
       const { category, search } = req.query;
-      
+
       // Get all products from Firebase
       let products = await storage.getProducts();
-      
+
       // Filter by category if provided
       if (category && category !== "all") {
-        products = products.filter(product => 
+        products = products.filter(product =>
           product.category === category
         );
       }
-      
+
       // Filter by search term if provided
       if (search && typeof search === 'string') {
         const searchTerm = search.toLowerCase();
-        products = products.filter(product => 
-          product.name.toLowerCase().includes(searchTerm) || 
+        products = products.filter(product =>
+          product.name.toLowerCase().includes(searchTerm) ||
           product.description.toLowerCase().includes(searchTerm)
         );
       }
-      
+
       res.status(200).json({
         success: true,
         products: products
@@ -276,22 +286,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     }
   });
-  
+
   // Get single product endpoint
   app.get("/api/products/:id", async (req, res) => {
     try {
       const productId = parseInt(req.params.id);
-      
+
       // Get product from Firebase
       const product = await storage.getProduct(productId);
-      
+
       if (!product) {
         return res.status(404).json({
           success: false,
           message: "Product not found"
         });
       }
-      
+
       res.status(200).json({
         success: true,
         product
@@ -304,22 +314,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     }
   });
-  
+
   // Add a new product endpoint
   app.post("/api/products", async (req, res) => {
     try {
       const parsedData = productSchema.parse(req.body);
-      
+
       // Create product in Firebase
       const newProduct = await storage.createProduct({
         ...parsedData,
         image: parsedData.image || "", // Ensure image is always a string
         price: parsedData.price || 0,
         rating: parsedData.rating || 4.0,
-        isBestseller: parsedData.isBestseller || false, 
+        isBestseller: parsedData.isBestseller || false,
         isNew: parsedData.isNew || false
       });
-      
+
       res.status(201).json({
         success: true,
         message: "Product added successfully",
@@ -347,17 +357,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const productId = parseInt(req.params.id);
       const parsedData = productSchema.parse(req.body);
-      
+
       // Get the existing product
       const existingProduct = await storage.getProduct(productId);
-      
+
       if (!existingProduct) {
         return res.status(404).json({
           success: false,
           message: "Product not found"
         });
       }
-      
+
       // Update product in Firebase
       const updatedProduct = await storage.updateProduct(productId, {
         ...parsedData,
@@ -365,7 +375,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         isBestseller: parsedData.isBestseller !== undefined ? parsedData.isBestseller : existingProduct.isBestseller,
         isNew: parsedData.isNew !== undefined ? parsedData.isNew : existingProduct.isNew
       });
-      
+
       res.status(200).json({
         success: true,
         message: "Product updated successfully",
@@ -392,17 +402,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.delete("/api/products", async (req, res) => {
     try {
       const productId = parseInt(req.query.id as string);
-      
+
       // Delete product from Firebase
       const success = await storage.deleteProduct(productId);
-      
+
       if (!success) {
         return res.status(404).json({
           success: false,
           message: "Product not found"
         });
       }
-      
+
       res.status(200).json({
         success: true,
         message: "Product deleted successfully"
@@ -419,7 +429,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // ======================
   // SERVICE ENDPOINTS
   // ======================
-  
+
   // Get all services
   app.get("/api/services", async (req, res) => {
     try {
@@ -438,17 +448,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/services/:id", async (req, res) => {
     try {
       const serviceId = parseInt(req.params.id);
-      
+
       // Get service from Firebase
       const service = await storage.getService(serviceId);
-      
+
       if (!service) {
         return res.status(404).json({
           success: false,
           message: "Service not found"
         });
       }
-      
+
       res.status(200).json(service);
     } catch (error) {
       console.error('Service fetch error:', error);
@@ -463,10 +473,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/services", async (req, res) => {
     try {
       const parsedData = serviceSchema.parse(req.body);
-      
+
       // Create service in Firebase
       const newService = await storage.createService(parsedData);
-      
+
       res.status(201).json({
         success: true,
         message: "Service added successfully",
@@ -494,17 +504,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const serviceId = parseInt(req.params.id);
       const parsedData = serviceSchema.parse(req.body);
-      
+
       // Update service in Firebase
       const updatedService = await storage.updateService(serviceId, parsedData);
-      
+
       if (!updatedService) {
         return res.status(404).json({
           success: false,
           message: "Service not found"
         });
       }
-      
+
       res.status(200).json({
         success: true,
         message: "Service updated successfully",
@@ -531,17 +541,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.delete("/api/services", async (req, res) => {
     try {
       const serviceId = parseInt(req.query.id as string);
-      
+
       // Delete service from Firebase
       const success = await storage.deleteService(serviceId);
-      
+
       if (!success) {
         return res.status(404).json({
           success: false,
           message: "Service not found"
         });
       }
-      
+
       res.status(200).json({
         success: true,
         message: "Service deleted successfully"
@@ -558,7 +568,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // ======================
   // TESTIMONIAL ENDPOINTS
   // ======================
-  
+
   // Get all testimonials
   app.get("/api/testimonials", async (req, res) => {
     try {
@@ -577,17 +587,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/testimonials/:id", async (req, res) => {
     try {
       const testimonialId = parseInt(req.params.id);
-      
+
       // Get testimonial from Firebase
       const testimonial = await storage.getTestimonial(testimonialId);
-      
+
       if (!testimonial) {
         return res.status(404).json({
           success: false,
           message: "Testimonial not found"
         });
       }
-      
+
       res.status(200).json(testimonial);
     } catch (error) {
       console.error('Testimonial fetch error:', error);
@@ -602,13 +612,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/testimonials", async (req, res) => {
     try {
       const parsedData = testimonialSchema.parse(req.body);
-      
-      // Create testimonial in Firebase
+
       const newTestimonial = await storage.createTestimonial({
         ...parsedData,
+        date: parsedData.date || new Date().toISOString(),
         hasVideo: parsedData.hasVideo || false
       });
-      
+
       res.status(201).json({
         success: true,
         message: "Testimonial added successfully",
@@ -636,23 +646,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const testimonialId = parseInt(req.params.id);
       const parsedData = testimonialSchema.parse(req.body);
-      
+
       // Get existing testimonial from Firebase
       const existingTestimonial = await storage.getTestimonial(testimonialId);
-      
+
       if (!existingTestimonial) {
         return res.status(404).json({
           success: false,
           message: "Testimonial not found"
         });
       }
-      
+
       // Update testimonial in Firebase
       const updatedTestimonial = await storage.updateTestimonial(testimonialId, {
         ...parsedData,
         hasVideo: parsedData.hasVideo !== undefined ? parsedData.hasVideo : existingTestimonial.hasVideo
       });
-      
+
       res.status(200).json({
         success: true,
         message: "Testimonial updated successfully",
@@ -679,17 +689,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.delete("/api/testimonials", async (req, res) => {
     try {
       const testimonialId = parseInt(req.query.id as string);
-      
+
       // Delete testimonial from Firebase
       const success = await storage.deleteTestimonial(testimonialId);
-      
+
       if (!success) {
         return res.status(404).json({
           success: false,
           message: "Testimonial not found"
         });
       }
-      
+
       res.status(200).json({
         success: true,
         message: "Testimonial deleted successfully"
@@ -706,7 +716,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // ======================
   // FAQ ENDPOINTS
   // ======================
-  
+
   // Get all FAQs
   app.get("/api/faqs", async (req, res) => {
     try {
@@ -725,17 +735,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/faqs/:id", async (req, res) => {
     try {
       const faqId = parseInt(req.params.id);
-      
+
       // Get FAQ from Firebase
       const faq = await storage.getFaq(faqId);
-      
+
       if (!faq) {
         return res.status(404).json({
           success: false,
           message: "FAQ not found"
         });
       }
-      
+
       res.status(200).json(faq);
     } catch (error) {
       console.error('FAQ fetch error:', error);
@@ -750,10 +760,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/faqs", async (req, res) => {
     try {
       const parsedData = faqSchema.parse(req.body);
-      
+
       // Create FAQ in Firebase
       const newFaq = await storage.createFaq(parsedData);
-      
+
       res.status(201).json({
         success: true,
         message: "FAQ added successfully",
@@ -781,17 +791,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const faqId = parseInt(req.params.id);
       const parsedData = faqSchema.parse(req.body);
-      
+
       // Update FAQ in Firebase
       const updatedFaq = await storage.updateFaq(faqId, parsedData);
-      
+
       if (!updatedFaq) {
         return res.status(404).json({
           success: false,
           message: "FAQ not found"
         });
       }
-      
+
       res.status(200).json({
         success: true,
         message: "FAQ updated successfully",
@@ -818,17 +828,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.delete("/api/faqs", async (req, res) => {
     try {
       const faqId = parseInt(req.query.id as string);
-      
+
       // Delete FAQ from Firebase
       const success = await storage.deleteFaq(faqId);
-      
+
       if (!success) {
         return res.status(404).json({
           success: false,
           message: "FAQ not found"
         });
       }
-      
+
       res.status(200).json({
         success: true,
         message: "FAQ deleted successfully"
@@ -845,7 +855,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // ======================
   // INTENT ENDPOINTS (Exit Intent Popup)
   // ======================
-  
+
   // Get all intents
   app.get("/api/intents", async (req, res) => {
     try {
@@ -858,12 +868,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     }
   });
-  
+
   // Intent form submission endpoint
   app.post("/api/intents", async (req, res) => {
     try {
       const parsedData = intentSchema.parse(req.body);
-      
+
       // Ensure all required fields are provided and filter out undefined values
       const intentData = {
         name: parsedData.name,
@@ -883,10 +893,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (parsedData.timePreference) {
         intentData.timePreference = parsedData.timePreference;
       }
-      
+
       // Create intent in Firebase
       const newIntent = await storage.createIntent(intentData);
-      
+
       res.status(200).json({
         success: true,
         message: "Intent form submitted successfully",
@@ -908,7 +918,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
     }
   });
-  
+
   // Delete an intent form submission
   app.delete("/api/intents", async (req, res) => {
     try {
@@ -917,9 +927,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
         console.log('Intent DELETE request received');
       }
-      
+
       const intentId = parseInt(req.query.id as string);
-      
+
       if (isNaN(intentId)) {
         console.log(`Invalid intent ID: ${req.query.id}`);
         return res.status(400).json({
@@ -927,10 +937,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
           message: "Invalid intent ID"
         });
       }
-      
+
       // Delete intent from Firebase
       const success = await storage.deleteIntent(intentId);
-      
+
       if (!success) {
         console.log(`Intent ${intentId} not found in database`);
         return res.status(404).json({
@@ -938,7 +948,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           message: "Intent form submission not found"
         });
       }
-      
+
       console.log(`Intent ${intentId} deleted successfully`);
       res.status(200).json({
         success: true,
@@ -988,17 +998,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
         firebaseConfigKeys: Object.keys(getFirebaseConfig()),
         timestamp: new Date().toISOString()
       };
-      
-      res.json({ 
-        success: true, 
+
+      res.json({
+        success: true,
         environment: envCheck,
         message: "Environment diagnostic complete"
       });
     } catch (error) {
-      res.status(500).json({ 
-        success: false, 
-        message: "Environment diagnostic failed", 
-        error: (error as Error).message 
+      res.status(500).json({
+        success: false,
+        message: "Environment diagnostic failed",
+        error: (error as Error).message
       });
     }
   });
@@ -1007,52 +1017,52 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Only available in development or when DEBUG is enabled
   if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
     app.post("/api/debug/inquiry-test", async (req, res) => {
-    try {
-      console.log('=== DEBUG INQUIRY TEST ===');
-      console.log('Environment:', process.env.NODE_ENV);
-      if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
-        console.log('Debug inquiry test endpoint called (body/headers masked for production)');
+      try {
+        console.log('=== DEBUG INQUIRY TEST ===');
+        console.log('Environment:', process.env.NODE_ENV);
+        if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
+          console.log('Debug inquiry test endpoint called (body/headers masked for production)');
+        }
+
+        // Test the same logic as the real inquiry endpoint
+        const testData = {
+          name: "Test User",
+          email: "test@example.com",
+          phone: "1234567890",
+          issueType: "Test Issue",
+          address: "Test Address",
+          message: "Test message"
+        };
+
+        const parsedData = inquirySchema.parse(testData);
+        console.log('Test data parsed successfully');
+
+        const newInquiry = await storage.createInquiry({
+          name: parsedData.name,
+          email: parsedData.email || null,
+          phone: parsedData.phone,
+          issueType: parsedData.issueType || "",
+          message: parsedData.message || null,
+          address: parsedData.address || null
+        });
+
+        console.log('Test inquiry created successfully');
+
+        res.json({
+          success: true,
+          message: "Debug inquiry test passed",
+          testInquiry: newInquiry,
+          environment: process.env.NODE_ENV
+        });
+      } catch (error) {
+        console.error('Debug inquiry test failed:', error);
+        res.status(500).json({
+          success: false,
+          message: "Debug inquiry test failed",
+          error: (error as Error).message,
+          stack: (error as Error).stack
+        });
       }
-      
-      // Test the same logic as the real inquiry endpoint
-      const testData = {
-        name: "Test User",
-        email: "test@example.com", 
-        phone: "1234567890",
-        issueType: "Test Issue",
-        address: "Test Address",
-        message: "Test message"
-      };
-      
-      const parsedData = inquirySchema.parse(testData);
-      console.log('Test data parsed successfully');
-      
-      const newInquiry = await storage.createInquiry({
-        name: parsedData.name,
-        email: parsedData.email || null,
-        phone: parsedData.phone,
-        issueType: parsedData.issueType || "",
-        message: parsedData.message || null,
-        address: parsedData.address || null
-      });
-      
-      console.log('Test inquiry created successfully');
-      
-      res.json({
-        success: true,
-        message: "Debug inquiry test passed",
-        testInquiry: newInquiry,
-        environment: process.env.NODE_ENV
-      });
-    } catch (error) {
-      console.error('Debug inquiry test failed:', error);
-      res.status(500).json({
-        success: false,
-        message: "Debug inquiry test failed",
-        error: (error as Error).message,
-        stack: (error as Error).stack
-      });
-    }
     });
   } else {
     // Return 404 for debug endpoint in production
@@ -1061,10 +1071,186 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
   }
 
+  // ======================
+  // GALLERY ENDPOINTS
+  // ======================
+
+  // Get all gallery items
+  app.get("/api/gallery", async (req, res) => {
+    try {
+      const items = await storage.getGalleryItems();
+      res.status(200).json(items);
+    } catch (error) {
+      console.error('Gallery fetch error:', error);
+      res.status(500).json({
+        success: false,
+        message: "Failed to fetch gallery items"
+      });
+    }
+  });
+
+  // Create a gallery item (saves metadata to DB)
+  app.post("/api/gallery", async (req, res) => {
+    try {
+      console.log('--- ADDING GALLERY ITEM ---');
+      console.log('Payload received:', JSON.stringify(req.body, null, 2));
+
+      const parsedData = gallerySchema.parse(req.body);
+      console.log('Parsed data (Zod validated):', JSON.stringify(parsedData, null, 2));
+
+      const newItem = await storage.createGalleryItem(parsedData);
+      console.log('Firebase storage success! New item:', JSON.stringify(newItem, null, 2));
+
+      res.status(201).json({
+        success: true,
+        message: "Gallery item added successfully",
+        item: newItem
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        console.error('Gallery validation error:', JSON.stringify(error.errors, null, 2));
+        res.status(400).json({
+          success: false,
+          message: "Invalid gallery data",
+          errors: error.errors
+        });
+      } else {
+        const err = error as Error;
+        console.error('SERVER ERROR (GALLERY):', err.message);
+        console.error('STACK:', err.stack);
+        res.status(500).json({
+          success: false,
+          message: `Failed to add gallery item: ${err.message}`
+        });
+      }
+    }
+  });
+
+  // Delete a gallery item
+  app.delete("/api/gallery/:id", async (req, res) => {
+    try {
+      const itemId = parseInt(req.params.id);
+
+      const success = await storage.deleteGalleryItem(itemId);
+
+      if (!success) {
+        return res.status(404).json({
+          success: false,
+          message: "Gallery item not found"
+        });
+      }
+
+      res.status(200).json({
+        success: true,
+        message: "Gallery item deleted successfully"
+      });
+    } catch (error) {
+      console.error('Gallery deletion error:', error);
+      res.status(500).json({
+        success: false,
+        message: "Failed to delete gallery item"
+      });
+    }
+  });
+
+  // ======================
+  // CLOUDINARY UPLOAD ENDPOINT
+  // ======================
+  app.post("/api/upload", upload.single("file"), async (req, res) => {
+    try {
+      const file = (req as any).file;
+      if (!file) {
+        return res.status(400).json({ success: false, message: "No file uploaded" });
+      }
+
+      // Determine type for Cloudinary folder routing
+      const isVideo = file.mimetype.startsWith('video/');
+      const uploadType = isVideo ? 'video' : 'image';
+
+      // Pass raw buffer — no base64 overhead, much faster
+      const uploadResult = await uploadToCloudinary(file.buffer, uploadType, file.mimetype);
+
+      if (uploadResult.success) {
+        res.status(200).json({
+          success: true,
+          url: uploadResult.url,
+          publicId: uploadResult.publicId,
+          type: uploadType
+        });
+      } else {
+        res.status(500).json({
+          success: false,
+          message: uploadResult.message
+        });
+      }
+
+    } catch (error: any) {
+      console.error('Upload route error:', error);
+      res.status(500).json({
+        success: false,
+        message: error?.message || "Internal server error during upload"
+      });
+    }
+  });
+
+  // ======================
+  // COMBINED UPLOAD + SAVE ENDPOINT (atomic: uploads to Cloudinary then saves metadata to Firebase)
+  // ======================
+  app.post("/api/upload-and-save", upload.single("file"), async (req, res) => {
+    try {
+      const file = (req as any).file;
+      if (!file) {
+        return res.status(400).json({ success: false, message: "No file uploaded" });
+      }
+
+      const { title, description, category } = req.body;
+
+      // Step 1: Upload to Cloudinary (stream buffer directly — no base64 overhead)
+      const isVideo = file.mimetype.startsWith('video/');
+      const uploadType = isVideo ? 'video' : 'image';
+
+      console.log(`Uploading to Cloudinary as ${uploadType}...`);
+      const uploadResult = await uploadToCloudinary(file.buffer, uploadType, file.mimetype);
+
+      if (!uploadResult.success) {
+        return res.status(500).json({ success: false, message: uploadResult.message || "Cloudinary upload failed" });
+      }
+
+      console.log(`Cloudinary upload success! URL: ${uploadResult.url}`);
+
+      // Step 2: Save metadata to Firebase
+      const galleryItem = {
+        title: title || file.originalname || "Untitled",
+        description: description || "",
+        mediaUrl: uploadResult.url!,
+        type: uploadType as 'image' | 'video',
+        category: category || "General",
+        order: 0
+      };
+
+      const savedItem = await storage.createGalleryItem(galleryItem);
+      console.log(`Firebase save success! Item ID: ${savedItem.id}`);
+
+      res.status(201).json({
+        success: true,
+        message: "Media uploaded and saved to gallery",
+        item: savedItem,
+        url: uploadResult.url
+      });
+
+    } catch (error: any) {
+      console.error('Upload-and-save error:', error);
+      res.status(500).json({
+        success: false,
+        message: error?.message || "Internal server error"
+      });
+    }
+  });
+
   // Set up authentication if needed
   // setupAuth(app);
 
   const httpServer = createServer(app);
-  
+
   return httpServer;
 }

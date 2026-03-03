@@ -21,6 +21,7 @@ const ContactPage = lazy(() => import("./pages_jsx/ContactPage.jsx"));
 const ProductDetailPage = lazy(() => import("./pages_jsx/ProductDetailPage.jsx"));
 const AchievementsPage = lazy(() => import("./pages_jsx/AchievementsPage.jsx"));
 const KavashPage = lazy(() => import("./pages_jsx/KavashPage.jsx"));
+const GalleryPage = lazy(() => import("./pages_jsx/GalleryPage.jsx"));
 const AdminPage = lazy(() => import("./pages_jsx/AdminPage.jsx"));
 const NotFound = lazy(() => import("./pages/not-found.jsx"));
 
@@ -101,6 +102,11 @@ function App() {
             <Route path="/kavash">
               <PageWrapper>
                 <KavashPage />
+              </PageWrapper>
+            </Route>
+            <Route path="/gallery">
+              <PageWrapper>
+                <GalleryPage />
               </PageWrapper>
             </Route>
             <Route path="/admin">

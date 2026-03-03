@@ -1,20 +1,21 @@
 import { initializeApp } from 'firebase/app';
-import { 
-  getDatabase, ref, set, get, update, remove, push, child, 
-  onValue, DataSnapshot, Query, runTransaction 
+import {
+  getDatabase, ref, set, get, update, remove, push, child,
+  onValue, DataSnapshot, Query, runTransaction
 } from 'firebase/database';
-import { 
+import {
   getFirestore, doc, getDoc, setDoc, updateDoc, increment,
-  collection, addDoc, deleteDoc, getDocs, serverTimestamp 
+  collection, addDoc, deleteDoc, getDocs, serverTimestamp
 } from 'firebase/firestore';
-import { 
+import {
   type Contact,
   type Inquiry,
   type Intent,
   type Product,
   type Service,
   type Testimonial,
-  type FAQ
+  type FAQ,
+  type GalleryItem
 } from "@shared/firebase-schema";
 
 // User types for admin authentication (Firebase-only)
@@ -482,7 +483,7 @@ export class FirebaseStorage {
           const contactIds = Object.keys(contacts)
             .filter(key => !isNaN(parseInt(key)))
             .map(key => parseInt(key));
-          
+
           if (contactIds.length > 0) {
             id = Math.max(...contactIds) + 1;
           }
@@ -496,34 +497,34 @@ export class FirebaseStorage {
       }
 
       const createdAt = new Date().toISOString();
-      const newContact: Contact = { 
-        ...contact, 
-        id, 
-        createdAt 
+      const newContact: Contact = {
+        ...contact,
+        id,
+        createdAt
       };
-      
+
       // Extra validation to ensure we're not using NaN as an ID
       if (isNaN(newContact.id)) {
         throw new Error('Cannot create contact with invalid ID (NaN)');
       }
-      
+
       await set(ref(database, `contacts/${id}`), {
         ...newContact,
         createdAt: createdAt // Already in ISO string format
       });
-      
+
       return newContact;
     } catch (error) {
       console.error('Firebase createContact error:', error);
       throw new Error('Failed to create contact in Firebase');
     }
   }
-  
+
   async deleteContact(id: number): Promise<boolean> {
     try {
       console.log(`Attempting to delete contact with ID: ${id}`);
       const snapshot = await get(ref(database, `contacts/${id}`));
-      
+
       if (!snapshot.exists()) {
         console.log(`Contact with ID ${id} does not exist in database`);
         return false;
@@ -550,7 +551,7 @@ export class FirebaseStorage {
       if (!snapshot.exists()) return [];
 
       const inquiries = snapshot.val();
-      
+
       // Handle both array and object structures, filtering out null values
       if (Array.isArray(inquiries)) {
         return inquiries
@@ -587,7 +588,7 @@ export class FirebaseStorage {
         // Handle both array and object structures
         if (inquiries) {
           let inquiryIds: number[] = [];
-          
+
           // If it's an array, filter out null values and extract IDs
           if (Array.isArray(inquiries)) {
             inquiryIds = inquiries
@@ -601,7 +602,7 @@ export class FirebaseStorage {
               .filter(key => !isNaN(parseInt(key)) && inquiries[key] !== null)
               .map(key => parseInt(key));
           }
-          
+
           if (inquiryIds.length > 0) {
             id = Math.max(...inquiryIds) + 1;
           }
@@ -615,17 +616,17 @@ export class FirebaseStorage {
       }
 
       const createdAt = new Date().toISOString();
-      const newInquiry: Inquiry = { 
-        ...inquiry, 
-        id, 
-        createdAt 
+      const newInquiry: Inquiry = {
+        ...inquiry,
+        id,
+        createdAt
       };
-      
+
       // Extra validation to ensure we're not using NaN as an ID
       if (isNaN(newInquiry.id)) {
         throw new Error('Cannot create inquiry with invalid ID (NaN)');
       }
-      
+
       // Clean the data to ensure no undefined values
       const cleanInquiryData = {
         name: newInquiry.name || "",
@@ -637,18 +638,18 @@ export class FirebaseStorage {
         id: newInquiry.id,
         createdAt: createdAt
       };
-      
+
       // Remove any undefined values completely
       Object.keys(cleanInquiryData).forEach(key => {
         if ((cleanInquiryData as any)[key] === undefined) {
           delete (cleanInquiryData as any)[key];
         }
       });
-      
+
       console.log('Creating inquiry with clean data:', cleanInquiryData);
-      
+
       await set(ref(database, `inquiries/${id}`), cleanInquiryData);
-      
+
       return newInquiry;
     } catch (error) {
       console.error('Firebase createInquiry error:', error);
@@ -656,12 +657,12 @@ export class FirebaseStorage {
       throw new Error(`Failed to create inquiry in Firebase: ${(error as Error).message}`);
     }
   }
-  
+
   async deleteInquiry(id: number): Promise<boolean> {
     try {
       console.log(`Attempting to delete inquiry with ID: ${id}`);
       const snapshot = await get(ref(database, `inquiries/${id}`));
-      
+
       if (!snapshot.exists()) {
         console.log(`Inquiry with ID ${id} does not exist in database`);
         return false;
@@ -703,14 +704,14 @@ export class FirebaseStorage {
     try {
       console.log('=== INTENT FORM SUBMISSION ===');
       console.log('Raw intent data:', intent);
-      
+
       // Generate a new ID
       let id = 1;
 
       // Get the highest existing ID
       const snapshot = await get(ref(database, 'intents'));
       console.log('Current intents snapshot exists:', snapshot.exists());
-      
+
       if (snapshot.exists() && snapshot.val() !== null) {
         const intents = snapshot.val();
         console.log('Existing intents in database:', intents);
@@ -720,7 +721,7 @@ export class FirebaseStorage {
           const intentIds = Object.keys(intents)
             .filter(key => !isNaN(parseInt(key)))
             .map(key => parseInt(key));
-          
+
           if (intentIds.length > 0) {
             id = Math.max(...intentIds) + 1;
           }
@@ -736,29 +737,29 @@ export class FirebaseStorage {
       console.log('Generated ID for new intent:', id);
 
       const createdAt = new Date().toISOString();
-      const newIntent: Intent = { 
+      const newIntent: Intent = {
         ...intent,
         id,
         createdAt
       };
-      
+
       console.log('Data prepared for Firebase:', newIntent);
-      
+
       // Extra validation to ensure we're not using NaN as an ID
       if (isNaN(newIntent.id)) {
         throw new Error('Cannot create intent with invalid ID (NaN)');
       }
-      
+
       console.log('Creating intent with clean data:', {
         ...newIntent,
         createdAt: createdAt
       });
-      
+
       await set(ref(database, `intents/${id}`), {
         ...newIntent,
         createdAt: createdAt // Already in ISO string format
       });
-      
+
       console.log('Intent created successfully in Firebase:', newIntent);
       return newIntent;
     } catch (error) {
@@ -771,7 +772,7 @@ export class FirebaseStorage {
     try {
       console.log(`Attempting to delete intent with ID: ${id}`);
       const snapshot = await get(ref(database, `intents/${id}`));
-      
+
       if (!snapshot.exists()) {
         console.log(`Intent with ID ${id} does not exist in database`);
         return false;
@@ -789,6 +790,91 @@ export class FirebaseStorage {
     }
   }
 
+  // ===============================
+  // Gallery Methods
+  // ===============================
+  async getGalleryItems(): Promise<GalleryItem[]> {
+    try {
+      const snapshot = await get(ref(database, 'gallery'));
+      if (!snapshot.exists()) return [];
+
+      const gallery = snapshot.val();
+      return Object.keys(gallery)
+        .filter(key => gallery[key] !== null && gallery[key] !== undefined)
+        .map(key => ({
+          ...gallery[key],
+          id: parseInt(key),
+          createdAt: gallery[key].createdAt || new Date().toISOString()
+        }))
+        // Sort highest order first, then newest first
+        .sort((a, b) => {
+          if (a.order !== b.order) return (b.order || 0) - (a.order || 0);
+          return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+        });
+    } catch (error) {
+      console.error('Firebase getGalleryItems error:', error);
+      return [];
+    }
+  }
+
+  async getGalleryItem(id: number): Promise<GalleryItem | undefined> {
+    try {
+      const snapshot = await get(ref(database, `gallery/${id}`));
+      return snapshot.exists() ? { ...snapshot.val(), id } : undefined;
+    } catch (error) {
+      console.error('Firebase getGalleryItem error:', error);
+      return undefined;
+    }
+  }
+
+  async createGalleryItem(item: Omit<GalleryItem, 'id' | 'createdAt'>): Promise<GalleryItem> {
+    try {
+      let id = 1;
+      const snapshot = await get(ref(database, 'gallery'));
+
+      if (snapshot.exists() && snapshot.val() !== null) {
+        const items = snapshot.val();
+        if (items && Object.keys(items).length > 0) {
+          const itemIds = Object.keys(items)
+            .filter(key => !isNaN(parseInt(key)))
+            .map(key => parseInt(key));
+
+          if (itemIds.length > 0) {
+            id = Math.max(...itemIds) + 1;
+          }
+        }
+      }
+
+      if (isNaN(id)) id = 1;
+
+      const createdAt = new Date().toISOString();
+      const newItem: GalleryItem = {
+        ...item,
+        id,
+        createdAt
+      };
+
+      await set(ref(database, `gallery/${id}`), newItem);
+
+      return newItem;
+    } catch (error) {
+      console.error('Firebase createGalleryItem error:', error);
+      throw new Error(`Failed to create gallery item in Firebase: ${(error as Error).message}`);
+    }
+  }
+
+  async deleteGalleryItem(id: number): Promise<boolean> {
+    try {
+      const snapshot = await get(ref(database, `gallery/${id}`));
+      if (!snapshot.exists()) return false;
+      await remove(ref(database, `gallery/${id}`));
+      return true;
+    } catch (error) {
+      console.error('Firebase deleteGalleryItem error:', error);
+      return false;
+    }
+  }
+
   /**
    * Hybrid visitor tracking methods following Google engineering principles:
    * - Try Firestore first, fallback to in-memory storage
@@ -796,12 +882,12 @@ export class FirebaseStorage {
    * - Graceful degradation when Firestore is unavailable
    */
   private memoryVisitorCount = 0; // Start from authentic zero
-  
+
   async getVisitorStats(): Promise<{ totalVisits: number }> {
     try {
       const visitorDocRef = doc(firestore, 'stats', 'visitors');
       const visitorDoc = await getDoc(visitorDocRef);
-      
+
       if (!visitorDoc.exists()) {
         // Initialize visitor stats in Firestore with current memory count
         await setDoc(visitorDocRef, {
@@ -811,7 +897,7 @@ export class FirebaseStorage {
         console.log(`Visitor stats initialized in Firestore with ${this.memoryVisitorCount} visits`);
         return { totalVisits: this.memoryVisitorCount };
       }
-      
+
       const data = visitorDoc.data();
       const firestoreCount = data.totalVisits || 0;
       // Sync memory count with Firestore if Firestore has higher value
@@ -830,10 +916,10 @@ export class FirebaseStorage {
   async incrementVisitorCount(): Promise<{ totalVisits: number }> {
     // Always increment memory count first for immediate response
     this.memoryVisitorCount++;
-    
+
     try {
       const visitorDocRef = doc(firestore, 'stats', 'visitors');
-      
+
       // Try to update Firestore atomically
       await updateDoc(visitorDocRef, {
         totalVisits: increment(1),
@@ -850,16 +936,16 @@ export class FirebaseStorage {
         }
         throw error;
       });
-      
+
       // Get the updated count from Firestore to stay in sync
       const updatedDoc = await getDoc(visitorDocRef);
       const firestoreCount = updatedDoc.data()?.totalVisits || this.memoryVisitorCount;
-      
+
       // Keep memory and Firestore in sync
       if (firestoreCount !== this.memoryVisitorCount) {
         this.memoryVisitorCount = firestoreCount;
       }
-      
+
       console.log(`Visitor count incremented to: ${firestoreCount} (Firestore synced)`);
       return { totalVisits: firestoreCount };
     } catch (error) {
