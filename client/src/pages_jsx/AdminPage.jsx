@@ -147,7 +147,7 @@ const AdminPage = () => {
                 <Input
                   type={showPassword ? "text" : "password"}
                   name="password"
-                  placeholder="Passcode"
+                  placeholder="password"
                   className="pl-12 pr-12 h-14 bg-gray-50/50 border-gray-100 rounded-2xl focus-visible:ring-primary/20 focus-visible:bg-white transition-all font-medium"
                   value={credentials.password}
                   onChange={handleChange}
