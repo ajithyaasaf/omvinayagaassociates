@@ -20,7 +20,7 @@ import ProductManager from "../components/admin/ProductManager";
 import GalleryManager from "../components/admin/GalleryManager";
 
 const ADMIN_USERNAME = "admin";
-const ADMIN_PASSWORD = "buildingdoctor2023";
+const ADMIN_PASSWORD = "buildingdoctor2026";
 
 const AdminPage = () => {
   const [location, setLocation] = useLocation();
