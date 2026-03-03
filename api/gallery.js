@@ -1,9 +1,6 @@
 import { getDataFromFirebase, deleteFromFirebaseTransactional } from './firebase-operations.js';
 import { v2 as cloudinary } from 'cloudinary';
 
-// Standard pattern for Vercel backend since this is deployed as Serverless Functions, 
-// bypasses the monolithic Express index.ts
-
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
@@ -20,7 +17,6 @@ export default async function handler(req, res) {
     try {
         if (req.method === 'GET') {
             const gallery = await getDataFromFirebase('gallery');
-            // Sort Highest order first, then newest first
             const sorted = gallery.sort((a, b) => {
                 if (a.order !== b.order) return (b.order || 0) - (a.order || 0);
                 return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
@@ -29,13 +25,17 @@ export default async function handler(req, res) {
         }
 
         if (req.method === 'DELETE') {
-            const { id } = req.query;
+            // ID may come from URL path (e.g. /api/gallery/4) or query string (?id=4)
+            // Parse from URL path first, then fall back to query string
+            const urlParts = (req.url || '').split('/').filter(Boolean);
+            const pathId = urlParts[urlParts.length - 1]; // last segment e.g. "4"
+            const id = pathId && !isNaN(parseInt(pathId)) ? pathId : req.query.id;
 
             if (!id || isNaN(parseInt(id))) {
                 return res.status(400).json({ success: false, error: 'Valid gallery ID is required' });
             }
 
-            // First get the item to find its Cloudinary publicId
+            // Fetch items to find the Cloudinary publicId for cleanup
             const items = await getDataFromFirebase('gallery');
             const item = items.find(i => Number(i.id) === Number(id));
 
@@ -43,13 +43,12 @@ export default async function handler(req, res) {
                 return res.status(404).json({ success: false, message: 'Gallery item not found' });
             }
 
-            // Delete from Cloudinary if it has a publicId
+            // Delete from Cloudinary if publicId stored
             if (item.publicId) {
                 try {
-                    await cloudinary.uploader.destroy(item.publicId, { resource_type: item.type });
+                    await cloudinary.uploader.destroy(item.publicId, { resource_type: item.type || 'image' });
                 } catch (cloudinaryError) {
-                    console.error("Failed to delete from Cloudinary:", cloudinaryError);
-                    // Let it proceed to delete from Firebase anyway
+                    console.error('Cloudinary delete failed (continuing anyway):', cloudinaryError.message);
                 }
             }
 

@@ -99,15 +99,32 @@ export default function GalleryManager() {
         mutationFn: async () => {
             if (!selectedFile) throw new Error("No file selected");
 
-            const formData = new FormData();
-            formData.append('file', selectedFile);
-            formData.append('title', title || selectedFile.name);
-            formData.append('description', description);
-            formData.append('category', category);
+            // Convert file to base64 so Vercel serverless function can receive it as JSON
+            // (Vercel doesn't support raw multipart streams outside of Next.js)
+            const base64 = await new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    // Result is like "data:image/jpeg;base64,/9j/..." — strip the prefix
+                    const result = reader.result;
+                    const base64Data = result.split(',')[1];
+                    resolve(base64Data);
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(selectedFile);
+            });
+
+            const payload = {
+                fileBase64: base64,
+                mimeType: selectedFile.type,
+                title: title || selectedFile.name,
+                description,
+                category,
+            };
 
             const res = await fetch('/api/upload-and-save', {
                 method: 'POST',
-                body: formData,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
             });
 
             const data = await res.json();
@@ -116,6 +133,7 @@ export default function GalleryManager() {
             }
             return data;
         },
+
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['/api/gallery'] });
             toast({
