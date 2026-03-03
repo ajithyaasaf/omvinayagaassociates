@@ -27,6 +27,7 @@ const NotFound = lazy(() => import("./pages/not-found.jsx"));
 
 function App() {
   const [location] = useLocation();
+  const isAdminRoute = location.startsWith('/admin');
 
   // Scroll to top when route changes
   useEffect(() => {
@@ -123,9 +124,13 @@ function App() {
         </AnimatePresence>
       </main>
       <Footer />
-      <WhatsappButton />
-      <ExitIntentPopup />
-      <ChatBot />
+      {!isAdminRoute && (
+        <>
+          <WhatsappButton />
+          <ExitIntentPopup />
+          <ChatBot />
+        </>
+      )}
 
       <Toaster />
     </div>
