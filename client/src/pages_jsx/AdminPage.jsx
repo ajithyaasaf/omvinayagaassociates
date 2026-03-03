@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation, Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Shield, Lock, Users, Loader2 } from "lucide-react";
+import { Shield, Lock, Users, Loader2, Eye, EyeOff } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -27,6 +27,7 @@ const AdminPage = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [credentials, setCredentials] = useState({ username: "", password: "" });
   const [activeTab, setActiveTab] = useState("dashboard");
+  const [showPassword, setShowPassword] = useState(false);
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
@@ -143,7 +144,27 @@ const AdminPage = () => {
               </div>
               <div className="relative group">
                 <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-primary transition-colors" />
-                <Input type="password" name="password" placeholder="Passcode" className="pl-12 h-14 bg-gray-50/50 border-gray-100 rounded-2xl focus-visible:ring-primary/20 focus-visible:bg-white transition-all font-medium" value={credentials.password} onChange={handleChange} required />
+                <Input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Passcode"
+                  className="pl-12 pr-12 h-14 bg-gray-50/50 border-gray-100 rounded-2xl focus-visible:ring-primary/20 focus-visible:bg-white transition-all font-medium"
+                  value={credentials.password}
+                  onChange={handleChange}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors focus:outline-none"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? (
+                    <EyeOff className="w-5 h-5" />
+                  ) : (
+                    <Eye className="w-5 h-5" />
+                  )}
+                </button>
               </div>
             </div>
             <Button type="submit" className="w-full h-14 mt-8 bg-gray-900 hover:bg-gray-800 text-white rounded-2xl text-base font-bold shadow-lg shadow-gray-900/20 transition-all active:scale-[0.98]">
