@@ -8,6 +8,7 @@ import {
   Home,
   FilePlus,
   AlertCircle,
+  X,
 } from "lucide-react";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import { Button } from "@/components/ui/button";
@@ -304,14 +305,21 @@ const HomePageForm = ({ isOpen: externalIsOpen, onClose }) => {
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogContent className="w-full max-w-[95%] sm:max-w-md max-h-[90vh] sm:max-h-[85vh] overflow-y-auto p-0 gap-0 bg-background rounded-xl">
-        <div className="bg-gradient-to-r from-primary to-secondary p-4 sticky top-0 z-10">
-          <DialogHeader>
-            <DialogTitle className="text-primary-foreground font-bold text-base sm:text-lg text-left">
+        <div className="bg-gradient-to-r from-primary to-secondary p-4 sticky top-0 z-10 flex justify-between items-center">
+          <DialogHeader className="m-0">
+            <DialogTitle className="text-primary-foreground font-bold text-base sm:text-lg text-left m-0">
               {activeTab === "inquiry"
                 ? "Building Doctor Consultation"
                 : "Contact Us"}
             </DialogTitle>
           </DialogHeader>
+          <button
+            onClick={() => handleOpenChange(false)}
+            className="text-white hover:bg-white/20 p-1.5 rounded-full transition-colors flex-shrink-0 focus:outline-none"
+            aria-label="Close dialog"
+          >
+            <X className="h-5 w-5" />
+          </button>
         </div>
 
         <div className="p-4 sm:p-5">

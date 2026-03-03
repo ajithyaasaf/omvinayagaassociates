@@ -140,7 +140,7 @@ const AdminPage = () => {
             <div className="space-y-4">
               <div className="relative group">
                 <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-primary transition-colors" />
-                <Input type="text" name="username" placeholder="Admin ID" className="pl-12 h-14 bg-gray-50/50 border-gray-100 rounded-2xl focus-visible:ring-primary/20 focus-visible:bg-white transition-all font-medium" value={credentials.username} onChange={handleChange} required />
+                <Input type="text" name="username" placeholder="username" className="pl-12 h-14 bg-gray-50/50 border-gray-100 rounded-2xl focus-visible:ring-primary/20 focus-visible:bg-white transition-all font-medium" value={credentials.username} onChange={handleChange} required />
               </div>
               <div className="relative group">
                 <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-primary transition-colors" />
