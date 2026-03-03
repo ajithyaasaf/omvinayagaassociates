@@ -17,6 +17,14 @@
       "dest": "/api/intents.js"
     },
     {
+      "src": "/api/gallery(.*)",
+      "dest": "/api/gallery.js"
+    },
+    {
+      "src": "/api/upload-and-save(.*)",
+      "dest": "/api/upload-and-save.js"
+    },
+    {
       "src": "/api/products(.*)",
       "dest": "/api/firebase-data.js"
     },
