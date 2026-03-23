@@ -268,25 +268,20 @@ const createDataInFirebaseTransactional = async (path, data) => {
         }
       }
       
-      // Clean the data to ensure no undefined values
+      // Create clean data with basic fields first
       const cleanData = {
-        name: data.name || "",
-        email: data.email || null,
-        phone: data.phone || "",
+        ...data,
         id: newId,
-        createdAt: new Date().toISOString()
+        createdAt: data.createdAt || new Date().toISOString()
       };
       
-      // Add type-specific fields
-      if (data.issueType !== undefined) cleanData.issueType = data.issueType || "";
-      if (data.message !== undefined) cleanData.message = data.message || null;
-      if (data.address !== undefined) cleanData.address = data.address || null;
-      if (data.service !== undefined) cleanData.service = data.service || "";
-      if (data.consent !== undefined) cleanData.consent = data.consent;
-      if (data.location !== undefined) cleanData.location = data.location || null;
-      if (data.timePreference !== undefined) cleanData.timePreference = data.timePreference || null;
+      // Ensure specific fields have defaults if they are typically required
+      if (path === 'contacts' || path === 'inquiries') {
+        if (cleanData.name === undefined) cleanData.name = "";
+        if (cleanData.phone === undefined) cleanData.phone = "";
+      }
       
-      // Remove any undefined values completely
+      // Remove any undefined values completely as Firebase doesn't accept them
       Object.keys(cleanData).forEach(key => {
         if (cleanData[key] === undefined) {
           delete cleanData[key];
