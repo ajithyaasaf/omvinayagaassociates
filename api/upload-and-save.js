@@ -20,10 +20,17 @@ export default async function handler(req, res) {
     }
 
     try {
+        if (!req.body) {
+            return res.status(400).json({ success: false, message: 'Request body is missing' });
+        }
+
         const { fileBase64, mimeType, title, description, category } = req.body;
 
-        if (!fileBase64 || !mimeType) {
-            return res.status(400).json({ success: false, message: 'File data and mime type are required' });
+        if (!fileBase64) {
+            return res.status(400).json({ success: false, message: 'fileBase64 is required' });
+        }
+        if (!mimeType) {
+            return res.status(400).json({ success: false, message: 'mimeType is required' });
         }
 
         const isVideo = mimeType.startsWith('video/');

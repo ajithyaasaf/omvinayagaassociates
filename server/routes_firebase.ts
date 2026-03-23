@@ -1196,21 +1196,53 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // ======================
   // COMBINED UPLOAD + SAVE ENDPOINT (atomic: uploads to Cloudinary then saves metadata to Firebase)
   // ======================
-  app.post("/api/upload-and-save", upload.single("file"), async (req, res) => {
+  app.post("/api/upload-and-save", (req, res, next) => {
+    // Only use multer if the request is multipart/form-data
+    const contentType = req.headers['content-type'] || '';
+    if (contentType.includes('multipart/form-data')) {
+      return upload.single("file")(req, res, next);
+    }
+    next();
+  }, async (req, res) => {
     try {
+      let fileBuffer: Buffer;
+      let mimetype: string;
+      let originalName: string;
+
       const file = (req as any).file;
-      if (!file) {
-        return res.status(400).json({ success: false, message: "No file uploaded" });
+      
+      // Support both multipart/form-data (multer) and JSON (base64)
+      if (file) {
+        fileBuffer = file.buffer;
+        mimetype = file.mimetype;
+        originalName = file.originalname;
+      } else if (req.body && req.body.fileBase64 && req.body.mimeType) {
+        fileBuffer = Buffer.from(req.body.fileBase64, 'base64');
+        mimetype = req.body.mimeType;
+        originalName = req.body.title || "Untitled";
+      } else {
+        const bodyKeys = req.body ? Object.keys(req.body) : 'null/undefined';
+        console.error('Invalid upload-and-save request. Body keys:', bodyKeys);
+        return res.status(400).json({ 
+          success: false, 
+          message: "No file data found in request.",
+          details: {
+            hasFile: !!file,
+            hasBody: !!req.body,
+            bodyKeys: bodyKeys,
+            contentType: req.headers['content-type']
+          }
+        });
       }
 
       const { title, description, category } = req.body;
 
-      // Step 1: Upload to Cloudinary (stream buffer directly — no base64 overhead)
-      const isVideo = file.mimetype.startsWith('video/');
+      // Step 1: Upload to Cloudinary
+      const isVideo = mimetype.startsWith('video/');
       const uploadType = isVideo ? 'video' : 'image';
 
-      console.log(`Uploading to Cloudinary as ${uploadType}...`);
-      const uploadResult = await uploadToCloudinary(file.buffer, uploadType, file.mimetype);
+      console.log(`Uploading ${originalName} (${mimetype}) to Cloudinary as ${uploadType}...`);
+      const uploadResult = await uploadToCloudinary(fileBuffer, uploadType, mimetype);
 
       if (!uploadResult.success) {
         return res.status(500).json({ success: false, message: uploadResult.message || "Cloudinary upload failed" });
@@ -1220,7 +1252,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       // Step 2: Save metadata to Firebase
       const galleryItem = {
-        title: title || file.originalname || "Untitled",
+        title: title || originalName || "Untitled",
         description: description || "",
         mediaUrl: uploadResult.url!,
         type: uploadType as 'image' | 'video',
