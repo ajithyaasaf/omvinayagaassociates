@@ -49,11 +49,7 @@ export default function GalleryPage() {
 
 
                     <h1 className="font-montserrat text-5xl md:text-6xl font-bold text-gray-900 tracking-tight mb-6 flex flex-col items-center">
-                        Our <span className="text-primary bg-primary/10 px-4 py-1 rounded-2xl mt-2 relative">
-                            Premium Portfolio
-                            <span className="absolute -top-1 -right-2 w-3 h-3 bg-red-500 rounded-full animate-ping opacity-75"></span>
-                            <span className="absolute -top-1 -right-2 w-3 h-3 bg-red-500 rounded-full"></span>
-                        </span>
+                        Gallery Page
                     </h1>
                     <p className="text-lg text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed">
                         Explore our curated collection of successful installations, showcasing our commitment to structural excellence and aesthetic design.
