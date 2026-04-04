@@ -40,22 +40,23 @@ export default function GalleryPage() {
         <div className="min-h-screen bg-gray-50 pt-24 pb-20">
 
             {/* Header Section */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-center max-w-3xl mx-auto"
-                >
-
-
-                    <h1 className="font-montserrat text-5xl md:text-6xl font-bold text-gray-900 tracking-tight mb-6 flex flex-col items-center">
-                        Gallery Page
-                    </h1>
-                    <p className="text-lg text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed">
-                        Explore our curated collection of successful installations, showcasing our commitment to structural excellence and aesthetic design.
-                    </p>
-                </motion.div>
-            </div>
+            <section className="bg-[#2b4c7e] py-20 relative mb-16">
+                <div className="absolute inset-0 bg-black opacity-50"></div>
+                <div className="container mx-auto px-4 relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-center max-w-3xl mx-auto"
+                    >
+                        <h1 className="font-montserrat font-bold text-3xl md:text-4xl lg:text-5xl mb-4 text-white">
+                            Gallery Page
+                        </h1>
+                        <p className="max-w-2xl mx-auto text-base md:text-lg text-gray-200 font-medium leading-relaxed">
+                            Discover our work, product highlights, and latest achievements through our visual gallery.
+                        </p>
+                    </motion.div>
+                </div>
+            </section>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
