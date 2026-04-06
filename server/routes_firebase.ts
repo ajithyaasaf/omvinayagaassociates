@@ -149,14 +149,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
         console.log('Inquiry form parsed successfully (data masked for production)');
       }
 
-      // Prepare data for Firebase with proper null handling
-      const inquiryDataForFirebase = {
+      // Prepare data for Firebase with proper undefined handling
+      const inquiryDataForFirebase: Omit<Inquiry, "id" | "createdAt"> = {
         name: parsedData.name,
-        email: parsedData.email || null,
+        email: parsedData.email || undefined,
         phone: parsedData.phone,
         issueType: parsedData.issueType || "",
-        message: parsedData.message || null,
-        address: parsedData.address || null
+        message: parsedData.message || undefined,
+        address: parsedData.address || undefined
       };
 
       if (process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true') {
@@ -875,24 +875,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const parsedData = intentSchema.parse(req.body);
 
       // Ensure all required fields are provided and filter out undefined values
-      const intentData = {
+      const intentData: Omit<Intent, "id" | "createdAt"> = {
         name: parsedData.name,
         phone: parsedData.phone,
         service: parsedData.service || "Urgent Consultation",
         message: parsedData.message || "Building repair inquiry",
-        consent: parsedData.consent
+        consent: parsedData.consent,
+        location: parsedData.location,
+        issueType: parsedData.issueType,
+        timePreference: parsedData.timePreference
       };
-
-      // Only add optional fields if they have values (Firebase doesn't accept undefined)
-      if (parsedData.location) {
-        intentData.location = parsedData.location;
-      }
-      if (parsedData.issueType) {
-        intentData.issueType = parsedData.issueType;
-      }
-      if (parsedData.timePreference) {
-        intentData.timePreference = parsedData.timePreference;
-      }
 
       // Create intent in Firebase
       const newIntent = await storage.createIntent(intentData);
@@ -1039,11 +1031,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
         const newInquiry = await storage.createInquiry({
           name: parsedData.name,
-          email: parsedData.email || null,
+          email: parsedData.email || undefined,
           phone: parsedData.phone,
           issueType: parsedData.issueType || "",
-          message: parsedData.message || null,
-          address: parsedData.address || null
+          message: parsedData.message || undefined,
+          address: parsedData.address || undefined
         });
 
         console.log('Test inquiry created successfully');
@@ -1210,7 +1202,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       let originalName: string;
 
       const file = (req as any).file;
-      
+
       // Support both multipart/form-data (multer) and JSON (base64)
       if (file) {
         fileBuffer = file.buffer;
@@ -1223,8 +1215,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       } else {
         const bodyKeys = req.body ? Object.keys(req.body) : 'null/undefined';
         console.error('Invalid upload-and-save request. Body keys:', bodyKeys);
-        return res.status(400).json({ 
-          success: false, 
+        return res.status(400).json({
+          success: false,
           message: "No file data found in request.",
           details: {
             hasFile: !!file,
