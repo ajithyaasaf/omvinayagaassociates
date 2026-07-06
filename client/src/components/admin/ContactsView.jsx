@@ -172,7 +172,7 @@ const ContactsView = ({ contacts, isLoading, deleteContact }) => {
                                             {contact.createdAt ? formatDate(contact.createdAt) : 'Recent'}
                                         </td>
                                         <td className="px-6 py-4">
-                                            <div className="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <div className="flex items-center justify-center gap-2">
                                                 <Dialog>
                                                     <DialogTrigger asChild>
                                                         <Button variant="ghost" size="icon" className="h-8 w-8 text-indigo-600 hover:bg-indigo-50 hover:text-indigo-700 rounded-lg">
@@ -200,6 +200,10 @@ const ContactsView = ({ contacts, isLoading, deleteContact }) => {
                                                             <div className="col-span-2 space-y-1 bg-gray-50 p-4 rounded-2xl">
                                                                 <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Requested Service</label>
                                                                 <p className="font-semibold text-gray-900">{contact.service || 'General Inquiry'}</p>
+                                                            </div>
+                                                            <div className="col-span-2 space-y-1 bg-gray-50 p-4 rounded-2xl">
+                                                                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Submitted Date</label>
+                                                                <p className="font-semibold text-gray-900">{contact.createdAt ? formatDate(contact.createdAt) : 'Recent'}</p>
                                                             </div>
                                                             <div className="col-span-2 space-y-1 bg-indigo-50/50 p-5 rounded-2xl border border-indigo-100/50">
                                                                 <label className="text-xs font-bold text-indigo-400 uppercase tracking-wider">Message Content</label>

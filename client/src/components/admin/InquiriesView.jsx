@@ -173,7 +173,7 @@ const InquiriesView = ({ inquiries, isLoading, deleteInquiry }) => {
                                             {inquiry.createdAt ? formatDate(inquiry.createdAt) : 'Recent'}
                                         </td>
                                         <td className="px-6 py-4">
-                                            <div className="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <div className="flex items-center justify-center gap-2">
                                                 <Dialog>
                                                     <DialogTrigger asChild>
                                                         <Button variant="ghost" size="icon" className="h-8 w-8 text-blue-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg">
@@ -205,6 +205,10 @@ const InquiriesView = ({ inquiries, isLoading, deleteInquiry }) => {
                                                             <div className="space-y-1 bg-gray-50 p-4 rounded-2xl">
                                                                 <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Location</label>
                                                                 <p className="font-semibold text-gray-900">{inquiry.address || 'None provided'}</p>
+                                                            </div>
+                                                            <div className="col-span-2 space-y-1 bg-gray-50 p-4 rounded-2xl">
+                                                                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Submitted Date</label>
+                                                                <p className="font-semibold text-gray-900">{inquiry.createdAt ? formatDate(inquiry.createdAt) : 'Recent'}</p>
                                                             </div>
                                                             <div className="col-span-2 space-y-1 bg-blue-50/50 p-5 rounded-2xl border border-blue-100/50">
                                                                 <label className="text-xs font-bold text-blue-400 uppercase tracking-wider">Message Content</label>
