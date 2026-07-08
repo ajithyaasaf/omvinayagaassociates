@@ -115,6 +115,33 @@ const AdminPage = () => {
   const deleteContactMutation = createDeleteMutation("contacts", "contacts");
   const deleteIntentMutation = createDeleteMutation("intents", "intents");
 
+  const updateInquiryStatusMutation = useMutation({
+    mutationFn: async ({ id, status }) => {
+      // Cancel any in-flight polling refetch so it doesn't race our write
+      await queryClient.cancelQueries({ queryKey: ["inquiries"] });
+      const response = await apiRequest("PATCH", `/api/inquiries?id=${id}`, { status });
+      return { id, status };
+    },
+    onSuccess: (data) => {
+      // Optimistically update local cache immediately
+      queryClient.setQueryData(["inquiries"], (old) => {
+        if (!old) return [];
+        return old.map((item) => item.id === data.id ? { ...item, status: data.status } : item);
+      });
+      // Delay invalidation by 500ms to give Firebase time to propagate the write
+      setTimeout(() => {
+        queryClient.invalidateQueries({ queryKey: ["inquiries"] });
+      }, 500);
+      toast({ title: "Status updated", description: `Inquiry marked as ${data.status}.` });
+    },
+    onError: (error) => {
+      console.error("Error updating inquiry status:", error);
+      // Restore correct data from server on failure
+      queryClient.invalidateQueries({ queryKey: ["inquiries"] });
+      toast({ title: "Failed to update status", description: "There was an error updating the status.", variant: "destructive" });
+    }
+  });
+
   // Authentication Screen
   if (!isAuthenticated) {
     return (
@@ -202,7 +229,12 @@ const AdminPage = () => {
                 <DashboardOverview inquiries={inquiries} contacts={contactSubmissions} intents={intentSubmissions} />
               )}
               {activeTab === "inquiries" && (
-                <InquiriesView inquiries={inquiries} isLoading={isInquiriesLoading} deleteInquiry={deleteInquiryMutation.mutate} />
+                <InquiriesView 
+                  inquiries={inquiries} 
+                  isLoading={isInquiriesLoading} 
+                  deleteInquiry={deleteInquiryMutation.mutate} 
+                  updateInquiryStatus={updateInquiryStatusMutation.mutate}
+                />
               )}
               {activeTab === "contacts" && (
                 <ContactsView contacts={contactSubmissions} isLoading={isContactsLoading} deleteContact={deleteContactMutation.mutate} />

@@ -559,6 +559,7 @@ export class FirebaseStorage {
           .map(item => ({
             ...item,
             id: item.id || 0,
+            status: item.status || "New",
             createdAt: item.createdAt ? new Date(item.createdAt) : null
           }));
       } else {
@@ -567,6 +568,7 @@ export class FirebaseStorage {
           .map(key => ({
             ...inquiries[key],
             id: parseInt(key),
+            status: inquiries[key].status || "New",
             createdAt: inquiries[key].createdAt ? new Date(inquiries[key].createdAt) : null
           }));
       }
@@ -635,6 +637,7 @@ export class FirebaseStorage {
         issueType: newInquiry.issueType || "",
         message: newInquiry.message || null,
         address: newInquiry.address || null,
+        status: newInquiry.status || "New",
         id: newInquiry.id,
         createdAt: createdAt
       };
@@ -677,6 +680,51 @@ export class FirebaseStorage {
       console.error('Error details:', (error as Error).message);
       console.error('Error stack:', (error as Error).stack);
       return false;
+    }
+  }
+
+  async updateInquiry(id: number, inquiry: Partial<Inquiry>): Promise<Inquiry | undefined> {
+    try {
+      // Fetch the whole collection to find the correct Firebase key
+      // (the Firebase key may differ from item.id, especially in array structures)
+      const collectionSnapshot = await get(ref(database, 'inquiries'));
+      if (!collectionSnapshot.exists()) return undefined;
+
+      const data = collectionSnapshot.val();
+      let targetKey: string | null = null;
+
+      if (Array.isArray(data)) {
+        // Array: Firebase stores items at index 0, 1, 2... but item.id may differ
+        const idx = data.findIndex(item => item && Number(item?.id ?? -1) === id);
+        if (idx !== -1) targetKey = idx.toString();
+      } else {
+        // Object: key may equal id string, or may be a push key
+        for (const [key, value] of Object.entries(data as Record<string, any>)) {
+          if (value && Number((value as any)?.id ?? key) === id) {
+            targetKey = key;
+            break;
+          }
+        }
+      }
+
+      if (!targetKey) {
+        console.error(`updateInquiry: inquiry id ${id} not found in Firebase`);
+        return undefined;
+      }
+
+      const existingInquiry = Array.isArray(data) ? data[parseInt(targetKey)] : (data as any)[targetKey];
+      const updatedInquiry = { ...existingInquiry, ...inquiry, id };
+
+      // Keep createdAt as ISO string
+      if (updatedInquiry.createdAt instanceof Date) {
+        updatedInquiry.createdAt = updatedInquiry.createdAt.toISOString();
+      }
+
+      await set(ref(database, `inquiries/${targetKey}`), updatedInquiry);
+      return { ...updatedInquiry, createdAt: updatedInquiry.createdAt } as any;
+    } catch (error) {
+      console.error('Firebase updateInquiry error:', error);
+      return undefined;
     }
   }
 

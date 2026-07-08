@@ -30,7 +30,8 @@ export const inquirySchema = z.object({
   phone: z.string().min(5, "Phone number is required").regex(/^[0-9+\s()-]+$/, "Invalid phone number format"),
   issueType: z.string().optional().or(z.string()),
   message: z.string().optional().or(z.string().length(0)),
-  address: z.string().optional().or(z.string().length(0))
+  address: z.string().optional().or(z.string().length(0)),
+  status: z.enum(["New", "Contacted", "Resolved"]).default("New").optional()
 });
 
 export interface Inquiry {
@@ -41,6 +42,7 @@ export interface Inquiry {
   issueType?: string;
   message?: string;
   address?: string;
+  status?: "New" | "Contacted" | "Resolved";
   createdAt: string;
 }
 

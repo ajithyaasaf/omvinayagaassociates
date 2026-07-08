@@ -1,10 +1,10 @@
-// Vercel API route for inquiries (GET all inquiries, POST new inquiry, DELETE specific inquiry)
-import { getDataFromFirebase, deleteFromFirebaseTransactional, createDataInFirebaseTransactional } from './firebase-operations.js';
+// Vercel API route for inquiries (GET all inquiries, POST new inquiry, DELETE specific inquiry, PATCH update inquiry)
+import { getDataFromFirebase, deleteFromFirebaseTransactional, createDataInFirebaseTransactional, updateDataInFirebase } from './firebase-operations.js';
 
 export default async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   
   // Handle preflight requests
@@ -73,6 +73,41 @@ export default async function handler(req, res) {
         return res.status(200).json({
           success: true,
           message: 'Inquiry deleted successfully'
+        });
+      } else {
+        return res.status(404).json({
+          success: false,
+          message: result.message || 'Inquiry not found'
+        });
+      }
+    }
+    
+    // Handle PATCH requests (update specific inquiry status/fields)
+    if (req.method === 'PATCH') {
+      const { id } = req.query;
+      const partialData = req.body;
+      
+      if (!id || isNaN(parseInt(id))) {
+        return res.status(400).json({
+          success: false,
+          error: 'Valid inquiry ID is required'
+        });
+      }
+      
+      if (!partialData || typeof partialData !== 'object') {
+        return res.status(400).json({
+          success: false,
+          error: 'Request body must be an object containing update fields'
+        });
+      }
+      
+      console.log('Updating inquiry with ID:', id, 'Data:', partialData);
+      const result = await updateDataInFirebase('inquiries', id, partialData);
+      
+      if (result.success) {
+        return res.status(200).json({
+          success: true,
+          message: 'Inquiry updated successfully'
         });
       } else {
         return res.status(404).json({

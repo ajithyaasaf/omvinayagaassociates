@@ -246,6 +246,48 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Update an inquiry (status)
+  app.patch("/api/inquiries/:id?", async (req, res) => {
+    try {
+      const idStr = req.params.id || (req.query.id as string);
+      const inquiryId = parseInt(idStr);
+      if (isNaN(inquiryId)) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid inquiry ID"
+        });
+      }
+
+      const { status } = req.body;
+      if (!status) {
+        return res.status(400).json({
+          success: false,
+          message: "Status is required"
+        });
+      }
+
+      const updatedInquiry = await storage.updateInquiry(inquiryId, { status });
+      if (!updatedInquiry) {
+        return res.status(404).json({
+          success: false,
+          message: "Inquiry not found"
+        });
+      }
+
+      res.status(200).json({
+        success: true,
+        message: "Inquiry status updated successfully",
+        inquiry: updatedInquiry
+      });
+    } catch (error) {
+      console.error('Inquiry update error:', error);
+      res.status(500).json({
+        success: false,
+        message: "Failed to update inquiry status"
+      });
+    }
+  });
+
   // ======================
   // PRODUCT ENDPOINTS
   // ======================

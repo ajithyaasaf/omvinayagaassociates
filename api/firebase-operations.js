@@ -138,7 +138,11 @@ const getDataFromFirebase = async (path, useCache = true) => {
   const cacheKey = path;
   const cacheTimeout = 30000; // 30 seconds
   
-  if (useCache && cache.has(cacheKey)) {
+  // Disable caching for highly dynamic leads/forms
+  const bypassPaths = ['inquiries', 'contacts', 'intents'];
+  const shouldCache = useCache && !bypassPaths.includes(path);
+  
+  if (shouldCache && cache.has(cacheKey)) {
     const cached = cache.get(cacheKey);
     if (Date.now() - cached.timestamp < cacheTimeout) {
       console.log(`Cache hit for ${path}`);
@@ -164,7 +168,7 @@ const getDataFromFirebase = async (path, useCache = true) => {
     }
     
     // Cache the result
-    if (useCache) {
+    if (shouldCache) {
       cache.set(cacheKey, { data: result, timestamp: Date.now() });
     }
     
@@ -371,11 +375,67 @@ const scheduleBackups = () => {
   }
 };
 
+// Update data in Firebase
+const updateDataInFirebase = async (path, id, partialData) => {
+  return withRetry(async () => {
+    const db = getDatabase(firebaseApp);
+    
+    const isDebug = process.env.NODE_ENV === 'development' || process.env.DEBUG === 'true';
+    if (isDebug) {
+      console.log(`=== FIREBASE UPDATE OPERATION DEBUG ===`);
+      console.log(`Path: ${path}, ID: ${id}`);
+    }
+
+    // Get current data to find key
+    const collectionSnapshot = await get(ref(db, path));
+    if (!collectionSnapshot.exists()) {
+      return { success: false, message: 'Collection not found' };
+    }
+
+    const data = collectionSnapshot.val();
+    let targetKey = null;
+    const targetId = Number(id);
+
+    if (Array.isArray(data)) {
+      const targetIndex = data.findIndex(item => item && Number(item?.id ?? -1) === targetId);
+      if (targetIndex !== -1) {
+        targetKey = targetIndex.toString();
+      }
+    } else {
+      for (const [key, value] of Object.entries(data)) {
+        if (value && Number(value?.id ?? key) === targetId) {
+          targetKey = key;
+          break;
+        }
+      }
+    }
+
+    if (!targetKey) {
+      return { success: false, message: 'Item not found' };
+    }
+
+    const targetRef = ref(db, `${path}/${targetKey}`);
+    
+    // Remove any undefined values
+    const cleanPartial = { ...partialData };
+    Object.keys(cleanPartial).forEach(key => {
+      if (cleanPartial[key] === undefined) {
+        delete cleanPartial[key];
+      }
+    });
+
+    await update(targetRef, cleanPartial);
+    clearCache(path);
+    return { success: true, message: 'Item updated successfully' };
+  });
+};
+
 export {
   getDataFromFirebase,
   getPaginatedDataFromFirebase,
   deleteFromFirebaseTransactional,
   createDataInFirebaseTransactional,
+  updateDataInFirebase,
   bulkDeleteFromFirebase,
   createBackup,
   scheduleBackups,

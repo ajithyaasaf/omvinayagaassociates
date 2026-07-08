@@ -65,6 +65,7 @@ export interface IStorage {
   // Inquiry methods
   getInquiries(): Promise<Inquiry[]>;
   createInquiry(inquiry: Omit<Inquiry, 'id' | 'createdAt'>): Promise<Inquiry>;
+  updateInquiry(id: number, inquiry: Partial<Inquiry>): Promise<Inquiry | undefined>;
   deleteInquiry(id: number): Promise<boolean>;
 
   // Intent form methods
@@ -129,6 +130,7 @@ export const storage: IStorage = {
   // Inquiry methods
   getInquiries: () => firebaseStorage.getInquiries(),
   createInquiry: (inquiry) => firebaseStorage.createInquiry(inquiry),
+  updateInquiry: (id, inquiry) => firebaseStorage.updateInquiry(id, inquiry),
   deleteInquiry: (id) => firebaseStorage.deleteInquiry(id),
 
   // Intent form methods
